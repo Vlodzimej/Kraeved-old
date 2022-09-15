@@ -10,22 +10,45 @@
 		66E2E60028D384D00014E70C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2E5FF28D384D00014E70C /* AppDelegate.swift */; };
 		66E2E60228D384D00014E70C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2E60128D384D00014E70C /* SceneDelegate.swift */; };
 		66E2E60428D384D00014E70C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2E60328D384D00014E70C /* ViewController.swift */; };
-		66E2E60728D384D00014E70C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E2E60528D384D00014E70C /* Main.storyboard */; };
 		66E2E60A28D384D00014E70C /* Kraeved.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66E2E60828D384D00014E70C /* Kraeved.xcdatamodeld */; };
 		66E2E60C28D384D20014E70C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E2E60B28D384D20014E70C /* Assets.xcassets */; };
 		66E2E60F28D384D20014E70C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E2E60D28D384D20014E70C /* LaunchScreen.storyboard */; };
+		66E2E61928D38D4A0014E70C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2E61828D38D4A0014E70C /* HomeViewController.swift */; };
+		66E2E61B28D38D8E0014E70C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2E61A28D38D8E0014E70C /* MapViewController.swift */; };
+		66E2E62428D39CD00014E70C /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E2E62328D39CD00014E70C /* SnapKit.xcframework */; };
+		66E2E62528D39CD00014E70C /* SnapKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66E2E62328D39CD00014E70C /* SnapKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		66E2E62F28D3A4FB0014E70C /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2E62E28D3A4FB0014E70C /* Places.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		66E2E62628D39CD00014E70C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				66E2E62528D39CD00014E70C /* SnapKit.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		66E2E5FC28D384D00014E70C /* Kraeved.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kraeved.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E2E5FF28D384D00014E70C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66E2E60128D384D00014E70C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		66E2E60328D384D00014E70C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		66E2E60628D384D00014E70C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66E2E60928D384D00014E70C /* Kraeved.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kraeved.xcdatamodel; sourceTree = "<group>"; };
 		66E2E60B28D384D20014E70C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66E2E60E28D384D20014E70C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66E2E61028D384D20014E70C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66E2E61828D38D4A0014E70C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		66E2E61A28D38D8E0014E70C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		66E2E61F28D397ED0014E70C /* SnapKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SnapKit; path = Pods/SnapKit; sourceTree = "<group>"; };
+		66E2E62028D398040014E70C /* Source */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Source; path = Pods/SnapKit/Source; sourceTree = "<group>"; };
+		66E2E62328D39CD00014E70C /* SnapKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapKit.xcframework; path = Carthage/Build/SnapKit.xcframework; sourceTree = "<group>"; };
+		66E2E62E28D3A4FB0014E70C /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66E2E62428D39CD00014E70C /* SnapKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +68,7 @@
 			children = (
 				66E2E5FE28D384D00014E70C /* Kraeved */,
 				66E2E5FD28D384D00014E70C /* Products */,
+				806ED81E172CEC540C1E7747 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +83,36 @@
 		66E2E5FE28D384D00014E70C /* Kraeved */ = {
 			isa = PBXGroup;
 			children = (
+				66E2E62D28D3A4EE0014E70C /* Models */,
 				66E2E5FF28D384D00014E70C /* AppDelegate.swift */,
 				66E2E60128D384D00014E70C /* SceneDelegate.swift */,
 				66E2E60328D384D00014E70C /* ViewController.swift */,
-				66E2E60528D384D00014E70C /* Main.storyboard */,
+				66E2E61828D38D4A0014E70C /* HomeViewController.swift */,
+				66E2E61A28D38D8E0014E70C /* MapViewController.swift */,
 				66E2E60B28D384D20014E70C /* Assets.xcassets */,
 				66E2E60D28D384D20014E70C /* LaunchScreen.storyboard */,
 				66E2E61028D384D20014E70C /* Info.plist */,
 				66E2E60828D384D00014E70C /* Kraeved.xcdatamodeld */,
 			);
 			path = Kraeved;
+			sourceTree = "<group>";
+		};
+		66E2E62D28D3A4EE0014E70C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				66E2E62E28D3A4FB0014E70C /* Places.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		806ED81E172CEC540C1E7747 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66E2E62328D39CD00014E70C /* SnapKit.xcframework */,
+				66E2E62028D398040014E70C /* Source */,
+				66E2E61F28D397ED0014E70C /* SnapKit */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +125,7 @@
 				66E2E5F828D384D00014E70C /* Sources */,
 				66E2E5F928D384D00014E70C /* Frameworks */,
 				66E2E5FA28D384D00014E70C /* Resources */,
+				66E2E62628D39CD00014E70C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,7 +176,6 @@
 			files = (
 				66E2E60F28D384D20014E70C /* LaunchScreen.storyboard in Resources */,
 				66E2E60C28D384D20014E70C /* Assets.xcassets in Resources */,
-				66E2E60728D384D00014E70C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,21 +189,16 @@
 				66E2E60428D384D00014E70C /* ViewController.swift in Sources */,
 				66E2E60028D384D00014E70C /* AppDelegate.swift in Sources */,
 				66E2E60A28D384D00014E70C /* Kraeved.xcdatamodeld in Sources */,
+				66E2E62F28D3A4FB0014E70C /* Places.swift in Sources */,
 				66E2E60228D384D00014E70C /* SceneDelegate.swift in Sources */,
+				66E2E61928D38D4A0014E70C /* HomeViewController.swift in Sources */,
+				66E2E61B28D38D8E0014E70C /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		66E2E60528D384D00014E70C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				66E2E60628D384D00014E70C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		66E2E60D28D384D20014E70C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,9 +336,9 @@
 				INFOPLIST_FILE = Kraeved/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +348,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -324,9 +364,9 @@
 				INFOPLIST_FILE = Kraeved/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -336,7 +376,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
