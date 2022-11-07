@@ -1,0 +1,11 @@
+/* 
+  Localizable.ru.strings
+  Kraeved
+
+  Created by Владимир Амелькин on 01.11.2022.
+  
+*/
+
+"tabbar.mainScreen"     = "Главная";
+"tabbar.mapScreen"      = "Карта";
+"tabbar.searchScreen"   = "Поиск";

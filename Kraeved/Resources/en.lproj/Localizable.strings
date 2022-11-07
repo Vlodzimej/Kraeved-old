@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Kraeved
+
+  Created by Владимир Амелькин on 01.11.2022.
+  
+*/
+
+"tabbar.mainScreen"     = "Main";
+"tabbar.mapScreen"      = "Map";
+"tabbar.searchScreen"   = "Search";
