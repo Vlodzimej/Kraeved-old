@@ -1,13 +1,5 @@
 {
    "profile":{
       "name":"typicode"
-   },
-   "annotations":[
-      {
-         "id":1,
-         "title":"Кинотеатр «Центральный»",
-         "latitude":54.514052969192626,
-         "longitude":36.263218970424724
-      }
-   ]
+   }
 }
