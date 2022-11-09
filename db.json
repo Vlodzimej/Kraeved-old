@@ -2,7 +2,7 @@
   "profile": {
     "name": "typicode"
   },
-  "data": {
+  "data": [
       "annotations": [
         {
           "id": 1,
@@ -11,5 +11,5 @@
           "longitude": 36.263218970424724
         }
       ]
-  }
+  ]
 }
