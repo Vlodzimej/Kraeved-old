@@ -8,6 +8,8 @@
 import Foundation
 import MapKit
 
+// Пример паттерна Декоратор
+
 enum AnnotationType {
     case building
     case natural

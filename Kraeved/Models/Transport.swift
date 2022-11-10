@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Пример следования первому принципу GRASP - Информационный эксперт
+
 struct Transport {
     let name: String
     let route: [Int]
