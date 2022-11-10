@@ -9,3 +9,5 @@
 "tabbar.mainScreen"     = "Главная";
 "tabbar.mapScreen"      = "Карта";
 "tabbar.searchScreen"   = "Поиск";
+"tabbar.building"       = "Здание";
+"tabbar.natural"        = "Природа";
