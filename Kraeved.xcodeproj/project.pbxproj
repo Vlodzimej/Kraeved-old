@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		660889FC2926DC0300CB5E23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660889FB2926DC0300CB5E23 /* AppDelegate.swift */; };
 		660889FE2926DC0300CB5E23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660889FD2926DC0300CB5E23 /* SceneDelegate.swift */; };
-		66088A002926DC0300CB5E23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660889FF2926DC0300CB5E23 /* ViewController.swift */; };
 		66088A062926DC0300CB5E23 /* Kraeved.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66088A042926DC0300CB5E23 /* Kraeved.xcdatamodeld */; };
 		66088A082926DC0400CB5E23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66088A072926DC0400CB5E23 /* Assets.xcassets */; };
 		66088A1E2926DC8000CB5E23 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A1D2926DC8000CB5E23 /* TabBarController.swift */; };
@@ -31,6 +30,7 @@
 		66088A452926DDA900CB5E23 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A402926DDA900CB5E23 /* Transport.swift */; };
 		66088A462926DDA900CB5E23 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A412926DDA900CB5E23 /* Annotation.swift */; };
 		66088A492926DDD800CB5E23 /* MKMapView+centerLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A482926DDD800CB5E23 /* MKMapView+centerLocation.swift */; };
+		660F66242926EDBB00236A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660F66232926EDBB00236A6D /* LaunchScreen.storyboard */; };
 		66A8A4FF2926E0DB000BFC29 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FB2926E0DB000BFC29 /* BaseInteractor.swift */; };
 		66A8A5002926E0DB000BFC29 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FC2926E0DB000BFC29 /* BasePresenter.swift */; };
 		66A8A5012926E0DB000BFC29 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */; };
@@ -54,7 +54,6 @@
 		660889F82926DC0300CB5E23 /* Kraeved.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kraeved.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		660889FB2926DC0300CB5E23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		660889FD2926DC0300CB5E23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		660889FF2926DC0300CB5E23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		66088A052926DC0300CB5E23 /* Kraeved.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kraeved.xcdatamodel; sourceTree = "<group>"; };
 		66088A072926DC0400CB5E23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66088A0C2926DC0400CB5E23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,6 +76,7 @@
 		66088A402926DDA900CB5E23 /* Transport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transport.swift; sourceTree = "<group>"; };
 		66088A412926DDA900CB5E23 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		66088A482926DDD800CB5E23 /* MKMapView+centerLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+centerLocation.swift"; sourceTree = "<group>"; };
+		660F66232926EDBB00236A6D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66A8A4FB2926E0DB000BFC29 /* BaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		66A8A4FC2926E0DB000BFC29 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -133,11 +133,11 @@
 				66088A2A2926DD0500CB5E23 /* VIPER */,
 				660889FB2926DC0300CB5E23 /* AppDelegate.swift */,
 				660889FD2926DC0300CB5E23 /* SceneDelegate.swift */,
-				660889FF2926DC0300CB5E23 /* ViewController.swift */,
 				66088A1D2926DC8000CB5E23 /* TabBarController.swift */,
 				66088A0C2926DC0400CB5E23 /* Info.plist */,
 				66088A042926DC0300CB5E23 /* Kraeved.xcdatamodeld */,
 				66A8A53A2926EA3A000BFC29 /* Main.storyboard */,
+				660F66232926EDBB00236A6D /* LaunchScreen.storyboard */,
 			);
 			path = Kraeved;
 			sourceTree = "<group>";
@@ -330,6 +330,7 @@
 				66A8A5372926E9D5000BFC29 /* Localizable.strings in Resources */,
 				66088A082926DC0400CB5E23 /* Assets.xcassets in Resources */,
 				66A8A5342926E9D0000BFC29 /* Localizable.strings in Resources */,
+				660F66242926EDBB00236A6D /* LaunchScreen.storyboard in Resources */,
 				66A8A53B2926EA3A000BFC29 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,7 +353,6 @@
 				66088A3B2926DD8900CB5E23 /* AnnotationManager.swift in Sources */,
 				66A8A5012926E0DB000BFC29 /* BaseRouter.swift in Sources */,
 				66A8A5162926E1D9000BFC29 /* SearchScreenModuleBuilder.swift in Sources */,
-				66088A002926DC0300CB5E23 /* ViewController.swift in Sources */,
 				66A8A5192926E1D9000BFC29 /* SearchScreenPresenter.swift in Sources */,
 				66088A262926DCD700CB5E23 /* MainScreenPresenter.swift in Sources */,
 				66088A462926DDA900CB5E23 /* Annotation.swift in Sources */,
@@ -530,7 +530,7 @@
 				INFOPLIST_FILE = Kraeved/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -562,7 +562,7 @@
 				INFOPLIST_FILE = Kraeved/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
