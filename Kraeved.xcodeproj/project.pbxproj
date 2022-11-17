@@ -44,8 +44,6 @@
 		66E2E60A28D384D00014E70C /* Kraeved.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66E2E60828D384D00014E70C /* Kraeved.xcdatamodeld */; };
 		66E2E60C28D384D20014E70C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E2E60B28D384D20014E70C /* Assets.xcassets */; };
 		66E2E60F28D384D20014E70C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E2E60D28D384D20014E70C /* LaunchScreen.storyboard */; };
-		66E2E62428D39CD00014E70C /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E2E62328D39CD00014E70C /* SnapKit.xcframework */; };
-		66E2E62528D39CD00014E70C /* SnapKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66E2E62328D39CD00014E70C /* SnapKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		66E2E62F28D3A4FB0014E70C /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2E62E28D3A4FB0014E70C /* Annotation.swift */; };
 		66EE6DF2291BEB0400665752 /* BuildingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE6DF1291BEB0400665752 /* BuildingAnnotation.swift */; };
 		66EE6DF4291BEB4400665752 /* NaturalAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE6DF3291BEB4400665752 /* NaturalAnnotation.swift */; };
@@ -58,7 +56,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				66E2E62528D39CD00014E70C /* SnapKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,9 +103,6 @@
 		66E2E60B28D384D20014E70C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66E2E60E28D384D20014E70C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66E2E61028D384D20014E70C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		66E2E61F28D397ED0014E70C /* SnapKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SnapKit; path = Pods/SnapKit; sourceTree = "<group>"; };
-		66E2E62028D398040014E70C /* Source */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Source; path = Pods/SnapKit/Source; sourceTree = "<group>"; };
-		66E2E62328D39CD00014E70C /* SnapKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapKit.xcframework; path = Carthage/Build/SnapKit.xcframework; sourceTree = "<group>"; };
 		66E2E62E28D3A4FB0014E70C /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		66EE6DF1291BEB0400665752 /* BuildingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingAnnotation.swift; sourceTree = "<group>"; };
 		66EE6DF3291BEB4400665752 /* NaturalAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalAnnotation.swift; sourceTree = "<group>"; };
@@ -119,7 +113,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66E2E62428D39CD00014E70C /* SnapKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,9 +285,6 @@
 		806ED81E172CEC540C1E7747 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				66E2E62328D39CD00014E70C /* SnapKit.xcframework */,
-				66E2E62028D398040014E70C /* Source */,
-				66E2E61F28D397ED0014E70C /* SnapKit */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
