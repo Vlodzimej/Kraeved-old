@@ -42,7 +42,7 @@ class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewPr
     }
 
     private func initialize() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
         titleLabel.text = presenter.annotation.title
         coordsLabel.text = "\(presenter.annotation.coordinate.latitude) \(presenter.annotation.coordinate.longitude)"
         

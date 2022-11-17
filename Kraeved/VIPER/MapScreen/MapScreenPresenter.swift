@@ -28,25 +28,14 @@ class MapScreenPresenter: MapScreenPresenterProtocol {
         view.mapView.centerLocation(initialLocation)
         
         let cameraCenter =  CLLocation(latitude: 54.5293, longitude: 36.27542)
-        let region = MKCoordinateRegion(center: cameraCenter.coordinate, latitudinalMeters: 75000, longitudinalMeters: 75000)
-        guard let cameraBondary = MKMapView.CameraBoundary(coordinateRegion: region) else { return }
-        view.mapView.setCameraBoundary(cameraBondary, animated: true)
+        let region = MKCoordinateRegion(center: cameraCenter.coordinate, latitudinalMeters: 5000, longitudinalMeters: 5000)
+        view.mapView.setRegion(region, animated: true)
         
-        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 100000)
-        view.mapView.setCameraZoomRange(zoomRange, animated: true)
-        zoomLevel(location: CLLocationCoordinate2D(latitude: 54.513974779803796, longitude: 36.263196462037726))
-        Task {
-            await interactor.getAnnotations()
-        }
+        interactor.getAnnotations()
     }
     
     func addAnnotations(annotations: [Annotation]) {
         view?.mapView.addAnnotations(annotations)
-    }
-    
-    func zoomLevel(location: CLLocationCoordinate2D) {
-        let mapCoordinate = MKCoordinateRegion(center: location, latitudinalMeters: 10000, longitudinalMeters: 10000)
-        view?.mapView.setRegion(mapCoordinate, animated: true)
     }
     
     func openAnnotation(annotation: Annotation) {

@@ -2,7 +2,7 @@ import MapKit
 
 //MARK: - MapScreenInteractorProtocol
 protocol MapScreenInteractorProtocol: AnyObject {
-    func getAnnotations() async
+    func getAnnotations()
 }
 
 //MARK: - MapScreenInteractor
@@ -21,15 +21,10 @@ class MapScreenInteractor: MapScreenInteractorProtocol {
     }
     
     
-    
-    func getAnnotations() async {
-        Task {
-            let result = try await annotationManager.getAnnotations()
-            await MainActor.run {
-                print("TEST")
-                presenter?.addAnnotations(annotations: result)
-            }
+    func getAnnotations() {
+        annotationManager.getAnnotations() { [weak self] result in
+            guard let self = self else { return }
+            self.presenter?.addAnnotations(annotations: result)
         }
-
     }
 }

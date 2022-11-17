@@ -28,7 +28,6 @@ protocol APIManagerProtocol {
     var session: URLSession { get }
     
     func get<T: Decodable>(with request: URLRequest, completion: @escaping (Result<T, Error>) -> Void)
-    func get<T: Decodable>(with request: URLRequest) async -> Result<T, Error>
 }
 
 enum APIError: Error {
@@ -68,13 +67,5 @@ class APIManager: APIManagerProtocol {
             completion(.success(value))
         }
         task.resume()
-    }
-    
-    func get<T: Decodable>(with request: URLRequest) async -> Result<T, Error> {
-        await withCheckedContinuation { [weak self] continuation in
-            self?.get(with: request) { (response: Result<T, Error>) in
-                continuation.resume(returning: response)
-            }
-        }
     }
 }

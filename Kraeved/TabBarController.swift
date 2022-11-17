@@ -7,12 +7,13 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.backgroundColor = .systemBackground
-        UITabBar.appearance().barTintColor = .systemBackground
+        tabBar.backgroundColor = .white
+        UITabBar.appearance().barTintColor = .white
         tabBar.tintColor = .label
 
         initialize()

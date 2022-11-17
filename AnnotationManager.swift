@@ -22,7 +22,7 @@ class AnnotationManager {
         self.apiManager = apiManager
     }
     
-    func getAnnotations() async throws -> [Annotation] {
+    func getAnnotations(completion: @escaping ([Annotation]) -> Void) {
 //        guard let url =  URL(string: "https://my-json-server.typicode.com/vlodzimej/kraeved/annotations") else { return [] }
 //        let request = URLRequest(url: url)
         // Здесь временно хардкод
@@ -32,17 +32,15 @@ class AnnotationManager {
             factory.makeBuilding(id: 2, coordinate: CLLocationCoordinate2D(latitude: 54.51709314831746, longitude: 36.246505391757296), title: "ТРК «XXI Век»", subtype: .moll),
             factory.makeNature(id: 3, coordinate: CLLocationCoordinate2D(latitude: 54.52259638006321, longitude: 36.207656513989434), title: "Сосновый бор", subtype: .forest)
         ]
-        
-        try await Task.sleep(nanoseconds: 1_000_000_000)
-        return annotations
+        completion(annotations)
     }
     
-    func getTransport() async throws -> [Transport] {
-        try await Task.sleep(nanoseconds: 1_000_000_000)
-        return [
+    func getTransport(completion: @escaping ([Transport]) -> Void) {
+        let result: [Transport] = [
             .init(name: "Маршрут 1", route: [1, 2]),
             .init(name: "Маршрут 2", route: [3, 1, 2]),
             .init(name: "Маршрут 3", route: [2, 3])
         ]
+        completion(result)
     }
 }
