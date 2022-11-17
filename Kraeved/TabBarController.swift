@@ -7,14 +7,13 @@
 
 import UIKit
 
-@available(iOS 13.0, *)
 class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.backgroundColor = .white
         UITabBar.appearance().barTintColor = .white
-        tabBar.tintColor = .label
+        tabBar.tintColor = .black
 
         initialize()
     }
@@ -24,9 +23,9 @@ class TabBarController: UITabBarController {
         let searchScrennViewController = SearchScreenModuleBuilder.build()
         
         viewControllers = [
-            createNavController(for: mapScreenViewController, title: NSLocalizedString("tabbar.mainScreen", comment: ""), image: UIImage(systemName: "house")!),
-            createNavController(for: mapScreenViewController, title: NSLocalizedString("tabbar.mapScreen", comment: ""), image: UIImage(systemName: "figure.walk")!),
-            createNavController(for: searchScrennViewController, title: NSLocalizedString("tabbar.searchScreen", comment: ""), image: UIImage(systemName: "magnifyingglass")!),
+            createNavController(for: mapScreenViewController, title: NSLocalizedString("tabbar.mainScreen", comment: ""), image: UIImage(named: "house")!),
+            createNavController(for: mapScreenViewController, title: NSLocalizedString("tabbar.mapScreen", comment: ""), image: UIImage(named: "figure.walk")!),
+            createNavController(for: searchScrennViewController, title: NSLocalizedString("tabbar.searchScreen", comment: ""), image: UIImage(named: "magnifyingglass")!),
         ]
     }
     

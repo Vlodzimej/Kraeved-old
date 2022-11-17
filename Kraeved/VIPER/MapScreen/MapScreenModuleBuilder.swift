@@ -1,14 +1,14 @@
 import UIKit
 
 class MapScreenModuleBuilder {
-	static func build() -> UIViewController {
-		let interactor = MapScreenInteractor()
-		let router = MapScreenRouter()
-		let presenter = MapScreenPresenter(interactor: interactor, router: router)
-		let viewController = MapScreenViewController(presenter: presenter)
-		router.viewController = viewController
-		presenter.view = viewController
-		interactor.presenter = presenter
-		return viewController
-	}
+    static func build() -> UIViewController {
+        let interactor = MapScreenInteractor()
+        let router = MapScreenRouter()
+        let presenter = MapScreenPresenter(interactor: interactor, router: router)
+        let viewController = MapScreenViewController(presenter: presenter)
+        router.viewController = viewController
+        presenter.view = viewController
+        interactor.presenter = presenter
+        return viewController
+    }
 }
