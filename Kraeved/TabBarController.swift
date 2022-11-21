@@ -19,13 +19,14 @@ class TabBarController: UITabBarController {
     }
     
     private func initialize() {
+        let mainScreenViewController = MainScreenModuleBuilder.build()
         let mapScreenViewController = MapScreenModuleBuilder.build()
-        let searchScrennViewController = SearchScreenModuleBuilder.build()
+        let searchScreenViewController = SearchScreenModuleBuilder.build()
         
         viewControllers = [
-            createNavController(for: mapScreenViewController, title: NSLocalizedString("tabbar.mainScreen", comment: ""), image: UIImage(named: "house")!),
+            createNavController(for: mainScreenViewController, title: NSLocalizedString("tabbar.mainScreen", comment: ""), image: UIImage(named: "house")!),
             createNavController(for: mapScreenViewController, title: NSLocalizedString("tabbar.mapScreen", comment: ""), image: UIImage(named: "figure.walk")!),
-            createNavController(for: searchScrennViewController, title: NSLocalizedString("tabbar.searchScreen", comment: ""), image: UIImage(named: "magnifyingglass")!),
+            createNavController(for: searchScreenViewController, title: NSLocalizedString("tabbar.searchScreen", comment: ""), image: UIImage(named: "magnifyingglass")!),
         ]
     }
     
@@ -33,7 +34,6 @@ class TabBarController: UITabBarController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
-        navController.navigationBar.prefersLargeTitles = true
         rootViewController.navigationItem.title = title
         return navController
     }

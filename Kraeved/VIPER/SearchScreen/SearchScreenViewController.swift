@@ -29,6 +29,7 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
     }
 
     private func initialize() {
+        view.backgroundColor = .white
     }
 
     //MARK: Private methods

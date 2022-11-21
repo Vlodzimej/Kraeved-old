@@ -31,6 +31,14 @@
 		66088A462926DDA900CB5E23 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A412926DDA900CB5E23 /* Annotation.swift */; };
 		66088A492926DDD800CB5E23 /* MKMapView+centerLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A482926DDD800CB5E23 /* MKMapView+centerLocation.swift */; };
 		660F66242926EDBB00236A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660F66232926EDBB00236A6D /* LaunchScreen.storyboard */; };
+		66183DE1292AA6CF008412B0 /* MainTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DE0292AA6CF008412B0 /* MainTableAdapter.swift */; };
+		66183DE6292AA797008412B0 /* MainTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DE5292AA797008412B0 /* MainTableCell.swift */; };
+		66183DE8292AAEE0008412B0 /* HistoryEventCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DE7292AAEE0008412B0 /* HistoryEventCellView.swift */; };
+		66183DEB292AB5D4008412B0 /* generateRandomPastelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DEA292AB5D4008412B0 /* generateRandomPastelColor.swift */; };
+		66183DEE292ABBEB008412B0 /* HistoryEventCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DED292ABBEB008412B0 /* HistoryEventCollectionCell.swift */; };
+		66183DF2292BA69B008412B0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF1292BA69B008412B0 /* Profile.swift */; };
+		66183DF5292BACC4008412B0 /* UIColor+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF4292BACC4008412B0 /* UIColor+Extra.swift */; };
+		66183DF7292BC318008412B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF6292BC318008412B0 /* Constants.swift */; };
 		66A8A4FF2926E0DB000BFC29 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FB2926E0DB000BFC29 /* BaseInteractor.swift */; };
 		66A8A5002926E0DB000BFC29 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FC2926E0DB000BFC29 /* BasePresenter.swift */; };
 		66A8A5012926E0DB000BFC29 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */; };
@@ -77,6 +85,14 @@
 		66088A412926DDA900CB5E23 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		66088A482926DDD800CB5E23 /* MKMapView+centerLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+centerLocation.swift"; sourceTree = "<group>"; };
 		660F66232926EDBB00236A6D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		66183DE0292AA6CF008412B0 /* MainTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableAdapter.swift; sourceTree = "<group>"; };
+		66183DE5292AA797008412B0 /* MainTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableCell.swift; sourceTree = "<group>"; };
+		66183DE7292AAEE0008412B0 /* HistoryEventCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEventCellView.swift; sourceTree = "<group>"; };
+		66183DEA292AB5D4008412B0 /* generateRandomPastelColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generateRandomPastelColor.swift; sourceTree = "<group>"; };
+		66183DED292ABBEB008412B0 /* HistoryEventCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEventCollectionCell.swift; sourceTree = "<group>"; };
+		66183DF1292BA69B008412B0 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		66183DF4292BACC4008412B0 /* UIColor+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extra.swift"; sourceTree = "<group>"; };
+		66183DF6292BC318008412B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		66A8A4FB2926E0DB000BFC29 /* BaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		66A8A4FC2926E0DB000BFC29 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -126,6 +142,8 @@
 		660889FA2926DC0300CB5E23 /* Kraeved */ = {
 			isa = PBXGroup;
 			children = (
+				66183DE9292AB5BB008412B0 /* Helpers */,
+				66183DDF292AA6B1008412B0 /* Adapters */,
 				66088A4A2926DDF100CB5E23 /* Resources */,
 				66088A472926DDC800CB5E23 /* Extensions */,
 				66088A3C2926DD9400CB5E23 /* Models */,
@@ -138,6 +156,7 @@
 				66088A042926DC0300CB5E23 /* Kraeved.xcdatamodeld */,
 				66A8A53A2926EA3A000BFC29 /* Main.storyboard */,
 				660F66232926EDBB00236A6D /* LaunchScreen.storyboard */,
+				66183DE3292AA74D008412B0 /* Views */,
 			);
 			path = Kraeved;
 			sourceTree = "<group>";
@@ -195,6 +214,7 @@
 				66088A3D2926DDA900CB5E23 /* BuildingAnnotation.swift */,
 				66088A3F2926DDA900CB5E23 /* NaturalAnnotation.swift */,
 				66088A402926DDA900CB5E23 /* Transport.swift */,
+				66183DF1292BA69B008412B0 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				66088A482926DDD800CB5E23 /* MKMapView+centerLocation.swift */,
+				66183DF4292BACC4008412B0 /* UIColor+Extra.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +236,49 @@
 				66A8A5392926E9D5000BFC29 /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		66183DDF292AA6B1008412B0 /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				66183DE0292AA6CF008412B0 /* MainTableAdapter.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		66183DE3292AA74D008412B0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66183DE4292AA780008412B0 /* MainScreen */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66183DE4292AA780008412B0 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				66183DE5292AA797008412B0 /* MainTableCell.swift */,
+				66183DF3292BA7A9008412B0 /* HistoryEvents */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		66183DE9292AB5BB008412B0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				66183DEA292AB5D4008412B0 /* generateRandomPastelColor.swift */,
+				66183DF6292BC318008412B0 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		66183DF3292BA7A9008412B0 /* HistoryEvents */ = {
+			isa = PBXGroup;
+			children = (
+				66183DE7292AAEE0008412B0 /* HistoryEventCellView.swift */,
+				66183DED292ABBEB008412B0 /* HistoryEventCollectionCell.swift */,
+			);
+			path = HistoryEvents;
 			sourceTree = "<group>";
 		};
 		66A8A4FA2926E0C9000BFC29 /* Base */ = {
@@ -347,17 +411,21 @@
 				66088A422926DDA900CB5E23 /* BuildingAnnotation.swift in Sources */,
 				66088A392926DD7900CB5E23 /* APIManager.swift in Sources */,
 				66A8A5172926E1D9000BFC29 /* SearchScreenRouter.swift in Sources */,
+				66183DE8292AAEE0008412B0 /* HistoryEventCellView.swift in Sources */,
 				66088A252926DCD700CB5E23 /* MainScreenModuleBuilder.swift in Sources */,
 				66A8A5022926E0DB000BFC29 /* BaseViewController.swift in Sources */,
 				66A8A4FF2926E0DB000BFC29 /* BaseInteractor.swift in Sources */,
 				66088A3B2926DD8900CB5E23 /* AnnotationManager.swift in Sources */,
 				66A8A5012926E0DB000BFC29 /* BaseRouter.swift in Sources */,
+				66183DE1292AA6CF008412B0 /* MainTableAdapter.swift in Sources */,
 				66A8A5162926E1D9000BFC29 /* SearchScreenModuleBuilder.swift in Sources */,
+				66183DEE292ABBEB008412B0 /* HistoryEventCollectionCell.swift in Sources */,
 				66A8A5192926E1D9000BFC29 /* SearchScreenPresenter.swift in Sources */,
 				66088A262926DCD700CB5E23 /* MainScreenPresenter.swift in Sources */,
 				66088A462926DDA900CB5E23 /* Annotation.swift in Sources */,
 				66A8A51A2926E1D9000BFC29 /* SearchScreenInteractor.swift in Sources */,
 				66A8A50C2926E173000BFC29 /* AnnotationScreenModuleBuilder.swift in Sources */,
+				66183DF7292BC318008412B0 /* Constants.swift in Sources */,
 				66A8A50D2926E173000BFC29 /* AnnotationScreenPresenter.swift in Sources */,
 				66088A322926DD2D00CB5E23 /* MapScreenModuleBuilder.swift in Sources */,
 				66A8A5182926E1D9000BFC29 /* SearchScreenViewController.swift in Sources */,
@@ -370,11 +438,15 @@
 				66A8A5002926E0DB000BFC29 /* BasePresenter.swift in Sources */,
 				66088A362926DD2D00CB5E23 /* MapScreenInteractor.swift in Sources */,
 				66A8A50E2926E173000BFC29 /* AnnotationScreenInteractor.swift in Sources */,
+				66183DF2292BA69B008412B0 /* Profile.swift in Sources */,
+				66183DEB292AB5D4008412B0 /* generateRandomPastelColor.swift in Sources */,
+				66183DE6292AA797008412B0 /* MainTableCell.swift in Sources */,
 				660889FE2926DC0300CB5E23 /* SceneDelegate.swift in Sources */,
 				66088A492926DDD800CB5E23 /* MKMapView+centerLocation.swift in Sources */,
 				66088A332926DD2D00CB5E23 /* MapScreenPresenter.swift in Sources */,
 				66088A352926DD2D00CB5E23 /* MapScreenViewController.swift in Sources */,
 				66088A272926DCD700CB5E23 /* MainScreenRouter.swift in Sources */,
+				66183DF5292BACC4008412B0 /* UIColor+Extra.swift in Sources */,
 				66A8A50B2926E173000BFC29 /* AnnotationScreenViewController.swift in Sources */,
 				66088A282926DCD700CB5E23 /* MainScreenViewController.swift in Sources */,
 				66088A432926DDA900CB5E23 /* AnnotationFactory.swift in Sources */,
@@ -526,6 +598,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RDUKAUVKAW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kraeved/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -558,6 +631,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RDUKAUVKAW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kraeved/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";

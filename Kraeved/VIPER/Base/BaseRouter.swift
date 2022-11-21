@@ -10,6 +10,7 @@ class BaseRouter<T>: BaseRouterProtocol where T: UIViewController {
     func openAnnotation(annotation: Annotation) {
         let vc = AnnotationScreenModuleBuilder.build(annotation: annotation)
         guard let viewController else { return }
-        viewController.navigationController?.pushViewController(vc, animated: true)
+        viewController.navigationController?.present(vc, animated: true)
+        //viewController.navigationController?.pushViewController(vc, animated: true)
     }
 }

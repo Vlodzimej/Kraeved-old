@@ -8,8 +8,8 @@
 import MapKit
 
 protocol AnnotationManagerProtocol {
-    func getAnnotations() async throws -> [Annotation]
-    func getTransport() async throws -> [Transport]
+    func getAnnotations(completion: @escaping ([Annotation]) -> Void)
+    func getTransport(completion: @escaping ([Transport]) -> Void) 
 }
 
 class AnnotationManager {
