@@ -27,6 +27,7 @@ protocol APIManagerProtocol {
     var sessionConfiguration: URLSessionConfiguration { get }
     var session: URLSession { get }
     
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) 
     func get<T: Decodable>(with request: URLRequest, completion: @escaping (Result<T, Error>) -> Void)
 }
 
@@ -45,6 +46,10 @@ class APIManager: APIManagerProtocol {
     
     private init () {
         sessionConfiguration = URLSessionConfiguration.default
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
     func get<T: Decodable>(with request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {

@@ -34,7 +34,7 @@ class AnnotationManager {
         ]
         completion(annotations)
     }
-    
+
     func getTransport(completion: @escaping ([Transport]) -> Void) {
         let result: [Transport] = [
             .init(name: "Маршрут 1", route: [1, 2]),

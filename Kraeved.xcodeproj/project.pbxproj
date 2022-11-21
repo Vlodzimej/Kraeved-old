@@ -39,6 +39,14 @@
 		66183DF2292BA69B008412B0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF1292BA69B008412B0 /* Profile.swift */; };
 		66183DF5292BACC4008412B0 /* UIColor+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF4292BACC4008412B0 /* UIColor+Extra.swift */; };
 		66183DF7292BC318008412B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF6292BC318008412B0 /* Constants.swift */; };
+		66183DF9292BF2BC008412B0 /* HistoryEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF8292BF2BC008412B0 /* HistoryEvent.swift */; };
+		66183DFB292BF602008412B0 /* HistoryEventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DFA292BF602008412B0 /* HistoryEventsManager.swift */; };
+		66183DFD292BFE3E008412B0 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DFC292BFE3E008412B0 /* ImageManager.swift */; };
+		66183DFF292BFFF5008412B0 /* UIImageView+dowloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DFE292BFFF5008412B0 /* UIImageView+dowloaded.swift */; };
+		66183E01292C0C85008412B0 /* UIImage+blurImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E00292C0C85008412B0 /* UIImage+blurImage.swift */; };
+		66183E03292C0FEA008412B0 /* UIView+addGradientWithColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E02292C0FEA008412B0 /* UIView+addGradientWithColor.swift */; };
+		66183E05292C1DF8008412B0 /* UIImage+areaAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E04292C1DF8008412B0 /* UIImage+areaAverage.swift */; };
+		66183E07292C2B1D008412B0 /* UIColor+mix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E06292C2B1D008412B0 /* UIColor+mix.swift */; };
 		66A8A4FF2926E0DB000BFC29 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FB2926E0DB000BFC29 /* BaseInteractor.swift */; };
 		66A8A5002926E0DB000BFC29 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FC2926E0DB000BFC29 /* BasePresenter.swift */; };
 		66A8A5012926E0DB000BFC29 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */; };
@@ -93,6 +101,14 @@
 		66183DF1292BA69B008412B0 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		66183DF4292BACC4008412B0 /* UIColor+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extra.swift"; sourceTree = "<group>"; };
 		66183DF6292BC318008412B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		66183DF8292BF2BC008412B0 /* HistoryEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEvent.swift; sourceTree = "<group>"; };
+		66183DFA292BF602008412B0 /* HistoryEventsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEventsManager.swift; sourceTree = "<group>"; };
+		66183DFC292BFE3E008412B0 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		66183DFE292BFFF5008412B0 /* UIImageView+dowloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+dowloaded.swift"; sourceTree = "<group>"; };
+		66183E00292C0C85008412B0 /* UIImage+blurImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+blurImage.swift"; sourceTree = "<group>"; };
+		66183E02292C0FEA008412B0 /* UIView+addGradientWithColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addGradientWithColor.swift"; sourceTree = "<group>"; };
+		66183E04292C1DF8008412B0 /* UIImage+areaAverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+areaAverage.swift"; sourceTree = "<group>"; };
+		66183E06292C2B1D008412B0 /* UIColor+mix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+mix.swift"; sourceTree = "<group>"; };
 		66A8A4FB2926E0DB000BFC29 /* BaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		66A8A4FC2926E0DB000BFC29 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -202,6 +218,8 @@
 			children = (
 				66088A382926DD7900CB5E23 /* APIManager.swift */,
 				66088A3A2926DD8900CB5E23 /* AnnotationManager.swift */,
+				66183DFA292BF602008412B0 /* HistoryEventsManager.swift */,
+				66183DFC292BFE3E008412B0 /* ImageManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -215,6 +233,7 @@
 				66088A3F2926DDA900CB5E23 /* NaturalAnnotation.swift */,
 				66088A402926DDA900CB5E23 /* Transport.swift */,
 				66183DF1292BA69B008412B0 /* Profile.swift */,
+				66183DF8292BF2BC008412B0 /* HistoryEvent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,6 +243,11 @@
 			children = (
 				66088A482926DDD800CB5E23 /* MKMapView+centerLocation.swift */,
 				66183DF4292BACC4008412B0 /* UIColor+Extra.swift */,
+				66183DFE292BFFF5008412B0 /* UIImageView+dowloaded.swift */,
+				66183E00292C0C85008412B0 /* UIImage+blurImage.swift */,
+				66183E02292C0FEA008412B0 /* UIView+addGradientWithColor.swift */,
+				66183E04292C1DF8008412B0 /* UIImage+areaAverage.swift */,
+				66183E06292C2B1D008412B0 /* UIColor+mix.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -412,6 +436,7 @@
 				66088A392926DD7900CB5E23 /* APIManager.swift in Sources */,
 				66A8A5172926E1D9000BFC29 /* SearchScreenRouter.swift in Sources */,
 				66183DE8292AAEE0008412B0 /* HistoryEventCellView.swift in Sources */,
+				66183E07292C2B1D008412B0 /* UIColor+mix.swift in Sources */,
 				66088A252926DCD700CB5E23 /* MainScreenModuleBuilder.swift in Sources */,
 				66A8A5022926E0DB000BFC29 /* BaseViewController.swift in Sources */,
 				66A8A4FF2926E0DB000BFC29 /* BaseInteractor.swift in Sources */,
@@ -422,19 +447,24 @@
 				66183DEE292ABBEB008412B0 /* HistoryEventCollectionCell.swift in Sources */,
 				66A8A5192926E1D9000BFC29 /* SearchScreenPresenter.swift in Sources */,
 				66088A262926DCD700CB5E23 /* MainScreenPresenter.swift in Sources */,
+				66183DFF292BFFF5008412B0 /* UIImageView+dowloaded.swift in Sources */,
 				66088A462926DDA900CB5E23 /* Annotation.swift in Sources */,
 				66A8A51A2926E1D9000BFC29 /* SearchScreenInteractor.swift in Sources */,
 				66A8A50C2926E173000BFC29 /* AnnotationScreenModuleBuilder.swift in Sources */,
 				66183DF7292BC318008412B0 /* Constants.swift in Sources */,
 				66A8A50D2926E173000BFC29 /* AnnotationScreenPresenter.swift in Sources */,
+				66183E03292C0FEA008412B0 /* UIView+addGradientWithColor.swift in Sources */,
+				66183DFB292BF602008412B0 /* HistoryEventsManager.swift in Sources */,
 				66088A322926DD2D00CB5E23 /* MapScreenModuleBuilder.swift in Sources */,
 				66A8A5182926E1D9000BFC29 /* SearchScreenViewController.swift in Sources */,
 				660889FC2926DC0300CB5E23 /* AppDelegate.swift in Sources */,
 				66088A062926DC0300CB5E23 /* Kraeved.xcdatamodeld in Sources */,
+				66183E05292C1DF8008412B0 /* UIImage+areaAverage.swift in Sources */,
 				66088A342926DD2D00CB5E23 /* MapScreenRouter.swift in Sources */,
 				66088A292926DCD700CB5E23 /* MainScreenInteractor.swift in Sources */,
 				66A8A50F2926E173000BFC29 /* AnnotationScreenRouter.swift in Sources */,
 				66088A1E2926DC8000CB5E23 /* TabBarController.swift in Sources */,
+				66183E01292C0C85008412B0 /* UIImage+blurImage.swift in Sources */,
 				66A8A5002926E0DB000BFC29 /* BasePresenter.swift in Sources */,
 				66088A362926DD2D00CB5E23 /* MapScreenInteractor.swift in Sources */,
 				66A8A50E2926E173000BFC29 /* AnnotationScreenInteractor.swift in Sources */,
@@ -444,8 +474,10 @@
 				660889FE2926DC0300CB5E23 /* SceneDelegate.swift in Sources */,
 				66088A492926DDD800CB5E23 /* MKMapView+centerLocation.swift in Sources */,
 				66088A332926DD2D00CB5E23 /* MapScreenPresenter.swift in Sources */,
+				66183DF9292BF2BC008412B0 /* HistoryEvent.swift in Sources */,
 				66088A352926DD2D00CB5E23 /* MapScreenViewController.swift in Sources */,
 				66088A272926DCD700CB5E23 /* MainScreenRouter.swift in Sources */,
+				66183DFD292BFE3E008412B0 /* ImageManager.swift in Sources */,
 				66183DF5292BACC4008412B0 /* UIColor+Extra.swift in Sources */,
 				66A8A50B2926E173000BFC29 /* AnnotationScreenViewController.swift in Sources */,
 				66088A282926DCD700CB5E23 /* MainScreenViewController.swift in Sources */,

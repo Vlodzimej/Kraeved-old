@@ -10,11 +10,13 @@ import UIKit
 class MainTableCell: UITableViewCell {
     
     struct UIConstants {
-        static let headerTitleHeight: CGFloat = 24
-        static let cellHeight: CGFloat = 160
+        static let headerTitleHeight: CGFloat = 32
+        static let cellHeight: CGFloat = 200
     }
     
     private var hasHeader = false
+    
+    private let titleLabel = UILabel()
     
     func configurate(section: MainTableSectionItem, titleText: String?) {
         backgroundColor = .clear
@@ -31,7 +33,6 @@ class MainTableCell: UITableViewCell {
         }
         
         if let titleText = titleText {
-            let titleLabel = UILabel()
             titleLabel.attributedText = NSAttributedString(string: titleText, attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .semibold), .foregroundColor: UIColor.black])
             titleLabel.frame = CGRect(x: Constants.contentInset, y: 0, width: self.bounds.width, height: UIConstants.headerTitleHeight)
             contentView.addSubview(titleLabel)

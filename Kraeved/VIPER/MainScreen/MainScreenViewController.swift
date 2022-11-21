@@ -2,6 +2,7 @@ import UIKit
 
 //MARK: - MainScreenViewProtocol
 protocol MainScreenViewProtocol: AnyObject {
+    var tableView: UITableView { get set }
 }
 
 //MARK: - MainScreenViewController
@@ -14,9 +15,7 @@ class MainScreenViewController: BaseViewController, MainScreenViewProtocol {
     //MARK: Properties
     private let presenter: MainScreenPresenterProtocol
     
-    private let adapter = MainTableAdapter()
-    
-    private let tableView: UITableView = {
+    var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         return tableView
     }()
@@ -37,7 +36,7 @@ class MainScreenViewController: BaseViewController, MainScreenViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        adapter.setup(for: tableView)
+        presenter.viewDidLoad()
         initialize()
     }
 

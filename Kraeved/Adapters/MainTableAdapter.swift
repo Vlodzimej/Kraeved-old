@@ -23,12 +23,21 @@ enum MainTableSectionType {
 
 struct MainTableSectionItem {
     let type: MainTableSectionType
-    let items: [MainTableCellItem]
+    var items: [MainTableCellItem] = []
+    
+    static func makeCellItems(from historyEvents: [HistoryEvent]) -> [MainTableCellItem] {
+        historyEvents.map { MainTableCellItem(title: $0.title, image: $0.image, text: $0.text) }
+    }
+    
+    func getImage(from url: String) {
+        
+    }
 }
 
 struct MainTableCellItem {
-    let title: String
+    let title: String?
     let image: UIImage?
+    let text: String?
 }
 
 protocol MainTableDelegate: AnyObject {
@@ -37,25 +46,33 @@ protocol MainTableDelegate: AnyObject {
 
 class MainTableAdapter: NSObject {
     
-    let sections: [MainTableSectionItem] = [
-        MainTableSectionItem(type: .historicalEvents, items: [
-            MainTableCellItem(title: "Title 1", image: UIImage()),
-            MainTableCellItem(title: "Title 2", image: UIImage()),
-            MainTableCellItem(title: "Title 3", image: UIImage()),
-            MainTableCellItem(title: "Title 4", image: UIImage()),
-            MainTableCellItem(title: "Title 5", image: UIImage()),
-            MainTableCellItem(title: "Title 6", image: UIImage()),
-        ]),
-        MainTableSectionItem(type: .gallery, items: [
-            MainTableCellItem(title: "Title 1", image: UIImage()),
-            MainTableCellItem(title: "Title 2", image: UIImage()),
-        ])
+    var sections: [MainTableSectionItem] = [
+        MainTableSectionItem(type: .historicalEvents),
+        MainTableSectionItem(type: .gallery)
     ]
     
+    var tableView: UITableView?
+
     func setup(for tableView: UITableView) {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude)
         tableView.register(MainTableCell.self, forCellReuseIdentifier: "MainTableCell")
+        self.tableView = tableView
+    }
+    
+    func configure(historyEvents: [HistoryEvent]) {
+        sections.enumerated().forEach { (index, section) in
+            //guard let self = self else { return }
+            switch section.type {
+                case .historicalEvents:
+                    sections[index].items = MainTableSectionItem.makeCellItems(from: historyEvents)
+                case .gallery:
+                sections[index].items = MainTableSectionItem.makeCellItems(from: historyEvents)
+         
+            }
+        }
+        tableView?.reloadData()
     }
 }
 
@@ -86,10 +103,18 @@ extension MainTableAdapter: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        .leastNormalMagnitude
+        CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        UIView()
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        .leastNormalMagnitude
+        CGFloat.leastNormalMagnitude
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        UIView()
     }
 }

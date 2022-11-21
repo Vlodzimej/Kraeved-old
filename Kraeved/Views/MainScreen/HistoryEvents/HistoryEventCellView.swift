@@ -21,14 +21,14 @@ class HistoryEventCellView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var collecttionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = true
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
-        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(HistoryEventCollectionCell.self, forCellWithReuseIdentifier: "HistoryEventCollectionCell")
         return collectionView
     }()
@@ -43,15 +43,15 @@ class HistoryEventCellView: UIView {
     
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
-        collecttionView.translatesAutoresizingMaskIntoConstraints = false
+
         
         backgroundColor = .clear
         
-        addSubview(collecttionView)
-        collecttionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        collecttionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        collecttionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        collecttionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        addSubview(collectionView)
+        collectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 }
 
@@ -88,12 +88,12 @@ extension HistoryEventCellView: UICollectionViewDelegate {
 extension HistoryEventCellView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        UIEdgeInsets(top: Constants.contentInset, left: Constants.contentInset, bottom: Constants.contentInset, right: Constants.contentInset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.bounds.width
-        let numberOfItemsPerRow: CGFloat = 3
+        let numberOfItemsPerRow: CGFloat = 2.5
         let spacing: CGFloat = flowLayout.minimumInteritemSpacing
         let availableWidth = width - spacing * (numberOfItemsPerRow + 1)
         let itemDimension = floor(availableWidth / numberOfItemsPerRow)
