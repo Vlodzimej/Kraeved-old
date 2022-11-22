@@ -26,10 +26,10 @@ class MainTableCell: UITableViewCell {
         
         switch section.type {
             case .historicalEvents:
-                cellView = cellViewFactory.makeHistoryEventCellView(items: section.items)
+                cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items)
                 
             case .gallery:
-                cellView = cellViewFactory.makeHistoryEventCellView(items: section.items)
+                cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items)
         }
         
         if let titleText = titleText {
@@ -48,12 +48,12 @@ class MainTableCell: UITableViewCell {
 }
 
 class MainTableCellViewFactory {
-    func makeHistoryEventCellView(items: [MainTableCellItem]) -> UIView {
-        return HistoryEventCellView(items: items)
+    func makeHistoricalEventCellView(items: [MainTableCellItem]) -> UIView {
+        return HistoricalEventCellView(items: items)
     }
     
     func makeGalleryCellView(items: [MainTableCellItem]) -> UIView {
-        return HistoryEventCellView(items: items)
+        return HistoricalEventCellView(items: items)
     }
 }
 

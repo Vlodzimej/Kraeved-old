@@ -24,10 +24,10 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     func viewDidLoad() {
         guard let view = view else { return }
         adapter.setup(for: view.tableView)
-        interactor.getHistoryEvents { [weak self] result in
+        interactor.getHistoricalEvents { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.adapter.configure(historyEvents: result)
+                self.adapter.configure(historicalEvents: result)
             }
         }
     }

@@ -25,8 +25,8 @@ struct MainTableSectionItem {
     let type: MainTableSectionType
     var items: [MainTableCellItem] = []
     
-    static func makeCellItems(from historyEvents: [HistoryEvent]) -> [MainTableCellItem] {
-        historyEvents.map { MainTableCellItem(title: $0.title, image: $0.image, text: $0.text) }
+    static func makeCellItems(from historicalEvents: [MetaObject<HistoricalEventData>]) -> [MainTableCellItem] {
+        historicalEvents.map { MainTableCellItem(title: $0.title, image: $0.image, text: $0.data?.text) }
     }
     
     func getImage(from url: String) {
@@ -61,14 +61,14 @@ class MainTableAdapter: NSObject {
         self.tableView = tableView
     }
     
-    func configure(historyEvents: [HistoryEvent]) {
+    func configure(historicalEvents: [MetaObject<HistoricalEventData>]) {
         sections.enumerated().forEach { (index, section) in
             //guard let self = self else { return }
             switch section.type {
                 case .historicalEvents:
-                    sections[index].items = MainTableSectionItem.makeCellItems(from: historyEvents)
+                    sections[index].items = MainTableSectionItem.makeCellItems(from: historicalEvents)
                 case .gallery:
-                sections[index].items = MainTableSectionItem.makeCellItems(from: historyEvents)
+                sections[index].items = MainTableSectionItem.makeCellItems(from: historicalEvents)
          
             }
         }

@@ -1,5 +1,5 @@
 //
-//  HistoryEventCell.swift
+//  HistoricalEventCell.swift
 //  Kraeved
 //
 //  Created by Владимир Амелькин on 20.11.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HistoryEventCellView: UIView {
+class HistoricalEventCellView: UIView {
     
     private let items: [MainTableCellItem]
     
@@ -29,7 +29,7 @@ class HistoryEventCellView: UIView {
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(HistoryEventCollectionCell.self, forCellWithReuseIdentifier: "HistoryEventCollectionCell")
+        collectionView.register(HistoricalEventCollectionCell.self, forCellWithReuseIdentifier: "HistoricalEventCollectionCell")
         return collectionView
     }()
     
@@ -56,7 +56,7 @@ class HistoryEventCellView: UIView {
 }
 
 
-extension HistoryEventCellView: UICollectionViewDataSource {
+extension HistoricalEventCellView: UICollectionViewDataSource {
     
     // MARK: - UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -68,7 +68,7 @@ extension HistoryEventCellView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HistoryEventCollectionCell", for: indexPath) as? HistoryEventCollectionCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HistoricalEventCollectionCell", for: indexPath) as? HistoricalEventCollectionCell else {
             return UICollectionViewCell()
         }
         let item = items[indexPath.item]
@@ -77,7 +77,7 @@ extension HistoryEventCellView: UICollectionViewDataSource {
         return cell
     }
 }
-extension HistoryEventCellView: UICollectionViewDelegate {
+extension HistoricalEventCellView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
@@ -85,7 +85,7 @@ extension HistoryEventCellView: UICollectionViewDelegate {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-extension HistoryEventCellView: UICollectionViewDelegateFlowLayout {
+extension HistoricalEventCellView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: Constants.contentInset, left: Constants.contentInset, bottom: Constants.contentInset, right: Constants.contentInset)

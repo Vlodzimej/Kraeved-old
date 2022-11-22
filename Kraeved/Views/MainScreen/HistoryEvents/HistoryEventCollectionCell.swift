@@ -1,5 +1,5 @@
 //
-//  HistoryEventCollectionCell.swift
+//  HistoricalEventCollectionCell.swift
 //  Kraeved
 //
 //  Created by Владимир Амелькин on 20.11.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HistoryEventCollectionCell: UICollectionViewCell {
+class HistoricalEventCollectionCell: UICollectionViewCell {
     
     struct UIConstants {
         static let titleInset: CGFloat = 8
@@ -63,7 +63,7 @@ class HistoryEventCollectionCell: UICollectionViewCell {
         if let title = title {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 0.8
-            let titleAttributedString = NSMutableAttributedString(string: title, attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .bold), .foregroundColor: UIColor.white, .paragraphStyle: paragraphStyle])
+            let titleAttributedString = NSMutableAttributedString(string: title, attributes: [.font: UIFont.systemFont(ofSize: 14, weight: .regular), .foregroundColor: UIColor.white, .paragraphStyle: paragraphStyle])
             
             titleLabel.attributedText = titleAttributedString
             titleLabel.layer.masksToBounds = false
