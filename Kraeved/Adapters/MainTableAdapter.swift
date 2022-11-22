@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - MainTableSectionType
 enum MainTableSectionType {
     case historicalEvents
     case gallery
@@ -21,12 +22,13 @@ enum MainTableSectionType {
     }
 }
 
+//MARK: - MainTableSectionItem
 struct MainTableSectionItem {
     let type: MainTableSectionType
     var items: [MainTableCellItem] = []
     
-    static func makeCellItems(from historicalEvents: [MetaObject<HistoricalEventData>]) -> [MainTableCellItem] {
-        historicalEvents.map { MainTableCellItem(title: $0.title, image: $0.image, text: $0.data?.text) }
+    static func makeCellItems(from historicalEvents: [MetaObject<HistoricalEvent>]) -> [MainTableCellItem] {
+        historicalEvents.map { MainTableCellItem(id: $0.id, title: $0.title, image: $0.image, text: $0.data?.text) }
     }
     
     func getImage(from url: String) {
@@ -34,14 +36,16 @@ struct MainTableSectionItem {
     }
 }
 
+//MARK: - MainTableCellItem
 struct MainTableCellItem {
+    let id: UUID
     let title: String?
     let image: UIImage?
     let text: String?
 }
 
-protocol MainTableDelegate: AnyObject {
-    
+protocol MainTableAdapterDelegate: AnyObject {
+    func showHistoricalEventDetail(id: UUID)
 }
 
 class MainTableAdapter: NSObject {
@@ -52,6 +56,8 @@ class MainTableAdapter: NSObject {
     ]
     
     var tableView: UITableView?
+    
+    weak var delegate: MainTableAdapterDelegate?
 
     func setup(for tableView: UITableView) {
         tableView.delegate = self
@@ -61,14 +67,14 @@ class MainTableAdapter: NSObject {
         self.tableView = tableView
     }
     
-    func configure(historicalEvents: [MetaObject<HistoricalEventData>]) {
+    func configure(historicalEvents: [MetaObject<HistoricalEvent>]) {
         sections.enumerated().forEach { (index, section) in
             //guard let self = self else { return }
             switch section.type {
                 case .historicalEvents:
                     sections[index].items = MainTableSectionItem.makeCellItems(from: historicalEvents)
                 case .gallery:
-                sections[index].items = MainTableSectionItem.makeCellItems(from: historicalEvents)
+                    sections[index].items = []
          
             }
         }
@@ -95,6 +101,7 @@ extension MainTableAdapter: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableCell") as? MainTableCell else { return UITableViewCell() }
         let titleText: String? = indexPath.item == 0 ? section.type.title : nil
         cell.configurate(section: section, titleText: titleText)
+        cell.delegate = self
         return cell
     }
     
@@ -116,5 +123,11 @@ extension MainTableAdapter: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         UIView()
+    }
+}
+
+extension MainTableAdapter: MainTableCellDelegate {
+    func showHistoricalEventDetail(id: UUID) {
+        delegate?.showHistoricalEventDetail(id: id)
     }
 }

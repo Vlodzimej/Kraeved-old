@@ -7,12 +7,15 @@
 
 import UIKit
 
+//MARK: - HistoricalEventCollectionCell
 class HistoricalEventCollectionCell: UICollectionViewCell {
     
+    //MARK: - UIConstants
     struct UIConstants {
         static let titleInset: CGFloat = 8
     }
     
+    //MARK: - UIProperties
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,8 +36,8 @@ class HistoricalEventCollectionCell: UICollectionViewCell {
         return overlay
     }()
 
+    //MARK: - Public Methods
     func configurate(title: String?, image: UIImage?) {
-
         layer.masksToBounds = true
         layer.cornerRadius = 12
         if let image = image {

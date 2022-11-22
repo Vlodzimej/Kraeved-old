@@ -2,7 +2,7 @@ import Foundation
 
 //MARK: - MainScreenInteractorProtocol
 protocol MainScreenInteractorProtocol: AnyObject {
-    func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEventData>]) -> Void)
+    func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void)
 }
 
 //MARK: - MainScreenInteractor
@@ -20,9 +20,9 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
         self.imageManager = imageManager
     }
     
-    func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEventData>]) -> Void) {
+    func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void) {
         let group = DispatchGroup()
-        var events: [MetaObject<HistoricalEventData>]?
+        var events: [MetaObject<HistoricalEvent>]?
         
         group.enter()
         historicalEventsManager.getHistoricalEvents { result in

@@ -7,20 +7,23 @@
 
 import UIKit
 
+protocol HistoricalEventCellDelegate: AnyObject {
+    func showDetails(id: UUID)
+}
+
+protocol HistoricalEventCellViewProtocol {
+    var delegate: HistoricalEventCellDelegate? { get set }
+}
+
+//MARK: - HistoricalEventCellView
 class HistoricalEventCellView: UIView {
     
+    //MARK: - Properties
+    weak var delegate: HistoricalEventCellDelegate?
+
     private let items: [MainTableCellItem]
     
-    init(items: [MainTableCellItem]) {
-        self.items = items
-        super.init(frame: .zero)
-        initialize()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    //MARK: - UIProperties
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsHorizontalScrollIndicator = false
@@ -41,10 +44,21 @@ class HistoricalEventCellView: UIView {
         return layout
     }()
     
+    //MARK: - Init
+    init(items: [MainTableCellItem]) {
+        self.items = items
+        super.init(frame: .zero)
+        initialize()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Private Methods
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
 
-        
         backgroundColor = .clear
         
         addSubview(collectionView)
@@ -55,7 +69,7 @@ class HistoricalEventCellView: UIView {
     }
 }
 
-
+//MARK: - UICollectionViewDataSource
 extension HistoricalEventCellView: UICollectionViewDataSource {
     
     // MARK: - UICollectionViewDataSource
@@ -77,10 +91,13 @@ extension HistoricalEventCellView: UICollectionViewDataSource {
         return cell
     }
 }
+
+//MARK: - UICollectionViewDelegate
 extension HistoricalEventCellView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
+        let historicalEvent = items[indexPath.item]
+        delegate?.showDetails(id: historicalEvent.id)
     }
 }
 

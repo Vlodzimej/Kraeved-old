@@ -7,17 +7,27 @@
 
 import UIKit
 
+//MARK: - MainTableCellDelegate
+protocol MainTableCellDelegate: AnyObject {
+    func showHistoricalEventDetail(id: UUID)
+}
+
+//MARK: - MainTableCell
 class MainTableCell: UITableViewCell {
     
+    //MARK: - UIConstants
     struct UIConstants {
         static let headerTitleHeight: CGFloat = 32
         static let cellHeight: CGFloat = 200
     }
     
-    private var hasHeader = false
+    //MARK: - Properties
+    weak var delegate: MainTableCellDelegate?
     
+    private var hasHeader = false
     private let titleLabel = UILabel()
     
+    //MARK: - Public Methods
     func configurate(section: MainTableSectionItem, titleText: String?) {
         backgroundColor = .clear
         
@@ -26,10 +36,10 @@ class MainTableCell: UITableViewCell {
         
         switch section.type {
             case .historicalEvents:
-                cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items)
+                cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
                 
             case .gallery:
-                cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items)
+                cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
         }
         
         if let titleText = titleText {
@@ -47,13 +57,8 @@ class MainTableCell: UITableViewCell {
     }
 }
 
-class MainTableCellViewFactory {
-    func makeHistoricalEventCellView(items: [MainTableCellItem]) -> UIView {
-        return HistoricalEventCellView(items: items)
-    }
-    
-    func makeGalleryCellView(items: [MainTableCellItem]) -> UIView {
-        return HistoricalEventCellView(items: items)
+extension MainTableCell: HistoricalEventCellDelegate {
+    func showDetails(id: UUID) {
+        delegate?.showHistoricalEventDetail(id: id)
     }
 }
-

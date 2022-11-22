@@ -1,31 +1,20 @@
 //
-//  Picture.swift
+//  BusinessObject.swift
 //  Kraeved
 //
-//  Created by Владимир Амелькин on 22.11.2022.
+//  Created by Владимир Амелькин on 23.11.2022.
 //
 
-import UIKit
+import Foundation
 
-enum Metatype {
-    case historicalEvent
-    case picture
-    case annotation
-}
-
-struct MetaObject<T: Codable>: Identifiable {
-    var id: UUID
-    var title: String?
-    var image: UIImage?
-    var data: T?
-}
-
-struct BusinessObject {
+struct BusinessObject: Identifiable {
     var id: UUID
     var name: String?
     var title: String?
     var metatype: Metatype
     var content: String?
+    var startDate: Date?
+    var finishData: Date?
     
     func convertToMetaObject<T: Codable>() -> MetaObject<T> {
         guard let json = content?.data(using: .utf8)! else { return MetaObject(id: id) }

@@ -23,6 +23,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     
     func viewDidLoad() {
         guard let view = view else { return }
+        adapter.delegate = self
         adapter.setup(for: view.tableView)
         interactor.getHistoricalEvents { [weak self] result in
             guard let self = self else { return }
@@ -30,5 +31,11 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
                 self.adapter.configure(historicalEvents: result)
             }
         }
+    }
+}
+
+extension MainScreenPresenter: MainTableAdapterDelegate {
+    func showHistoricalEventDetail(id: UUID) {
+        router.openHistoricalEventDetail(id: id)
     }
 }
