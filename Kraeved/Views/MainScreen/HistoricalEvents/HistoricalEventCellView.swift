@@ -78,14 +78,17 @@ extension HistoricalEventCellView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        items.count > 0 ? items.count : 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HistoricalEventCollectionCell", for: indexPath) as? HistoricalEventCollectionCell else {
             return UICollectionViewCell()
         }
-        let item = items[indexPath.item]
+        guard let item = items[safeIndex: indexPath.item] else {
+            cell.startAnimating()
+            return cell
+        }
         cell.configurate(title: item.title, image: item.image)
         
         return cell

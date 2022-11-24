@@ -17,7 +17,7 @@ extension UIColor {
     }
     
     struct MainScreen {
-        static var background: UIColor { UIColor.HEX.hFF3B30 }
+        static var background: UIColor { UIColor.white }
         static var cellBackground: UIColor { UIColor.HEX.h4B6285 }
         static var cellDarkBackground: UIColor { UIColor.HEX.h2C3F66 }
         

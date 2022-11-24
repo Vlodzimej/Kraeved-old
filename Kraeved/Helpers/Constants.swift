@@ -9,4 +9,5 @@ import Foundation
 
 struct Constants {
     static let contentInset: CGFloat = 16
+    static let mainTableElementRadius: CGFloat = 14
 }

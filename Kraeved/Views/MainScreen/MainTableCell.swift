@@ -41,6 +41,9 @@ class MainTableCell: UITableViewCell {
             case .gallery:
                 cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
         }
+        for view in contentView.subviews {
+            view.removeFromSuperview()
+        }
         
         if let titleText = titleText {
             titleLabel.attributedText = NSAttributedString(string: titleText, attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .semibold), .foregroundColor: UIColor.black])
@@ -50,6 +53,7 @@ class MainTableCell: UITableViewCell {
         }
         
         contentView.addSubview(cellView)
+        
         cellView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: hasHeader ? UIConstants.headerTitleHeight : 0).isActive = true
         cellView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         cellView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true

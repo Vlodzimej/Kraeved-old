@@ -8,7 +8,7 @@
 import UIKit
 
 //MARK: - HistoricalEventCollectionCell
-class HistoricalEventCollectionCell: UICollectionViewCell {
+class HistoricalEventCollectionCell: CollectionCellWithShimmer {
     
     //MARK: - UIConstants
     struct UIConstants {
@@ -39,7 +39,7 @@ class HistoricalEventCollectionCell: UICollectionViewCell {
     //MARK: - Public Methods
     func configurate(title: String?, image: UIImage?) {
         layer.masksToBounds = true
-        layer.cornerRadius = 12
+        layer.cornerRadius = Constants.mainTableElementRadius
         if let image = image {
             imageView.contentMode = .scaleAspectFill
             imageView.image = image
