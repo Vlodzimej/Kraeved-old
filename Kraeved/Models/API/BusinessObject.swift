@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BusinessObject: Identifiable, Decodable {
+struct BusinessObject: Identifiable, Codable {
     var id: UUID
     var title: String?
     var metaTypeId: UUID?
@@ -23,6 +23,16 @@ struct BusinessObject: Identifiable, Decodable {
         case customProperties
         case startDate
         case finishDate
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(title, forKey: .title)
+        try container.encode(metaTypeId, forKey: .metaTypeId)
+        try container.encode(customProperties, forKey: .customProperties)
+        try container.encode(startDate, forKey: .startDate)
+        try container.encode(finishDate, forKey: .finishDate)
     }
     
     init(from decoder: Decoder) throws {
