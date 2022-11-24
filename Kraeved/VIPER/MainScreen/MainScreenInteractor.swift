@@ -31,9 +31,8 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
                 responseEvents.enumerated().forEach({ [weak self] (index, event) in
                     let workItem = DispatchWorkItem {
                         guard let self = self, let imageUrl = event.data?.imageUrl, let url = URL(string: imageUrl) else { return }
-                        self.imageManager.downloadImage(from: url) { responseImage in
-                            var resultEvent = event
-                            resultEvent.image = responseImage
+                        self.imageManager.downloadImage(from: url) { image in
+                            var resultEvent = MetaObject<HistoricalEvent>(id: event.id, title: event.title, image: image, data: event.data)
                             events.append(resultEvent)
                             group.leave()
                         }
@@ -46,7 +45,6 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
             group.notify(queue: DispatchQueue.main) {
                 completion(events)
             }
-            
         }
     }
 }

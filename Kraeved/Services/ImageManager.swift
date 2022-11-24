@@ -15,6 +15,8 @@ class ImageManager: ImageManagerProtocol {
     
     static let shared = ImageManager()
     
+    let urlCache = URLCache.shared
+    
     private let apiManager: APIManagerProtocol
     
     init(apiManager: APIManagerProtocol = APIManager.shared) {
@@ -22,17 +24,19 @@ class ImageManager: ImageManagerProtocol {
     }
     
     func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
-        print("Download Started")
-        apiManager.getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
-            // always update the UI from the main thread
-//            DispatchQueue.main.async() { [weak self] in
-//                self?.imageView.image = UIImage(data: data)
-//            }
-            let image = UIImage(data: data)
+        let request = URLRequest(url: url)
+        if let data = urlCache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
             completion(image)
+        } else {
+            print("Download Started")
+            apiManager.getData(from: url) { [weak self] data, response, error in
+                guard error == nil, let self = self, let data = data, let response = response, let image = UIImage(data: data) else { return }
+                let cacheData = CachedURLResponse(response: response, data: data)
+                self.urlCache.storeCachedResponse(cacheData, for: request)
+                print(response.suggestedFilename ?? url.lastPathComponent)
+                print("Download Finished")
+                completion(image)
+            }
         }
     }
 }
