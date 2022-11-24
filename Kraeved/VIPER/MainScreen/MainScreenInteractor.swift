@@ -7,13 +7,13 @@ protocol MainScreenInteractorProtocol: AnyObject {
 
 //MARK: - MainScreenInteractor
 class MainScreenInteractor: MainScreenInteractorProtocol {
-
+    
     //MARK: Properties
     weak var presenter: MainScreenPresenterProtocol?
     
     private let historicalEventsManager: HistoricalEventsManagerProtocol
     private let imageManager: ImageManagerProtocol
-
+    
     //MARK: Init
     init(historicalEventsManager: HistoricalEventsManagerProtocol = HistoricalEventsManager.shared, imageManager: ImageManagerProtocol = ImageManager.shared) {
         self.historicalEventsManager = historicalEventsManager
@@ -21,30 +21,32 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     }
     
     func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void) {
+        var events: [MetaObject<HistoricalEvent>] = []
+        let concurrentQueue = DispatchQueue(label: "ru.kraeved.concurrent-queue", attributes: .concurrent)
         let group = DispatchGroup()
-        var events: [MetaObject<HistoricalEvent>]?
         
-        group.enter()
-        historicalEventsManager.getHistoricalEvents { result in
-            events = result
-            group.leave()
-        }
-        
-
-        guard var events = events else { return }
-        
-        events.enumerated().forEach { [weak self] (index, event) in
+        DispatchQueue.global(qos: .background).async { [weak self] in
             group.enter()
-            guard let self = self, let imageUrl = event.data?.imageUrl, let url = URL(string: imageUrl) else { return }
-            self.imageManager.downloadImage(from: url) { result in
-                events[index].image = result
+            self?.historicalEventsManager.getHistoricalEvents { responseEvents in
+                responseEvents.enumerated().forEach({ [weak self] (index, event) in
+                    let workItem = DispatchWorkItem {
+                        guard let self = self, let imageUrl = event.data?.imageUrl, let url = URL(string: imageUrl) else { return }
+                        self.imageManager.downloadImage(from: url) { responseImage in
+                            var resultEvent = event
+                            resultEvent.image = responseImage
+                            events.append(resultEvent)
+                            group.leave()
+                        }
+                    }
+                    group.enter()
+                    concurrentQueue.async(execute: workItem)
+                })
                 group.leave()
             }
-        }
-
-        group.notify(queue: .main) {
-            print("All requests completed")
-            completion(events)
+            group.notify(queue: DispatchQueue.main) {
+                completion(events)
+            }
+            
         }
     }
 }

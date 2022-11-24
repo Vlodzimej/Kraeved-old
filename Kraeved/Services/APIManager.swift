@@ -49,7 +49,7 @@ class APIManager: APIManagerProtocol {
     }
     
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+        session.dataTask(with: url, completionHandler: completion).resume()
     }
     
     func get<T: Decodable>(with request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
@@ -63,7 +63,6 @@ class APIManager: APIManagerProtocol {
             }
 
             guard let data = data else { return }
-
             
             guard let value = try? JSONDecoder().decode(T.self, from: data) else {
                 completion(.failure(APIError.jsonDecode))

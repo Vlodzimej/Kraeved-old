@@ -23,8 +23,10 @@ class AnnotationManager {
     }
     
     func getAnnotations(completion: @escaping ([Annotation]) -> Void) {
-//        guard let url =  URL(string: "https://my-json-server.typicode.com/vlodzimej/kraeved/annotations") else { return [] }
+//        guard let url =  URL(string: "http://localhost:5211/api/BusinessObject") else { return [] }
 //        let request = URLRequest(url: url)
+        
+        
         // Здесь временно хардкод
         let factory = AnnotationFactory()
         let annotations = [
