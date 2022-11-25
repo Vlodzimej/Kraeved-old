@@ -22,29 +22,32 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     
     func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void) {
         var events: [MetaObject<HistoricalEvent>] = []
-        let concurrentQueue = DispatchQueue(label: "ru.kraeved.concurrent-queue", attributes: .concurrent)
+        
+        let queue = DispatchQueue(label: "ru.kraeved.concurrent-queue", attributes: .concurrent)
         let group = DispatchGroup()
+        let lock = NSLock()
         
         DispatchQueue.global(qos: .background).async { [weak self] in
-            group.enter()
             self?.historicalEventsManager.getHistoricalEvents { responseEvents in
                 responseEvents.enumerated().forEach({ [weak self] (index, event) in
-                    let workItem = DispatchWorkItem {
+                    group.enter()
+                    queue.async {
                         guard let self = self, let imageUrl = event.data?.imageUrl, let url = URL(string: imageUrl) else { return }
                         self.imageManager.downloadImage(from: url) { image in
-                            var resultEvent = MetaObject<HistoricalEvent>(id: event.id, title: event.title, image: image, data: event.data)
+                            let resultEvent = MetaObject<HistoricalEvent>(id: event.id, title: event.title, image: image, data: event.data)
+                            lock.lock()
                             events.append(resultEvent)
+                            lock.unlock()
                             group.leave()
                         }
                     }
-                    group.enter()
-                    concurrentQueue.async(execute: workItem)
                 })
-                group.leave()
-            }
-            group.notify(queue: DispatchQueue.main) {
-                completion(events)
+                queue.async {
+                    group.wait()
+                    completion(events)
+                }
             }
         }
+
     }
 }
