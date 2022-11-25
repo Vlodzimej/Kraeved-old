@@ -56,6 +56,7 @@
 		66183E26292D7C8A008412B0 /* HistoricalEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E21292D7C8A008412B0 /* HistoricalEventViewController.swift */; };
 		66183E27292D7C8A008412B0 /* HistoricalEventInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E22292D7C8A008412B0 /* HistoricalEventInteractor.swift */; };
 		66183E29292D8293008412B0 /* MainTableCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E28292D8293008412B0 /* MainTableCellFactory.swift */; };
+		66956E372931046C00FC161C /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66956E362931046C00FC161C /* UserDefaultsKeys.swift */; };
 		66A8A4FF2926E0DB000BFC29 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FB2926E0DB000BFC29 /* BaseInteractor.swift */; };
 		66A8A5002926E0DB000BFC29 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FC2926E0DB000BFC29 /* BasePresenter.swift */; };
 		66A8A5012926E0DB000BFC29 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */; };
@@ -129,6 +130,7 @@
 		66183E21292D7C8A008412B0 /* HistoricalEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalEventViewController.swift; sourceTree = "<group>"; };
 		66183E22292D7C8A008412B0 /* HistoricalEventInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalEventInteractor.swift; sourceTree = "<group>"; };
 		66183E28292D8293008412B0 /* MainTableCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableCellFactory.swift; sourceTree = "<group>"; };
+		66956E362931046C00FC161C /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		66A8A4FB2926E0DB000BFC29 /* BaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		66A8A4FC2926E0DB000BFC29 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			children = (
 				66183DEA292AB5D4008412B0 /* generateRandomPastelColor.swift */,
 				66183DF6292BC318008412B0 /* Constants.swift */,
+				66956E362931046C00FC161C /* UserDefaultsKeys.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				66A8A5002926E0DB000BFC29 /* BasePresenter.swift in Sources */,
 				66088A362926DD2D00CB5E23 /* MapScreenInteractor.swift in Sources */,
 				66A8A50E2926E173000BFC29 /* AnnotationScreenInteractor.swift in Sources */,
+				66956E372931046C00FC161C /* UserDefaultsKeys.swift in Sources */,
 				66183DF2292BA69B008412B0 /* Profile.swift in Sources */,
 				66183DEB292AB5D4008412B0 /* generateRandomPastelColor.swift in Sources */,
 				66183DE6292AA797008412B0 /* MainTableCell.swift in Sources */,
