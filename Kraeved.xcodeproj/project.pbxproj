@@ -57,6 +57,7 @@
 		66183E27292D7C8A008412B0 /* HistoricalEventInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E22292D7C8A008412B0 /* HistoricalEventInteractor.swift */; };
 		66183E29292D8293008412B0 /* MainTableCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E28292D8293008412B0 /* MainTableCellFactory.swift */; };
 		66956E372931046C00FC161C /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66956E362931046C00FC161C /* UserDefaultsKeys.swift */; };
+		66956E3929310BFE00FC161C /* BusinessObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66956E3829310BFE00FC161C /* BusinessObjectManager.swift */; };
 		66A8A4FF2926E0DB000BFC29 /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FB2926E0DB000BFC29 /* BaseInteractor.swift */; };
 		66A8A5002926E0DB000BFC29 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FC2926E0DB000BFC29 /* BasePresenter.swift */; };
 		66A8A5012926E0DB000BFC29 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */; };
@@ -131,6 +132,7 @@
 		66183E22292D7C8A008412B0 /* HistoricalEventInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalEventInteractor.swift; sourceTree = "<group>"; };
 		66183E28292D8293008412B0 /* MainTableCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableCellFactory.swift; sourceTree = "<group>"; };
 		66956E362931046C00FC161C /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		66956E3829310BFE00FC161C /* BusinessObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessObjectManager.swift; sourceTree = "<group>"; };
 		66A8A4FB2926E0DB000BFC29 /* BaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		66A8A4FC2926E0DB000BFC29 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				66088A3A2926DD8900CB5E23 /* AnnotationManager.swift */,
 				66183DFA292BF602008412B0 /* HistoricalEventsManager.swift */,
 				66183DFC292BFE3E008412B0 /* ImageManager.swift */,
+				66956E3829310BFE00FC161C /* BusinessObjectManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				66183E27292D7C8A008412B0 /* HistoricalEventInteractor.swift in Sources */,
 				66183DE1292AA6CF008412B0 /* MainTableAdapter.swift in Sources */,
 				66183E23292D7C8A008412B0 /* HistoricalEventModuleBuilder.swift in Sources */,
+				66956E3929310BFE00FC161C /* BusinessObjectManager.swift in Sources */,
 				66A8A5162926E1D9000BFC29 /* SearchScreenModuleBuilder.swift in Sources */,
 				66183DEE292ABBEB008412B0 /* HistoricalEventCollectionCell.swift in Sources */,
 				66183E24292D7C8A008412B0 /* HistoricalEventPresenter.swift in Sources */,

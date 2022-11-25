@@ -43,7 +43,6 @@ struct BusinessObject: Identifiable, Codable {
         self.customProperties = try container.decode(String.self, forKey: .customProperties)
         self.startDate = try container.decode(String.self, forKey: .startDate)
         self.finishDate = try container.decode(String.self, forKey: .finishDate)
-        
     }
     
     func convertToMetaObject<T: Codable>() -> MetaObject<T> {

@@ -16,28 +16,20 @@ class HistoricalEventsManager: HistoricalEventsManagerProtocol {
     
     static let shared = HistoricalEventsManager()
     
-    private let apiManager: APIManager
+    private let businessObjectManager: BusinessObjectManagerProtocol
     
-    private init(apiManager: APIManager = APIManager.shared) {
-        self.apiManager = apiManager
+    private init(businessObjectManager: BusinessObjectManagerProtocol = BusinessObjectManager.shared) {
+        self.businessObjectManager = businessObjectManager
     }
     
     func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void) {
-        guard let url =  URL(string: "http://localhost:5211/api/BusinessObject") else { return }
-        let request = URLRequest(url: url)
-        
-        apiManager.get(with: request) { (response: Result<[BusinessObject], Error>) in
-            switch response {
-            case .success(let businessObjects):
-                if let encoded = try? JSONEncoder().encode(businessObjects) {
-                    UserDefaults.standard.set(encoded, forKey: UserDefaultsKeys.historicalEvents.rawValue)
-                }
-                let historicalEvents: [MetaObject<HistoricalEvent>] = businessObjects.map { $0.convertToMetaObject() }
-                completion(historicalEvents)
-            case .failure(let error):
-                debugPrint(error)
+        businessObjectManager.getBusinessObjects(by: MetaType.historicalEvent.rawValue) {
+            (businessObjects: [BusinessObject]) in
+            if let encoded = try? JSONEncoder().encode(businessObjects) {
+                UserDefaults.standard.set(encoded, forKey: UserDefaultsKeys.historicalEvents.rawValue)
             }
-            
+            let historicalEvents: [MetaObject<HistoricalEvent>] = businessObjects.map { $0.convertToMetaObject() }
+            completion(historicalEvents)
         }
     }
     
