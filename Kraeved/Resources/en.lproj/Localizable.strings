@@ -5,9 +5,16 @@
   Created by Владимир Амелькин on 01.11.2022.
   
 */
+"common.noTitle"                = "No title";
 
-"tabbar.mainScreen"     = "Main";
-"tabbar.mapScreen"      = "Map";
-"tabbar.searchScreen"   = "Search";
-"tabbar.building"       = "Building";
-"tabbar.natural"        = "Natural";
+"tabbar.mainScreen"             = "Main";
+"tabbar.mapScreen"              = "Map";
+"tabbar.searchScreen"           = "Search";
+"tabbar.building"               = "Building";
+"tabbar.natural"                = "Natural";
+
+"mainScreen.historicalEvents"   = "Events on this day";
+"mainScreen.annotations"        = "Places";
+
+"searchItems.historicalEvents"  = "Events";
+"searchItems.annotations"       = "Places";

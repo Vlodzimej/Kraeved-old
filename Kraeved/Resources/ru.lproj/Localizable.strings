@@ -1,13 +1,21 @@
 /*
-  Localizable.ru.strings
+  Localizable.strings
   Kraeved
 
   Created by Владимир Амелькин on 01.11.2022.
   
 */
+"common.noTitle"                = "Название отсутствует";
 
-"tabbar.mainScreen"     = "Главная";
-"tabbar.mapScreen"      = "Карта";
-"tabbar.searchScreen"   = "Поиск";
-"tabbar.building"       = "Здание";
-"tabbar.natural"        = "Природа";
+"tabbar.mainScreen"             = "Главная";
+"tabbar.mapScreen"              = "Карта";
+"tabbar.searchScreen"           = "Поиск";
+"tabbar.building"               = "Здание";
+"tabbar.natural"                = "Природа";
+
+"mainScreen.historicalEvents"   = "События в этот день";
+"mainScreen.annotations"        = "Места";
+
+"searchItems.historicalEvents"  = "События";
+"searchItems.annotations"        = "Места";
+

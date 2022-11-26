@@ -13,7 +13,7 @@ protocol MainTableCellDelegate: AnyObject {
 }
 
 //MARK: - MainTableCell
-class MainTableCell: UITableViewCell {
+class MainTableViewCell: UITableViewCell {
     
     //MARK: - UIConstants
     struct UIConstants {
@@ -61,7 +61,7 @@ class MainTableCell: UITableViewCell {
     }
 }
 
-extension MainTableCell: HistoricalEventCellDelegate {
+extension MainTableViewCell: HistoricalEventCellDelegate {
     func showDetails(id: UUID) {
         delegate?.showHistoricalEventDetail(id: id)
     }

@@ -15,9 +15,9 @@ enum MainTableSectionType {
     var title: String {
         switch self {
             case .historicalEvents:
-                return "События в этот день"
+                return NSLocalizedString("mainScreen.historicalEvents", comment: "")
             case .gallery:
-                return "Галлерея"
+                return NSLocalizedString("mainScreen.annotations", comment: "")
         }
     }
 }
@@ -63,7 +63,7 @@ class MainTableAdapter: NSObject {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude)
-        tableView.register(MainTableCell.self, forCellReuseIdentifier: "MainTableCell")
+        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: "MainTableViewCell")
         self.tableView = tableView
     }
     
@@ -98,7 +98,7 @@ extension MainTableAdapter: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = sections[indexPath.section]
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableCell") as? MainTableCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell") as? MainTableViewCell else { return UITableViewCell() }
         let titleText: String? = indexPath.item == 0 ? section.type.title : nil
         cell.configurate(section: section, titleText: titleText)
         cell.delegate = self
@@ -106,7 +106,7 @@ extension MainTableAdapter: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        indexPath.item == 0 ? MainTableCell.UIConstants.cellHeight + Constants.contentInset : MainTableCell.UIConstants.cellHeight
+        indexPath.item == 0 ? MainTableViewCell.UIConstants.cellHeight + Constants.contentInset : MainTableViewCell.UIConstants.cellHeight
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
