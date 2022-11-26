@@ -7,6 +7,9 @@
 
 import Foundation
 
-class Profile {
-    
+struct User: Codable {
+    let username: String?
+    let email: String?
+    let phone: Int?
+    let score: Int?
 }

@@ -22,11 +22,13 @@ class TabBarController: UITabBarController {
         let mainScreenViewController = MainScreenModuleBuilder.build()
         let mapScreenViewController = MapScreenModuleBuilder.build()
         let searchScreenViewController = SearchScreenModuleBuilder.build()
+        let profileViewController = ProfileModuleBuilder.build()
         
         viewControllers = [
             createNavController(for: mainScreenViewController, title: NSLocalizedString("tabbar.mainScreen", comment: ""), image: UIImage(named: "house")!),
-            createNavController(for: mapScreenViewController, title: NSLocalizedString("tabbar.mapScreen", comment: ""), image: UIImage(named: "figure.walk")!),
             createNavController(for: searchScreenViewController, title: NSLocalizedString("tabbar.searchScreen", comment: ""), image: UIImage(named: "magnifyingglass")!),
+            createNavController(for: mapScreenViewController, title: NSLocalizedString("tabbar.mapScreen", comment: ""), image: UIImage(named: "figure.walk")!),
+            createNavController(for: profileViewController, title: NSLocalizedString("tabbar.profile", comment: ""), image: UIImage(named: "person.crop.circle")!),
         ]
     }
     

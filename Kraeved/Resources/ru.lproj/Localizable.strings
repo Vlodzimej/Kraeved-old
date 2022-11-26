@@ -10,6 +10,7 @@
 "tabbar.mainScreen"             = "Главная";
 "tabbar.mapScreen"              = "Карта";
 "tabbar.searchScreen"           = "Поиск";
+"tabbar.profile"                 = "Профиль";
 "tabbar.building"               = "Здание";
 "tabbar.natural"                = "Природа";
 

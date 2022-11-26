@@ -10,6 +10,7 @@
 "tabbar.mainScreen"             = "Main";
 "tabbar.mapScreen"              = "Map";
 "tabbar.searchScreen"           = "Search";
+"tabbar.profile"                 = "Profile";
 "tabbar.building"               = "Building";
 "tabbar.natural"                = "Natural";
 

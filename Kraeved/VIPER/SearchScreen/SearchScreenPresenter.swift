@@ -38,7 +38,7 @@ class SearchScreenPresenter: NSObject, SearchScreenPresenterProtocol {
     func search(metaType: MetaType, searchText: String) {
         interactor.search(metaType: metaType, searchText: searchText)
         guard let businessObjects = interactor.businessObjects else { return }
-        adapter.configure(businessObjects: businessObjects)
+        adapter.configurate(businessObjects: businessObjects)
     }
 }
 

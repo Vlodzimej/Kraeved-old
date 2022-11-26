@@ -34,7 +34,7 @@ class SearchTableViewCell: UITableViewCell {
     
     //MARK: Public Methods
     func configurate(title: String) {
-        titleLabel.text = title
+        selectionStyle = .none
         
         for view in contentView.subviews {
             view.removeFromSuperview()
@@ -43,15 +43,12 @@ class SearchTableViewCell: UITableViewCell {
         iconView.image = UIImage(named: "globe.europe.africa.fill")!
         iconView.tintColor = .gray
         contentView.addSubview(iconView)
-        
         iconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UIConstatns.iconViewMargin).isActive = true
         iconView.widthAnchor.constraint(equalToConstant: UIConstatns.iconViewSize).isActive = true
         iconView.heightAnchor.constraint(equalToConstant: UIConstatns.iconViewSize).isActive = true
 
-        contentView.heightAnchor.constraint(equalToConstant: UIConstatns.cellHeight).isActive = true
-        contentView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        
+        titleLabel.text = title
         contentView.addSubview(titleLabel)
         titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: UIConstatns.iconViewMargin).isActive = true

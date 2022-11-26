@@ -67,9 +67,8 @@ class MainTableAdapter: NSObject {
         self.tableView = tableView
     }
     
-    func configure(historicalEvents: [MetaObject<HistoricalEvent>]) {
+    func configurate(historicalEvents: [MetaObject<HistoricalEvent>]) {
         sections.enumerated().forEach { (index, section) in
-            //guard let self = self else { return }
             switch section.type {
                 case .historicalEvents:
                     sections[index].items = MainTableSectionItem.makeCellItems(from: historicalEvents)

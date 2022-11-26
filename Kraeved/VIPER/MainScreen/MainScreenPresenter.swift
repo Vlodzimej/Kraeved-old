@@ -28,7 +28,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
         interactor.getHistoricalEvents { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.adapter.configure(historicalEvents: result)
+                self.adapter.configurate(historicalEvents: result)
             }
         }
     }

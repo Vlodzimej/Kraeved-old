@@ -29,7 +29,7 @@ class SearchTableAdapter: NSObject {
         self.tableView = tableView
     }
     
-    func configure(businessObjects: [BusinessObject]) {
+    func configurate(businessObjects: [BusinessObject]) {
         self.businessObjects = businessObjects
         tableView?.reloadData()
     }
@@ -54,5 +54,9 @@ extension SearchTableAdapter: UITableViewDataSource {
         let businessObject = businessObjects[indexPath.item]
         cell.configurate(title: businessObject.title ?? NSLocalizedString("common.noTitle", comment: ""))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        SearchTableViewCell.UIConstatns.cellHeight
     }
 }
