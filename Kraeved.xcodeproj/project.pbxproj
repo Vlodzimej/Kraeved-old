@@ -224,6 +224,7 @@
 		66088A2A2926DD0500CB5E23 /* VIPER */ = {
 			isa = PBXGroup;
 			children = (
+				66183E11292D7BB7008412B0 /* HistoricalEventDetail */,
 				66D41EA32932CA0400FD66CA /* Profile */,
 				66A8A5102926E1D9000BFC29 /* SearchScreen */,
 				66A8A5032926E161000BFC29 /* AnnotationScreen */,
@@ -237,7 +238,6 @@
 		66088A2B2926DD0500CB5E23 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				66183E11292D7BB7008412B0 /* HistoricalEventDetail */,
 				66088A202926DCD700CB5E23 /* MainScreenModuleBuilder.swift */,
 				66088A212926DCD700CB5E23 /* MainScreenPresenter.swift */,
 				66088A222926DCD700CB5E23 /* MainScreenRouter.swift */,

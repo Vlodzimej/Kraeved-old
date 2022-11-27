@@ -24,6 +24,7 @@ class ProfileViewController: BaseViewController, ProfileViewProtocol {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
         return tableView
     }()
     

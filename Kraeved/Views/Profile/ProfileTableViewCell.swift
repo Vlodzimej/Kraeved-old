@@ -48,6 +48,7 @@ class ProfileTableViewCell: UITableViewCell {
     
     //MARK: Public Methods
     func configurate(viewModel: ProfileCellViewModel, isLastRow: Bool) {
+        backgroundColor = .clear
         for view in contentView.subviews {
             view.removeFromSuperview()
         }

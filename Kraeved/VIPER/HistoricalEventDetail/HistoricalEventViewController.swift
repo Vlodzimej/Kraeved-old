@@ -25,6 +25,7 @@ class HistoricalEventViewController: BaseViewController, HistoricalEventViewProt
         label.numberOfLines = 2
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
         return label
     }()
     
@@ -33,6 +34,7 @@ class HistoricalEventViewController: BaseViewController, HistoricalEventViewProt
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textAlignment = .justified
+        label.textColor = .black
         return label
     }()
     

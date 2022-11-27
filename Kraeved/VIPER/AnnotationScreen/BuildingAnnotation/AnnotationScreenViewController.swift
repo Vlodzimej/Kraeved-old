@@ -15,6 +15,7 @@ class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewPr
         let label = UILabel()
         label.font = .systemFont(ofSize: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
         return label
     }()
     
@@ -22,6 +23,7 @@ class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewPr
         let label = UILabel()
         label.font = .systemFont(ofSize: 8)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
         return label
     }()
     

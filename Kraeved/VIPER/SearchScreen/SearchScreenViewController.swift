@@ -38,7 +38,7 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
-        
+        segmentedControl.tintColor = .white
         return segmentedControl
     }()
     
@@ -46,6 +46,7 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .white
         return tableView
     }()
     

@@ -23,6 +23,7 @@ class SearchTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byTruncatingTail
+        label.textColor = .black
         return label
     }()
     
@@ -35,6 +36,7 @@ class SearchTableViewCell: UITableViewCell {
     //MARK: Public Methods
     func configurate(title: String) {
         selectionStyle = .none
+        backgroundColor = .clear
         
         for view in contentView.subviews {
             view.removeFromSuperview()
