@@ -20,7 +20,8 @@ extension UIColor {
         static var background: UIColor { UIColor.white }
         static var cellBackground: UIColor { UIColor.HEX.h4B6285 }
         static var cellDarkBackground: UIColor { UIColor.HEX.h2C3F66 }
-        
+        static var shimmerColorFirst = UIColor(white: 0.85, alpha: 1.0)
+        static var shimmerColorSecond = UIColor(white: 0.95, alpha: 1.0)
     }
 }
 
