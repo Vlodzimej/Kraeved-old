@@ -23,7 +23,7 @@ class BusinessObjectManager: BusinessObjectManagerProtocol {
     }
     
     func getBusinessObjects(by metaTypeId: String, completion: @escaping ([BusinessObject]) -> Void) {
-        guard let url =  URL(string: "http://localhost:5211/api/BusinessObject/metaTypeId/\(metaTypeId)") else { return }
+        guard let url =  URL(string: "http://178.250.159.110/api/BusinessObject/metaTypeId/\(metaTypeId)") else { return }
         let request = URLRequest(url: url)
         
         apiManager.get(with: request) { (response: Result<[BusinessObject], Error>) in
