@@ -7,10 +7,12 @@
 
 import Foundation
 
+//MARK: - BusinessObjectManagerProtocol
 protocol BusinessObjectManagerProtocol: AnyObject {
     func getBusinessObjects(by metaTypeId: String, completion: @escaping ([BusinessObject]) -> Void)
 }
 
+//MARK: - BusinessObjectManager
 class BusinessObjectManager: BusinessObjectManagerProtocol {
 
     

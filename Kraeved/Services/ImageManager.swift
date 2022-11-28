@@ -19,7 +19,7 @@ class ImageManager: ImageManagerProtocol {
     
     private let apiManager: APIManagerProtocol
     
-    init(apiManager: APIManagerProtocol = APIManager.shared) {
+    private init(apiManager: APIManagerProtocol = APIManager.shared) {
         self.apiManager = apiManager
     }
     

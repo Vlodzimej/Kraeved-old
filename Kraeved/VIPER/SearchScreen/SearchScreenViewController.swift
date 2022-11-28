@@ -30,6 +30,12 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.delegate = self
+        searchBar.backgroundColor = .white
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField,
+            let iconView = textField.leftView as? UIImageView {
+            textField.textColor = .black
+            iconView.tintColor = .black
+        }
         return searchBar
     }()
     
@@ -38,7 +44,11 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
-        segmentedControl.tintColor = .white
+        segmentedControl.backgroundColor = .lightGray
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        segmentedControl.accessibilityNavigationStyle = .combined
         return segmentedControl
     }()
     
@@ -66,7 +76,6 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
         initialize()
         presenter.currentMetaType = searchTypes[0].metaType
         presenter.viewDidLoad()
-        
     }
 
     private func initialize() {

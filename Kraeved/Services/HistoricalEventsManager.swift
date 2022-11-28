@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol HistoricalEventsManagerProtocol: AnyObject {
     func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void)
@@ -23,16 +24,31 @@ class HistoricalEventsManager: HistoricalEventsManagerProtocol {
     }
     
     func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void) {
+        //CoreDataManager.shared.removeAllEntities(entityName: "BusinessObjectCoreModel")
         businessObjectManager.getBusinessObjects(by: MetaType.historicalEvent.rawValue) {
             (businessObjects: [BusinessObject]) in
-            if let encoded = try? JSONEncoder().encode(businessObjects) {
-                UserDefaults.standard.set(encoded, forKey: UserDefaultsKeys.historicalEvents.rawValue)
-            }
+            //if let encoded = try? JSONEncoder().encode(businessObjects) {
+            //  UserDefaults.standard.set(encoded, forKey: UserDefaultsKeys.historicalEvents.rawValue)
+            //}
+            let managedObjects = businessObjects.map { BusinessObjectCoreModel(businessObject: $0) }
+            CoreDataManager.shared.saveContext()
+            
+            // Извление записей
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BusinessObjectCoreModel")
+             do {
+                 let results = try CoreDataManager.shared.managedObjectContext.fetch(fetchRequest)
+                 for result in results as! [BusinessObjectCoreModel] {
+                     print("name - \(result.title!)")
+                 }
+             } catch {
+                 print(error)
+             }
+            
             let historicalEvents: [MetaObject<HistoricalEvent>] = businessObjects.map { $0.convertToMetaObject() }
             completion(historicalEvents)
         }
     }
-    
+
     func getHistoricalEvent(by id: UUID, completion: @escaping (MetaObject<HistoricalEvent>) -> Void) {
         if let data = UserDefaults.standard.object(forKey: UserDefaultsKeys.historicalEvents.rawValue) as? Data,
            let businessObjects = try? JSONDecoder().decode([BusinessObject].self, from: data) {
