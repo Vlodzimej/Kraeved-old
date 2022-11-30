@@ -29,8 +29,9 @@ class HistoricalEventInteractor: HistoricalEventInteractorProtocol {
 
     //MARK: Public Methods
     func getHistoricalEvent(by id: UUID, completion: @escaping (MetaObject<HistoricalEvent>) -> Void) {
-        historicalEventManager.getHistoricalEvent(by: id) { [weak self] result in
-            completion(result)
+        historicalEventManager.find(arguments: ["id" : id.uuidString]) { historicalEvents in
+            guard let historicalEvent = historicalEvents.first else { return }
+            completion(historicalEvent)
         }
     }
 }

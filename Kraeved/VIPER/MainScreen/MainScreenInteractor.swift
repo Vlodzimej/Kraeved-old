@@ -28,7 +28,7 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
         let lock = NSLock()
         
         DispatchQueue.global(qos: .background).async { [weak self] in
-            self?.historicalEventsManager.getHistoricalEvents { responseEvents in
+            self?.historicalEventsManager.get { responseEvents in
                 responseEvents.enumerated().forEach({ [weak self] (index, event) in
                     group.enter()
                     queue.async {

@@ -34,7 +34,9 @@ class HistoricalEventPresenter: HistoricalEventPresenterProtocol {
     func viewDidLoad() {
         interactor.getHistoricalEvent(by: id) { [weak self] result in
             guard let view = self?.view else { return }
-            view.update(object: result)
+            DispatchQueue.main.async {
+                view.update(object: result)
+            }
         }
     }
 }

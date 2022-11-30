@@ -23,8 +23,8 @@ extension BusinessObjectCoreModel {
     @NSManaged public var finishDate: String?
     @NSManaged public var startDate: String?
 
-    
-    convenience init(businessObject: BusinessObject) {
+    @discardableResult
+    convenience init(_ businessObject: BusinessObject) {
         self.init()
         self.id = businessObject.id
         self.title = businessObject.title

@@ -9,7 +9,14 @@ import UIKit
 import Foundation
 import CoreData
 
-final class CoreDataManager {
+protocol CoreDataManagerProtocol {
+    var managedObjectContext: NSManagedObjectContext { get set }
+    
+    func saveContext ()
+    func find(entityName: String, predicates: [NSPredicate]) -> [NSFetchRequestResult] 
+}
+
+final class CoreDataManager: CoreDataManagerProtocol {
     
     static let shared = CoreDataManager()
     
@@ -60,12 +67,10 @@ final class CoreDataManager {
     
     //MARK: - Public Methods
     func entityForName(entityName: String) -> NSEntityDescription {
-        let entity = NSEntityDescription.entity(forEntityName: entityName, in: self.managedObjectContext)!
-        let test = entity.uniquenessConstraints
-        return entity
+        NSEntityDescription.entity(forEntityName: entityName, in: self.managedObjectContext)!
     }
     
-    func saveContext () {
+    func saveContext() {
         if managedObjectContext.hasChanges {
             do {
                 managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
@@ -78,15 +83,14 @@ final class CoreDataManager {
         }
     }
     
-    func isExist(entityName: String, id: UUID) -> Bool {
-        var result = true
+    func find(entityName: String, predicates: [NSPredicate]) -> [NSFetchRequestResult] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "id = %d", argumentArray: [id.uuidString])
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         let fetchResult = try? managedObjectContext.fetch(fetchRequest)
-        if let count = fetchResult?.count {
-            result = count > 0 ? true : false
+        guard let fetchResult = fetchResult else {
+            fatalError()
         }
-        return result
+        return fetchResult
     }
     
     func removeAllEntities(entityName: String) {
