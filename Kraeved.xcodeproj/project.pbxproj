@@ -345,7 +345,7 @@
 			children = (
 				66183DE5292AA797008412B0 /* MainTableViewCell.swift */,
 				66183E28292D8293008412B0 /* MainTableCellFactory.swift */,
-				66183DF3292BA7A9008412B0 /* HistoricalEvents */,
+				66183DF3292BA7A9008412B0 /* Entities */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -360,13 +360,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		66183DF3292BA7A9008412B0 /* HistoricalEvents */ = {
+		66183DF3292BA7A9008412B0 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				66183DE7292AAEE0008412B0 /* HistoricalEventCellView.swift */,
 				66183DED292ABBEB008412B0 /* HistoricalEventCollectionCell.swift */,
 			);
-			path = HistoricalEvents;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		66183E0A292D78F4008412B0 /* API */ = {

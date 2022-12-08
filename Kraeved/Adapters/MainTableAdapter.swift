@@ -73,7 +73,7 @@ class MainTableAdapter: NSObject {
     
     func configurate(historicalEvents: [MetaObject<Entity>]) {
         sections.enumerated().forEach { (index, section) in
-            var typeId = section.type.id
+            guard let typeId = UUID(uuidString: section.type.rawValue) else { return }
             let items = historicalEvents.filter { $0.data?.typeId == typeId }
             sections[index].items = MainTableSectionItem.makeCellItems(from: items)
         }

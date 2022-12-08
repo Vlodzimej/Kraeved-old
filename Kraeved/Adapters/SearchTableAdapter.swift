@@ -50,7 +50,7 @@ extension SearchTableAdapter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell") as? SearchTableViewCell else { return UITableViewCell() }
         let item = items[indexPath.item]
-        cell.configurate(title: item.title)
+        cell.configurate(title: item.title, type: item.type)
         return cell
     }
     

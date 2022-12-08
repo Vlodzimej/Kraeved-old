@@ -34,7 +34,7 @@ class SearchTableViewCell: UITableViewCell {
     }()
     
     //MARK: Public Methods
-    func configurate(title: String) {
+    func configurate(title: String, type: EntityType) {
         selectionStyle = .none
         backgroundColor = .clear
         
@@ -42,7 +42,15 @@ class SearchTableViewCell: UITableViewCell {
             view.removeFromSuperview()
         }
         
-        iconView.image = UIImage(named: "globe.europe.africa.fill")!
+        switch type {
+            case .historicalEvent:
+                iconView.image = UIImage(named: "sparkles")!
+            case .location:
+                iconView.image = UIImage(named: "globe.europe.africa.fill")!
+            case .photo:
+                iconView.image = UIImage(named: "photo")!
+        }
+
         iconView.tintColor = .gray
         contentView.addSubview(iconView)
         iconView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true

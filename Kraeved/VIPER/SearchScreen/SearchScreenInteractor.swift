@@ -4,6 +4,7 @@ import Foundation
 struct SearchItem {
     let id: UUID
     let title: String
+    let type: EntityType
 }
 
 //MARK: - SearchScreenInteractorProtocol
@@ -31,8 +32,8 @@ class SearchScreenInteractor: SearchScreenInteractorProtocol {
         historicalEventsManager.find(title: searchText) { [weak self] metaObjects in
             guard let self = self else { return }
             self.items = metaObjects.compactMap { item in
-                guard let title = item.title else { return nil }
-                return SearchItem(id: item.id, title: title)
+                guard let title = item.title, let type = EntityType.allCases.first(where: { $0.rawValue.uppercased() == item.data?.typeId?.uuidString }) else { return nil }
+                return SearchItem(id: item.id, title: title, type: type)
             }
             self.presenter?.update()
         }
