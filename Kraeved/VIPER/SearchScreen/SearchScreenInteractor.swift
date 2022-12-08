@@ -18,12 +18,12 @@ class SearchScreenInteractor: SearchScreenInteractorProtocol {
 
     //MARK: Properties
     weak var presenter: SearchScreenPresenterProtocol?
-    private let historicalEventsManager: HistoricalEventsManagerProtocol
+    private let historicalEventsManager: EntityManagerProtocol
     
     var items: [SearchItem] = []
 
     //MARK: Init
-    init(historicalEventsManager: HistoricalEventsManagerProtocol = HistoricalEventsManager.shared) {
+    init(historicalEventsManager: EntityManagerProtocol = EntityManager.shared) {
         self.historicalEventsManager = historicalEventsManager
     }
     

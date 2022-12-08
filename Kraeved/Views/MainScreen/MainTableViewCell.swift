@@ -35,10 +35,11 @@ class MainTableViewCell: UITableViewCell {
         let cellView: UIView
         
         switch section.type {
-            case .historicalEvents:
+            case .historicalEvent:
                 cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
-                
-            case .gallery:
+            case .location:
+                cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
+            case .photo:
                 cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
         }
         for view in contentView.subviews {

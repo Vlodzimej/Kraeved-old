@@ -9,7 +9,7 @@ import UIKit
 
 //MARK: - HistoricalEventViewProtocol
 protocol HistoricalEventViewProtocol: AnyObject {
-    func update(object: MetaObject<HistoricalEvent>)
+    func update(object: MetaObject<Entity>)
 }
 
 //MARK: - HistoricalEventViewController
@@ -75,7 +75,7 @@ class HistoricalEventViewController: BaseViewController, HistoricalEventViewProt
     //MARK: Private methods
 
     //MARK: Public methods
-    func update(object: MetaObject<HistoricalEvent>) {
+    func update(object: MetaObject<Entity>) {
         titleLabel.text = object.title
         textLabel.text = object.data?.text
     }

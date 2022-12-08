@@ -9,7 +9,7 @@ import Foundation
 
 //MARK: - HistoricalEventInteractorProtocol
 protocol HistoricalEventInteractorProtocol: AnyObject {
-    func getHistoricalEvent(by id: UUID, completion: @escaping (MetaObject<HistoricalEvent>) -> Void)
+    func getHistoricalEvent(by id: UUID, completion: @escaping (MetaObject<Entity>) -> Void)
 }
 
 //MARK: - HistoricalEventInteractor
@@ -18,17 +18,17 @@ class HistoricalEventInteractor: HistoricalEventInteractorProtocol {
     //MARK: Properties
     weak var presenter: HistoricalEventPresenterProtocol?
     
-    private let historicalEventManager: HistoricalEventsManagerProtocol
+    private let historicalEventManager: EntityManagerProtocol
 
     //MARK: Init
-    init(historicalEventManager: HistoricalEventsManagerProtocol = HistoricalEventsManager.shared) {
+    init(historicalEventManager: EntityManagerProtocol = EntityManager.shared) {
         self.historicalEventManager = historicalEventManager
     }
 
     //MARK: Private Methods
 
     //MARK: Public Methods
-    func getHistoricalEvent(by id: UUID, completion: @escaping (MetaObject<HistoricalEvent>) -> Void) {
+    func getHistoricalEvent(by id: UUID, completion: @escaping (MetaObject<Entity>) -> Void) {
         historicalEventManager.find(arguments: ["id" : id.uuidString]) { historicalEvents in
             guard let historicalEvent = historicalEvents.first else { return }
             completion(historicalEvent)

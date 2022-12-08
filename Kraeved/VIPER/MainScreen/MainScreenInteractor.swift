@@ -2,7 +2,7 @@ import Foundation
 
 //MARK: - MainScreenInteractorProtocol
 protocol MainScreenInteractorProtocol: AnyObject {
-    func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void)
+    func getHistoricalEvents(completion: @escaping ([MetaObject<Entity>]) -> Void)
 }
 
 //MARK: - MainScreenInteractor
@@ -11,17 +11,17 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     //MARK: Properties
     weak var presenter: MainScreenPresenterProtocol?
     
-    private let historicalEventsManager: HistoricalEventsManagerProtocol
+    private let historicalEventsManager: EntityManagerProtocol
     private let imageManager: ImageManagerProtocol
     
     //MARK: Init
-    init(historicalEventsManager: HistoricalEventsManagerProtocol = HistoricalEventsManager.shared, imageManager: ImageManagerProtocol = ImageManager.shared) {
+    init(historicalEventsManager: EntityManagerProtocol = EntityManager.shared, imageManager: ImageManagerProtocol = ImageManager.shared) {
         self.historicalEventsManager = historicalEventsManager
         self.imageManager = imageManager
     }
     
-    func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void) {
-        var events: [MetaObject<HistoricalEvent>] = []
+    func getHistoricalEvents(completion: @escaping ([MetaObject<Entity>]) -> Void) {
+        var events: [MetaObject<Entity>] = []
         
         let queue = DispatchQueue(label: "ru.kraeved.concurrent-queue", attributes: .concurrent)
         let group = DispatchGroup()
@@ -34,7 +34,7 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
                     queue.async {
                         guard let self = self, let imageUrl = event.data?.imageUrl, let url = URL(string: imageUrl) else { return }
                         self.imageManager.downloadImage(from: url) { image in
-                            let resultEvent = MetaObject<HistoricalEvent>(id: event.id, title: event.title, image: image, data: event.data)
+                            let resultEvent = MetaObject<Entity>(id: event.id, title: event.title, image: image, data: event.data)
                             lock.lock()
                             events.append(resultEvent)
                             lock.unlock()

@@ -7,32 +7,35 @@
 
 import UIKit
 
-//MARK: - MainTableSectionType
-enum MainTableSectionType {
-    case historicalEvents
-    case gallery
-    
-    var title: String {
-        switch self {
-            case .historicalEvents:
-                return NSLocalizedString("mainScreen.historicalEvents", comment: "")
-            case .gallery:
-                return NSLocalizedString("mainScreen.annotations", comment: "")
-        }
-    }
-}
+////MARK: - MainTableSectionType
+//enum MainTableSectionType {
+//    case historicalEvents
+//    case locations
+//    case gallery
+//
+//    var title: String {
+//        switch self {
+//            case .historicalEvents:
+//                return NSLocalizedString("mainScreen.historicalEvents", comment: "")
+//            case .locations:
+//                return NSLocalizedString("mainScreen.locations", comment: "")
+//            case .gallery:
+//                return NSLocalizedString("mainScreen.gallery", comment: "")
+//        }
+//    }
+//
+//
+//
+//}
 
 //MARK: - MainTableSectionItem
 struct MainTableSectionItem {
-    let type: MainTableSectionType
+    let title: String
+    let type: EntityType
     var items: [MainTableCellItem] = []
     
-    static func makeCellItems(from historicalEvents: [MetaObject<HistoricalEvent>]) -> [MainTableCellItem] {
+    static func makeCellItems(from historicalEvents: [MetaObject<Entity>]) -> [MainTableCellItem] {
         historicalEvents.map { MainTableCellItem(id: $0.id, title: $0.title, image: $0.image, text: $0.data?.text) }
-    }
-    
-    func getImage(from url: String) {
-        
     }
 }
 
@@ -51,8 +54,9 @@ protocol MainTableAdapterDelegate: AnyObject {
 class MainTableAdapter: NSObject {
     
     var sections: [MainTableSectionItem] = [
-        MainTableSectionItem(type: .historicalEvents),
-        MainTableSectionItem(type: .gallery)
+        MainTableSectionItem(title: NSLocalizedString("mainScreen.historicalEvents", comment: ""), type: EntityType.historicalEvent),
+        MainTableSectionItem(title: NSLocalizedString("mainScreen.locations", comment: ""), type: EntityType.location),
+        MainTableSectionItem(title: NSLocalizedString("mainScreen.gallery", comment: ""), type: EntityType.photo)
     ]
     
     var tableView: UITableView?
@@ -67,16 +71,13 @@ class MainTableAdapter: NSObject {
         self.tableView = tableView
     }
     
-    func configurate(historicalEvents: [MetaObject<HistoricalEvent>]) {
+    func configurate(historicalEvents: [MetaObject<Entity>]) {
         sections.enumerated().forEach { (index, section) in
-            switch section.type {
-                case .historicalEvents:
-                    sections[index].items = MainTableSectionItem.makeCellItems(from: historicalEvents)
-                case .gallery:
-                    sections[index].items = []
-         
-            }
+            var typeId = section.type.id
+            let items = historicalEvents.filter { $0.data?.typeId == typeId }
+            sections[index].items = MainTableSectionItem.makeCellItems(from: items)
         }
+
         tableView?.reloadData()
     }
 }
@@ -98,7 +99,7 @@ extension MainTableAdapter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = sections[indexPath.section]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell") as? MainTableViewCell else { return UITableViewCell() }
-        let titleText: String? = indexPath.item == 0 ? section.type.title : nil
+        let titleText: String? = indexPath.item == 0 ? section.title : nil
         cell.configurate(section: section, titleText: titleText)
         cell.delegate = self
         return cell

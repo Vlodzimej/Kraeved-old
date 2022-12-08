@@ -22,8 +22,8 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
     private let presenter: SearchScreenPresenterProtocol
     
     private let searchTypes: [SearchTypes] = [
-        SearchTypes(title: NSLocalizedString("searchItems.historicalEvents", comment: ""), metaType: .historicalEvent),
-        SearchTypes(title: NSLocalizedString("searchItems.annotations", comment: ""), metaType: .annotation),
+        SearchTypes(title: NSLocalizedString("searchItems.historicalEvents", comment: ""), metaType: .entity),
+        SearchTypes(title: NSLocalizedString("searchItems.annotations", comment: ""), metaType: .entity),
     ]
     
     //MARK: UIProperties
@@ -39,18 +39,18 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
         return searchBar
     }()
     
-    private lazy var segmentedControl: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: searchTypes.map { $0.title })
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
-        segmentedControl.backgroundColor = .lightGray
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
-        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
-        segmentedControl.accessibilityNavigationStyle = .combined
-        return segmentedControl
-    }()
+//    private lazy var segmentedControl: UISegmentedControl = {
+//        let segmentedControl = UISegmentedControl(items: searchTypes.map { $0.title })
+//        segmentedControl.selectedSegmentIndex = 0
+//        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+//        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+//        segmentedControl.backgroundColor = .lightGray
+//        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+//        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+//        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+//        segmentedControl.accessibilityNavigationStyle = .combined
+//        return segmentedControl
+//    }()
     
     var tableView: UITableView = {
         let tableView = UITableView()
@@ -82,16 +82,9 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
         view.backgroundColor = .white
         navigationItem.titleView = searchBar
 
-        view.addSubview(segmentedControl)
-
-        segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
-        segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
-        segmentedControl.heightAnchor.constraint(equalToConstant: UIConstants.segmentedControlHeight).isActive = true
-        
         view.addSubview(tableView)
         
-        tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: Constants.contentInset).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -100,14 +93,11 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
     //MARK: Private methods
 
     //MARK: Public methods
-    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        
-    }
+
 }
 
 extension SearchScreenViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let metaType = searchTypes[segmentedControl.selectedSegmentIndex].metaType
-        presenter.search(metaType: metaType, searchText: searchText)
+        presenter.search(metaType: MetaType.entity, searchText: searchText)
     }
 }

@@ -39,8 +39,8 @@
 		66183DF2292BA69B008412B0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF1292BA69B008412B0 /* User.swift */; };
 		66183DF5292BACC4008412B0 /* UIColor+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF4292BACC4008412B0 /* UIColor+Extra.swift */; };
 		66183DF7292BC318008412B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF6292BC318008412B0 /* Constants.swift */; };
-		66183DF9292BF2BC008412B0 /* HistoricalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF8292BF2BC008412B0 /* HistoricalEvent.swift */; };
-		66183DFB292BF602008412B0 /* HistoricalEventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DFA292BF602008412B0 /* HistoricalEventsManager.swift */; };
+		66183DF9292BF2BC008412B0 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF8292BF2BC008412B0 /* Entity.swift */; };
+		66183DFB292BF602008412B0 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DFA292BF602008412B0 /* EntityManager.swift */; };
 		66183DFD292BFE3E008412B0 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DFC292BFE3E008412B0 /* ImageManager.swift */; };
 		66183DFF292BFFF5008412B0 /* UIImageView+dowloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DFE292BFFF5008412B0 /* UIImageView+dowloaded.swift */; };
 		66183E01292C0C85008412B0 /* UIImage+blurImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E00292C0C85008412B0 /* UIImage+blurImage.swift */; };
@@ -127,8 +127,8 @@
 		66183DF1292BA69B008412B0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		66183DF4292BACC4008412B0 /* UIColor+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extra.swift"; sourceTree = "<group>"; };
 		66183DF6292BC318008412B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		66183DF8292BF2BC008412B0 /* HistoricalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalEvent.swift; sourceTree = "<group>"; };
-		66183DFA292BF602008412B0 /* HistoricalEventsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalEventsManager.swift; sourceTree = "<group>"; };
+		66183DF8292BF2BC008412B0 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		66183DFA292BF602008412B0 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		66183DFC292BFE3E008412B0 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		66183DFE292BFFF5008412B0 /* UIImageView+dowloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+dowloaded.swift"; sourceTree = "<group>"; };
 		66183E00292C0C85008412B0 /* UIImage+blurImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+blurImage.swift"; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 			children = (
 				66088A382926DD7900CB5E23 /* APIManager.swift */,
 				66088A3A2926DD8900CB5E23 /* AnnotationManager.swift */,
-				66183DFA292BF602008412B0 /* HistoricalEventsManager.swift */,
+				66183DFA292BF602008412B0 /* EntityManager.swift */,
 				66183DFC292BFE3E008412B0 /* ImageManager.swift */,
 				66956E3829310BFE00FC161C /* BusinessObjectManager.swift */,
 				66D7D9032935235A003D0471 /* CoreDataManager.swift */,
@@ -392,7 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				66183DF1292BA69B008412B0 /* User.swift */,
-				66183DF8292BF2BC008412B0 /* HistoricalEvent.swift */,
+				66183DF8292BF2BC008412B0 /* Entity.swift */,
 				66183E08292D6427008412B0 /* MetaObject.swift */,
 				66183E0F292D79F3008412B0 /* Location.swift */,
 			);
@@ -624,7 +624,7 @@
 				66A8A50D2926E173000BFC29 /* AnnotationScreenPresenter.swift in Sources */,
 				66D41EAB2932CA1800FD66CA /* ProfileRouter.swift in Sources */,
 				66183E03292C0FEA008412B0 /* UIView+addGradientWithColor.swift in Sources */,
-				66183DFB292BF602008412B0 /* HistoricalEventsManager.swift in Sources */,
+				66183DFB292BF602008412B0 /* EntityManager.swift in Sources */,
 				66088A322926DD2D00CB5E23 /* MapScreenModuleBuilder.swift in Sources */,
 				66D41EAF2932CD7300FD66CA /* ProfileTableAdapter.swift in Sources */,
 				66A8A5182926E1D9000BFC29 /* SearchScreenViewController.swift in Sources */,
@@ -651,7 +651,7 @@
 				660889FE2926DC0300CB5E23 /* SceneDelegate.swift in Sources */,
 				66088A492926DDD800CB5E23 /* MKMapView+centerLocation.swift in Sources */,
 				66088A332926DD2D00CB5E23 /* MapScreenPresenter.swift in Sources */,
-				66183DF9292BF2BC008412B0 /* HistoricalEvent.swift in Sources */,
+				66183DF9292BF2BC008412B0 /* Entity.swift in Sources */,
 				66088A352926DD2D00CB5E23 /* MapScreenViewController.swift in Sources */,
 				66088A272926DCD700CB5E23 /* MainScreenRouter.swift in Sources */,
 				66183DFD292BFE3E008412B0 /* ImageManager.swift in Sources */,
