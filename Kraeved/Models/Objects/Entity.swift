@@ -7,9 +7,9 @@
 import Foundation
 
 enum EntityType: String, CaseIterable {
-    case historicalEvent = "a58aa211-d7a0-461a-8d0a-7f90db0bd06b"
-    case location = "fd16f472-2230-4fd0-a532-44854f12d749"
-    case photo = "9e411fa3-5761-43f7-acef-f4bb47692406"
+    case historicalEvent = "A58AA211-D7A0-461A-8D0A-7F90DB0BD06B"
+    case location = "FD16F472-2230-4FD0-A532-44854F12D749"
+    case photo = "9E411FA3-5761-43F7-ACEF-F4BB47692406"
 }
 
 struct Entity: Codable {

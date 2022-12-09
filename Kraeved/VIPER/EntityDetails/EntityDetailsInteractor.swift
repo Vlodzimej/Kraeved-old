@@ -19,10 +19,12 @@ class EntityDetailsInteractor: EntityDetailsInteractorProtocol {
     weak var presenter: EntityDetailsPresenterProtocol?
     
     private let businessObjectManager: BusinessObjectManagerProtocol
+    private let imageManager: ImageManagerProtocol
 
     //MARK: Init
-    init(businessObjectManager: BusinessObjectManagerProtocol = BusinessObjectManager.shared) {
+    init(businessObjectManager: BusinessObjectManagerProtocol = BusinessObjectManager.shared, imageManager: ImageManagerProtocol = ImageManager.shared) {
         self.businessObjectManager = businessObjectManager
+        self.imageManager = imageManager
     }
 
     //MARK: Private Methods
@@ -34,6 +36,12 @@ class EntityDetailsInteractor: EntityDetailsInteractorProtocol {
             self.businessObjectManager.find(metaTypeId: MetaType.entity.id, predicates: [NSPredicate(format: "%K = %@", "id", id.uuidString)]) { businessObjects in
                 guard let businessObject = businessObjects.first,
                       let entity: MetaObject<Entity> = businessObject.convertToMetaObject() else { return }
+                if entity.data?.typeId?.uuidString == EntityType.photo.rawValue, let imageUrl = entity.data?.imageUrl, let url = URL(string: imageUrl) {                    
+                    self.imageManager.downloadImage(from: url) { image in
+                        let resultEntity = MetaObject<Entity>(id: entity.id, title: entity.title, image: image, data: entity.data)
+                        completion(resultEntity)
+                    }
+                }
                 completion(entity)
             }
         }

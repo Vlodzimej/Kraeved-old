@@ -38,6 +38,13 @@ class EntityDetailsViewController: BaseViewController, EntityDetailsViewProtocol
         return label
     }()
     
+    private let imageView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+    
     //MARK: Init
     init(presenter: EntityDetailsPresenterProtocol) {
         self.presenter = presenter
@@ -70,14 +77,28 @@ class EntityDetailsViewController: BaseViewController, EntityDetailsViewProtocol
         textLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 64).isActive = true
         textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        
+
     }
 
     //MARK: Private methods
+    private func addImage(image: UIImage) {
+        imageView.image = image
+        view.addSubview(imageView)
+        
+        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
 
     //MARK: Public methods
     func update(entity: MetaObject<Entity>) {
         titleLabel.text = entity.title
         textLabel.text = entity.data?.text
+        if let image = entity.image {
+            addImage(image: image)
+        }
     }
 
 }

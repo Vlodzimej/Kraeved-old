@@ -31,7 +31,7 @@ class EntityDetailsPresenter: EntityDetailsPresenterProtocol {
     
     func viewDidLoad() {
         interactor.getEntity(id: id) { [weak self] entity in
-            guard let self = self, let type = EntityType.allCases.first(where: { $0.rawValue.uppercased() == entity.data?.typeId?.uuidString }) else { return }
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 self.view?.update(entity: entity)
             }

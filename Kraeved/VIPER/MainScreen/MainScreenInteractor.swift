@@ -11,12 +11,12 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
     //MARK: Properties
     weak var presenter: MainScreenPresenterProtocol?
     
-    private let historicalEventsManager: EntityManagerProtocol
+    private let entityManager: EntityManagerProtocol
     private let imageManager: ImageManagerProtocol
     
     //MARK: Init
-    init(historicalEventsManager: EntityManagerProtocol = EntityManager.shared, imageManager: ImageManagerProtocol = ImageManager.shared) {
-        self.historicalEventsManager = historicalEventsManager
+    init(entityManager: EntityManagerProtocol = EntityManager.shared, imageManager: ImageManagerProtocol = ImageManager.shared) {
+        self.entityManager = entityManager
         self.imageManager = imageManager
     }
     
@@ -28,15 +28,15 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
         let lock = NSLock()
         
         DispatchQueue.global(qos: .background).async { [weak self] in
-            self?.historicalEventsManager.get { responseEvents in
-                responseEvents.enumerated().forEach({ [weak self] (index, event) in
+            self?.entityManager.get { responseEntities in
+                responseEntities.enumerated().forEach({ [weak self] (index, entity) in
                     group.enter()
                     queue.async {
-                        guard let self = self, let imageUrl = event.data?.imageUrl, let url = URL(string: imageUrl) else { return }
+                        guard let self = self, let imageUrl = entity.data?.imageUrl, let url = URL(string: imageUrl) else { return }
                         self.imageManager.downloadImage(from: url) { image in
-                            let resultEvent = MetaObject<Entity>(id: event.id, title: event.title, image: image, data: event.data)
+                            let resultEntity = MetaObject<Entity>(id: entity.id, title: entity.title, image: image, data: entity.data)
                             lock.lock()
-                            events.append(resultEvent)
+                            events.append(resultEntity)
                             lock.unlock()
                             group.leave()
                         }

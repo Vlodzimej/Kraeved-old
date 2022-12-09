@@ -69,6 +69,13 @@ class EntityCellView: UIView, EntityCellViewProtocol {
         collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if type == .location {
+            collectionView.setContentOffset(CGPoint(x: 200, y: 0), animated: false)
+        }
+    }
 }
 
 //MARK: - UICollectionViewDataSource

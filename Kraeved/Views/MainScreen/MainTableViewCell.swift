@@ -59,6 +59,7 @@ class MainTableViewCell: UITableViewCell {
         cellView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         cellView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         cellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        
     }
 }
 
