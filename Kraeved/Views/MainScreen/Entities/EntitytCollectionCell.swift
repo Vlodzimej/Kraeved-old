@@ -1,5 +1,5 @@
 //
-//  HistoricalEventCollectionCell.swift
+//  EntitytCollectionCell.swift
 //  Kraeved
 //
 //  Created by Владимир Амелькин on 20.11.2022.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-//MARK: - HistoricalEventCollectionCell
-class HistoricalEventCollectionCell: CollectionCellWithShimmer {
+//MARK: - EntitytCollectionCell
+class EntitytCollectionCell: CollectionCellWithShimmer {
     
     //MARK: - UIConstants
     struct UIConstants {
@@ -37,7 +37,7 @@ class HistoricalEventCollectionCell: CollectionCellWithShimmer {
     }()
 
     //MARK: - Public Methods
-    func configurate(title: String?, image: UIImage?) {
+    func configurate(title: String?, image: UIImage?, hasOverlay: Bool) {
         layer.masksToBounds = true
         layer.cornerRadius = Constants.mainTableElementRadius
         if let image = image {
@@ -54,11 +54,15 @@ class HistoricalEventCollectionCell: CollectionCellWithShimmer {
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
             imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
 
-            let gradientMaskLayer = CAGradientLayer()
-            gradientMaskLayer.frame = contentView.bounds
-            gradientMaskLayer.colors = [UIColor.white.cgColor, UIColor.clear.cgColor]
-            gradientMaskLayer.locations = [0, 0.85]
-            contentView.layer.mask = gradientMaskLayer
+            if hasOverlay {
+                let gradientMaskLayer = CAGradientLayer()
+                gradientMaskLayer.frame = contentView.bounds
+                gradientMaskLayer.colors = [UIColor.white.cgColor, UIColor.clear.cgColor]
+                gradientMaskLayer.locations = [0, 0.85]
+                
+                contentView.layer.mask = gradientMaskLayer
+            }
+            
         } else {
             backgroundColor = generateRandomPastelColor(withMixedColor: UIColor.black)
         }
@@ -74,7 +78,7 @@ class HistoricalEventCollectionCell: CollectionCellWithShimmer {
             addSubview(titleLabel)
             titleLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor).isActive = true
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIConstants.titleInset).isActive = true
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -UIConstants.titleInset).isActive = true
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -UIConstants.titleInset).isActive = true
         }
     }

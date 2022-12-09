@@ -1,5 +1,5 @@
 //
-//  HistoricalEventCell.swift
+//  EntityCellView.swift
 //  Kraeved
 //
 //  Created by Владимир Амелькин on 20.11.2022.
@@ -7,21 +7,22 @@
 
 import UIKit
 
-protocol HistoricalEventCellDelegate: AnyObject {
+protocol EntityCellDelegate: AnyObject {
     func showDetails(id: UUID)
 }
 
-protocol HistoricalEventCellViewProtocol {
-    var delegate: HistoricalEventCellDelegate? { get set }
+protocol EntityCellViewProtocol {
+    var delegate: EntityCellDelegate? { get set }
 }
 
-//MARK: - HistoricalEventCellView
-class HistoricalEventCellView: UIView {
+//MARK: - EntityCellView
+class EntityCellView: UIView, EntityCellViewProtocol {
     
     //MARK: - Properties
-    weak var delegate: HistoricalEventCellDelegate?
-
+    weak var delegate: EntityCellDelegate?
+    
     private let items: [MainTableCellItem]
+    private let type: EntityType
     
     //MARK: - UIProperties
     private lazy var collectionView: UICollectionView = {
@@ -32,7 +33,7 @@ class HistoricalEventCellView: UIView {
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(HistoricalEventCollectionCell.self, forCellWithReuseIdentifier: "HistoricalEventCollectionCell")
+        collectionView.register(EntitytCollectionCell.self, forCellWithReuseIdentifier: "HistoricalEventCollectionCell")
         return collectionView
     }()
     
@@ -45,8 +46,9 @@ class HistoricalEventCellView: UIView {
     }()
     
     //MARK: - Init
-    init(items: [MainTableCellItem]) {
+    init(items: [MainTableCellItem], type: EntityType) {
         self.items = items
+        self.type = type
         super.init(frame: .zero)
         initialize()
     }
@@ -58,7 +60,7 @@ class HistoricalEventCellView: UIView {
     //MARK: - Private Methods
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
-
+        
         backgroundColor = .clear
         
         addSubview(collectionView)
@@ -70,7 +72,7 @@ class HistoricalEventCellView: UIView {
 }
 
 //MARK: - UICollectionViewDataSource
-extension HistoricalEventCellView: UICollectionViewDataSource {
+extension EntityCellView: UICollectionViewDataSource {
     
     // MARK: - UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -82,21 +84,21 @@ extension HistoricalEventCellView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HistoricalEventCollectionCell", for: indexPath) as? HistoricalEventCollectionCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HistoricalEventCollectionCell", for: indexPath) as? EntitytCollectionCell else {
             return UICollectionViewCell()
         }
         guard let item = items[safeIndex: indexPath.item] else {
             cell.startAnimating()
             return cell
         }
-        cell.configurate(title: item.title, image: item.image)
+        cell.configurate(title: item.title, image: item.image, hasOverlay: item.hasOverlay)
         
         return cell
     }
 }
 
 //MARK: - UICollectionViewDelegate
-extension HistoricalEventCellView: UICollectionViewDelegate {
+extension EntityCellView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let historicalEvent = items[indexPath.item]
@@ -105,7 +107,7 @@ extension HistoricalEventCellView: UICollectionViewDelegate {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-extension HistoricalEventCellView: UICollectionViewDelegateFlowLayout {
+extension EntityCellView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: Constants.contentInset, left: Constants.contentInset, bottom: Constants.contentInset, right: Constants.contentInset)
@@ -113,10 +115,21 @@ extension HistoricalEventCellView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.bounds.width
-        let numberOfItemsPerRow: CGFloat = 2.5
+        let numberOfItemsPerRow: CGFloat = getNumberOfItemsPerRow()
         let spacing: CGFloat = flowLayout.minimumInteritemSpacing
         let availableWidth = width - spacing * (numberOfItemsPerRow + 1)
         let itemDimension = floor(availableWidth / numberOfItemsPerRow)
         return CGSize(width: itemDimension, height: itemDimension)
+    }
+    
+    private func getNumberOfItemsPerRow() -> CGFloat {
+        switch type {
+            case .historicalEvent:
+                return 2.5
+            case .location:
+                return 2.5
+            case .photo:
+                return 1.4
+        }
     }
 }

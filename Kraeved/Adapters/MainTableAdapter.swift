@@ -33,9 +33,10 @@ struct MainTableSectionItem {
     let title: String
     let type: EntityType
     var items: [MainTableCellItem] = []
+    let hasOverlay: Bool
     
-    static func makeCellItems(from historicalEvents: [MetaObject<Entity>]) -> [MainTableCellItem] {
-        historicalEvents.map { MainTableCellItem(id: $0.id, title: $0.title, image: $0.image, text: $0.data?.text) }
+    static func makeCellItems(from entities: [MetaObject<Entity>], hasOverlay: Bool = false) -> [MainTableCellItem] {
+        entities.map { MainTableCellItem(id: $0.id, title: $0.title, image: $0.image, text: $0.data?.text, hasOverlay: hasOverlay) }
     }
 }
 
@@ -45,6 +46,7 @@ struct MainTableCellItem {
     let title: String?
     let image: UIImage?
     let text: String?
+    let hasOverlay: Bool
 }
 
 protocol MainTableAdapterDelegate: AnyObject {
@@ -54,9 +56,9 @@ protocol MainTableAdapterDelegate: AnyObject {
 class MainTableAdapter: NSObject {
     
     var sections: [MainTableSectionItem] = [
-        MainTableSectionItem(title: NSLocalizedString("mainScreen.historicalEvents", comment: ""), type: EntityType.historicalEvent),
-        MainTableSectionItem(title: NSLocalizedString("mainScreen.locations", comment: ""), type: EntityType.location),
-        MainTableSectionItem(title: NSLocalizedString("mainScreen.gallery", comment: ""), type: EntityType.photo)
+        MainTableSectionItem(title: NSLocalizedString("mainScreen.historicalEvents", comment: ""), type: EntityType.historicalEvent, hasOverlay: true),
+        MainTableSectionItem(title: NSLocalizedString("mainScreen.locations", comment: ""), type: EntityType.location, hasOverlay: true),
+        MainTableSectionItem(title: NSLocalizedString("mainScreen.gallery", comment: ""), type: EntityType.photo, hasOverlay: false)
     ]
     
     var tableView: UITableView?
@@ -71,11 +73,11 @@ class MainTableAdapter: NSObject {
         self.tableView = tableView
     }
     
-    func configurate(historicalEvents: [MetaObject<Entity>]) {
+    func configurate(entities: [MetaObject<Entity>]) {
         sections.enumerated().forEach { (index, section) in
             guard let typeId = UUID(uuidString: section.type.rawValue) else { return }
-            let items = historicalEvents.filter { $0.data?.typeId == typeId }
-            sections[index].items = MainTableSectionItem.makeCellItems(from: items)
+            let items = entities.filter { $0.data?.typeId == typeId }
+            sections[index].items = MainTableSectionItem.makeCellItems(from: items, hasOverlay: section.hasOverlay)
         }
 
         tableView?.reloadData()

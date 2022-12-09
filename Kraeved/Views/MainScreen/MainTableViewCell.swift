@@ -28,7 +28,7 @@ class MainTableViewCell: UITableViewCell {
     private let titleLabel = UILabel()
     
     //MARK: - Public Methods
-    func configurate(section: MainTableSectionItem, titleText: String?) {
+    func configurate(section: MainTableSectionItem, titleText: String?, hasOverlay: Bool = false) {
         backgroundColor = .clear
         
         let cellViewFactory = MainTableCellViewFactory()
@@ -38,9 +38,9 @@ class MainTableViewCell: UITableViewCell {
             case .historicalEvent:
                 cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
             case .location:
-                cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
+                cellView = cellViewFactory.makeLocationsCellView(items: section.items, delegate: self)
             case .photo:
-                cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
+                cellView = cellViewFactory.makeGalleryCellView(items: section.items, delegate: self)
         }
         for view in contentView.subviews {
             view.removeFromSuperview()
@@ -62,7 +62,7 @@ class MainTableViewCell: UITableViewCell {
     }
 }
 
-extension MainTableViewCell: HistoricalEventCellDelegate {
+extension MainTableViewCell: EntityCellDelegate {
     func showDetails(id: UUID) {
         delegate?.showHistoricalEventDetail(id: id)
     }
