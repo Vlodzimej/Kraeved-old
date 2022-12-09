@@ -7,27 +7,27 @@
 
 import UIKit
 
-//MARK: - ProfilePresenterProtocol
+// MARK: - ProfilePresenterProtocol
 protocol ProfilePresenterProtocol: AnyObject {
     func viewDidLoad()
 }
 
-//MARK: - ProfilePresenter
+// MARK: - ProfilePresenter
 class ProfilePresenter: ProfilePresenterProtocol {
 
-    //MARK: Properties
+    // MARK: Properties
     weak var view: ProfileViewProtocol?
     private let interactor: ProfileInteractorProtocol
     private let router: ProfileRouterProtocol
-    
+
     private let adapter = ProfileTableAdapter()
 
-    //MARK: Init
+    // MARK: Init
     init(interactor: ProfileInteractorProtocol, router: ProfileRouterProtocol) {
         self.router = router
         self.interactor = interactor
     }
-    
+
     func viewDidLoad() {
         guard let view = view else { return }
         adapter.setup(tableView: view.tableView)

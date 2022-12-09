@@ -7,14 +7,13 @@ protocol BaseRouterProtocol {
 
 class BaseRouter<T>: BaseRouterProtocol where T: UIViewController {
     var viewController: T?
-    
+
     func openAnnotation(annotation: Annotation) {
-        let vc = AnnotationScreenModuleBuilder.build(annotation: annotation)
+        let annotationVC = AnnotationScreenModuleBuilder.build(annotation: annotation)
         guard let viewController = viewController else { return }
-        viewController.navigationController?.present(vc, animated: true)
-        //viewController.navigationController?.pushViewController(vc, animated: true)
+        viewController.navigationController?.present(annotationVC, animated: true)
     }
-    
+
     func openEntityDetails(id: UUID) {
         let entityDetailsVC = EntityDetailsModuleBuilder.build(id: id)
         guard let viewController = viewController else { return }

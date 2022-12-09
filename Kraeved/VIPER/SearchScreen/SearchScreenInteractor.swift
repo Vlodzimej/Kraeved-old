@@ -1,33 +1,33 @@
 import Foundation
 
-//MARK: - SearchItem
+// MARK: - SearchItem
 struct SearchItem {
     let id: UUID
     let title: String
     let type: EntityType
 }
 
-//MARK: - SearchScreenInteractorProtocol
+// MARK: - SearchScreenInteractorProtocol
 protocol SearchScreenInteractorProtocol: AnyObject {
     var items: [SearchItem] { get set }
-    
+
     func search(metaType: MetaType, searchText: String)
 }
 
-//MARK: - SearchScreenInteractor
+// MARK: - SearchScreenInteractor
 class SearchScreenInteractor: SearchScreenInteractorProtocol {
 
-    //MARK: Properties
+    // MARK: Properties
     weak var presenter: SearchScreenPresenterProtocol?
     private let historicalEventsManager: EntityManagerProtocol
-    
+
     var items: [SearchItem] = []
 
-    //MARK: Init
+    // MARK: Init
     init(historicalEventsManager: EntityManagerProtocol = EntityManager.shared) {
         self.historicalEventsManager = historicalEventsManager
     }
-    
+
     func search(metaType: MetaType, searchText: String) {
         historicalEventsManager.find(title: searchText) { [weak self] metaObjects in
             guard let self = self else { return }

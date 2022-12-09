@@ -1,35 +1,35 @@
 import Foundation
 
-//MARK: - MainScreenInteractorProtocol
+// MARK: - MainScreenInteractorProtocol
 protocol MainScreenInteractorProtocol: AnyObject {
     func getHistoricalEvents(completion: @escaping ([MetaObject<Entity>]) -> Void)
 }
 
-//MARK: - MainScreenInteractor
+// MARK: - MainScreenInteractor
 class MainScreenInteractor: MainScreenInteractorProtocol {
-    
-    //MARK: Properties
+
+    // MARK: Properties
     weak var presenter: MainScreenPresenterProtocol?
-    
+
     private let entityManager: EntityManagerProtocol
     private let imageManager: ImageManagerProtocol
-    
-    //MARK: Init
+
+    // MARK: Init
     init(entityManager: EntityManagerProtocol = EntityManager.shared, imageManager: ImageManagerProtocol = ImageManager.shared) {
         self.entityManager = entityManager
         self.imageManager = imageManager
     }
-    
+
     func getHistoricalEvents(completion: @escaping ([MetaObject<Entity>]) -> Void) {
         var events: [MetaObject<Entity>] = []
-        
+
         let queue = DispatchQueue(label: "ru.kraeved.concurrent-queue", attributes: .concurrent)
         let group = DispatchGroup()
         let lock = NSLock()
-        
+
         DispatchQueue.global(qos: .background).async { [weak self] in
             self?.entityManager.get { responseEntities in
-                responseEntities.enumerated().forEach({ [weak self] (index, entity) in
+                responseEntities.enumerated().forEach({ [weak self] (_, entity) in
                     group.enter()
                     queue.async {
                         guard let self = self, let imageUrl = entity.data?.imageUrl, let url = URL(string: imageUrl) else { return }

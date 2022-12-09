@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension BusinessObjectCoreModel {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<BusinessObjectCoreModel> {

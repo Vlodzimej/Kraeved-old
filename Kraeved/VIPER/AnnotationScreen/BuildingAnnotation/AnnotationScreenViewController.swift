@@ -1,16 +1,16 @@
 import UIKit
 
-//MARK: - AnnotationScreenViewProtocol
+// MARK: - AnnotationScreenViewProtocol
 protocol AnnotationScreenViewProtocol: AnyObject {
 }
 
-//MARK: - AnnotationScreenViewController
+// MARK: - AnnotationScreenViewController
 class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewProtocol {
 
-    //MARK: Properties
+    // MARK: Properties
     private let presenter: AnnotationScreenPresenterProtocol
-    
-    //MARK: UIProperties
+
+    // MARK: UIProperties
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24)
@@ -18,7 +18,7 @@ class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewPr
         label.textColor = .black
         return label
     }()
-    
+
     private let coordsLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 8)
@@ -26,8 +26,8 @@ class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewPr
         label.textColor = .black
         return label
     }()
-    
-    //MARK: Init
+
+    // MARK: Init
     init(presenter: AnnotationScreenPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -37,7 +37,7 @@ class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewPr
         fatalError("don't use storyboards!")
     }
 
-    //MARK: VC Lifecycle
+    // MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -47,9 +47,9 @@ class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewPr
         view.backgroundColor = .white
         titleLabel.text = presenter.annotation.title
         coordsLabel.text = "\(presenter.annotation.coordinate.latitude) \(presenter.annotation.coordinate.longitude)"
-        
+
         view.addSubview(titleLabel)
-        
+
         titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
@@ -57,9 +57,7 @@ class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewPr
 
         coordsLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
         coordsLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-        
-        
-        //view.layoutIfNeeded()
+
+        // view.layoutIfNeeded()
     }
 }
-

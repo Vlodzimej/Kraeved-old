@@ -9,24 +9,23 @@ import MapKit
 
 protocol AnnotationManagerProtocol {
     func getAnnotations(completion: @escaping ([Annotation]) -> Void)
-    func getTransport(completion: @escaping ([Transport]) -> Void) 
+    func getTransport(completion: @escaping ([Transport]) -> Void)
 }
 
 class AnnotationManager {
-    
+
     static let shared = AnnotationManager()
-    
+
     private let apiManager: APIManager
-    
+
     private init(apiManager: APIManager = APIManager.shared) {
         self.apiManager = apiManager
     }
-    
+
     func getAnnotations(completion: @escaping ([Annotation]) -> Void) {
 //        guard let url =  URL(string: "http://localhost:5211/api/BusinessObject") else { return [] }
 //        let request = URLRequest(url: url)
-        
-        
+
         // Здесь временно хардкод
         let factory = AnnotationFactory()
         let annotations = [

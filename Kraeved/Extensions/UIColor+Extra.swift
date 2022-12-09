@@ -8,14 +8,14 @@
 import UIKit
 
 extension UIColor {
-    
+
     convenience init(hex hexValue: Int64) {
         let red = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
         let green = CGFloat((hexValue & 0x00FF00) >> 8) / 255.0
         let blue = CGFloat(hexValue & 0x0000FF) / 255.0
         self.init(red: red, green: green, blue: blue, alpha: 1)
     }
-    
+
     struct MainScreen {
         static var background: UIColor { UIColor.white }
         static var cellBackground: UIColor { UIColor.HEX.h4B6285 }

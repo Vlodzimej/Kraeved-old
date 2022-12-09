@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension ImageCoreModel {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ImageCoreModel> {
@@ -18,7 +17,7 @@ extension ImageCoreModel {
 
     @NSManaged public var data: Data?
     @NSManaged public var imageUrl: String?
-    
+
     @discardableResult
     convenience init(data: Data, imageUrl: String) {
         self.init()

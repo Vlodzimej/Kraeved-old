@@ -1,27 +1,27 @@
 import UIKit
 
-//MARK: - MainScreenPresenterProtocol
+// MARK: - MainScreenPresenterProtocol
 protocol MainScreenPresenterProtocol: AnyObject {
     func viewDidLoad()
 }
 
-//MARK: - MainScreenPresenter
+// MARK: - MainScreenPresenter
 class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
 
     private let adapter = MainTableAdapter()
-    
-    //MARK: Properties
+
+    // MARK: Properties
     weak var view: MainScreenViewProtocol?
     private let interactor: MainScreenInteractorProtocol
     private let router: MainScreenRouterProtocol
 
-    //MARK: Init
+    // MARK: Init
     init(interactor: MainScreenInteractorProtocol, router: MainScreenRouterProtocol) {
         self.router = router
         self.interactor = interactor
         super.init()
     }
-    
+
     func viewDidLoad() {
         guard let view = view else { return }
         adapter.delegate = self

@@ -88,9 +88,12 @@
 		66FB06A3293FD26000DFEFA3 /* ImageCoreModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FB06A1293FD26000DFEFA3 /* ImageCoreModel+CoreDataProperties.swift */; };
 		66FB06A6293FE06500DFEFA3 /* BusinessObjectCoreModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FB06A4293FE06500DFEFA3 /* BusinessObjectCoreModel+CoreDataClass.swift */; };
 		66FB06A7293FE06500DFEFA3 /* BusinessObjectCoreModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FB06A5293FE06500DFEFA3 /* BusinessObjectCoreModel+CoreDataProperties.swift */; };
+		9EA87A791F3816EE412692D2 /* Pods_Kraeved.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026A1A550A64E8299CE8C67D /* Pods_Kraeved.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		026A1A550A64E8299CE8C67D /* Pods_Kraeved.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kraeved.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		16DC835CA2DFA43EB5DA7B08 /* Pods-Kraeved.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kraeved.debug.xcconfig"; path = "Target Support Files/Pods-Kraeved/Pods-Kraeved.debug.xcconfig"; sourceTree = "<group>"; };
 		660889F82926DC0300CB5E23 /* Kraeved.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kraeved.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		660889FB2926DC0300CB5E23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		660889FD2926DC0300CB5E23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 		66FB06A1293FD26000DFEFA3 /* ImageCoreModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageCoreModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		66FB06A4293FE06500DFEFA3 /* BusinessObjectCoreModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusinessObjectCoreModel+CoreDataClass.swift"; sourceTree = "<group>"; };
 		66FB06A5293FE06500DFEFA3 /* BusinessObjectCoreModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusinessObjectCoreModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8DCB00623408D7A51AA3DE6E /* Pods-Kraeved.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kraeved.release.xcconfig"; path = "Target Support Files/Pods-Kraeved/Pods-Kraeved.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EA87A791F3816EE412692D2 /* Pods_Kraeved.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +199,8 @@
 			children = (
 				660889FA2926DC0300CB5E23 /* Kraeved */,
 				660889F92926DC0300CB5E23 /* Products */,
+				B7800C2FE54D13E62F877427 /* Pods */,
+				A8BBCC3D38B1C0ED62D570A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -503,6 +510,23 @@
 			path = CodeData;
 			sourceTree = "<group>";
 		};
+		A8BBCC3D38B1C0ED62D570A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				026A1A550A64E8299CE8C67D /* Pods_Kraeved.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7800C2FE54D13E62F877427 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16DC835CA2DFA43EB5DA7B08 /* Pods-Kraeved.debug.xcconfig */,
+				8DCB00623408D7A51AA3DE6E /* Pods-Kraeved.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -510,6 +534,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66088A0F2926DC0400CB5E23 /* Build configuration list for PBXNativeTarget "Kraeved" */;
 			buildPhases = (
+				568B45DADB7A5BB2D64F3231 /* [CP] Check Pods Manifest.lock */,
+				6670E06B2943A41B00C1E229 /* ShellScript */,
 				660889F42926DC0300CB5E23 /* Sources */,
 				660889F52926DC0300CB5E23 /* Frameworks */,
 				660889F62926DC0300CB5E23 /* Resources */,
@@ -570,6 +596,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		568B45DADB7A5BB2D64F3231 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kraeved-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6670E06B2943A41B00C1E229 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		660889F42926DC0300CB5E23 /* Sources */ = {
@@ -796,6 +865,7 @@
 		};
 		66088A102926DC0400CB5E23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16DC835CA2DFA43EB5DA7B08 /* Pods-Kraeved.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -829,6 +899,7 @@
 		};
 		66088A112926DC0400CB5E23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DCB00623408D7A51AA3DE6E /* Pods-Kraeved.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

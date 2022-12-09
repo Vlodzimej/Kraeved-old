@@ -20,7 +20,3 @@ struct Entity: Codable {
     var longitude: Double?
     var latitude: Double?
 }
-
-
-
-

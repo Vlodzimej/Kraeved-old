@@ -5,16 +5,16 @@
 //  Created by Владимир Амелькин on 09.11.2022.
 //
 
-//import MapKit
+// import MapKit
 //
-//enum NaturalSubtype {
+// enum NaturalSubtype {
 //    case pond
 //    case forest
 //    case rill
 //    case reserve
-//}
+// }
 //
-//class NaturalAnnotaton: Annotation {
+// class NaturalAnnotaton: Annotation {
 //    
 //    let subtype: NaturalSubtype
 //    
@@ -22,4 +22,4 @@
 //        self.subtype = subtype
 //        super.init(id: id, coordinate: coordinate, title: title, subtitle: nil, type: .natural)
 //    }
-//}
+// }

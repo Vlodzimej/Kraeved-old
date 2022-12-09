@@ -1,32 +1,32 @@
 import UIKit
 
-//MARK: - SearchScreenPresenterProtocol
+// MARK: - SearchScreenPresenterProtocol
 protocol SearchScreenPresenterProtocol: AnyObject {
     var currentMetaType: MetaType? { get set }
-    
+
     func viewDidLoad()
     func search(metaType: MetaType, searchText: String)
     func update()
 }
 
-//MARK: - SearchScreenPresenter
+// MARK: - SearchScreenPresenter
 class SearchScreenPresenter: NSObject, SearchScreenPresenterProtocol {
-    
-    //MARK: Properties
+
+    // MARK: Properties
     weak var view: SearchScreenViewProtocol?
     private let interactor: SearchScreenInteractorProtocol
     private let router: SearchScreenRouterProtocol
-    
+
     private let adapter = SearchTableAdapter()
-    
+
     var currentMetaType: MetaType?
 
-    //MARK: Init
+    // MARK: Init
     init(interactor: SearchScreenInteractorProtocol, router: SearchScreenRouterProtocol) {
         self.router = router
         self.interactor = interactor
     }
-    
+
     func viewDidLoad() {
         guard let view = view else { return }
         adapter.delegate = self
@@ -35,11 +35,11 @@ class SearchScreenPresenter: NSObject, SearchScreenPresenterProtocol {
             search(metaType: currentMetaType, searchText: "")
         }
     }
-    
+
     func search(metaType: MetaType, searchText: String) {
         interactor.search(metaType: metaType, searchText: searchText)
     }
-    
+
     func update() {
         DispatchQueue.main.async { [weak self]  in
             guard let self = self else { return }

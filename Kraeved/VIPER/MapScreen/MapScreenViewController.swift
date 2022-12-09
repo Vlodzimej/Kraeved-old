@@ -1,25 +1,25 @@
 import UIKit
 import MapKit
 
-//MARK: - MapScreenViewProtocol
+// MARK: - MapScreenViewProtocol
 protocol MapScreenViewProtocol: AnyObject {
     var mapView: MKMapView { get set }
 }
 
-//MARK: - MapScreenViewController
+// MARK: - MapScreenViewController
 class MapScreenViewController: UIViewController, MapScreenViewProtocol {
     var mapView: MKMapView = {
         let mapView = MKMapView()
         mapView.translatesAutoresizingMaskIntoConstraints = false
         return mapView
     }()
-    
-    //MARK: Properties
+
+    // MARK: Properties
     private let presenter: MapScreenPresenterProtocol
-    
-    //MARK: UIProperties
-    
-    //MARK: Init
+
+    // MARK: UIProperties
+
+    // MARK: Init
     init(presenter: MapScreenPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -29,19 +29,19 @@ class MapScreenViewController: UIViewController, MapScreenViewProtocol {
         fatalError("don't use storyboards!")
     }
 
-    //MARK: VC Lifecycle
+    // MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         initialize()
-        
+
         presenter.viewDidLoad()
         mapView.delegate = self
     }
 
     private func initialize() {
         view.addSubview(mapView)
-        
+
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true

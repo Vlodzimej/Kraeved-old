@@ -22,18 +22,18 @@ protocol AnnotationProtocol: AnyObject {
 }
 
 class Annotation: NSObject, MKAnnotation, AnnotationProtocol {
-    
+
     var id: Int
-    
+
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
-    
+
     let startDate: Date?
     let type: AnnotationType
-    
-    private var text: String? = nil
-    
+
+    private var text: String?
+
     init(id: Int, coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, type: AnnotationType, startDate: Date? = nil) {
         self.id = id
         self.coordinate = coordinate
@@ -42,11 +42,11 @@ class Annotation: NSObject, MKAnnotation, AnnotationProtocol {
         self.type = type
         self.startDate = startDate
     }
-    
+
     func updateText(_ text: String) {
         self.text = text
     }
-    
+
     func getTextInfo() -> String? {
         if let title = title {
             return "\(title)/n\(subtitle ?? "")"
@@ -56,7 +56,7 @@ class Annotation: NSObject, MKAnnotation, AnnotationProtocol {
             return nil
         }
     }
-    
+
     func getDiscription() -> String? {
         return text
     }
@@ -64,19 +64,19 @@ class Annotation: NSObject, MKAnnotation, AnnotationProtocol {
 
 class AnnotationDecorator: AnnotationProtocol {
     let decoratedAnnotation: AnnotationProtocol
-    
+
     required init(_ decoratedAnnotation: Annotation) {
         self.decoratedAnnotation = decoratedAnnotation
     }
-    
+
     func updateText(_ text: String) {
         decoratedAnnotation.updateText(text)
     }
-    
+
     func getTextInfo() -> String? {
         return decoratedAnnotation.getTextInfo()
     }
-    
+
     func getDiscription() -> String? {
         return decoratedAnnotation.getDiscription()
     }
@@ -86,15 +86,15 @@ class Mark: AnnotationDecorator {
     required init(_ decoratedAnnotation: Annotation) {
         super.init(decoratedAnnotation)
     }
-    
+
     override func getTextInfo() -> String? {
         guard let text = decoratedAnnotation.getDiscription() else { return nil }
         return "MARK:\n\(text)"
     }
-    
+
 }
 
-//struct AnnotationDto: Decodable {
+// struct AnnotationDto: Decodable {
 //    let id: Int?
 //    let title: String?
 //    let latitude: String?
@@ -103,4 +103,4 @@ class Mark: AnnotationDecorator {
 //    enum CodingKeys: String, CodingKey {
 //        case id, title, latitude, longitude
 //    }
-//}
+// }

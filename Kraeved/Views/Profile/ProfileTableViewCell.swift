@@ -7,16 +7,16 @@
 
 import UIKit
 
-//MARK: - ProfileTableViewCell
+// MARK: - ProfileTableViewCell
 class ProfileTableViewCell: UITableViewCell {
-    
-    //MARK: UIConstants
+
+    // MARK: UIConstants
     struct UIConstatns {
         static let cellHeight: CGFloat = 64
         static let contentInset: CGFloat = 16
     }
-    
-    //MARK: UIProperties
+
+    // MARK: UIProperties
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -24,7 +24,7 @@ class ProfileTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private let valueLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -32,8 +32,8 @@ class ProfileTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    //MARK: Private Methods
+
+    // MARK: Private Methods
     func drawSeparator() {
         let line = CAShapeLayer()
         let linePath = UIBezierPath()
@@ -45,24 +45,24 @@ class ProfileTableViewCell: UITableViewCell {
         line.strokeColor = UIColor.lightGray.cgColor
         layer.addSublayer(line)
     }
-    
-    //MARK: Public Methods
+
+    // MARK: Public Methods
     func configurate(viewModel: ProfileCellViewModel, isLastRow: Bool) {
         backgroundColor = .clear
         for view in contentView.subviews {
             view.removeFromSuperview()
         }
-        
+
         titleLabel.text = viewModel.title
         contentView.addSubview(titleLabel)
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UIConstatns.contentInset).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        
+
         valueLabel.text = viewModel.value
         contentView.addSubview(valueLabel)
         valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UIConstatns.contentInset).isActive = true
         valueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-            
+
         if !isLastRow {
             drawSeparator()
         }

@@ -14,7 +14,7 @@ struct BusinessObject: Identifiable, Codable {
     var customProperties: String?
     var startDate: String?
     var finishDate: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -24,7 +24,7 @@ struct BusinessObject: Identifiable, Codable {
         case startDate
         case finishDate
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
@@ -34,7 +34,7 @@ struct BusinessObject: Identifiable, Codable {
         try container.encode(startDate, forKey: .startDate)
         try container.encode(finishDate, forKey: .finishDate)
     }
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(UUID.self, forKey: .id)
@@ -44,7 +44,7 @@ struct BusinessObject: Identifiable, Codable {
         self.startDate = try container.decode(String.self, forKey: .startDate)
         self.finishDate = try container.decode(String.self, forKey: .finishDate)
     }
-    
+
     init(_ businessObject: BusinessObjectCoreModel) {
         self.id = businessObject.id
         self.title = businessObject.title
@@ -53,7 +53,7 @@ struct BusinessObject: Identifiable, Codable {
         self.startDate = businessObject.startDate
         self.finishDate = businessObject.finishDate
     }
-    
+
     func convertToMetaObject<T: Codable>() -> MetaObject<T>? {
         guard let id = id, let json = customProperties?.data(using: .utf8)! else { return nil }
         let decoder = JSONDecoder()
@@ -61,8 +61,7 @@ struct BusinessObject: Identifiable, Codable {
         do {
             let data = try decoder.decode(T.self, from: json)
             result = MetaObject(id: id, title: title, image: nil, data: data)
-        }
-        catch {
+        } catch {
             debugPrint(error)
             return MetaObject(id: id)
         }

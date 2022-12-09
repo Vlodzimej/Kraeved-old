@@ -1,20 +1,20 @@
 import UIKit
 
-//MARK: - AnnotationScreenPresenterProtocol
+// MARK: - AnnotationScreenPresenterProtocol
 protocol AnnotationScreenPresenterProtocol: AnyObject {
     var annotation: Annotation { get }
 }
 
-//MARK: - AnnotationScreenPresenter
+// MARK: - AnnotationScreenPresenter
 class AnnotationScreenPresenter: AnnotationScreenPresenterProtocol {
 
-    //MARK: Properties
+    // MARK: Properties
     weak var view: AnnotationScreenViewProtocol?
     private let interactor: AnnotationScreenInteractorProtocol
     private let router: AnnotationScreenRouterProtocol
     var annotation: Annotation
-    
-    //MARK: Init
+
+    // MARK: Init
     init(interactor: AnnotationScreenInteractorProtocol, router: AnnotationScreenRouterProtocol, annotation: Annotation) {
         self.router = router
         self.interactor = interactor

@@ -7,24 +7,24 @@
 
 import Foundation
 
-//MARK: - ProfileInteractorProtocol
+// MARK: - ProfileInteractorProtocol
 protocol ProfileInteractorProtocol: AnyObject {
     var defaultUser: User { get set }
 }
 
-//MARK: - ProfileInteractor
+// MARK: - ProfileInteractor
 class ProfileInteractor: ProfileInteractorProtocol {
 
-    //MARK: Properties
+    // MARK: Properties
     weak var presenter: ProfilePresenterProtocol?
-    
+
     var defaultUser = User(username: "Default User", email: "default@mail.ru", phone: 9105968117, score: 100)
 
-    //MARK: Init
+    // MARK: Init
     init() {
     }
 
-    //MARK: Private Methods
+    // MARK: Private Methods
 
-    //MARK: Public Methods
+    // MARK: Public Methods
 }

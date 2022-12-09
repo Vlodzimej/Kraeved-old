@@ -33,7 +33,7 @@ class AnnotationFactory: AnnotationFactoryProtocol {
     func makeBuilding(id: Int, coordinate: CLLocationCoordinate2D, title: String, subtype: BuildingSubtype) -> Annotation {
         return BuildingAnnotation(id: id, coordinate: coordinate, title: title, subtype: subtype)
     }
-    
+
     func makeNature(id: Int, coordinate: CLLocationCoordinate2D, title: String, subtype: NaturalSubtype) -> Annotation {
         return NaturalAnnotaton(id: id, coordinate: coordinate, title: title, subtype: subtype)
     }
@@ -42,7 +42,7 @@ class AnnotationFactory: AnnotationFactoryProtocol {
 class BuildingAnnotation: Annotation {
 
     let subtype: BuildingSubtype
-    
+
     init(id: Int, coordinate: CLLocationCoordinate2D, title: String, subtype: BuildingSubtype) {
         self.subtype = subtype
         super.init(id: id, coordinate: coordinate, title: title, subtitle: nil, type: .building)
@@ -50,9 +50,9 @@ class BuildingAnnotation: Annotation {
 }
 
 class NaturalAnnotaton: Annotation {
-    
+
     let subtype: NaturalSubtype
-    
+
     init(id: Int, coordinate: CLLocationCoordinate2D, title: String, subtype: NaturalSubtype) {
         self.subtype = subtype
         super.init(id: id, coordinate: coordinate, title: title, subtitle: nil, type: .natural)

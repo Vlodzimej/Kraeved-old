@@ -1,32 +1,32 @@
 import UIKit
 
-//MARK: - SearchScreenViewProtocol
+// MARK: - SearchScreenViewProtocol
 protocol SearchScreenViewProtocol: AnyObject {
     var tableView: UITableView { get set }
 }
 
-fileprivate struct SearchTypes {
+private struct SearchTypes {
     let title: String
     let metaType: MetaType
 }
 
-//MARK: - SearchScreenViewController
+// MARK: - SearchScreenViewController
 class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
 
-    //MARK: UIConstants
+    // MARK: UIConstants
     struct UIConstants {
         static let segmentedControlHeight: CGFloat = 32
     }
-    
-    //MARK: Properties
+
+    // MARK: Properties
     private let presenter: SearchScreenPresenterProtocol
-    
+
     private let searchTypes: [SearchTypes] = [
         SearchTypes(title: NSLocalizedString("searchItems.historicalEvents", comment: ""), metaType: .entity),
-        SearchTypes(title: NSLocalizedString("searchItems.annotations", comment: ""), metaType: .entity),
+        SearchTypes(title: NSLocalizedString("searchItems.annotations", comment: ""), metaType: .entity)
     ]
-    
-    //MARK: UIProperties
+
+    // MARK: UIProperties
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.delegate = self
@@ -38,7 +38,7 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
         }
         return searchBar
     }()
-    
+
 //    private lazy var segmentedControl: UISegmentedControl = {
 //        let segmentedControl = UISegmentedControl(items: searchTypes.map { $0.title })
 //        segmentedControl.selectedSegmentIndex = 0
@@ -51,7 +51,7 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
 //        segmentedControl.accessibilityNavigationStyle = .combined
 //        return segmentedControl
 //    }()
-    
+
     var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,8 +59,8 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
         tableView.backgroundColor = .white
         return tableView
     }()
-    
-    //MARK: Init
+
+    // MARK: Init
     init(presenter: SearchScreenPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -70,7 +70,7 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
         fatalError("don't use storyboards!")
     }
 
-    //MARK: VC Lifecycle
+    // MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -83,16 +83,16 @@ class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
         navigationItem.titleView = searchBar
 
         view.addSubview(tableView)
-        
+
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
-    //MARK: Private methods
+    // MARK: Private methods
 
-    //MARK: Public methods
+    // MARK: Public methods
 
 }
 

@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 public class BusinessObjectCoreModel: NSManagedObject {
     convenience init() {
         self.init(entity: CoreDataManager.shared.entityForName(entityName: "BusinessObjectCoreModel"), insertInto: CoreDataManager.shared.managedObjectContext)

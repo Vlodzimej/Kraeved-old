@@ -8,26 +8,25 @@
 import Foundation
 import CoreData
 
-//MARK: - BusinessObjectManagerProtocol
+// MARK: - BusinessObjectManagerProtocol
 protocol BusinessObjectManagerProtocol: AnyObject {
     func get(metaTypeId: UUID, completion: @escaping ([BusinessObject]) -> Void)
     func find(metaTypeId: UUID, predicates: [NSPredicate], completion: @escaping ([BusinessObject]) -> Void)
 }
 
-//MARK: - BusinessObjectManager
+// MARK: - BusinessObjectManager
 class BusinessObjectManager: BusinessObjectManagerProtocol {
-    
-    
+
     static let shared = BusinessObjectManager()
-    
+
     private let apiManager: APIManager
     private let coreDataManager: CoreDataManagerProtocol
-    
+
     private init(apiManager: APIManager = APIManager.shared, coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared) {
         self.apiManager = apiManager
         self.coreDataManager = coreDataManager
     }
-    
+
     /**
      Получение и кэширование бизнес-объектов
     */
@@ -45,7 +44,7 @@ class BusinessObjectManager: BusinessObjectManagerProtocol {
             }
         }
     }
-    
+
     /**
      Поиск по кэшированным бизнес-объектам
      */

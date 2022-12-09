@@ -9,7 +9,7 @@ import UIKit
 
 enum MetaType {
     case entity
-    
+
     var id: UUID {
         switch self {
             case .entity:
@@ -24,4 +24,3 @@ struct MetaObject<T: Codable>: Identifiable {
     var image: UIImage?
     var data: T?
 }
-
