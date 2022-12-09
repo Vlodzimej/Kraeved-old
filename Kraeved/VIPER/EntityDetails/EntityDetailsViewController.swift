@@ -1,5 +1,5 @@
 //
-//  HistoricalEventViewController.swift
+//  EntityDetailsViewController.swift
 //  Kraeved
 //
 //  Created by Владимир Амелькин on 23.11.2022.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-//MARK: - HistoricalEventViewProtocol
-protocol HistoricalEventViewProtocol: AnyObject {
-    func update(object: MetaObject<Entity>)
+//MARK: - EntityDetailsViewProtocol
+protocol EntityDetailsViewProtocol: AnyObject {
+    func update(entity: MetaObject<Entity>)
 }
 
-//MARK: - HistoricalEventViewController
-class HistoricalEventViewController: BaseViewController, HistoricalEventViewProtocol {
+//MARK: - EntityDetailsViewController
+class EntityDetailsViewController: BaseViewController, EntityDetailsViewProtocol {
 
     //MARK: Properties
-    private let presenter: HistoricalEventPresenterProtocol
+    private let presenter: EntityDetailsPresenterProtocol
     
     //MARK: UIProperties
     private let titleLabel: UILabel = {
@@ -39,7 +39,7 @@ class HistoricalEventViewController: BaseViewController, HistoricalEventViewProt
     }()
     
     //MARK: Init
-    init(presenter: HistoricalEventPresenterProtocol) {
+    init(presenter: EntityDetailsPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -75,9 +75,9 @@ class HistoricalEventViewController: BaseViewController, HistoricalEventViewProt
     //MARK: Private methods
 
     //MARK: Public methods
-    func update(object: MetaObject<Entity>) {
-        titleLabel.text = object.title
-        textLabel.text = object.data?.text
+    func update(entity: MetaObject<Entity>) {
+        titleLabel.text = entity.title
+        textLabel.text = entity.data?.text
     }
 
 }

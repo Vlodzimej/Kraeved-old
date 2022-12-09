@@ -6,7 +6,7 @@ protocol MainScreenPresenterProtocol: AnyObject {
 }
 
 //MARK: - MainScreenPresenter
-class MainScreenPresenter: MainScreenPresenterProtocol {
+class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
 
     private let adapter = MainTableAdapter()
     
@@ -19,6 +19,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
     init(interactor: MainScreenInteractorProtocol, router: MainScreenRouterProtocol) {
         self.router = router
         self.interactor = interactor
+        super.init()
     }
     
     func viewDidLoad() {
@@ -35,7 +36,7 @@ class MainScreenPresenter: MainScreenPresenterProtocol {
 }
 
 extension MainScreenPresenter: MainTableAdapterDelegate {
-    func showHistoricalEventDetail(id: UUID) {
-        router.openHistoricalEventDetail(id: id)
+    func showEntityDetails(id: UUID) {
+        router.openEntityDetails(id: id)
     }
 }

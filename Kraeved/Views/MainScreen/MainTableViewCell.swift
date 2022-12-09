@@ -9,7 +9,7 @@ import UIKit
 
 //MARK: - MainTableCellDelegate
 protocol MainTableCellDelegate: AnyObject {
-    func showHistoricalEventDetail(id: UUID)
+    func showEntityDetails(id: UUID)
 }
 
 //MARK: - MainTableCell
@@ -64,6 +64,6 @@ class MainTableViewCell: UITableViewCell {
 
 extension MainTableViewCell: EntityCellDelegate {
     func showDetails(id: UUID) {
-        delegate?.showHistoricalEventDetail(id: id)
+        delegate?.showEntityDetails(id: id)
     }
 }

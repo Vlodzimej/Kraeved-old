@@ -50,6 +50,6 @@ class SearchScreenPresenter: NSObject, SearchScreenPresenterProtocol {
 
 extension SearchScreenPresenter: SearchTableAdapterDelegate {
     func showHistoricalEventDetail(id: UUID) {
-        router.openHistoricalEventDetail(id: id)
+        router.openEntityDetails(id: id)
     }
 }

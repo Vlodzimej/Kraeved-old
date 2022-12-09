@@ -7,27 +7,6 @@
 
 import UIKit
 
-////MARK: - MainTableSectionType
-//enum MainTableSectionType {
-//    case historicalEvents
-//    case locations
-//    case gallery
-//
-//    var title: String {
-//        switch self {
-//            case .historicalEvents:
-//                return NSLocalizedString("mainScreen.historicalEvents", comment: "")
-//            case .locations:
-//                return NSLocalizedString("mainScreen.locations", comment: "")
-//            case .gallery:
-//                return NSLocalizedString("mainScreen.gallery", comment: "")
-//        }
-//    }
-//
-//
-//
-//}
-
 //MARK: - MainTableSectionItem
 struct MainTableSectionItem {
     let title: String
@@ -50,7 +29,7 @@ struct MainTableCellItem {
 }
 
 protocol MainTableAdapterDelegate: AnyObject {
-    func showHistoricalEventDetail(id: UUID)
+    func showEntityDetails(id: UUID)
 }
 
 class MainTableAdapter: NSObject {
@@ -129,7 +108,7 @@ extension MainTableAdapter: UITableViewDataSource {
 }
 
 extension MainTableAdapter: MainTableCellDelegate {
-    func showHistoricalEventDetail(id: UUID) {
-        delegate?.showHistoricalEventDetail(id: id)
+    func showEntityDetails(id: UUID) {
+        delegate?.showEntityDetails(id: id)
     }
 }
