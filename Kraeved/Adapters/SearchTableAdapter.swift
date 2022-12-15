@@ -15,7 +15,7 @@ protocol SearchTableAdapterDelegate: AnyObject {
 //MARK: - SearchTableAdapter
 class SearchTableAdapter: NSObject {
     
-    private var businessObjects: [BusinessObject] = []
+    private var items: [SearchItem] = []
     
     private var tableView: UITableView?
     
@@ -29,30 +29,28 @@ class SearchTableAdapter: NSObject {
         self.tableView = tableView
     }
     
-    func configurate(businessObjects: [BusinessObject]) {
-        self.businessObjects = businessObjects
+    func configurate(items: [SearchItem]) {
+        self.items = items
         tableView?.reloadData()
     }
 }
 
 extension SearchTableAdapter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let businessObject = businessObjects[indexPath.item]
-        if businessObject.metaTypeId?.uuidString.lowercased() == MetaType.historicalEvent.rawValue.lowercased() {
-            delegate?.showHistoricalEventDetail(id: businessObject.id)
-        }
+        let item = items[indexPath.item]
+        delegate?.showHistoricalEventDetail(id: item.id)
     }
 }
 
 extension SearchTableAdapter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        businessObjects.count
+        items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell") as? SearchTableViewCell else { return UITableViewCell() }
-        let businessObject = businessObjects[indexPath.item]
-        cell.configurate(title: businessObject.title ?? NSLocalizedString("common.noTitle", comment: ""))
+        let item = items[indexPath.item]
+        cell.configurate(title: item.title)
         return cell
     }
     

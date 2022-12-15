@@ -8,7 +8,7 @@
 import Foundation
 
 struct BusinessObject: Identifiable, Codable {
-    var id: UUID
+    var id: UUID?
     var title: String?
     var metaTypeId: UUID?
     var customProperties: String?
@@ -45,8 +45,17 @@ struct BusinessObject: Identifiable, Codable {
         self.finishDate = try container.decode(String.self, forKey: .finishDate)
     }
     
-    func convertToMetaObject<T: Codable>() -> MetaObject<T> {
-        guard let json = customProperties?.data(using: .utf8)! else { return MetaObject(id: id) }
+    init(_ businessObject: BusinessObjectCoreModel) {
+        self.id = businessObject.id
+        self.title = businessObject.title
+        self.metaTypeId = businessObject.metaTypeId
+        self.customProperties = businessObject.customProperties
+        self.startDate = businessObject.startDate
+        self.finishDate = businessObject.finishDate
+    }
+    
+    func convertToMetaObject<T: Codable>() -> MetaObject<T>? {
+        guard let id = id, let json = customProperties?.data(using: .utf8)! else { return nil }
         let decoder = JSONDecoder()
         var result: MetaObject<T>
         do {

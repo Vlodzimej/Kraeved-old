@@ -16,6 +16,7 @@ class TabBarController: UITabBarController {
         tabBar.tintColor = .black
 
         initialize()
+        
     }
     
     private func initialize() {

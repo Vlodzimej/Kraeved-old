@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import CoreData
 
 protocol HistoricalEventsManagerProtocol: AnyObject {
-    func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void)
-    func getHistoricalEvent(by id: UUID, completion: @escaping (MetaObject<HistoricalEvent>) -> Void)
+    func get(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void)
+    func find(arguments: [String : String], completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void)
+    func find(title: String, completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void)
 }
 
 class HistoricalEventsManager: HistoricalEventsManagerProtocol {
@@ -22,23 +24,27 @@ class HistoricalEventsManager: HistoricalEventsManagerProtocol {
         self.businessObjectManager = businessObjectManager
     }
     
-    func getHistoricalEvents(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void) {
-        businessObjectManager.getBusinessObjects(by: MetaType.historicalEvent.rawValue) {
+    func get(completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void) {
+        businessObjectManager.get(metaTypeId: MetaType.historicalEvent.rawValue) {
             (businessObjects: [BusinessObject]) in
-            if let encoded = try? JSONEncoder().encode(businessObjects) {
-                UserDefaults.standard.set(encoded, forKey: UserDefaultsKeys.historicalEvents.rawValue)
-            }
-            let historicalEvents: [MetaObject<HistoricalEvent>] = businessObjects.map { $0.convertToMetaObject() }
+            let historicalEvents: [MetaObject<HistoricalEvent>] = businessObjects.compactMap { $0.convertToMetaObject() }
             completion(historicalEvents)
         }
     }
     
-    func getHistoricalEvent(by id: UUID, completion: @escaping (MetaObject<HistoricalEvent>) -> Void) {
-        if let data = UserDefaults.standard.object(forKey: UserDefaultsKeys.historicalEvents.rawValue) as? Data,
-           let businessObjects = try? JSONDecoder().decode([BusinessObject].self, from: data) {
-            guard let businessObject = businessObjects.first(where: { $0.id == id }) else { return }
-            let historicalEvent: MetaObject<HistoricalEvent> = businessObject.convertToMetaObject()
-            completion(historicalEvent)
+    func find(arguments: [String : String], completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void) {
+        let predicates = arguments.map { NSPredicate(format: "%K = %@", $0.key, $0.value) }
+        businessObjectManager.find(metaTypeId: MetaType.historicalEvent.rawValue, predicates: predicates) { businessObjects in
+            let historicalEvents: [MetaObject<HistoricalEvent>] = businessObjects.compactMap { $0.convertToMetaObject() }
+            completion(historicalEvents)
+        }
+    }
+    
+    func find(title: String, completion: @escaping ([MetaObject<HistoricalEvent>]) -> Void) {
+        let predicate = NSPredicate(format: "%K CONTAINS[cd] %@", "title", title)
+        businessObjectManager.find(metaTypeId: MetaType.historicalEvent.rawValue, predicates: [predicate]) { businessObjects in
+            let historicalEvents: [MetaObject<HistoricalEvent>] = businessObjects.compactMap { $0.convertToMetaObject() }
+            completion(historicalEvents)
         }
     }
 }

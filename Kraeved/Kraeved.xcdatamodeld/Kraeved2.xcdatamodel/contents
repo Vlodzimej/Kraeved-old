@@ -13,13 +13,4 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="ImageCoreModel" representedClassName=".ImageCoreModel" syncable="YES">
-        <attribute name="data" optional="YES" attributeType="Binary"/>
-        <attribute name="imageUrl" optional="YES" attributeType="String"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="imageUrl"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
 </model>

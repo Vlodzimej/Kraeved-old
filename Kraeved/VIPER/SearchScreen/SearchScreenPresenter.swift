@@ -6,6 +6,7 @@ protocol SearchScreenPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func search(metaType: MetaType, searchText: String)
+    func update()
 }
 
 //MARK: - SearchScreenPresenter
@@ -37,8 +38,13 @@ class SearchScreenPresenter: NSObject, SearchScreenPresenterProtocol {
     
     func search(metaType: MetaType, searchText: String) {
         interactor.search(metaType: metaType, searchText: searchText)
-        guard let businessObjects = interactor.businessObjects else { return }
-        adapter.configurate(businessObjects: businessObjects)
+    }
+    
+    func update() {
+        DispatchQueue.main.async { [weak self]  in
+            guard let self = self else { return }
+            self.adapter.configurate(items: self.interactor.items)
+        }
     }
 }
 

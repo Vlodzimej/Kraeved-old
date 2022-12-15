@@ -1,8 +1,14 @@
 import Foundation
 
+//MARK: - SearchItem
+struct SearchItem {
+    let id: UUID
+    let title: String
+}
+
 //MARK: - SearchScreenInteractorProtocol
 protocol SearchScreenInteractorProtocol: AnyObject {
-    var businessObjects: [BusinessObject]? { get set }
+    var items: [SearchItem] { get set }
     
     func search(metaType: MetaType, searchText: String)
 }
@@ -10,29 +16,25 @@ protocol SearchScreenInteractorProtocol: AnyObject {
 //MARK: - SearchScreenInteractor
 class SearchScreenInteractor: SearchScreenInteractorProtocol {
 
-    var businessObjects: [BusinessObject]?
     //MARK: Properties
     weak var presenter: SearchScreenPresenterProtocol?
+    private let historicalEventsManager: HistoricalEventsManagerProtocol
+    
+    var items: [SearchItem] = []
 
     //MARK: Init
-    init() {}
+    init(historicalEventsManager: HistoricalEventsManagerProtocol = HistoricalEventsManager.shared) {
+        self.historicalEventsManager = historicalEventsManager
+    }
     
     func search(metaType: MetaType, searchText: String) {
-        var businessObjectsByMetaType: [BusinessObject]?
-        switch metaType {
-            case .historicalEvent:
-            if let data = UserDefaults.standard.object(forKey: UserDefaultsKeys.historicalEvents.rawValue) as? Data {
-                businessObjectsByMetaType = try? JSONDecoder().decode([BusinessObject].self, from: data)
+        historicalEventsManager.find(title: searchText) { [weak self] metaObjects in
+            guard let self = self else { return }
+            self.items = metaObjects.compactMap { item in
+                guard let title = item.title else { return nil }
+                return SearchItem(id: item.id, title: title)
             }
-            case .picture:
-                break
-            case .annotation:
-                break
-        }
-        
-        if let businessObjectsByMetaType = businessObjectsByMetaType {
-            let lowercasedText = searchText.lowercased()
-            businessObjects = searchText.isEmpty ? businessObjectsByMetaType : businessObjectsByMetaType.filter({ $0.title?.lowercased().contains(lowercasedText) ?? false })
+            self.presenter?.update()
         }
     }
 }
