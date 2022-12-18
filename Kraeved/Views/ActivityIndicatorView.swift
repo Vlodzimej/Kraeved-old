@@ -12,7 +12,7 @@ final class ActivityIndicatorView: UIView {
 
     // MARK: UIConstants
     struct UIConstants {
-        static let size: CGFloat = 96
+        static let size: CGFloat = 64
     }
 
     private let mainView: UIView = {
@@ -22,7 +22,7 @@ final class ActivityIndicatorView: UIView {
 
     private let squareLayer: CALayer = {
         let layer = CALayer()
-        layer.backgroundColor = UIColor.white.cgColor
+        layer.backgroundColor = UIColor.lightGray.cgColor
         layer.borderColor = UIColor.darkGray.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = 8
@@ -30,15 +30,17 @@ final class ActivityIndicatorView: UIView {
     }()
 
     init() {
-        super.init(frame: CGRect(x: 0, y: 0, width: 128, height: 128))
+        super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
+
+        initialize()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func configurate() {
+
+    func initialize() {
         squareLayer.frame = CGRect(x: 0, y: 0, width: UIConstants.size, height: UIConstants.size)
 
         let rotationAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")

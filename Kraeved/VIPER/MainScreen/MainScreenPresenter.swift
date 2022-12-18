@@ -35,8 +35,8 @@ class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
         interactor.getHistoricalEvents { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                self.baseView?.showOnboarding()
                 self.baseView?.isActivityIndicatorHidden = true
-                
                 self.adapter.configurate(entities: result)
             }
         }

@@ -8,4 +8,5 @@ import Foundation
 
 extension Notification.Name {
     static let changeActivityIndicatorVisibility = Notification.Name(rawValue: "changeActivityIndicatorVisibility")
+    static let showOnboarding = Notification.Name(rawValue: "showOnboarding")
 }

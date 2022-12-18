@@ -80,7 +80,6 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         presenter.viewDidLoad()
         mapView.delegate = presenter
     }
-    
 
     private func initialize() {
         view.addSubview(mapView)
