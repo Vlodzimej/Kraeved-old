@@ -55,6 +55,9 @@
 		66183E26292D7C8A008412B0 /* EntityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E21292D7C8A008412B0 /* EntityDetailsViewController.swift */; };
 		66183E27292D7C8A008412B0 /* EntityDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E22292D7C8A008412B0 /* EntityDetailsInteractor.swift */; };
 		66183E29292D8293008412B0 /* MainTableCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E28292D8293008412B0 /* MainTableCellFactory.swift */; };
+		668E6127294F805F00478BE3 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E6126294F805F00478BE3 /* ActivityIndicatorView.swift */; };
+		668E6129294F9EBF00478BE3 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E6128294F9EBF00478BE3 /* test.swift */; };
+		668E612B294FA48D00478BE3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E612A294FA48D00478BE3 /* Notifications.swift */; };
 		66956E372931046C00FC161C /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66956E362931046C00FC161C /* UserDefaultsKeys.swift */; };
 		66956E3929310BFE00FC161C /* BusinessObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66956E3829310BFE00FC161C /* BusinessObjectManager.swift */; };
 		66956E602932587D00FC161C /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66956E5F2932587D00FC161C /* SearchTableViewCell.swift */; };
@@ -145,6 +148,9 @@
 		66183E21292D7C8A008412B0 /* EntityDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDetailsViewController.swift; sourceTree = "<group>"; };
 		66183E22292D7C8A008412B0 /* EntityDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDetailsInteractor.swift; sourceTree = "<group>"; };
 		66183E28292D8293008412B0 /* MainTableCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableCellFactory.swift; sourceTree = "<group>"; };
+		668E6126294F805F00478BE3 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		668E6128294F9EBF00478BE3 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		668E612A294FA48D00478BE3 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		66956E362931046C00FC161C /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		66956E3829310BFE00FC161C /* BusinessObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessObjectManager.swift; sourceTree = "<group>"; };
 		66956E5F2932587D00FC161C /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -311,6 +317,7 @@
 				66183E04292C1DF8008412B0 /* UIImage+areaAverage.swift */,
 				66183E06292C2B1D008412B0 /* UIColor+mix.swift */,
 				66C1CDD6293025F600249231 /* Array+safeIndex.swift */,
+				668E612A294FA48D00478BE3 /* Notifications.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -343,6 +350,8 @@
 				66956E5E2932584C00FC161C /* SearchScreen */,
 				66C1CDD8293026BB00249231 /* Common */,
 				66183DE4292AA780008412B0 /* MainScreen */,
+				668E6126294F805F00478BE3 /* ActivityIndicatorView.swift */,
+				668E6128294F9EBF00478BE3 /* test.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -701,6 +710,7 @@
 				66D41EAF2932CD7300FD66CA /* ProfileTableAdapter.swift in Sources */,
 				66A8A5182926E1D9000BFC29 /* SearchScreenViewController.swift in Sources */,
 				660889FC2926DC0300CB5E23 /* AppDelegate.swift in Sources */,
+				668E6127294F805F00478BE3 /* ActivityIndicatorView.swift in Sources */,
 				66088A062926DC0300CB5E23 /* Kraeved.xcdatamodeld in Sources */,
 				66183E05292C1DF8008412B0 /* UIImage+areaAverage.swift in Sources */,
 				66183E09292D6427008412B0 /* MetaObject.swift in Sources */,
@@ -708,9 +718,11 @@
 				66088A342926DD2D00CB5E23 /* MapScreenRouter.swift in Sources */,
 				66088A292926DCD700CB5E23 /* MainScreenInteractor.swift in Sources */,
 				66A8A50F2926E173000BFC29 /* AnnotationScreenRouter.swift in Sources */,
+				668E6129294F9EBF00478BE3 /* test.swift in Sources */,
 				66183E0C292D7907008412B0 /* BusinessObject.swift in Sources */,
 				66088A1E2926DC8000CB5E23 /* TabBarController.swift in Sources */,
 				66D41EAA2932CA1800FD66CA /* ProfilePresenter.swift in Sources */,
+				668E612B294FA48D00478BE3 /* Notifications.swift in Sources */,
 				66183E26292D7C8A008412B0 /* EntityDetailsViewController.swift in Sources */,
 				66183E01292C0C85008412B0 /* UIImage+blurImage.swift in Sources */,
 				66088A362926DD2D00CB5E23 /* MapScreenInteractor.swift in Sources */,

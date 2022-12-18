@@ -9,7 +9,7 @@ protocol MapScreenViewProtocol: AnyObject {
 }
 
 // MARK: - MapScreenViewController
-final class MapScreenViewController: UIViewController, MapScreenViewProtocol {
+final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
     private struct UIConstants {
         static let addButtonSize: CGFloat = 64
         static let addButtonInset: CGFloat = 32
@@ -80,6 +80,7 @@ final class MapScreenViewController: UIViewController, MapScreenViewProtocol {
         presenter.viewDidLoad()
         mapView.delegate = presenter
     }
+    
 
     private func initialize() {
         view.addSubview(mapView)

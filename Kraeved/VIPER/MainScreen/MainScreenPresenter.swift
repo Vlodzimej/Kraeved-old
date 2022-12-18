@@ -15,6 +15,10 @@ class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
     private let interactor: MainScreenInteractorProtocol
     private let router: MainScreenRouterProtocol
 
+    var baseView: BaseViewProtocol? {
+        view as? BaseViewProtocol
+    }
+
     // MARK: Init
     init(interactor: MainScreenInteractorProtocol, router: MainScreenRouterProtocol) {
         self.router = router
@@ -26,9 +30,13 @@ class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
         guard let view = view else { return }
         adapter.delegate = self
         adapter.setup(for: view.tableView)
+
+        baseView?.isActivityIndicatorHidden = false
         interactor.getHistoricalEvents { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                self.baseView?.isActivityIndicatorHidden = true
+                
                 self.adapter.configurate(entities: result)
             }
         }

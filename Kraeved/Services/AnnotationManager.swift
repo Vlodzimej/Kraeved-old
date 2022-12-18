@@ -43,15 +43,13 @@ class AnnotationManager: AnnotationManagerProtocol {
     }
 }
 
-extension String
-{
+extension String {
     /// EZSE: Converts String to Double
-    public func toDouble() -> Double?
-    {
-       if let num = NumberFormatter().number(from: self) {
+    public func toDouble() -> Double? {
+        if let num = NumberFormatter().number(from: self) {
                 return num.doubleValue
             } else {
                 return nil
             }
-     }
+    }
 }
