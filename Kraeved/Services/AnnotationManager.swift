@@ -12,28 +12,25 @@ protocol AnnotationManagerProtocol {
     func getTransport(completion: @escaping ([Transport]) -> Void)
 }
 
-class AnnotationManager {
+class AnnotationManager: AnnotationManagerProtocol {
 
     static let shared = AnnotationManager()
 
-    private let apiManager: APIManager
+    private let entityManager: EntityManagerProtocol
 
-    private init(apiManager: APIManager = APIManager.shared) {
-        self.apiManager = apiManager
+    private init(entityManager: EntityManagerProtocol = EntityManager.shared) {
+        self.entityManager = entityManager
     }
 
     func getAnnotations(completion: @escaping ([Annotation]) -> Void) {
-//        guard let url =  URL(string: "http://localhost:5211/api/BusinessObject") else { return [] }
-//        let request = URLRequest(url: url)
-
-        // Здесь временно хардкод
-        let factory = AnnotationFactory()
-        let annotations = [
-            factory.makeBuilding(id: 1, coordinate: CLLocationCoordinate2D(latitude: 54.513974779803796, longitude: 36.263196462037726), title: "Кинотеатр «Центральный»", subtype: .culture),
-            factory.makeBuilding(id: 2, coordinate: CLLocationCoordinate2D(latitude: 54.51709314831746, longitude: 36.246505391757296), title: "ТРК «XXI Век»", subtype: .moll),
-            factory.makeNature(id: 3, coordinate: CLLocationCoordinate2D(latitude: 54.52259638006321, longitude: 36.207656513989434), title: "Сосновый бор", subtype: .forest)
-        ]
-        completion(annotations)
+        entityManager.find(customProperties: ["typeId": EntityType.location.rawValue]) { locations in
+            let annotations: [Annotation] = locations.compactMap { location in
+                guard let latitude = location.data?.latitude, let longitude = location.data?.longitude else { return nil }
+                let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                return Annotation(id: location.id, coordinate: coordinate, title: location.title, subtitle: "", type: .building)
+            }
+            completion(annotations)
+        }
     }
 
     func getTransport(completion: @escaping ([Transport]) -> Void) {
@@ -44,4 +41,17 @@ class AnnotationManager {
         ]
         completion(result)
     }
+}
+
+extension String
+{
+    /// EZSE: Converts String to Double
+    public func toDouble() -> Double?
+    {
+       if let num = NumberFormatter().number(from: self) {
+                return num.doubleValue
+            } else {
+                return nil
+            }
+     }
 }

@@ -13,7 +13,7 @@ enum MetaType {
     var id: UUID {
         switch self {
             case .entity:
-                return UUID(uuidString: "5c263f8b-a249-44fc-bad0-39aacde12f60")!
+                return UUID(uuidString: "5C263F8B-A249-44FC-BAD0-39AACDE12F60")!
         }
     }
 }

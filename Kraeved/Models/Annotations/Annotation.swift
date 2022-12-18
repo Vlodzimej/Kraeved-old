@@ -8,8 +8,6 @@
 import Foundation
 import MapKit
 
-// Пример паттерна Декоратор
-
 enum AnnotationType {
     case building
     case natural
@@ -23,7 +21,7 @@ protocol AnnotationProtocol: AnyObject {
 
 class Annotation: NSObject, MKAnnotation, AnnotationProtocol {
 
-    var id: Int
+    var id: UUID
 
     var coordinate: CLLocationCoordinate2D
     var title: String?
@@ -34,7 +32,7 @@ class Annotation: NSObject, MKAnnotation, AnnotationProtocol {
 
     private var text: String?
 
-    init(id: Int, coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, type: AnnotationType, startDate: Date? = nil) {
+    init(id: UUID, coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, type: AnnotationType, startDate: Date? = nil) {
         self.id = id
         self.coordinate = coordinate
         self.title = title

@@ -23,6 +23,11 @@ extension UIColor {
         static var shimmerColorFirst = UIColor(white: 0.85, alpha: 1.0)
         static var shimmerColorSecond = UIColor(white: 0.95, alpha: 1.0)
     }
+
+    struct MapScreen {
+        static var closeButton: UIColor { UIColor.HEX.hf97C7C }
+        static var bottomPanelBorder: UIColor { UIColor.HEX.hF1F1F1 }
+    }
 }
 
 extension UIColor {
@@ -30,5 +35,7 @@ extension UIColor {
         static let hFF3B30 = UIColor(hex: 0xAFD5F0)
         static let h4B6285 = UIColor(hex: 0x4B6285)
         static let h2C3F66 = UIColor(hex: 0x2C3F66)
+        static let hf97C7C = UIColor(hex: 0xF97C7C)
+        static let hF1F1F1 = UIColor(hex: 0xF1F1F1)
     }
 }
