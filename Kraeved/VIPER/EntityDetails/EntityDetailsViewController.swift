@@ -1,5 +1,5 @@
 //
-//  HistoricalEventViewController.swift
+//  EntityDetailsViewController.swift
 //  Kraeved
 //
 //  Created by Владимир Амелькин on 23.11.2022.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-//MARK: - HistoricalEventViewProtocol
-protocol HistoricalEventViewProtocol: AnyObject {
-    func update(object: MetaObject<HistoricalEvent>)
+// MARK: - EntityDetailsViewProtocol
+protocol EntityDetailsViewProtocol: AnyObject {
+    func update(entity: MetaObject<Entity>)
 }
 
-//MARK: - HistoricalEventViewController
-class HistoricalEventViewController: BaseViewController, HistoricalEventViewProtocol {
+// MARK: - EntityDetailsViewController
+class EntityDetailsViewController: BaseViewController, EntityDetailsViewProtocol {
 
-    //MARK: Properties
-    private let presenter: HistoricalEventPresenterProtocol
-    
-    //MARK: UIProperties
+    // MARK: Properties
+    private let presenter: EntityDetailsPresenterProtocol
+
+    // MARK: UIProperties
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
@@ -28,7 +28,7 @@ class HistoricalEventViewController: BaseViewController, HistoricalEventViewProt
         label.textColor = .black
         return label
     }()
-    
+
     private let textLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,9 +37,16 @@ class HistoricalEventViewController: BaseViewController, HistoricalEventViewProt
         label.textColor = .black
         return label
     }()
-    
-    //MARK: Init
-    init(presenter: HistoricalEventPresenterProtocol) {
+
+    private let imageView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
+
+    // MARK: Init
+    init(presenter: EntityDetailsPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -48,37 +55,49 @@ class HistoricalEventViewController: BaseViewController, HistoricalEventViewProt
         fatalError("don't use storyboards!")
     }
 
-    //MARK: VC Lifecycle
+    // MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
         initialize()
-        
+
     }
 
     private func initialize() {
         view.backgroundColor = .white
-        
+
         view.addSubview(titleLabel)
-        
+
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 128).isActive = true
-        //titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        // titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
+
         view.addSubview(textLabel)
-        
+
         textLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 64).isActive = true
         textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+
     }
 
-    //MARK: Private methods
+    // MARK: Private methods
+    private func addImage(image: UIImage) {
+        imageView.image = image
+        view.addSubview(imageView)
 
-    //MARK: Public methods
-    func update(object: MetaObject<HistoricalEvent>) {
-        titleLabel.text = object.title
-        textLabel.text = object.data?.text
+        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+
+    // MARK: Public methods
+    func update(entity: MetaObject<Entity>) {
+        titleLabel.text = entity.title
+        textLabel.text = entity.data?.text
+        if let image = entity.image {
+            addImage(image: image)
+        }
     }
 
 }
-

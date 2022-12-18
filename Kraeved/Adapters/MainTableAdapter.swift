@@ -7,56 +7,41 @@
 
 import UIKit
 
-//MARK: - MainTableSectionType
-enum MainTableSectionType {
-    case historicalEvents
-    case gallery
-    
-    var title: String {
-        switch self {
-            case .historicalEvents:
-                return NSLocalizedString("mainScreen.historicalEvents", comment: "")
-            case .gallery:
-                return NSLocalizedString("mainScreen.annotations", comment: "")
-        }
-    }
-}
-
-//MARK: - MainTableSectionItem
+// MARK: - MainTableSectionItem
 struct MainTableSectionItem {
-    let type: MainTableSectionType
+    let title: String
+    let type: EntityType
     var items: [MainTableCellItem] = []
-    
-    static func makeCellItems(from historicalEvents: [MetaObject<HistoricalEvent>]) -> [MainTableCellItem] {
-        historicalEvents.map { MainTableCellItem(id: $0.id, title: $0.title, image: $0.image, text: $0.data?.text) }
-    }
-    
-    func getImage(from url: String) {
-        
+    let hasOverlay: Bool
+
+    static func makeCellItems(from entities: [MetaObject<Entity>], hasOverlay: Bool = false) -> [MainTableCellItem] {
+        entities.map { MainTableCellItem(id: $0.id, title: $0.title, image: $0.image, text: $0.data?.text, hasOverlay: hasOverlay) }
     }
 }
 
-//MARK: - MainTableCellItem
+// MARK: - MainTableCellItem
 struct MainTableCellItem {
     let id: UUID
     let title: String?
     let image: UIImage?
     let text: String?
+    let hasOverlay: Bool
 }
 
 protocol MainTableAdapterDelegate: AnyObject {
-    func showHistoricalEventDetail(id: UUID)
+    func showEntityDetails(id: UUID)
 }
 
 class MainTableAdapter: NSObject {
-    
+
     var sections: [MainTableSectionItem] = [
-        MainTableSectionItem(type: .historicalEvents),
-        MainTableSectionItem(type: .gallery)
+        MainTableSectionItem(title: NSLocalizedString("mainScreen.historicalEvents", comment: ""), type: EntityType.historicalEvent, hasOverlay: true),
+        MainTableSectionItem(title: NSLocalizedString("mainScreen.locations", comment: ""), type: EntityType.location, hasOverlay: true),
+        MainTableSectionItem(title: NSLocalizedString("mainScreen.gallery", comment: ""), type: EntityType.photo, hasOverlay: false)
     ]
-    
+
     var tableView: UITableView?
-    
+
     weak var delegate: MainTableAdapterDelegate?
 
     func setup(for tableView: UITableView) {
@@ -66,56 +51,53 @@ class MainTableAdapter: NSObject {
         tableView.register(MainTableViewCell.self, forCellReuseIdentifier: "MainTableViewCell")
         self.tableView = tableView
     }
-    
-    func configurate(historicalEvents: [MetaObject<HistoricalEvent>]) {
+
+    func configurate(entities: [MetaObject<Entity>]) {
         sections.enumerated().forEach { (index, section) in
-            switch section.type {
-                case .historicalEvents:
-                    sections[index].items = MainTableSectionItem.makeCellItems(from: historicalEvents)
-                case .gallery:
-                    sections[index].items = []
-         
-            }
+            guard let typeId = UUID(uuidString: section.type.rawValue) else { return }
+            let items = entities.filter { $0.data?.typeId == typeId }
+            sections[index].items = MainTableSectionItem.makeCellItems(from: items, hasOverlay: section.hasOverlay)
         }
+
         tableView?.reloadData()
     }
 }
 
 extension MainTableAdapter: UITableViewDelegate {
-    
+
 }
 
 extension MainTableAdapter: UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         sections.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = sections[indexPath.section]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell") as? MainTableViewCell else { return UITableViewCell() }
-        let titleText: String? = indexPath.item == 0 ? section.type.title : nil
+        let titleText: String? = indexPath.item == 0 ? section.title : nil
         cell.configurate(section: section, titleText: titleText)
         cell.delegate = self
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         indexPath.item == 0 ? MainTableViewCell.UIConstants.cellHeight + Constants.contentInset : MainTableViewCell.UIConstants.cellHeight
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         CGFloat.leastNonzeroMagnitude
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         UIView()
     }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         CGFloat.leastNormalMagnitude
     }
@@ -126,7 +108,7 @@ extension MainTableAdapter: UITableViewDataSource {
 }
 
 extension MainTableAdapter: MainTableCellDelegate {
-    func showHistoricalEventDetail(id: UUID) {
-        delegate?.showHistoricalEventDetail(id: id)
+    func showEntityDetails(id: UUID) {
+        delegate?.showEntityDetails(id: id)
     }
 }

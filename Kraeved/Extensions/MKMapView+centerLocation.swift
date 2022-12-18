@@ -13,4 +13,3 @@ extension MKMapView {
         setRegion(coordinateRegion, animated: true)
     }
 }
-

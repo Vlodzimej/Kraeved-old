@@ -15,7 +15,8 @@
 "tabbar.natural"                = "Natural";
 
 "mainScreen.historicalEvents"   = "Events on this day";
-"mainScreen.annotations"        = "Places";
+"mainScreen.gallery"            = "Gallery";
+"mainScreen.locations"           = "Places";
 
 "searchItems.historicalEvents"  = "Events";
-"searchItems.annotations"       = "Places";
+"searchItems.locations"         = "Locations";

@@ -2,22 +2,21 @@ import UIKit
 
 protocol BaseRouterProtocol {
     func openAnnotation(annotation: Annotation)
-    func openHistoricalEventDetail(id: UUID)
+    func openEntityDetails(id: UUID)
 }
 
 class BaseRouter<T>: BaseRouterProtocol where T: UIViewController {
     var viewController: T?
-    
+
     func openAnnotation(annotation: Annotation) {
-        let vc = AnnotationScreenModuleBuilder.build(annotation: annotation)
+        let annotationVC = AnnotationScreenModuleBuilder.build(annotation: annotation)
         guard let viewController = viewController else { return }
-        viewController.navigationController?.present(vc, animated: true)
-        //viewController.navigationController?.pushViewController(vc, animated: true)
+        viewController.navigationController?.present(annotationVC, animated: true)
     }
-    
-    func openHistoricalEventDetail(id: UUID) {
-        let historicalEventVC = HistoricalEventModuleBuilder.build(id: id)
+
+    func openEntityDetails(id: UUID) {
+        let entityDetailsVC = EntityDetailsModuleBuilder.build(id: id)
         guard let viewController = viewController else { return }
-        viewController.navigationController?.pushViewController(historicalEventVC, animated: true)
+        viewController.navigationController?.pushViewController(entityDetailsVC, animated: true)
     }
 }

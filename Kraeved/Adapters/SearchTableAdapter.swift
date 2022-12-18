@@ -7,20 +7,20 @@
 
 import UIKit
 
-//MARK: - SearchTableAdapterDelegate
+// MARK: - SearchTableAdapterDelegate
 protocol SearchTableAdapterDelegate: AnyObject {
     func showHistoricalEventDetail(id: UUID)
 }
 
-//MARK: - SearchTableAdapter
+// MARK: - SearchTableAdapter
 class SearchTableAdapter: NSObject {
-    
+
     private var items: [SearchItem] = []
-    
+
     private var tableView: UITableView?
-    
+
     weak var delegate: SearchTableAdapterDelegate?
-    
+
     func setup(for tableView: UITableView) {
         tableView.delegate = self
         tableView.dataSource = self
@@ -28,7 +28,7 @@ class SearchTableAdapter: NSObject {
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: "SearchTableViewCell")
         self.tableView = tableView
     }
-    
+
     func configurate(items: [SearchItem]) {
         self.items = items
         tableView?.reloadData()
@@ -46,14 +46,14 @@ extension SearchTableAdapter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         items.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell") as? SearchTableViewCell else { return UITableViewCell() }
         let item = items[indexPath.item]
-        cell.configurate(title: item.title)
+        cell.configurate(title: item.title, type: item.type)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         SearchTableViewCell.UIConstatns.cellHeight
     }

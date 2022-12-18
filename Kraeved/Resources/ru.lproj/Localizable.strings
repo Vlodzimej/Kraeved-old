@@ -15,8 +15,9 @@
 "tabbar.natural"                = "Природа";
 
 "mainScreen.historicalEvents"   = "События в этот день";
-"mainScreen.annotations"        = "Места";
+"mainScreen.gallery"            = "Галлерея";
+"mainScreen.locations"           = "Места";
 
 "searchItems.historicalEvents"  = "События";
-"searchItems.annotations"       = "Места";
+"searchItems.locations"         = "Места";
 

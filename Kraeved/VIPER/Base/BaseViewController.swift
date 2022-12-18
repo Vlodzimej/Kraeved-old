@@ -1,13 +1,13 @@
 import UIKit
 
-//MARK: - BaseViewProtocol
+// MARK: - BaseViewProtocol
 protocol BaseViewProtocol: AnyObject {
 }
 
-//MARK: - BaseViewController
+// MARK: - BaseViewController
 class BaseViewController: UIViewController, BaseViewProtocol {
 
-    //MARK: VC Lifecycle
+    // MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -16,4 +16,3 @@ class BaseViewController: UIViewController, BaseViewProtocol {
     private func initialize() {
     }
 }
-

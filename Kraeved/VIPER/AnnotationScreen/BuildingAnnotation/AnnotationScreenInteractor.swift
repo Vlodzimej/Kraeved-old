@@ -1,16 +1,16 @@
 import Foundation
 
-//MARK: - AnnotationScreenInteractorProtocol
+// MARK: - AnnotationScreenInteractorProtocol
 protocol AnnotationScreenInteractorProtocol: AnyObject {
 }
 
-//MARK: - AnnotationScreenInteractor
+// MARK: - AnnotationScreenInteractor
 class AnnotationScreenInteractor: AnnotationScreenInteractorProtocol {
 
-    //MARK: Properties
+    // MARK: Properties
     weak var presenter: AnnotationScreenPresenterProtocol?
 
-    //MARK: Init
+    // MARK: Init
     init() {
     }
 }

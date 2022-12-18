@@ -7,27 +7,27 @@
 
 import UIKit
 
-//MARK: - ProfileCellViewModel
+// MARK: - ProfileCellViewModel
 struct ProfileCellViewModel {
     let title: String
     let value: String
 }
 
-//MARK: - ProfileTableAdapterDelegate
+// MARK: - ProfileTableAdapterDelegate
 protocol ProfileTableAdapterDelegate: AnyObject {
-    
+
 }
 
-//MARK: - ProfileTableAdapter
+// MARK: - ProfileTableAdapter
 class ProfileTableAdapter: NSObject {
-    
-    //MARK: Properties
+
+    // MARK: Properties
     private var tableView: UITableView?
     weak var delegate: ProfileTableAdapterDelegate?
-    
+
     private var profileCellViewModels: [ProfileCellViewModel] = []
-    
-    //MARK: Private Methods
+
+    // MARK: Private Methods
     private func makeProfileCellViewModels(user: User) -> [ProfileCellViewModel] {
         var phoneNumber = ""
         if let phone = user.phone {
@@ -42,39 +42,39 @@ class ProfileTableAdapter: NSObject {
         ]
         return result
     }
-    
-    //MARK: Public Methods
+
+    // MARK: Public Methods
     func setup(tableView: UITableView) {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: "ProfileTableViewCell")
         self.tableView = tableView
     }
-    
+
     func configurate(user: User) {
         self.profileCellViewModels = makeProfileCellViewModels(user: user)
         tableView?.reloadData()
     }
 }
 
-//MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension ProfileTableAdapter: UITableViewDelegate {
-    
+
 }
 
-//MARK: - UITableViewDataSource
+// MARK: - UITableViewDataSource
 extension ProfileTableAdapter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         profileCellViewModels.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
         let cellViewModel = profileCellViewModels[indexPath.item]
         cell.configurate(viewModel: cellViewModel, isLastRow: indexPath.item == profileCellViewModels.count - 1)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         ProfileTableViewCell.UIConstatns.cellHeight
     }

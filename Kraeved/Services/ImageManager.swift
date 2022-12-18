@@ -12,19 +12,19 @@ protocol ImageManagerProtocol: AnyObject {
 }
 
 class ImageManager: ImageManagerProtocol {
-    
+
     static let shared = ImageManager()
-    
+
     let urlCache = URLCache.shared
-    
+
     private let apiManager: APIManagerProtocol
     private let coreDataManager: CoreDataManagerProtocol
-    
+
     private init(apiManager: APIManagerProtocol = APIManager.shared, coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared) {
         self.apiManager = apiManager
         self.coreDataManager = coreDataManager
     }
-    
+
     // Функция получения и кэширования изображений в CoreData
     func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
         let result = coreDataManager.find(entityName: "ImageCoreModel", predicates: [NSPredicate(format: "%K = %@", "imageUrl", url.absoluteString)])
@@ -41,7 +41,7 @@ class ImageManager: ImageManagerProtocol {
             completion(image)
         }
     }
-        
+
     func downloadCachedImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
         let request = URLRequest(url: url)
         if let data = urlCache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {

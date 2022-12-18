@@ -5,17 +5,17 @@
 //  Created by Владимир Амелькин on 09.11.2022.
 //
 
-//import MapKit
+// import MapKit
 //
-//enum BuildingSubtype {
+// enum BuildingSubtype {
 //    case house
 //    case administrative
 //    case culture
 //    case market
 //    case moll
-//}
+// }
 //
-//class BuildingAnnotation: Annotation {
+// class BuildingAnnotation: Annotation {
 //
 //    let subtype: BuildingSubtype
 //    
@@ -23,4 +23,4 @@
 //        self.subtype = subtype
 //        super.init(id: id, coordinate: coordinate, title: title, subtitle: nil, type: .building)
 //    }
-//}
+// }

@@ -12,7 +12,7 @@ import Foundation
 struct Transport {
     let name: String
     let route: [Int]
-    
+
     func isVisit(annotationId: Int) -> Bool {
         route.contains(annotationId)
     }

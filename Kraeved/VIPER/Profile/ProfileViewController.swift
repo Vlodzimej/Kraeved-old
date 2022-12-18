@@ -7,18 +7,18 @@
 
 import UIKit
 
-//MARK: - ProfileViewProtocol
+// MARK: - ProfileViewProtocol
 protocol ProfileViewProtocol: AnyObject {
     var tableView: UITableView { get set }
 }
 
-//MARK: - ProfileViewController
+// MARK: - ProfileViewController
 class ProfileViewController: BaseViewController, ProfileViewProtocol {
 
-    //MARK: Properties
+    // MARK: Properties
     private let presenter: ProfilePresenterProtocol
-    
-    //MARK: UIProperties
+
+    // MARK: UIProperties
     var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,8 +27,8 @@ class ProfileViewController: BaseViewController, ProfileViewProtocol {
         tableView.backgroundColor = .white
         return tableView
     }()
-    
-    //MARK: Init
+
+    // MARK: Init
     init(presenter: ProfilePresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -38,7 +38,7 @@ class ProfileViewController: BaseViewController, ProfileViewProtocol {
         fatalError("don't use storyboards!")
     }
 
-    //MARK: VC Lifecycle
+    // MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -47,18 +47,17 @@ class ProfileViewController: BaseViewController, ProfileViewProtocol {
 
     private func initialize() {
         view.backgroundColor = .white
-        
+
         view.addSubview(tableView)
-        
+
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
-    //MARK: Private methods
+    // MARK: Private methods
 
-    //MARK: Public methods
+    // MARK: Public methods
 
 }
-
