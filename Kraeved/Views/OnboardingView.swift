@@ -12,21 +12,24 @@ final class OnboardingView: UIView {
     private let eventsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.attributedText = NSAttributedString(string: NSLocalizedString("onboarding.events", comment: ""), attributes: [.font: UIFont.systemFont(ofSize: 28, weight: .semibold), .foregroundColor: UIColor.white])
+        label.attributedText = NSAttributedString(string: NSLocalizedString("onboarding.events",
+                                                                            comment: ""), attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .semibold), .foregroundColor: UIColor.white])
         return label
     }()
 
     private let placesLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.attributedText = NSAttributedString(string: NSLocalizedString("onboarding.places", comment: ""), attributes: [.font: UIFont.systemFont(ofSize: 28, weight: .semibold), .foregroundColor: UIColor.white])
+        label.attributedText = NSAttributedString(string: NSLocalizedString("onboarding.places",
+                                                                            comment: ""), attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .semibold), .foregroundColor: UIColor.white])
         return label
     }()
 
     private let galleryLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.attributedText = NSAttributedString(string: NSLocalizedString("onboarding.gallery", comment: ""), attributes: [.font: UIFont.systemFont(ofSize: 28, weight: .semibold), .foregroundColor: UIColor.white])
+        label.attributedText = NSAttributedString(string: NSLocalizedString("onboarding.gallery",
+                                                                            comment: ""), attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .semibold), .foregroundColor: UIColor.white])
         return label
     }()
 
