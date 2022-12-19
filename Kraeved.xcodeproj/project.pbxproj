@@ -30,6 +30,7 @@
 		66088A452926DDA900CB5E23 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A402926DDA900CB5E23 /* Transport.swift */; };
 		66088A462926DDA900CB5E23 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A412926DDA900CB5E23 /* Annotation.swift */; };
 		66088A492926DDD800CB5E23 /* MKMapView+centerLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A482926DDD800CB5E23 /* MKMapView+centerLocation.swift */; };
+		6609003B2950B6AA004642E7 /* KraevedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6609003A2950B6AA004642E7 /* KraevedTests.swift */; };
 		660F66242926EDBB00236A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660F66232926EDBB00236A6D /* LaunchScreen.storyboard */; };
 		66183DE1292AA6CF008412B0 /* MainTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DE0292AA6CF008412B0 /* MainTableAdapter.swift */; };
 		66183DE6292AA797008412B0 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DE5292AA797008412B0 /* MainTableViewCell.swift */; };
@@ -95,6 +96,16 @@
 		78A91A7ACDFB272218393D49 /* Pods_Kraeved.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5910004C32DD89882D62D4B /* Pods_Kraeved.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6609003C2950B6AA004642E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 660889F02926DC0300CB5E23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 660889F72926DC0300CB5E23;
+			remoteInfo = Kraeved;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		569D5473541F4F83A3CCDE7D /* Pods-Kraeved.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kraeved.debug.xcconfig"; path = "Target Support Files/Pods-Kraeved/Pods-Kraeved.debug.xcconfig"; sourceTree = "<group>"; };
 		660889F82926DC0300CB5E23 /* Kraeved.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kraeved.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +133,9 @@
 		66088A402926DDA900CB5E23 /* Transport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transport.swift; sourceTree = "<group>"; };
 		66088A412926DDA900CB5E23 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		66088A482926DDD800CB5E23 /* MKMapView+centerLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+centerLocation.swift"; sourceTree = "<group>"; };
+		6609002E2950B4DE004642E7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		660900382950B6AA004642E7 /* KraevedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KraevedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6609003A2950B6AA004642E7 /* KraevedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KraevedTests.swift; sourceTree = "<group>"; };
 		660F66232926EDBB00236A6D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66183DE0292AA6CF008412B0 /* MainTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableAdapter.swift; sourceTree = "<group>"; };
 		66183DE5292AA797008412B0 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
@@ -199,6 +213,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		660900352950B6AA004642E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -208,7 +229,6 @@
 				569D5473541F4F83A3CCDE7D /* Pods-Kraeved.debug.xcconfig */,
 				AF7524B75B291D688488817C /* Pods-Kraeved.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -216,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				660889FA2926DC0300CB5E23 /* Kraeved */,
+				660900392950B6AA004642E7 /* KraevedTests */,
 				660889F92926DC0300CB5E23 /* Products */,
 				A8BBCC3D38B1C0ED62D570A6 /* Frameworks */,
 				1C31E844F61B23A9C4DE8E74 /* Pods */,
@@ -226,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				660889F82926DC0300CB5E23 /* Kraeved.app */,
+				660900382950B6AA004642E7 /* KraevedTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -340,6 +362,14 @@
 				66A8A5392926E9D5000BFC29 /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		660900392950B6AA004642E7 /* KraevedTests */ = {
+			isa = PBXGroup;
+			children = (
+				6609003A2950B6AA004642E7 /* KraevedTests.swift */,
+			);
+			path = KraevedTests;
 			sourceTree = "<group>";
 		};
 		66183DDF292AA6B1008412B0 /* Adapters */ = {
@@ -543,6 +573,7 @@
 		A8BBCC3D38B1C0ED62D570A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6609002E2950B4DE004642E7 /* XCTest.framework */,
 				B5910004C32DD89882D62D4B /* Pods_Kraeved.framework */,
 			);
 			name = Frameworks;
@@ -570,6 +601,24 @@
 			productReference = 660889F82926DC0300CB5E23 /* Kraeved.app */;
 			productType = "com.apple.product-type.application";
 		};
+		660900372950B6AA004642E7 /* KraevedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6609003E2950B6AA004642E7 /* Build configuration list for PBXNativeTarget "KraevedTests" */;
+			buildPhases = (
+				660900342950B6AA004642E7 /* Sources */,
+				660900352950B6AA004642E7 /* Frameworks */,
+				660900362950B6AA004642E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6609003D2950B6AA004642E7 /* PBXTargetDependency */,
+			);
+			name = KraevedTests;
+			productName = KraevedTests;
+			productReference = 660900382950B6AA004642E7 /* KraevedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -582,6 +631,10 @@
 				TargetAttributes = {
 					660889F72926DC0300CB5E23 = {
 						CreatedOnToolsVersion = 14.1;
+					};
+					660900372950B6AA004642E7 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 660889F72926DC0300CB5E23;
 					};
 				};
 			};
@@ -600,6 +653,7 @@
 			projectRoot = "";
 			targets = (
 				660889F72926DC0300CB5E23 /* Kraeved */,
+				660900372950B6AA004642E7 /* KraevedTests */,
 			);
 		};
 /* End PBXProject section */
@@ -613,6 +667,13 @@
 				66A8A5342926E9D0000BFC29 /* Localizable.strings in Resources */,
 				660F66242926EDBB00236A6D /* LaunchScreen.storyboard in Resources */,
 				66A8A53B2926EA3A000BFC29 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		660900362950B6AA004642E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,7 +811,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		660900342950B6AA004642E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6609003B2950B6AA004642E7 /* KraevedTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6609003D2950B6AA004642E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 660889F72926DC0300CB5E23 /* Kraeved */;
+			targetProxy = 6609003C2950B6AA004642E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		66A8A5362926E9D0000BFC29 /* Localizable.strings */ = {
@@ -896,6 +973,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = ../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework;
 				DEVELOPMENT_TEAM = RDUKAUVKAW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kraeved/Info.plist;
@@ -930,6 +1008,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = ../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework;
 				DEVELOPMENT_TEAM = RDUKAUVKAW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kraeved/Info.plist;
@@ -956,6 +1035,52 @@
 			};
 			name = Release;
 		};
+		6609003F2950B6AA004642E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = amelkin.KraevedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kraeved.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kraeved";
+			};
+			name = Debug;
+		};
+		660900402950B6AA004642E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = amelkin.KraevedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kraeved.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kraeved";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -973,6 +1098,15 @@
 			buildConfigurations = (
 				66088A102926DC0400CB5E23 /* Debug */,
 				66088A112926DC0400CB5E23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6609003E2950B6AA004642E7 /* Build configuration list for PBXNativeTarget "KraevedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6609003F2950B6AA004642E7 /* Debug */,
+				660900402950B6AA004642E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
