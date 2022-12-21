@@ -54,6 +54,15 @@ struct BusinessObject: Identifiable, Codable {
         self.finishDate = businessObject.finishDate
     }
 
+    init(id: UUID, title: String, metaTypeId: UUID, customProperties: String, startDate: String, finishDate: String) {
+        self.id = id
+        self.title = title
+        self.metaTypeId = metaTypeId
+        self.customProperties = customProperties
+        self.startDate = startDate
+        self.finishDate = finishDate
+    }
+
     func convertToMetaObject<T: Codable>() -> MetaObject<T>? {
         guard let id = id, let json = customProperties?.data(using: .utf8)! else { return nil }
         let decoder = JSONDecoder()

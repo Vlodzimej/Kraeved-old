@@ -30,8 +30,11 @@
 		66088A452926DDA900CB5E23 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A402926DDA900CB5E23 /* Transport.swift */; };
 		66088A462926DDA900CB5E23 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A412926DDA900CB5E23 /* Annotation.swift */; };
 		66088A492926DDD800CB5E23 /* MKMapView+centerLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66088A482926DDD800CB5E23 /* MKMapView+centerLocation.swift */; };
-		6609003B2950B6AA004642E7 /* KraevedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6609003A2950B6AA004642E7 /* KraevedTests.swift */; };
 		660F66242926EDBB00236A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660F66232926EDBB00236A6D /* LaunchScreen.storyboard */; };
+		660FD95E295345B900B69376 /* BaseRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660FD95D295345B900B69376 /* BaseRouterMock.swift */; };
+		660FD96329534C5900B69376 /* BusinessObjectManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660FD96229534C5900B69376 /* BusinessObjectManagerMock.swift */; };
+		660FD96529534E5E00B69376 /* EntityManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660FD96429534E5E00B69376 /* EntityManagerTest.swift */; };
+		660FD96729534EAF00B69376 /* ImageManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660FD96629534EAF00B69376 /* ImageManagerMock.swift */; };
 		66183DE1292AA6CF008412B0 /* MainTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DE0292AA6CF008412B0 /* MainTableAdapter.swift */; };
 		66183DE6292AA797008412B0 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DE5292AA797008412B0 /* MainTableViewCell.swift */; };
 		66183DE8292AAEE0008412B0 /* EntityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DE7292AAEE0008412B0 /* EntityCellView.swift */; };
@@ -77,6 +80,7 @@
 		66A8A51A2926E1D9000BFC29 /* SearchScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A5152926E1D9000BFC29 /* SearchScreenInteractor.swift */; };
 		66A8A5342926E9D0000BFC29 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66A8A5362926E9D0000BFC29 /* Localizable.strings */; };
 		66A8A53B2926EA3A000BFC29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A8A53A2926EA3A000BFC29 /* Main.storyboard */; };
+		66BB6040295114BE00C6339A /* MainScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BB603F295114BE00C6339A /* MainScreenTests.swift */; };
 		66C1CDD12930217300249231 /* CollectionCellWithShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C1CDD02930217300249231 /* CollectionCellWithShimmer.swift */; };
 		66C1CDD7293025F600249231 /* Array+safeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C1CDD6293025F600249231 /* Array+safeIndex.swift */; };
 		66C55D1D2945B8B700EFB899 /* UIImage+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C55D1C2945B8B700EFB899 /* UIImage+Extra.swift */; };
@@ -135,8 +139,11 @@
 		66088A482926DDD800CB5E23 /* MKMapView+centerLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+centerLocation.swift"; sourceTree = "<group>"; };
 		6609002E2950B4DE004642E7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		660900382950B6AA004642E7 /* KraevedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KraevedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6609003A2950B6AA004642E7 /* KraevedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KraevedTests.swift; sourceTree = "<group>"; };
 		660F66232926EDBB00236A6D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		660FD95D295345B900B69376 /* BaseRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouterMock.swift; sourceTree = "<group>"; };
+		660FD96229534C5900B69376 /* BusinessObjectManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessObjectManagerMock.swift; sourceTree = "<group>"; };
+		660FD96429534E5E00B69376 /* EntityManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerTest.swift; sourceTree = "<group>"; };
+		660FD96629534EAF00B69376 /* ImageManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerMock.swift; sourceTree = "<group>"; };
 		66183DE0292AA6CF008412B0 /* MainTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableAdapter.swift; sourceTree = "<group>"; };
 		66183DE5292AA797008412B0 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		66183DE7292AAEE0008412B0 /* EntityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCellView.swift; sourceTree = "<group>"; };
@@ -183,6 +190,7 @@
 		66A8A5352926E9D0000BFC29 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		66A8A5382926E9D5000BFC29 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		66A8A53A2926EA3A000BFC29 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		66BB603F295114BE00C6339A /* MainScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTests.swift; sourceTree = "<group>"; };
 		66C1CDD02930217300249231 /* CollectionCellWithShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellWithShimmer.swift; sourceTree = "<group>"; };
 		66C1CDD6293025F600249231 /* Array+safeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+safeIndex.swift"; sourceTree = "<group>"; };
 		66C55D1C2945B8B700EFB899 /* UIImage+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extra.swift"; sourceTree = "<group>"; };
@@ -367,9 +375,29 @@
 		660900392950B6AA004642E7 /* KraevedTests */ = {
 			isa = PBXGroup;
 			children = (
-				6609003A2950B6AA004642E7 /* KraevedTests.swift */,
+				660FD95F29534A9900B69376 /* ServiceTests */,
+				660FD95C295345AD00B69376 /* Mocks */,
+				66BB603E295114A600C6339A /* MainScreenTests */,
 			);
 			path = KraevedTests;
+			sourceTree = "<group>";
+		};
+		660FD95C295345AD00B69376 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				660FD95D295345B900B69376 /* BaseRouterMock.swift */,
+				660FD96229534C5900B69376 /* BusinessObjectManagerMock.swift */,
+				660FD96629534EAF00B69376 /* ImageManagerMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		660FD95F29534A9900B69376 /* ServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				660FD96429534E5E00B69376 /* EntityManagerTest.swift */,
+			);
+			path = ServiceTests;
 			sourceTree = "<group>";
 		};
 		66183DDF292AA6B1008412B0 /* Adapters */ = {
@@ -521,6 +549,14 @@
 				66A8A5152926E1D9000BFC29 /* SearchScreenInteractor.swift */,
 			);
 			path = SearchScreen;
+			sourceTree = "<group>";
+		};
+		66BB603E295114A600C6339A /* MainScreenTests */ = {
+			isa = PBXGroup;
+			children = (
+				66BB603F295114BE00C6339A /* MainScreenTests.swift */,
+			);
+			path = MainScreenTests;
 			sourceTree = "<group>";
 		};
 		66C1CDD8293026BB00249231 /* Common */ = {
@@ -815,7 +851,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6609003B2950B6AA004642E7 /* KraevedTests.swift in Sources */,
+				660FD95E295345B900B69376 /* BaseRouterMock.swift in Sources */,
+				66BB6040295114BE00C6339A /* MainScreenTests.swift in Sources */,
+				660FD96329534C5900B69376 /* BusinessObjectManagerMock.swift in Sources */,
+				660FD96729534EAF00B69376 /* ImageManagerMock.swift in Sources */,
+				660FD96529534E5E00B69376 /* EntityManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
