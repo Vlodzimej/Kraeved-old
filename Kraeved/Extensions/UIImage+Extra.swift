@@ -13,4 +13,12 @@ extension UIImage {
         static var xmark: UIImage { UIImage(named: "xmark" )! }
         static var location: UIImage { UIImage(named: "globe.europe.africa.fill")! }
     }
+
+    struct TabBar {
+        static var main: UIImage { UIImage(named: "house")! }
+        static var search: UIImage { UIImage(named: "magnifyingglass")! }
+        static var map: UIImage { UIImage(named: "figure.walk")! }
+        static var miniapps: UIImage { UIImage(named: "miniapps")! }
+        static var profile: UIImage { UIImage(named: "person.crop.circle")! }
+    }
 }

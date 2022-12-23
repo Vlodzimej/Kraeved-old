@@ -8,8 +8,9 @@
 "common.noTitle"                = "Название отсутствует";
 
 "tabbar.mainScreen"             = "Главная";
-"tabbar.mapScreen"              = "Карта";
 "tabbar.searchScreen"           = "Поиск";
+"tabbar.mapScreen"              = "Карта";
+"tabbar.miniApps"               = "Services";
 "tabbar.profile"                 = "Профиль";
 "tabbar.building"               = "Здание";
 "tabbar.natural"                = "Природа";

@@ -8,8 +8,9 @@
 "common.noTitle"                = "No title";
 
 "tabbar.mainScreen"             = "Main";
-"tabbar.mapScreen"              = "Map";
 "tabbar.searchScreen"           = "Search";
+"tabbar.mapScreen"              = "Map";
+"tabbar.miniApps"               = "Services";
 "tabbar.profile"                 = "Profile";
 "tabbar.building"               = "Building";
 "tabbar.natural"                = "Natural";
