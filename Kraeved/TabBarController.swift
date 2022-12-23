@@ -25,15 +25,17 @@ class TabBarController: UITabBarController {
 
     private func initialize() {
         let mainScreenViewController = MainScreenModuleBuilder.build()
-        let mapScreenViewController = MapScreenModuleBuilder.build()
         let searchScreenViewController = SearchScreenModuleBuilder.build()
+        let mapScreenViewController = MapScreenModuleBuilder.build()
+        let miniAppsScreenViewController = MiniAppsScreenModuleBuilder.build()
         let profileViewController = ProfileModuleBuilder.build()
 
         viewControllers = [
-            createNavController(for: mainScreenViewController, title: NSLocalizedString("tabbar.mainScreen", comment: ""), image: UIImage(named: "house")!),
-            createNavController(for: searchScreenViewController, title: NSLocalizedString("tabbar.searchScreen", comment: ""), image: UIImage(named: "magnifyingglass")!),
-            createNavController(for: mapScreenViewController, title: NSLocalizedString("tabbar.mapScreen", comment: ""), image: UIImage(named: "figure.walk")!),
-            createNavController(for: profileViewController, title: NSLocalizedString("tabbar.profile", comment: ""), image: UIImage(named: "person.crop.circle")!)
+            createNavController(for: mainScreenViewController, title: NSLocalizedString("tabbar.mainScreen", comment: ""), image: UIImage.TabBar.main),
+            createNavController(for: searchScreenViewController, title: NSLocalizedString("tabbar.searchScreen", comment: ""), image: UIImage.TabBar.search),
+            createNavController(for: mapScreenViewController, title: NSLocalizedString("tabbar.mapScreen", comment: ""), image: UIImage.TabBar.map),
+            createNavController(for: miniAppsScreenViewController, title: NSLocalizedString("tabbar.miniapps", comment: ""), image: UIImage.TabBar.miniapps),
+            createNavController(for: profileViewController, title: NSLocalizedString("tabbar.profile", comment: ""), image: UIImage.TabBar.profile)
         ]
     }
 
