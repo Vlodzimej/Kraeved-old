@@ -21,3 +21,6 @@
 "searchItems.historicalEvents"  = "События";
 "searchItems.locations"         = "Места";
 
+"onboarding.events"             = "Узнавайте о знаменательных событиях произошедших в этот день";
+"onboarding.places"             = "Получайте больше информации об интересных местах";
+"onboarding.gallery"            = "Просматривайте красивые фотографии и картины";

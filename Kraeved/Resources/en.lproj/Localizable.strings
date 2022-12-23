@@ -20,3 +20,7 @@
 
 "searchItems.historicalEvents"  = "Events";
 "searchItems.locations"         = "Locations";
+
+"onboarding.events"             = "Learn about the significant events that took place on this day";
+"onboarding.places"             = "Get more information about interesting places";
+"onboarding.gallery"            = "Browse beautiful photos and paintings";

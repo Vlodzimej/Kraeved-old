@@ -23,7 +23,7 @@ final class EntityManager: EntityManagerProtocol {
     private let businessObjectManager: BusinessObjectManagerProtocol
     private let imageManager: ImageManagerProtocol
 
-    private init(businessObjectManager: BusinessObjectManagerProtocol = BusinessObjectManager.shared, imageManager: ImageManagerProtocol = ImageManager.shared) {
+    init(businessObjectManager: BusinessObjectManagerProtocol = BusinessObjectManager.shared, imageManager: ImageManagerProtocol = ImageManager.shared) {
         self.businessObjectManager = businessObjectManager
         self.imageManager = imageManager
     }

@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - MainScreenInteractorProtocol
 protocol MainScreenInteractorProtocol: AnyObject {
-    func getHistoricalEvents(completion: @escaping ([MetaObject<Entity>]) -> Void)
+    func fetchEntities(completion: @escaping ([MetaObject<Entity>]) -> Void)
 }
 
 // MARK: - MainScreenInteractor
@@ -20,7 +20,7 @@ class MainScreenInteractor: MainScreenInteractorProtocol {
         self.imageManager = imageManager
     }
 
-    func getHistoricalEvents(completion: @escaping ([MetaObject<Entity>]) -> Void) {
+    func fetchEntities(completion: @escaping ([MetaObject<Entity>]) -> Void) {
         var events: [MetaObject<Entity>] = []
 
         let queue = DispatchQueue(label: "ru.kraeved.concurrent-queue", attributes: .concurrent)
