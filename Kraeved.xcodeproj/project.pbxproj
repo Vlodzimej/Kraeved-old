@@ -64,6 +64,7 @@
 		66183E26292D7C8A008412B0 /* EntityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E21292D7C8A008412B0 /* EntityDetailsViewController.swift */; };
 		66183E27292D7C8A008412B0 /* EntityDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E22292D7C8A008412B0 /* EntityDetailsInteractor.swift */; };
 		66183E29292D8293008412B0 /* MainTableCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E28292D8293008412B0 /* MainTableCellFactory.swift */; };
+		6678803E29584E2900C622FC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66A8A5392926E9D5000BFC29 /* Localizable.strings */; };
 		668E6127294F805F00478BE3 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E6126294F805F00478BE3 /* ActivityIndicatorView.swift */; };
 		668E612B294FA48D00478BE3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E612A294FA48D00478BE3 /* Notifications.swift */; };
 		668E612D294FAAE000478BE3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E612C294FAAE000478BE3 /* OnboardingView.swift */; };
@@ -722,6 +723,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6678803E29584E2900C622FC /* Localizable.strings in Resources */,
 				66088A082926DC0400CB5E23 /* Assets.xcassets in Resources */,
 				66A8A5342926E9D0000BFC29 /* Localizable.strings in Resources */,
 				660F66242926EDBB00236A6D /* LaunchScreen.storyboard in Resources */,

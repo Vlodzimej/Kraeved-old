@@ -20,5 +20,7 @@ extension UIImage {
         static var map: UIImage { UIImage(named: "figure.walk")! }
         static var miniapps: UIImage { UIImage(named: "miniapps")! }
         static var profile: UIImage { UIImage(named: "person.crop.circle")! }
+        static var mapInactive: UIImage { UIImage(named: "map_button_inactive")! }
+        static var mapActive: UIImage { UIImage(named: "map_button_active")! }
     }
 }
