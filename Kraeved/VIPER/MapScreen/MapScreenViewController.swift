@@ -79,6 +79,10 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
 
         presenter.viewDidLoad()
         mapView.delegate = presenter
+
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+            // gestureRecognizer.delegate = self
+            mapView.addGestureRecognizer(gestureRecognizer)
     }
 
     private func initialize() {
@@ -108,9 +112,8 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         annotationView.bottomAnchor.constraint(equalTo: bottomPanelView.bottomAnchor).isActive = true
     }
 
-    @IBAction func addButtonTapped(_ sender: UIButton) {
+    @IBAction private func addButtonTapped(_ sender: UIButton) {
         toggleBottomPanel()
-
     }
 
     private func toggleBottomPanel() {
@@ -143,9 +146,20 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         }
     }
 
+    @objc private func handleTap(gestureRecognizer: UITapGestureRecognizer) {
+
+        let location = gestureRecognizer.location(in: mapView)
+        let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
+
+        // Add annotation:
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
+    }
+
+    // MARK: Public Methods
     func showLocationDetails(entity: MetaObject<Entity>) {
         showBottomPanel()
         annotationView.configurate(entity: entity)
     }
-
 }
