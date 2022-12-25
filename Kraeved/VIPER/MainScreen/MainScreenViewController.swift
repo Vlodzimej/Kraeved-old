@@ -42,6 +42,7 @@ class MainScreenViewController: BaseViewController, MainScreenViewProtocol {
 
     private func initialize() {
         view.backgroundColor = UIColor.MainScreen.background
+        navigationController?.setNavigationBarHidden(true, animated: false)
 
         tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
