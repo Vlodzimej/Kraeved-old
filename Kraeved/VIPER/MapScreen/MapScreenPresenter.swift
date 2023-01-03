@@ -153,7 +153,6 @@ extension MapScreenPresenter: AnnotationAddingViewDelegate {
         interactor.addAnnotation(newAnnotation) { [weak self] result in
             guard let self else { return }
             self.interactor.getAnnotations()
-            //view.mapView.addAnnotation(newAnnotation)
             DispatchQueue.main.async {
                 self.view?.hideBottomPanel()
                 self.mode = .researching
