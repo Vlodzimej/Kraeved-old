@@ -13,7 +13,8 @@ protocol EntityManagerProtocol: AnyObject {
     func find(arguments: [String: String], completion: @escaping ([MetaObject<Entity>]) -> Void)
     func find(customProperties: [String: String], completion: @escaping ([MetaObject<Entity>]) -> Void)
     func find(title: String, completion: @escaping ([MetaObject<Entity>]) -> Void)
-    func getEntity(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void)
+    func get(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void)
+    func add(entity: MetaObject<Entity>, completion: @escaping (MetaObject<Entity>) -> Void)
 }
 
 final class EntityManager: EntityManagerProtocol {
@@ -59,7 +60,7 @@ final class EntityManager: EntityManagerProtocol {
         }
     }
 
-    func getEntity(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void) {
+    func get(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void) {
         businessObjectManager.find(metaTypeId: MetaType.entity.id, predicates: [NSPredicate(format: "%K = %@", "id", id.uuidString)]) { [weak self] businessObjects in
             guard let self = self, let businessObject = businessObjects.first,
                   let entity: MetaObject<Entity> = businessObject.convertToMetaObject() else { return }
@@ -69,6 +70,14 @@ final class EntityManager: EntityManagerProtocol {
                     completion(resultEntity)
                 }
             }
+            completion(entity)
+        }
+    }
+    
+    func add(entity: MetaObject<Entity>, completion: @escaping (MetaObject<Entity>) -> Void) {
+        guard let businessObject = entity.convertToBusinessObject() else { return }
+        businessObjectManager.add(businessObject) { result in
+            guard let entity: MetaObject<Entity> = result.convertToMetaObject() else { return }
             completion(entity)
         }
     }

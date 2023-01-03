@@ -16,6 +16,11 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: 1)
     }
 
+    struct Common {
+        static var greenBackground: UIColor { UIColor.HEX.hE8F4EA }
+        static var greenMain: UIColor { UIColor.HEX.h479F88 }
+    }
+
     struct MainScreen {
         static var background: UIColor { UIColor.white }
         static var cellBackground: UIColor { UIColor.HEX.h4B6285 }
@@ -28,10 +33,9 @@ extension UIColor {
         static var closeButton: UIColor { UIColor.HEX.hf97C7C }
         static var bottomPanelBorder: UIColor { UIColor.HEX.hF1F1F1 }
     }
-    
+
     struct TabBar {
         static var tabBarItem: UIColor { UIColor.HEX.h677F79 }
-        static var selectedTabBarItem: UIColor { UIColor.HEX.h479F88 }
     }
 }
 
@@ -44,5 +48,6 @@ extension UIColor {
         static let hF1F1F1 = UIColor(hex: 0xF1F1F1)
         static let h479F88 = UIColor(hex: 0x479F88)
         static let h677F79 = UIColor(hex: 0x677F79)
+        static let hE8F4EA = UIColor(hex: 0xE8F4EA)
     }
 }
