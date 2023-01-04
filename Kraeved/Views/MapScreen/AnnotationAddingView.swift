@@ -122,7 +122,7 @@ class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
     init() {
         super.init(frame: .zero)
         initialize()
-        backgroundColor = .Common.greenBackground
+        backgroundColor = .clear
     }
 
     required init?(coder: NSCoder) {

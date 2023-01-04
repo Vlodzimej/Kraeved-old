@@ -128,10 +128,13 @@ extension MapScreenPresenter: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? Annotation else { return }
         openAnnotation(annotation: annotation)
+        mapView.setCenter(annotation.coordinate, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        self.view?.hideBottomPanel()
+        if mode == .researching {
+            self.view?.hideBottomPanel()
+        }
     }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
@@ -148,7 +151,7 @@ extension MapScreenPresenter: CLLocationManagerDelegate {
 
 extension MapScreenPresenter: AnnotationAddingViewDelegate {
     func addAnnotation(title: String, description: String) {
-        guard let coordinate = selectedAnnotation?.coordinate, let view else { return }
+        guard let coordinate = selectedAnnotation?.coordinate else { return }
         let newAnnotation = Annotation(id: UUID(), coordinate: coordinate, title: title, subtitle: "", text: description)
         interactor.addAnnotation(newAnnotation) { [weak self] result in
             guard let self else { return }
@@ -156,6 +159,11 @@ extension MapScreenPresenter: AnnotationAddingViewDelegate {
             DispatchQueue.main.async {
                 self.view?.hideBottomPanel()
                 self.mode = .researching
+                if let title = result.title {
+                    let localizedString = NSLocalizedString("mapScreen.locationAdded", comment: "")
+                    let message = String(format: localizedString, title)
+                    self.router.showMessage(message)
+                }
             }
         }
     }

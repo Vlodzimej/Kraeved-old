@@ -15,9 +15,18 @@ extension UIColor {
         let blue = CGFloat(hexValue & 0x0000FF) / 255.0
         self.init(red: red, green: green, blue: blue, alpha: 1)
     }
+    
+    convenience init(hexWithAlpha hexValue: Int64) {
+        let red = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
+        let green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
+        let blue = CGFloat((hexValue & 0x0000FF00) >> 8) / 255.0
+        let alpha = CGFloat(hexValue & 0x000000FF) / 255.0
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
+    }
 
     struct Common {
         static var greenBackground: UIColor { UIColor.HEX.hE8F4EA }
+        static var greenAlphaBackground: UIColor { UIColor.HEX.hE8F4EADD }
         static var greenMain: UIColor { UIColor.HEX.h479F88 }
     }
 
@@ -49,5 +58,7 @@ extension UIColor {
         static let h479F88 = UIColor(hex: 0x479F88)
         static let h677F79 = UIColor(hex: 0x677F79)
         static let hE8F4EA = UIColor(hex: 0xE8F4EA)
+        
+        static let hE8F4EADD = UIColor(hexWithAlpha: 0xE8F4EADD)
     }
 }

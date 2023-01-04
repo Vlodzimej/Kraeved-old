@@ -50,21 +50,13 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
 
     private let bottomPanelView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.Common.greenAlphaBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         view.layer.cornerRadius = 20
         view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         view.layer.borderColor = UIColor.MapScreen.bottomPanelBorder.cgColor
         view.layer.borderWidth = 1
-        return view
-    }()
-
-    private let locationMarkView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 20
         return view
     }()
 

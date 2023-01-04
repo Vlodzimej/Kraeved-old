@@ -14,10 +14,12 @@ final class MapScreenAnnotationInfoView: UIView {
         static let titleHorizontalInset: CGFloat = 24
     }
     
-    private let discriptionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.contentMode = .topLeft
+        label.numberOfLines = 0
         return label
     }()
 
@@ -31,7 +33,7 @@ final class MapScreenAnnotationInfoView: UIView {
     init() {
         super.init(frame: .zero)
         initialize()
-        backgroundColor = .Common.greenBackground
+        backgroundColor = .clear
     }
 
     required init?(coder: NSCoder) {
@@ -45,15 +47,14 @@ final class MapScreenAnnotationInfoView: UIView {
         imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
-        addSubview(discriptionLabel)
-        discriptionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.contentInset).isActive = true
-        discriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: UIConstants.titleHorizontalInset).isActive = true
-        discriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -UIConstants.titleHorizontalInset).isActive = true
-        discriptionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constants.contentInset).isActive = true
+        addSubview(descriptionLabel)
+        descriptionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.contentInset).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: UIConstants.titleHorizontalInset).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -UIConstants.titleHorizontalInset).isActive = true
     }
 
     func configurate(entity: MetaObject<Entity>) {
-        discriptionLabel.text = entity.data?.text
+        descriptionLabel.text = entity.data?.text
         imageView.image = entity.image
     }
 
