@@ -41,8 +41,8 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
     private lazy var addButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = UIConstants.addButtonSize / 2
-        button.setImage(UIImage.Common.plus, for: .normal)
-        button.backgroundColor = UIColor.systemBlue
+        button.setImage(.Common.plus, for: .normal)
+        button.backgroundColor = .Common.blueMain
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(addButtonTapped(_:)), for: .touchUpInside)
         return button
@@ -176,7 +176,7 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
 
     func hideBottomPanel() {
         addButton.setImage(UIImage.Common.plus, for: .normal)
-        addButton.backgroundColor = .systemBlue
+        addButton.backgroundColor = .Common.blueMain
         bottomPanelAnchor?.constant = 0
         isBottomPanelHidden = true
         

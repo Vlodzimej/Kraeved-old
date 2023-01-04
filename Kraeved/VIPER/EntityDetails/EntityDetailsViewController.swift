@@ -60,7 +60,14 @@ class EntityDetailsViewController: BaseViewController, EntityDetailsViewProtocol
         super.viewDidLoad()
         presenter.viewDidLoad()
         initialize()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     private func initialize() {
@@ -69,7 +76,6 @@ class EntityDetailsViewController: BaseViewController, EntityDetailsViewProtocol
         view.addSubview(titleLabel)
 
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 128).isActive = true
-        // titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 
         view.addSubview(textLabel)
@@ -77,7 +83,6 @@ class EntityDetailsViewController: BaseViewController, EntityDetailsViewProtocol
         textLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 64).isActive = true
         textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-
     }
 
     // MARK: Private methods

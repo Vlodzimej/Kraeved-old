@@ -8,6 +8,11 @@
 import UIKit
 
 extension UIImage {
+    
+    struct Start {
+        static var horizon: UIImage { UIImage(named: "horizon")! }
+    }
+    
     struct Common {
         static var plus: UIImage { UIImage(named: "plus" )! }
         static var xmark: UIImage { UIImage(named: "xmark" )! }
