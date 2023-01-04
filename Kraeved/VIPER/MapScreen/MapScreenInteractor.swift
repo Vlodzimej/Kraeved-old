@@ -4,6 +4,7 @@ import MapKit
 protocol MapScreenInteractorProtocol: AnyObject {
     func getAnnotations()
     func getEntity(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void)
+    func addAnnotation(_ annotation: Annotation, completion: @escaping (Annotation) -> Void)
 }
 
 // MARK: - MapScreenInteractor
@@ -36,9 +37,15 @@ class MapScreenInteractor: MapScreenInteractorProtocol {
     func getEntity(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void) {
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let self = self else { return }
-            self.entityManager.getEntity(id: id) { entities in
+            self.entityManager.get(id: id) { entities in
                 completion(entities)
             }
+        }
+    }
+    
+    func addAnnotation(_ annotation: Annotation, completion: @escaping (Annotation) -> Void) {
+        annotationManager.addAnnotation(annotation) { result in
+            completion(result)
         }
     }
 }

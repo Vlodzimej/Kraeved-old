@@ -54,7 +54,7 @@ struct BusinessObject: Identifiable, Codable {
         self.finishDate = businessObject.finishDate
     }
 
-    init(id: UUID, title: String, metaTypeId: UUID, customProperties: String, startDate: String, finishDate: String) {
+    init(id: UUID, title: String?, metaTypeId: UUID?, customProperties: String?, startDate: String?, finishDate: String?) {
         self.id = id
         self.title = title
         self.metaTypeId = metaTypeId

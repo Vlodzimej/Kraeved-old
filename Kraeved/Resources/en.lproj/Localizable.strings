@@ -5,23 +5,32 @@
   Created by Владимир Амелькин on 01.11.2022.
   
 */
-"common.noTitle"                = "No title";
+"common.noTitle"                        = "No title";
+"common.next"                           = "Next";
+"common.close"                          = "Close";
 
-"tabbar.mainScreen"             = "Main";
-"tabbar.searchScreen"           = "Search";
-"tabbar.mapScreen"              = "Map";
-"tabbar.miniApps"               = "Services";
-"tabbar.profile"                 = "Profile";
-"tabbar.building"               = "Building";
-"tabbar.natural"                = "Natural";
+"tabbar.mainScreen"                     = "Main";
+"tabbar.searchScreen"                   = "Search";
+"tabbar.mapScreen"                      = "Map";
+"tabbar.miniApps"                       = "Services";
+"tabbar.profile"                         = "Profile";
+"tabbar.building"                       = "Building";
+"tabbar.natural"                        = "Natural";
 
-"mainScreen.historicalEvents"   = "Events on this day";
-"mainScreen.gallery"            = "Gallery";
-"mainScreen.locations"           = "Places";
+"mainScreen.historicalEvents"           = "Events on this day";
+"mainScreen.gallery"                    = "Gallery";
+"mainScreen.locations"                  = "Places";
 
-"searchItems.historicalEvents"  = "Events";
-"searchItems.locations"         = "Locations";
+"searchItems.historicalEvents"          = "Events";
+"searchItems.locations"                 = "Locations";
 
-"onboarding.events"             = "Learn about the significant events that took place on this day";
-"onboarding.places"             = "Get more information about interesting places";
-"onboarding.gallery"            = "Browse beautiful photos and paintings";
+"onboarding.events"                     = "Learn about the significant events that took place on this day";
+"onboarding.places"                     = "Get more information about interesting places";
+"onboarding.gallery"                    = "Browse beautiful photos and paintings";
+
+"mapScreen.newLocation"                 = "New location";
+"mapScreen.coordinates"                 = "Coordinates";
+"mapScreen.selectCoords"                = "Select location on map";
+"mapScreen.enterNewLocationName"        = "The name of the new location must match the object that\nis in flight on the coordinate map.\nThe name must be at least 3 characters long.";
+"mapScreen.enterNewLocationDescription" = "Enter a description for the location (optional).";
+"mapScreen.locationAdded"               = "Location \"%@\" successfully added!";

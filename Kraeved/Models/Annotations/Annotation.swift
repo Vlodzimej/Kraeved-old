@@ -8,97 +8,38 @@
 import Foundation
 import MapKit
 
-enum AnnotationType {
-    case building
-    case natural
-}
-
-protocol AnnotationProtocol: AnyObject {
-    func updateText(_ text: String)
-    func getTextInfo() -> String?
-    func getDiscription() -> String?
-}
-
-class Annotation: NSObject, MKAnnotation, AnnotationProtocol {
+class Annotation: NSObject, MKAnnotation {
 
     var id: UUID
 
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
+    var text: String?
 
     let startDate: Date?
-    let type: AnnotationType
 
-    private var text: String?
-
-    init(id: UUID, coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, type: AnnotationType, startDate: Date? = nil) {
+    init(id: UUID, coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?, startDate: Date? = nil, text: String? = nil) {
         self.id = id
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
-        self.type = type
         self.startDate = startDate
-    }
-
-    func updateText(_ text: String) {
         self.text = text
     }
-
-    func getTextInfo() -> String? {
-        if let title = title {
-            return "\(title)/n\(subtitle ?? "")"
-        } else if let subtitle = subtitle {
-            return subtitle
-        } else {
-            return nil
-        }
+    
+    init(_ entity: MetaObject<Entity>) {
+        self.id = entity.id
+        self.coordinate = CLLocationCoordinate2D(latitude: entity.data?.latitude ?? 0, longitude: entity.data?.longitude ?? 0)
+        self.title = entity.title
+        self.subtitle = ""
+        self.startDate = nil
+        self.text = entity.data?.text
     }
-
-    func getDiscription() -> String? {
-        return text
-    }
-}
-
-class AnnotationDecorator: AnnotationProtocol {
-    let decoratedAnnotation: AnnotationProtocol
-
-    required init(_ decoratedAnnotation: Annotation) {
-        self.decoratedAnnotation = decoratedAnnotation
-    }
-
-    func updateText(_ text: String) {
-        decoratedAnnotation.updateText(text)
-    }
-
-    func getTextInfo() -> String? {
-        return decoratedAnnotation.getTextInfo()
-    }
-
-    func getDiscription() -> String? {
-        return decoratedAnnotation.getDiscription()
+    
+    func convertToEntity() -> MetaObject<Entity>? {
+        var entity = MetaObject<Entity>(id: id, title: title, image: nil)
+        entity.data = Entity(imageUrl: nil, text: text, typeId: EntityType.location.id, longitude: coordinate.longitude, latitude: coordinate.latitude)
+        return entity
     }
 }
-
-class Mark: AnnotationDecorator {
-    required init(_ decoratedAnnotation: Annotation) {
-        super.init(decoratedAnnotation)
-    }
-
-    override func getTextInfo() -> String? {
-        guard let text = decoratedAnnotation.getDiscription() else { return nil }
-        return "MARK:\n\(text)"
-    }
-
-}
-
-// struct AnnotationDto: Decodable {
-//    let id: Int?
-//    let title: String?
-//    let latitude: String?
-//    let longitude: String?
-//
-//    enum CodingKeys: String, CodingKey {
-//        case id, title, latitude, longitude
-//    }
-// }

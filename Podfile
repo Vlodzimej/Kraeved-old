@@ -6,5 +6,5 @@ target 'Kraeved' do
   use_frameworks!
 
   # Pods for Kraeved
-
+  pod 'KraevedKit', :git => 'https://github.com/Vlodzimej/KraevedKit', :tag => '0.0.7'
 end

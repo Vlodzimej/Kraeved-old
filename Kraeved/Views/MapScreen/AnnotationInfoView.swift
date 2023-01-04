@@ -1,5 +1,5 @@
 //
-//  AnnotationScreen.swift
+//  MapScreenAnnotationInfoView.swift
 //  Kraeved
 //
 //  Created by Владимир Амелькин on 11.12.2022.
@@ -7,12 +7,19 @@
 
 import UIKit
 
-final class MapScreenAnnotationView: UIView {
-
-    private let titleLabel: UILabel = {
+// MARK: - MapScreenAnnotationInfoView
+final class MapScreenAnnotationInfoView: UIView {
+    
+    struct UIConstants {
+        static let titleHorizontalInset: CGFloat = 24
+    }
+    
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.contentMode = .topLeft
+        label.numberOfLines = 0
         return label
     }()
 
@@ -26,6 +33,7 @@ final class MapScreenAnnotationView: UIView {
     init() {
         super.init(frame: .zero)
         initialize()
+        backgroundColor = .clear
     }
 
     required init?(coder: NSCoder) {
@@ -33,26 +41,20 @@ final class MapScreenAnnotationView: UIView {
     }
 
     private func initialize() {
-        self.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.contentInset).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.contentInset).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.contentInset).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-
         addSubview(imageView)
         imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        addSubview(descriptionLabel)
+        descriptionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.contentInset).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: UIConstants.titleHorizontalInset).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -UIConstants.titleHorizontalInset).isActive = true
     }
 
     func configurate(entity: MetaObject<Entity>) {
-//        subviews.forEach { subview in
-//            subview.removeFromSuperview()
-//        }
-        titleLabel.text = entity.data?.text
+        descriptionLabel.text = entity.data?.text
         imageView.image = entity.image
     }
 

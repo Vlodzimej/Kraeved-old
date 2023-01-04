@@ -4,12 +4,17 @@ import MapKit
 // MARK: - MapScreenViewProtocol
 protocol MapScreenViewProtocol: AnyObject {
     var mapView: MKMapView { get set }
-
-    func showLocationDetails(entity: MetaObject<Entity>)
+    var annotationAddingView: AnnotationAddingView { get set }
+    
+    func showAnnotationInfo(entity: MetaObject<Entity>)
+    func showAnnotationAdding()
+    func hideBottomPanel() 
 }
 
 // MARK: - MapScreenViewController
 final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
+    
+    // MARK: UIConstants
     private struct UIConstants {
         static let addButtonSize: CGFloat = 64
         static let addButtonInset: CGFloat = 32
@@ -21,6 +26,10 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
 
     private var isBottomPanelHidden = true
     private var bottomPanelAnchor: NSLayoutConstraint?
+    
+    private lazy var bottomPanelHeight = {
+        view.bounds.height / 4
+    }()
 
     // MARK: UIProperties
     var mapView: MKMapView = {
@@ -41,7 +50,7 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
 
     private let bottomPanelView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.Common.greenAlphaBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         view.layer.cornerRadius = 20
@@ -51,15 +60,17 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         return view
     }()
 
-    private let locationMarkView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 20
+    private let annotationInfoView: MapScreenAnnotationInfoView = {
+        let view = MapScreenAnnotationInfoView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    private let annotationView = MapScreenAnnotationView()
+    var annotationAddingView: AnnotationAddingView = {
+        let view = AnnotationAddingView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     // MARK: Init
     init(presenter: MapScreenPresenterProtocol) {
@@ -81,11 +92,23 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         mapView.delegate = presenter
 
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-            // gestureRecognizer.delegate = self
             mapView.addGestureRecognizer(gestureRecognizer)
+        
+        annotationAddingView.delegate = presenter
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangesVisibility(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangesVisibility(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
     }
 
     private func initialize() {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
         view.addSubview(mapView)
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -105,15 +128,30 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         addButton.widthAnchor.constraint(equalToConstant: UIConstants.addButtonSize).isActive = true
         addButton.heightAnchor.constraint(equalToConstant: UIConstants.addButtonSize).isActive = true
 
-        bottomPanelView.addSubview(annotationView)
-        annotationView.topAnchor.constraint(equalTo: bottomPanelView.topAnchor).isActive = true
-        annotationView.trailingAnchor.constraint(equalTo: bottomPanelView.trailingAnchor).isActive = true
-        annotationView.leadingAnchor.constraint(equalTo: bottomPanelView.leadingAnchor).isActive = true
-        annotationView.bottomAnchor.constraint(equalTo: bottomPanelView.bottomAnchor).isActive = true
+        bottomPanelView.addSubview(annotationInfoView)
+        annotationInfoView.topAnchor.constraint(equalTo: bottomPanelView.topAnchor).isActive = true
+        annotationInfoView.trailingAnchor.constraint(equalTo: bottomPanelView.trailingAnchor).isActive = true
+        annotationInfoView.leadingAnchor.constraint(equalTo: bottomPanelView.leadingAnchor).isActive = true
+        annotationInfoView.bottomAnchor.constraint(equalTo: bottomPanelView.bottomAnchor).isActive = true
+        
+        bottomPanelView.addSubview(annotationAddingView)
+        annotationAddingView.topAnchor.constraint(equalTo: bottomPanelView.topAnchor).isActive = true
+        annotationAddingView.trailingAnchor.constraint(equalTo: bottomPanelView.trailingAnchor).isActive = true
+        annotationAddingView.leadingAnchor.constraint(equalTo: bottomPanelView.leadingAnchor).isActive = true
+        annotationAddingView.bottomAnchor.constraint(equalTo: bottomPanelView.bottomAnchor).isActive = true
     }
 
     @IBAction private func addButtonTapped(_ sender: UIButton) {
         toggleBottomPanel()
+        
+        if isBottomPanelHidden && presenter.mode == .addingAnnotation {
+            presenter.updateAnnotations()
+        }
+        
+        presenter.mode = isBottomPanelHidden ? .researching : .addingAnnotation
+        if presenter.mode == .addingAnnotation {
+            showAnnotationAdding()
+        }
     }
 
     private func toggleBottomPanel() {
@@ -127,39 +165,84 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
     private func showBottomPanel() {
         addButton.setImage(UIImage.Common.xmark, for: .normal)
         addButton.backgroundColor = UIColor.MapScreen.closeButton
-        bottomPanelAnchor?.constant = view.bounds.height / 3
+        bottomPanelAnchor?.constant = bottomPanelHeight
         isBottomPanelHidden = false
+        
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
             self.view.layoutSubviews()
         }
     }
 
-    private func hideBottomPanel() {
+    func hideBottomPanel() {
         addButton.setImage(UIImage.Common.plus, for: .normal)
         addButton.backgroundColor = .systemBlue
         bottomPanelAnchor?.constant = 0
         isBottomPanelHidden = true
+        
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
             self.view.layoutSubviews()
         }
+        
+        if presenter.mode == .addingAnnotation {
+            presenter.removeNewAnnotation()
+            mapView.selectedAnnotations = []
+        }
+        
+        view.endEditing(true)
     }
 
     @objc private func handleTap(gestureRecognizer: UITapGestureRecognizer) {
-
-        let location = gestureRecognizer.location(in: mapView)
-        let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
-
-        // Add annotation:
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        mapView.addAnnotation(annotation)
+        switch presenter.mode {
+            case .addingAnnotation:
+                let location = gestureRecognizer.location(in: mapView)
+                presenter.createAnnotation(by: location)
+            default: break
+        }
     }
 
     // MARK: Public Methods
-    func showLocationDetails(entity: MetaObject<Entity>) {
+    @objc func keyboardWillChangesVisibility(notification: NSNotification) {
+        guard !isBottomPanelHidden else { return }
+        var keyboardSize: CGSize?
+        
+        if let info = notification.userInfo {
+            let frameEndUserInfoKey = UIResponder.keyboardFrameEndUserInfoKey
+            if let keyboardFrame = info[frameEndUserInfoKey] as? CGRect {
+                
+                let screenSize = UIScreen.main.bounds
+                let intersectRect = keyboardFrame.intersection(screenSize)
+                
+                if intersectRect.isNull {
+                    keyboardSize = CGSize(width: screenSize.size.width, height: 0)
+                } else {
+                    keyboardSize = intersectRect.size
+                }
+                
+                guard let keyboardHeight = keyboardSize?.height else { return }
+                let navigationBarHeight = keyboardHeight > 0 ? navigationController?.navigationBar.frame.height ?? 0 : 0
+                bottomPanelAnchor?.constant = bottomPanelHeight + keyboardHeight - navigationBarHeight
+                UIView.animate(withDuration: 0.25) { [weak self] in
+                    guard let self = self else { return }
+                    self.view.layoutSubviews()
+                }
+            }
+        }
+    }
+    
+    func showAnnotationInfo(entity: MetaObject<Entity>) {
+        annotationInfoView.isHidden = false
+        annotationAddingView.isHidden = true
+        
         showBottomPanel()
-        annotationView.configurate(entity: entity)
+        annotationInfoView.configurate(entity: entity)
+    }
+    
+    func showAnnotationAdding() {
+        annotationInfoView.isHidden = true
+        annotationAddingView.isHidden = false
+    
+        annotationAddingView.reset()
     }
 }

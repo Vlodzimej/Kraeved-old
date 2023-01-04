@@ -9,7 +9,7 @@ import MapKit
 
 protocol AnnotationManagerProtocol {
     func getAnnotations(completion: @escaping ([Annotation]) -> Void)
-    func getTransport(completion: @escaping ([Transport]) -> Void)
+    func addAnnotation(_ annotation: Annotation, completion: @escaping (Annotation) -> Void)
 }
 
 class AnnotationManager: AnnotationManagerProtocol {
@@ -24,27 +24,20 @@ class AnnotationManager: AnnotationManagerProtocol {
 
     func getAnnotations(completion: @escaping ([Annotation]) -> Void) {
         entityManager.find(customProperties: ["typeId": EntityType.location.rawValue]) { locations in
-            let annotations: [Annotation] = locations.compactMap { location in
-                guard let latitude = location.data?.latitude, let longitude = location.data?.longitude else { return nil }
-                let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                return Annotation(id: location.id, coordinate: coordinate, title: location.title, subtitle: "", type: .building)
-            }
+            let annotations: [Annotation] = locations.compactMap { Annotation($0) }
             completion(annotations)
         }
     }
-
-    func getTransport(completion: @escaping ([Transport]) -> Void) {
-        let result: [Transport] = [
-            .init(name: "Маршрут 1", route: [1, 2]),
-            .init(name: "Маршрут 2", route: [3, 1, 2]),
-            .init(name: "Маршрут 3", route: [2, 3])
-        ]
-        completion(result)
+    
+    func addAnnotation(_ annotation: Annotation, completion: @escaping (Annotation) -> Void) {
+        guard let entity = annotation.convertToEntity() else { return }
+        entityManager.add(entity: entity) { result in
+            completion(Annotation(result))
+        }
     }
 }
 
 extension String {
-    /// EZSE: Converts String to Double
     public func toDouble() -> Double? {
         if let num = NumberFormatter().number(from: self) {
                 return num.doubleValue

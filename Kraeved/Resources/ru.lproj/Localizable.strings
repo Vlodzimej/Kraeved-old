@@ -5,23 +5,32 @@
   Created by Владимир Амелькин on 01.11.2022.
   
 */
-"common.noTitle"                = "Название отсутствует";
+"common.noTitle"                        = "Название отсутствует";
+"common.next"                           = "Далее";
+"common.close"                          = "Закрыть";
 
-"tabbar.mainScreen"             = "Главная";
-"tabbar.searchScreen"           = "Поиск";
-"tabbar.mapScreen"              = "Карта";
-"tabbar.miniApps"               = "Сервисы";
-"tabbar.profile"                 = "Профиль";
-"tabbar.building"               = "Здание";
-"tabbar.natural"                = "Природа";
+"tabbar.mainScreen"                     = "Главная";
+"tabbar.searchScreen"                   = "Поиск";
+"tabbar.mapScreen"                      = "Карта";
+"tabbar.miniApps"                       = "Сервисы";
+"tabbar.profile"                         = "Профиль";
+"tabbar.building"                       = "Здание";
+"tabbar.natural"                        = "Природа";
 
-"mainScreen.historicalEvents"   = "События в этот день";
-"mainScreen.gallery"            = "Галлерея";
-"mainScreen.locations"           = "Места";
+"mainScreen.historicalEvents"           = "События в этот день";
+"mainScreen.gallery"                    = "Галлерея";
+"mainScreen.locations"                  = "Места";
 
-"searchItems.historicalEvents"  = "События";
-"searchItems.locations"         = "Места";
+"searchItems.historicalEvents"          = "События";
+"searchItems.locations"                 = "Места";
 
-"onboarding.events"             = "Узнавайте о знаменательных событиях произошедших в этот день";
-"onboarding.places"             = "Получайте больше информации об интересных местах";
-"onboarding.gallery"            = "Просматривайте красивые фотографии и картины";
+"onboarding.events"                     = "Узнавайте о знаменательных событиях произошедших в этот день";
+"onboarding.places"                     = "Получайте больше информации об интересных местах";
+"onboarding.gallery"                    = "Просматривайте красивые фотографии и картины";
+
+"mapScreen.newLocation"                 = "Новая локация";
+"mapScreen.coordinates"                 = "Координаты";
+"mapScreen.selectCoords"                = "Выберите расположение на карте";
+"mapScreen.enterNewLocationName"        = "Название новой локации должно соответствовать объекту,\nкоторый находится в указанных на карте координатах.\nНазвание должно содержать не менее 3-х символов.";
+"mapScreen.enterNewLocationDescription" = "Введите описание локации (необязательно).";
+"mapScreen.locationAdded"               = "Локация \"%@\" успешно добавлена!";
