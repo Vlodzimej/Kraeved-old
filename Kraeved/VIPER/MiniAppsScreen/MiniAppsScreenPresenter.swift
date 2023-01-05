@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - MiniAppsScreenPresenterProtocol
-protocol MiniAppsScreenPresenterProtocol: AnyObject {
+protocol MiniAppsScreenPresenterProtocol: AnyObject, MiniaAppCollectionAdapterDelegate {
 }
 
 // MARK: - MiniAppsScreenPresenter
@@ -23,5 +23,11 @@ class MiniAppsScreenPresenter: MiniAppsScreenPresenterProtocol {
     init(interactor: MiniAppsScreenInteractorProtocol, router: MiniAppsScreenRouterProtocol) {
         self.router = router
         self.interactor = interactor
+    }
+}
+
+extension MiniAppsScreenPresenter: MiniaAppCollectionAdapterDelegate {
+    func showMessage() {
+        router.showMessageScreen("Сервис находится в разработке")
     }
 }

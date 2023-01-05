@@ -1,0 +1,94 @@
+//
+//  MessageScreenViewController.swift
+//  Kraeved
+//
+//  Created by Владимир Амелькин on 05.01.2023.
+//
+
+import UIKit
+
+// MARK: - MessageScreenViewProtocol
+protocol MessageScreenViewProtocol: AnyObject {
+}
+
+// MARK: - MessageScreenViewController
+class MessageScreenViewController: BaseViewController, MessageScreenViewProtocol {
+
+    // MARK: Properties
+    private let presenter: MessageScreenPresenterProtocol
+    
+    private let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage.Common.logoSmall
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private let messageLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var closeButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        button.backgroundColor = .systemBlue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        button.setTitle("Продолжить", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        return button
+    }()
+
+    // MARK: UIProperties
+    
+    // MARK: Init
+    init(presenter: MessageScreenPresenterProtocol, messageText: String) {
+        self.presenter = presenter
+        messageLabel.text = messageText
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("don't use storyboards!")
+    }
+
+    // MARK: VC Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initialize()
+    }
+
+    private func initialize() {
+        view.backgroundColor = .white
+        
+        view.addSubview(logoImageView)
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -64).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: 128).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        
+        view.addSubview(messageLabel)
+        messageLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: Constants.contentInset).isActive = true
+        messageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
+        messageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
+        
+        view.addSubview(closeButton)
+        closeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.contentInset).isActive = true
+        closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
+        closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+    }
+
+    // MARK: Private methods
+
+    // MARK: Public methods
+    @objc func closeButtonTapped() {
+        presenter.dismiss()
+    }
+
+}
