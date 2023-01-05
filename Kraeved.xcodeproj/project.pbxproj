@@ -41,7 +41,7 @@
 		66183DE6292AA797008412B0 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DE5292AA797008412B0 /* MainTableViewCell.swift */; };
 		66183DE8292AAEE0008412B0 /* EntityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DE7292AAEE0008412B0 /* EntityCellView.swift */; };
 		66183DEB292AB5D4008412B0 /* generateRandomPastelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DEA292AB5D4008412B0 /* generateRandomPastelColor.swift */; };
-		66183DEE292ABBEB008412B0 /* EntitytCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DED292ABBEB008412B0 /* EntitytCollectionCell.swift */; };
+		66183DEE292ABBEB008412B0 /* EntityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DED292ABBEB008412B0 /* EntityCollectionCell.swift */; };
 		66183DF2292BA69B008412B0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF1292BA69B008412B0 /* User.swift */; };
 		66183DF5292BACC4008412B0 /* UIColor+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF4292BACC4008412B0 /* UIColor+Extra.swift */; };
 		66183DF7292BC318008412B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183DF6292BC318008412B0 /* Constants.swift */; };
@@ -79,6 +79,13 @@
 		669DC67729659CD50090D50C /* PhoneFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC67629659CD50090D50C /* PhoneFormView.swift */; };
 		669DC67929659CF90090D50C /* CodeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC67829659CF90090D50C /* CodeFormView.swift */; };
 		669DC67B2966CA1F0090D50C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC67A2966CA1F0090D50C /* AuthManager.swift */; };
+		669DC67D296724540090D50C /* MiniAppCollectionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC67C296724540090D50C /* MiniAppCollectionAdapter.swift */; };
+		669DC6802967263D0090D50C /* MiniAppCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC67F2967263D0090D50C /* MiniAppCollectionCell.swift */; };
+		669DC687296758590090D50C /* MessageScreenModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC682296758590090D50C /* MessageScreenModuleBuilder.swift */; };
+		669DC688296758590090D50C /* MessageScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC683296758590090D50C /* MessageScreenPresenter.swift */; };
+		669DC689296758590090D50C /* MessageScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC684296758590090D50C /* MessageScreenRouter.swift */; };
+		669DC68A296758590090D50C /* MessageScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC685296758590090D50C /* MessageScreenViewController.swift */; };
+		669DC68B296758590090D50C /* MessageScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC686296758590090D50C /* MessageScreenInteractor.swift */; };
 		66A8A5012926E0DB000BFC29 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */; };
 		66A8A5022926E0DB000BFC29 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FE2926E0DB000BFC29 /* BaseViewController.swift */; };
 		66A8A50B2926E173000BFC29 /* AnnotationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A5062926E173000BFC29 /* AnnotationScreenViewController.swift */; };
@@ -164,7 +171,7 @@
 		66183DE5292AA797008412B0 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		66183DE7292AAEE0008412B0 /* EntityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCellView.swift; sourceTree = "<group>"; };
 		66183DEA292AB5D4008412B0 /* generateRandomPastelColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generateRandomPastelColor.swift; sourceTree = "<group>"; };
-		66183DED292ABBEB008412B0 /* EntitytCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitytCollectionCell.swift; sourceTree = "<group>"; };
+		66183DED292ABBEB008412B0 /* EntityCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionCell.swift; sourceTree = "<group>"; };
 		66183DF1292BA69B008412B0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		66183DF4292BACC4008412B0 /* UIColor+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extra.swift"; sourceTree = "<group>"; };
 		66183DF6292BC318008412B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -201,6 +208,13 @@
 		669DC67629659CD50090D50C /* PhoneFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormView.swift; sourceTree = "<group>"; };
 		669DC67829659CF90090D50C /* CodeFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeFormView.swift; sourceTree = "<group>"; };
 		669DC67A2966CA1F0090D50C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		669DC67C296724540090D50C /* MiniAppCollectionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppCollectionAdapter.swift; sourceTree = "<group>"; };
+		669DC67F2967263D0090D50C /* MiniAppCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppCollectionCell.swift; sourceTree = "<group>"; };
+		669DC682296758590090D50C /* MessageScreenModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageScreenModuleBuilder.swift; sourceTree = "<group>"; };
+		669DC683296758590090D50C /* MessageScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageScreenPresenter.swift; sourceTree = "<group>"; };
+		669DC684296758590090D50C /* MessageScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageScreenRouter.swift; sourceTree = "<group>"; };
+		669DC685296758590090D50C /* MessageScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageScreenViewController.swift; sourceTree = "<group>"; };
+		669DC686296758590090D50C /* MessageScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageScreenInteractor.swift; sourceTree = "<group>"; };
 		66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		66A8A4FE2926E0DB000BFC29 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		66A8A5062926E173000BFC29 /* AnnotationScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationScreenViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +329,7 @@
 		66088A2A2926DD0500CB5E23 /* VIPER */ = {
 			isa = PBXGroup;
 			children = (
+				669DC681296758410090D50C /* MessageScreen */,
 				669DC66829657D790090D50C /* StartScreen */,
 				660FD9882956574600B69376 /* MiniAppsScreen */,
 				66183E11292D7BB7008412B0 /* EntityDetails */,
@@ -451,6 +466,7 @@
 				66183DE0292AA6CF008412B0 /* MainTableAdapter.swift */,
 				66956E61293259F600FC161C /* SearchTableAdapter.swift */,
 				66D41EAE2932CD7300FD66CA /* ProfileTableAdapter.swift */,
+				669DC67C296724540090D50C /* MiniAppCollectionAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -458,6 +474,7 @@
 		66183DE3292AA74D008412B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				669DC67E296726280090D50C /* MiniApps */,
 				669DC67529659CC40090D50C /* StartScreen */,
 				66C55D1E2945D34A00EFB899 /* MapScreen */,
 				66D41EB02932D1A700FD66CA /* Profile */,
@@ -495,7 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				66183DE7292AAEE0008412B0 /* EntityCellView.swift */,
-				66183DED292ABBEB008412B0 /* EntitytCollectionCell.swift */,
+				66183DED292ABBEB008412B0 /* EntityCollectionCell.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -565,6 +582,26 @@
 				669DC67829659CF90090D50C /* CodeFormView.swift */,
 			);
 			path = StartScreen;
+			sourceTree = "<group>";
+		};
+		669DC67E296726280090D50C /* MiniApps */ = {
+			isa = PBXGroup;
+			children = (
+				669DC67F2967263D0090D50C /* MiniAppCollectionCell.swift */,
+			);
+			path = MiniApps;
+			sourceTree = "<group>";
+		};
+		669DC681296758410090D50C /* MessageScreen */ = {
+			isa = PBXGroup;
+			children = (
+				669DC682296758590090D50C /* MessageScreenModuleBuilder.swift */,
+				669DC683296758590090D50C /* MessageScreenPresenter.swift */,
+				669DC684296758590090D50C /* MessageScreenRouter.swift */,
+				669DC685296758590090D50C /* MessageScreenViewController.swift */,
+				669DC686296758590090D50C /* MessageScreenInteractor.swift */,
+			);
+			path = MessageScreen;
 			sourceTree = "<group>";
 		};
 		66A8A4FA2926E0C9000BFC29 /* Base */ = {
@@ -855,6 +892,7 @@
 				66088A452926DDA900CB5E23 /* Transport.swift in Sources */,
 				66FB06A2293FD26000DFEFA3 /* ImageCoreModel+CoreDataClass.swift in Sources */,
 				66088A392926DD7900CB5E23 /* APIManager.swift in Sources */,
+				669DC68B296758590090D50C /* MessageScreenInteractor.swift in Sources */,
 				66A8A5172926E1D9000BFC29 /* SearchScreenRouter.swift in Sources */,
 				66183DE8292AAEE0008412B0 /* EntityCellView.swift in Sources */,
 				66183E07292C2B1D008412B0 /* UIColor+mix.swift in Sources */,
@@ -874,7 +912,7 @@
 				66A8A5162926E1D9000BFC29 /* SearchScreenModuleBuilder.swift in Sources */,
 				66FB06A3293FD26000DFEFA3 /* ImageCoreModel+CoreDataProperties.swift in Sources */,
 				66D7D9042935235A003D0471 /* CoreDataManager.swift in Sources */,
-				66183DEE292ABBEB008412B0 /* EntitytCollectionCell.swift in Sources */,
+				66183DEE292ABBEB008412B0 /* EntityCollectionCell.swift in Sources */,
 				66183E24292D7C8A008412B0 /* EntityDetailsPresenter.swift in Sources */,
 				66A8A5192926E1D9000BFC29 /* SearchScreenPresenter.swift in Sources */,
 				66088A262926DCD700CB5E23 /* MainScreenPresenter.swift in Sources */,
@@ -893,6 +931,7 @@
 				667880402958DB7F00C622FC /* AnnotationAddingView.swift in Sources */,
 				66D41EAB2932CA1800FD66CA /* ProfileRouter.swift in Sources */,
 				668E612D294FAAE000478BE3 /* OnboardingView.swift in Sources */,
+				669DC6802967263D0090D50C /* MiniAppCollectionCell.swift in Sources */,
 				66183E03292C0FEA008412B0 /* UIView+addGradientWithColor.swift in Sources */,
 				66183DFB292BF602008412B0 /* EntityManager.swift in Sources */,
 				66088A322926DD2D00CB5E23 /* MapScreenModuleBuilder.swift in Sources */,
@@ -905,8 +944,11 @@
 				66088A062926DC0300CB5E23 /* Kraeved.xcdatamodeld in Sources */,
 				66183E05292C1DF8008412B0 /* UIImage+areaAverage.swift in Sources */,
 				66183E09292D6427008412B0 /* MetaObject.swift in Sources */,
+				669DC67D296724540090D50C /* MiniAppCollectionAdapter.swift in Sources */,
 				66D41EAC2932CA1800FD66CA /* ProfileViewController.swift in Sources */,
+				669DC68A296758590090D50C /* MessageScreenViewController.swift in Sources */,
 				66088A342926DD2D00CB5E23 /* MapScreenRouter.swift in Sources */,
+				669DC687296758590090D50C /* MessageScreenModuleBuilder.swift in Sources */,
 				66088A292926DCD700CB5E23 /* MainScreenInteractor.swift in Sources */,
 				66A8A50F2926E173000BFC29 /* AnnotationScreenRouter.swift in Sources */,
 				669DC67129657D8B0090D50C /* StartScreenViewController.swift in Sources */,
@@ -936,6 +978,7 @@
 				66088A272926DCD700CB5E23 /* MainScreenRouter.swift in Sources */,
 				66183DFD292BFE3E008412B0 /* ImageManager.swift in Sources */,
 				669DC67929659CF90090D50C /* CodeFormView.swift in Sources */,
+				669DC688296758590090D50C /* MessageScreenPresenter.swift in Sources */,
 				66C1CDD12930217300249231 /* CollectionCellWithShimmer.swift in Sources */,
 				66183DF5292BACC4008412B0 /* UIColor+Extra.swift in Sources */,
 				660FD98E2956575600B69376 /* MiniAppsScreenModuleBuilder.swift in Sources */,
@@ -943,6 +986,7 @@
 				660FD9912956575600B69376 /* MiniAppsScreenViewController.swift in Sources */,
 				66C55D1D2945B8B700EFB899 /* UIImage+Extra.swift in Sources */,
 				66088A282926DCD700CB5E23 /* MainScreenViewController.swift in Sources */,
+				669DC689296758590090D50C /* MessageScreenRouter.swift in Sources */,
 				66D41EAD2932CA1800FD66CA /* ProfileInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -172,7 +172,7 @@ extension MapScreenPresenter: AnnotationAddingViewDelegate {
                 if let title = result.title {
                     let localizedString = NSLocalizedString("mapScreen.locationAdded", comment: "")
                     let message = String(format: localizedString, title)
-                    self.router.showMessage(message)
+                    self.router.showAlertMessage(message)
                 }
             }
         }

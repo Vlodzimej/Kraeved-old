@@ -27,13 +27,13 @@ class EntityCellView: UIView, EntityCellViewProtocol {
     // MARK: - UIProperties
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = true
         collectionView.isScrollEnabled = true
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(EntitytCollectionCell.self, forCellWithReuseIdentifier: "HistoricalEventCollectionCell")
+        collectionView.register(EntityCollectionCell.self, forCellWithReuseIdentifier: "EntityCollectionCell")
         return collectionView
     }()
 
@@ -91,7 +91,7 @@ extension EntityCellView: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HistoricalEventCollectionCell", for: indexPath) as? EntitytCollectionCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EntityCollectionCell", for: indexPath) as? EntityCollectionCell else {
             return UICollectionViewCell()
         }
         guard let item = items[safeIndex: indexPath.item] else {
