@@ -8,12 +8,17 @@
 import UIKit
 import KraevedKit
 
-protocol CodeFormViewDelegate {
+// MARK: CodeFormViewDelegate
+protocol CodeFormViewDelegate: AnyObject {
     func sendCode(_ code: String)
 }
 
+// MARK: CodeFormView
 class CodeFormView: UIView {
     
+    weak var delegate: CodeFormViewDelegate?
+    
+    // MARK: UIProperties
     private let codeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -27,11 +32,12 @@ class CodeFormView: UIView {
         let textField = KTextField()
         textField.font = UIFont.systemFont(ofSize: 20)
         textField.textAlignment = .center
-        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.addTarget(self, action: #selector(codeFieldDidChange), for: .editingChanged)
         return textField
     }()
     
+    // MARK: Init
     init() {
         super.init(frame: .zero)
         initialize()
@@ -41,6 +47,7 @@ class CodeFormView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Private Methods
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -54,14 +61,16 @@ class CodeFormView: UIView {
         codeField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         codeField.widthAnchor.constraint(equalToConstant: 64).isActive = true
     }
-}
-
-extension CodeFormView: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else { return false }
+    
+    // MARK: Public Methods
+    @objc func codeFieldDidChange(textField: UITextField) {
+        guard let text = textField.text else { return }
         if text.count == 4 {
-            return false
+            delegate?.sendCode(text)
         }
-        return true
+    }
+    
+    func viewDidAppear() {
+        codeField.becomeFirstResponder()
     }
 }

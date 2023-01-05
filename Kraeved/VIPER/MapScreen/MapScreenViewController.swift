@@ -8,6 +8,7 @@ protocol MapScreenViewProtocol: AnyObject {
     
     func showAnnotationInfo(entity: MetaObject<Entity>)
     func showAnnotationAdding()
+    func showBottomPanel()
     func hideBottomPanel() 
 }
 
@@ -142,6 +143,11 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
     }
 
     @IBAction private func addButtonTapped(_ sender: UIButton) {
+        if isBottomPanelHidden && !presenter.hasAuthorization {
+            showLoginAlert()
+            return
+        }
+        
         toggleBottomPanel()
         
         if isBottomPanelHidden && presenter.mode == .addingAnnotation {
@@ -162,7 +168,7 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         }
     }
 
-    private func showBottomPanel() {
+    func showBottomPanel() {
         addButton.setImage(UIImage.Common.xmark, for: .normal)
         addButton.backgroundColor = UIColor.MapScreen.closeButton
         bottomPanelAnchor?.constant = bottomPanelHeight
@@ -192,8 +198,20 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         
         view.endEditing(true)
     }
+    
+    func showLoginAlert() {
+        let alertViewController = UIAlertController(title: nil, message: "Для добавления новых локаций необходимо выполнить вход или зарегистрироваться!", preferredStyle: .actionSheet)
+        let loginAction = UIAlertAction(title: "Войти", style: .default) { [weak self] _ in
+            self?.presenter.openLoginForm()
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        alertViewController.addAction(loginAction)
+        alertViewController.addAction(cancelAction)
+        navigationController?.present(alertViewController, animated: true)
+    }
 
-    @objc private func handleTap(gestureRecognizer: UITapGestureRecognizer) {
+    // MARK: Public Methods
+    @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
         switch presenter.mode {
             case .addingAnnotation:
                 let location = gestureRecognizer.location(in: mapView)
@@ -201,8 +219,7 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
             default: break
         }
     }
-
-    // MARK: Public Methods
+    
     @objc func keyboardWillChangesVisibility(notification: NSNotification) {
         guard !isBottomPanelHidden else { return }
         var keyboardSize: CGSize?

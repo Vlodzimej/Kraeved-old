@@ -8,8 +8,11 @@
 import UIKit
 
 // MARK: - ProfilePresenterProtocol
-protocol ProfilePresenterProtocol: AnyObject {
+protocol ProfilePresenterProtocol: AnyObject, ProfileTableAdapterDelegate, StartScreenModuleOutput {
     func viewDidLoad()
+    func openStartScreen()
+    func showUserData()
+    func hideUserData()
 }
 
 // MARK: - ProfilePresenter
@@ -21,6 +24,8 @@ class ProfilePresenter: ProfilePresenterProtocol {
     private let router: ProfileRouterProtocol
 
     private let adapter = ProfileTableAdapter()
+    
+    private let hasRegisteredUser: Bool = false
 
     // MARK: Init
     init(interactor: ProfileInteractorProtocol, router: ProfileRouterProtocol) {
@@ -28,9 +33,40 @@ class ProfilePresenter: ProfilePresenterProtocol {
         self.interactor = interactor
     }
 
+    // MARK: Public Methods
     func viewDidLoad() {
-        guard let view = view else { return }
+        adapter.delegate = self
+        interactor.getUserData()
+    }
+    
+    func configurate() {
+        guard let currentUser = interactor.currentUser, let view else { return }
         adapter.setup(tableView: view.tableView)
-        adapter.configurate(user: interactor.defaultUser)
+        adapter.configurate(user: currentUser)
+    }
+    
+    func openStartScreen() {
+        router.openStartScreen(output: self)
+    }
+    
+    func showUserData() {
+        configurate()
+        view?.showUserData()
+    }
+    
+    func hideUserData() {
+        view?.hideUserData()
+    }
+}
+
+extension ProfilePresenter: ProfileTableAdapterDelegate {
+    func logout() {
+        interactor.logout()
+    }
+}
+
+extension ProfilePresenter: StartScreenModuleOutput {
+    func logged() {
+        interactor.getUserData()
     }
 }

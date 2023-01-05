@@ -8,19 +8,16 @@
 import UIKit
 import KraevedKit
 
+// MARK: PhoneFormViewDelegate
 protocol PhoneFormViewDelegate: AnyObject {
     func sendPhone(_ phone: String)
 }
 
+// MARK: PhoneFormView
 class PhoneFormView: UIView {
-    
-    // MARK: Constants
-    struct Constants {
-        static let phoneMask: String = "(XXX) XXX-XX-XX"
-    }
-    
     weak var delegate: PhoneFormViewDelegate?
     
+    // MARK: UIProperties
     private lazy var formStack: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .equalSpacing
@@ -49,7 +46,7 @@ class PhoneFormView: UIView {
         return textField
     }()
     
-    private let doneButton: UIButton = {
+    private lazy var doneButton: UIButton = {
         let button = UIButton()
         button.setTitle("Вход", for: .normal)
         button.setTitleColor(.Common.greenMain, for: .normal)
@@ -59,6 +56,7 @@ class PhoneFormView: UIView {
         return button
     }()
     
+    // MARK: Init
     init() {
         super.init(frame: .zero)
         initialize()
@@ -68,6 +66,7 @@ class PhoneFormView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Private Methods
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -78,12 +77,19 @@ class PhoneFormView: UIView {
         formStack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
+    // MARK: Public Methods
     @objc func doneButtonTapped() {
-        guard let phone = phoneField.text else { return }
+        guard let text = phoneField.text else { return }
+        let phone = text.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         delegate?.sendPhone(phone)
+    }
+    
+    func viewDidAppear() {
+        phoneField.becomeFirstResponder()
     }
 }
 
+// MARK: UITextFieldDelegate
 extension PhoneFormView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }

@@ -40,8 +40,6 @@ class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
                 self.adapter.configurate(entities: result)
             }
         }
-        
-        router.showLogin()
     }
 }
 

@@ -8,10 +8,10 @@
 import Foundation
 
 class StartScreenModuleBuilder {
-	static func build() -> StartScreenViewController {
+    static func build(output: StartScreenModuleOutput? = nil) -> StartScreenViewController {
 		let interactor = StartScreenInteractor()
 		let router = StartScreenRouter()
-		let presenter = StartScreenPresenter(interactor: interactor, router: router)
+        let presenter = StartScreenPresenter(interactor: interactor, router: router, output: output)
 		let viewController = StartScreenViewController(presenter: presenter)
 		router.viewController = viewController
 		presenter.view = viewController

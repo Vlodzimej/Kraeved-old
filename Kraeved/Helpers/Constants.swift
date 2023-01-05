@@ -10,4 +10,5 @@ import Foundation
 struct Constants {
     static let contentInset: CGFloat = 16
     static let mainTableElementRadius: CGFloat = 14
+    static let phoneMask: String = "(XXX) XXX-XX-XX"
 }

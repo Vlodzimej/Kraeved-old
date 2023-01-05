@@ -6,8 +6,9 @@ protocol MapScreenModuleOutput: AnyObject {
 }
 
 // MARK: - MapScreenPresenterProtocol
-protocol MapScreenPresenterProtocol: AnyObject, MKMapViewDelegate, AnnotationAddingViewDelegate {
+protocol MapScreenPresenterProtocol: AnyObject, MKMapViewDelegate, AnnotationAddingViewDelegate, StartScreenModuleOutput {
     var mode: MapScreenMode { get set }
+    var hasAuthorization: Bool { get }
 
     func viewDidLoad()
     func openAnnotation(annotation: Annotation)
@@ -15,6 +16,7 @@ protocol MapScreenPresenterProtocol: AnyObject, MKMapViewDelegate, AnnotationAdd
     func createAnnotation(by location: CGPoint)
     func removeNewAnnotation()
     func updateAnnotations()
+    func openLoginForm()
 }
 
 // MARK: - MapScreenMode
@@ -41,6 +43,10 @@ class MapScreenPresenter: NSObject, MapScreenPresenterProtocol {
 
     var selectedAnnotation: MKPointAnnotation?
     var mode: MapScreenMode = .researching
+    
+    var hasAuthorization: Bool {
+        interactor.hasAuthorization
+    }
 
     // MARK: Init
     init(interactor: MapScreenInteractorProtocol, router: MapScreenRouterProtocol) {
@@ -99,6 +105,10 @@ class MapScreenPresenter: NSObject, MapScreenPresenterProtocol {
 
     func updateAnnotations() {
         interactor.getAnnotations()
+    }
+    
+    func openLoginForm() {
+        router.openStartScreen(output: self)
     }
 }
 
@@ -166,5 +176,11 @@ extension MapScreenPresenter: AnnotationAddingViewDelegate {
                 }
             }
         }
+    }
+}
+
+extension MapScreenPresenter: StartScreenModuleOutput {
+    func logged() {
+        view?.showBottomPanel()
     }
 }

@@ -9,7 +9,10 @@ import Foundation
 
 // MARK: - ProfileInteractorProtocol
 protocol ProfileInteractorProtocol: AnyObject {
-    var defaultUser: User { get set }
+    var currentUser: User? { get set }
+    
+    func getUserData()
+    func logout()
 }
 
 // MARK: - ProfileInteractor
@@ -17,14 +20,31 @@ class ProfileInteractor: ProfileInteractorProtocol {
 
     // MARK: Properties
     weak var presenter: ProfilePresenterProtocol?
+    
+    private let authManager: AuthManagerProtocol
 
-    var defaultUser = User(username: "Default User", email: "default@mail.ru", phone: 9105968117, score: 100)
+    var currentUser: User?
 
     // MARK: Init
-    init() {
+    init(authManager: AuthManagerProtocol = AuthManager.shared) {
+        self.authManager = authManager
     }
 
     // MARK: Private Methods
 
     // MARK: Public Methods
+    func getUserData() {
+        if let phone = authManager.getUserData() {
+            let formattedPhone = formatPhoneNumber(with: Constants.phoneMask, phone: phone)
+            currentUser = User(username: "Default User", email: "default@mail.ru", phone: formattedPhone, score: 100)
+            presenter?.showUserData()
+        } else {
+            presenter?.hideUserData()
+        }
+    }
+    
+    func logout() {
+        authManager.logout()
+        presenter?.hideUserData()
+    }
 }

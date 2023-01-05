@@ -63,12 +63,17 @@ class StartScreenViewController: BaseViewController, StartScreenViewProtocol {
         super.viewDidLoad()
         initialize()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        phoneFormView.viewDidAppear()
+    }
 
     private func initialize() {
         view.backgroundColor = .StartScreen.background
         codeFormView.isHidden = true
         
         phoneFormView.delegate = presenter
+        codeFormView.delegate = presenter
         
         view.addSubview(closeButton)
         closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.contentInset).isActive = true
@@ -103,6 +108,7 @@ class StartScreenViewController: BaseViewController, StartScreenViewProtocol {
     }
     
     func showCodeForm() {
+        codeFormView.viewDidAppear()
         phoneFormView.isHidden = true
         codeFormView.isHidden = false
     }

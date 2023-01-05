@@ -10,6 +10,9 @@ import UIKit
 // MARK: - ProfileTableViewCell
 class ProfileTableViewCell: UITableViewCell {
 
+    // MARK: Properties
+    private var action: (() -> Void)?
+    
     // MARK: UIConstants
     struct UIConstatns {
         static let cellHeight: CGFloat = 64
@@ -32,39 +35,63 @@ class ProfileTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    // MARK: Private Methods
-    func drawSeparator() {
-        let line = CAShapeLayer()
-        let linePath = UIBezierPath()
-        linePath.move(to: CGPoint(x: 0, y: contentView.frame.height))
-        linePath.addLine(to: CGPoint(x: contentView.frame.width, y: contentView.frame.height))
-        line.path = linePath.cgPath
-        line.fillColor = nil
-        line.opacity = 1.0
-        line.strokeColor = UIColor.lightGray.cgColor
-        layer.addSublayer(line)
+    
+    private let actionButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        initialize()
     }
-
-    // MARK: Public Methods
-    func configurate(viewModel: ProfileCellViewModel, isLastRow: Bool) {
-        backgroundColor = .clear
-        for view in contentView.subviews {
-            view.removeFromSuperview()
-        }
-
-        titleLabel.text = viewModel.title
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Private Methods
+    private func initialize() {
         contentView.addSubview(titleLabel)
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UIConstatns.contentInset).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
 
-        valueLabel.text = viewModel.value
         contentView.addSubview(valueLabel)
         valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UIConstatns.contentInset).isActive = true
         valueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        
+        contentView.addSubview(actionButton)
+        actionButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: UIConstatns.contentInset).isActive = true
+        actionButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        actionButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        actionButton.widthAnchor.constraint(equalToConstant: contentView.frame.width / 2).isActive = true
+    }
 
-        if !isLastRow {
-            drawSeparator()
+    // MARK: Public Methods
+    func configurate(viewModel: ProfileCellViewModel) {
+        backgroundColor = .clear
+        
+        switch viewModel.type {
+        case .textField:
+            titleLabel.text = viewModel.title
+            valueLabel.text = viewModel.value
+            titleLabel.isHidden = false
+            valueLabel.isHidden = false
+            actionButton.isHidden = true
+        case .button:
+            titleLabel.isHidden = true
+            valueLabel.isHidden = true
+            actionButton.setTitle("Выйти из аккаунта", for: .normal)
+            actionButton.setTitleColor(.red, for: .normal)
+            actionButton.isHidden = false
+            action = viewModel.action
+            actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
         }
     }
+    
+    @objc func actionButtonTapped() {
+        action?()
+    }
+    
 }
