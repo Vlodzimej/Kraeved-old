@@ -7,15 +7,22 @@
 
 import UIKit
 
+enum ProfileCellType {
+    case textField
+    case button
+}
+
 // MARK: - ProfileCellViewModel
 struct ProfileCellViewModel {
     let title: String
-    let value: String
+    let value: String?
+    let type: ProfileCellType
+    let action: (() -> Void)?
 }
 
 // MARK: - ProfileTableAdapterDelegate
 protocol ProfileTableAdapterDelegate: AnyObject {
-
+    func logout()
 }
 
 // MARK: - ProfileTableAdapter
@@ -35,10 +42,14 @@ class ProfileTableAdapter: NSObject {
         }
 
         let result: [ProfileCellViewModel] = [
-            .init(title: "Имя", value: user.username ?? ""),
-            .init(title: "Email", value: user.email ?? ""),
-            .init(title: "Телефон", value: phoneNumber),
-            .init(title: "Баллы", value: String(user.score ?? 0))
+            .init(title: "Имя", value: user.username ?? "", type: .textField, action: nil),
+            .init(title: "Email", value: user.email ?? "", type: .textField, action: nil),
+            .init(title: "Телефон", value: phoneNumber, type: .textField, action: nil),
+            .init(title: "Баллы", value: String(user.score ?? 0), type: .textField, action: nil),
+            .init(title: "Выйти из аккаунта", value: nil, type: .button, action: { [weak self] in
+                guard let self else { return }
+                self.delegate?.logout()
+            })
         ]
         return result
     }
@@ -71,7 +82,7 @@ extension ProfileTableAdapter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as? ProfileTableViewCell else { return UITableViewCell() }
         let cellViewModel = profileCellViewModels[indexPath.item]
-        cell.configurate(viewModel: cellViewModel, isLastRow: indexPath.item == profileCellViewModels.count - 1)
+        cell.configurate(viewModel: cellViewModel)
         return cell
     }
 

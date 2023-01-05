@@ -53,7 +53,6 @@ class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textColor = .gray
-        textField.layer.cornerRadius = 8
         textField.textAlignment = .center
         return textField
     }()
@@ -64,7 +63,6 @@ class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.systemFont(ofSize: UIConstants.fontSize, weight: .regular)
         textField.textColor = .gray
-        textField.layer.cornerRadius = 8
         textField.delegate = self
         textField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
         return textField
@@ -75,7 +73,6 @@ class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont.systemFont(ofSize: UIConstants.fontSize, weight: .regular)
         textView.textColor = .gray
-        textView.layer.cornerRadius = 8
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 0)
         textView.isHidden = true
         return textView

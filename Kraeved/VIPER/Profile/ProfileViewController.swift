@@ -10,6 +10,9 @@ import UIKit
 // MARK: - ProfileViewProtocol
 protocol ProfileViewProtocol: AnyObject {
     var tableView: UITableView { get set }
+    
+    func showUserData()
+    func hideUserData()
 }
 
 // MARK: - ProfileViewController
@@ -25,9 +28,20 @@ class ProfileViewController: BaseViewController, ProfileViewProtocol {
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
+        tableView.isHidden = true
         return tableView
     }()
-
+    
+    private lazy var loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Выполните вход", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        return button
+    }()
     // MARK: Init
     init(presenter: ProfilePresenterProtocol) {
         self.presenter = presenter
@@ -45,6 +59,7 @@ class ProfileViewController: BaseViewController, ProfileViewProtocol {
         presenter.viewDidLoad()
     }
 
+    // MARK: Private methods
     private func initialize() {
         view.backgroundColor = .white
 
@@ -54,10 +69,26 @@ class ProfileViewController: BaseViewController, ProfileViewProtocol {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        view.addSubview(loginButton)
+        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        loginButton.widthAnchor.constraint(equalToConstant: view.frame.width / 2).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     }
 
-    // MARK: Private methods
-
     // MARK: Public methods
-
+    @objc func loginButtonTapped() {
+        presenter.openStartScreen()
+    }
+    
+    func showUserData() {
+        tableView.isHidden = false
+        loginButton.isHidden = true
+    }
+    
+    func hideUserData() {
+        tableView.isHidden = true
+        loginButton.isHidden = false
+    }
 }

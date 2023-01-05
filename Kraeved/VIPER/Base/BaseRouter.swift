@@ -3,6 +3,7 @@ import UIKit
 protocol BaseRouterProtocol {
     func openAnnotation(annotation: Annotation)
     func openEntityDetails(id: UUID)
+    func openStartScreen(output: StartScreenModuleOutput?)
     func showMessage(_ message: String)
 }
 
@@ -19,6 +20,11 @@ class BaseRouter<T>: BaseRouterProtocol where T: UIViewController {
         let entityDetailsVC = EntityDetailsModuleBuilder.build(id: id)
         guard let viewController = viewController else { return }
         viewController.navigationController?.pushViewController(entityDetailsVC, animated: true)
+    }
+    
+    func openStartScreen(output: StartScreenModuleOutput?) {
+        let startScreenViewController = StartScreenModuleBuilder.build(output: output)
+        viewController?.navigationController?.present(startScreenViewController, animated: true)
     }
     
     func showMessage(_ message: String) {

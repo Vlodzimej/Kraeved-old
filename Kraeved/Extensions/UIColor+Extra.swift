@@ -28,6 +28,11 @@ extension UIColor {
         static var greenBackground: UIColor { UIColor.HEX.hE8F4EA }
         static var greenAlphaBackground: UIColor { UIColor.HEX.hE8F4EADD }
         static var greenMain: UIColor { UIColor.HEX.h479F88 }
+        static var blueMain: UIColor { UIColor.HEX.hA7C7E7 }
+    }
+    
+    struct StartScreen {
+        static var background: UIColor { UIColor.HEX.hE2EDE7 }
     }
 
     struct MainScreen {
@@ -58,7 +63,9 @@ extension UIColor {
         static let h479F88 = UIColor(hex: 0x479F88)
         static let h677F79 = UIColor(hex: 0x677F79)
         static let hE8F4EA = UIColor(hex: 0xE8F4EA)
-        
+        static let hE2EDE7 = UIColor(hex: 0xE2EDE7)
+        static let hA7C7E7 = UIColor(hex: 0xA7C7E7)
+
         static let hE8F4EADD = UIColor(hexWithAlpha: 0xE8F4EADD)
     }
 }
