@@ -94,13 +94,16 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     @objc private func showOnboarding() {
-//        let onboardingView = OnboardingView()
-//        view.addSubview(onboardingView)
-//
-//        onboardingView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//        onboardingView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//        onboardingView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//        onboardingView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [weak self] _ in
+            guard let self else { return }
+            let onboardingView = OnboardingView()
+            self.view.addSubview(onboardingView)
+            
+            onboardingView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+            onboardingView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            onboardingView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            onboardingView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        }
     }
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
