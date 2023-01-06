@@ -39,7 +39,7 @@ final class PhoneFormView: UIView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = "Укажите номер телефона"
+        label.text = NSLocalizedString("profile.enterPhone", comment: "")
         return label
     }()
     
@@ -54,7 +54,7 @@ final class PhoneFormView: UIView {
     
     private lazy var doneButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Вход", for: .normal)
+        button.setTitle(NSLocalizedString("common.signIn", comment: ""), for: .normal)
         button.setTitleColor(.Common.greenMain, for: .normal)
         button.setTitleColor(.gray, for: .disabled)
         button.isEnabled = false

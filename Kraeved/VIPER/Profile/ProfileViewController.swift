@@ -34,7 +34,7 @@ final class ProfileViewController: BaseViewController, ProfileViewProtocol {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Выполните вход", for: .normal)
+        button.setTitle(NSLocalizedString("profile.signIn", comment: ""), for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = Constants.buttonRadius
         button.layer.masksToBounds = true

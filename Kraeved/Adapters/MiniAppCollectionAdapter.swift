@@ -40,10 +40,10 @@ final class MiniAppCollectionAdapter: NSObject, MiniAppCollectionAdapterProtocol
     weak var delegate: MiniaAppCollectionAdapterDelegate?
     
     private let items: [MiniAppViewModel] = [
-        .init(title: "Мои записи", image: UIImage.MiniApps.notes, backgroundColor: UIColor.MiniApps.notes),
-        .init(title: "Генеалогия", image: UIImage.MiniApps.genealogy, backgroundColor: UIColor.MiniApps.genealogy),
-        .init(title: "Приюты для животных", image: UIImage.MiniApps.shelter, backgroundColor: UIColor.MiniApps.shelter),
-        .init(title: "Развитие", image: UIImage.MiniApps.education, backgroundColor: UIColor.MiniApps.education)
+        .init(title: NSLocalizedString("miniapps.notes", comment: ""), image: UIImage.MiniApps.notes, backgroundColor: UIColor.MiniApps.notes),
+        .init(title: NSLocalizedString("miniapps.genealogy", comment: ""), image: UIImage.MiniApps.genealogy, backgroundColor: UIColor.MiniApps.genealogy),
+        .init(title: NSLocalizedString("miniapps.shelter", comment: ""), image: UIImage.MiniApps.shelter, backgroundColor: UIColor.MiniApps.shelter),
+        .init(title: NSLocalizedString("miniapps.education", comment: ""), image: UIImage.MiniApps.education, backgroundColor: UIColor.MiniApps.education)
     ]
     
     // MARK: Public Methods

@@ -28,7 +28,7 @@ final class MiniAppsScreenPresenter: MiniAppsScreenPresenterProtocol {
 
 extension MiniAppsScreenPresenter: MiniaAppCollectionAdapterDelegate {
     func showMessage() {
-        router.showMessageScreen("Сервис находится в разработке")
+        router.showMessageScreen(NSLocalizedString("miniapps.blank", comment: ""))
     }
     
     func openGenealogy() {

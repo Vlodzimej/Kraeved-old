@@ -88,7 +88,7 @@ final class ProfileTableViewCell: UITableViewCell {
         case .button:
             titleLabel.isHidden = true
             valueLabel.isHidden = true
-            actionButton.setTitle("Выйти из аккаунта", for: .normal)
+            actionButton.setTitle(NSLocalizedString("profile.logout", comment: ""), for: .normal)
             actionButton.setTitleColor(.red, for: .normal)
             actionButton.isHidden = false
             action = viewModel.action

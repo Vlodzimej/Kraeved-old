@@ -7,13 +7,19 @@ protocol AnnotationScreenViewProtocol: AnyObject {
 // MARK: - AnnotationScreenViewController
 final class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewProtocol {
 
+    // MARK: UIConstants
+    struct UIConstants {
+        static let titleLabelFontSize: CGFloat = 24
+        static let coordsLabelFontSize: CGFloat = 8
+    }
+    
     // MARK: Properties
     private let presenter: AnnotationScreenPresenterProtocol
 
     // MARK: UIProperties
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24)
+        label.font = .systemFont(ofSize: UIConstants.titleLabelFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         return label
@@ -21,7 +27,7 @@ final class AnnotationScreenViewController: BaseViewController, AnnotationScreen
 
     private let coordsLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 8)
+        label.font = .systemFont(ofSize: UIConstants.coordsLabelFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         return label

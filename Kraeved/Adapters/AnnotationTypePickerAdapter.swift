@@ -7,13 +7,28 @@
 
 import UIKit
 
-enum AnnotationType: String, CaseIterable {
-    case location = "Локация"
-    case nature = "Природный объект"
-    case building = "Строение"
-    case note = "Заметка"
+// MARK: - AnnotationType
+enum AnnotationType: CaseIterable {
+    case location
+    case nature
+    case building
+    case note
+    
+    var title: String {
+        switch self {
+            case .location:
+                return NSLocalizedString("annotation.location", comment: "")
+            case .nature:
+                return NSLocalizedString("annotation.nature", comment: "")
+            case .building:
+                return NSLocalizedString("annotation.building", comment: "")
+            case .note:
+                return NSLocalizedString("annotation.note", comment: "")
+        }
+    }
 }
 
+// MARK: - AnnotationTypePickerAdapterProtocol
 protocol AnnotationTypePickerAdapterProtocol: UIPickerViewDelegate, UIPickerViewDataSource {
     
 }
@@ -32,10 +47,12 @@ final class AnnotationTypePickerAdapter: NSObject, AnnotationTypePickerAdapterPr
     }
 }
 
+// MARK: - UIPickerViewDelegate
 extension AnnotationTypePickerAdapter: UIPickerViewDelegate {
     
 }
 
+// MARK: - UIPickerViewDataSource
 extension AnnotationTypePickerAdapter: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -46,6 +63,6 @@ extension AnnotationTypePickerAdapter: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        items[row].rawValue
+        items[row].title
     }
 }

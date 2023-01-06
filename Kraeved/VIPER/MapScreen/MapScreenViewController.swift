@@ -190,11 +190,11 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
     }
     
     func showLoginAlert() {
-        let alertViewController = UIAlertController(title: nil, message: "Для добавления новых локаций необходимо выполнить вход или зарегистрироваться!", preferredStyle: .actionSheet)
-        let loginAction = UIAlertAction(title: "Войти", style: .default) { [weak self] _ in
+        let alertViewController = UIAlertController(title: nil, message: NSLocalizedString("mapScreen.needSignIn", comment: ""), preferredStyle: .actionSheet)
+        let loginAction = UIAlertAction(title: NSLocalizedString("common.signIn", comment: ""), style: .default) { [weak self] _ in
             self?.presenter.openLoginForm()
         }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("common.cancel", comment: ""), style: .cancel)
         alertViewController.addAction(loginAction)
         alertViewController.addAction(cancelAction)
         navigationController?.present(alertViewController, animated: true)

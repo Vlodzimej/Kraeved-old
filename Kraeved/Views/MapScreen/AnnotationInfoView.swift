@@ -43,7 +43,7 @@ final class AnnotationInfoView: UIView {
     
     private lazy var infoButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Подробнее", for: .normal)
+        button.setTitle(NSLocalizedString("common.more", comment: ""), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .Common.blueButton
         button.layer.cornerRadius = Constants.buttonRadius
