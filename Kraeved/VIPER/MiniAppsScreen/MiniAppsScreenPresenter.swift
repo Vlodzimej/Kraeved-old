@@ -30,4 +30,8 @@ extension MiniAppsScreenPresenter: MiniaAppCollectionAdapterDelegate {
     func showMessage() {
         router.showMessageScreen("Сервис находится в разработке")
     }
+    
+    func openGenealogy() {
+        router.openGenealogy()
+    }
 }

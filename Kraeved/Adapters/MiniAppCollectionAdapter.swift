@@ -14,6 +14,7 @@ struct MiniAppViewModel {
 
 protocol MiniaAppCollectionAdapterDelegate: AnyObject {
     func showMessage()
+    func openGenealogy()
 }
 
 protocol MiniAppCollectionAdapterProtocol: AnyObject, UICollectionViewDelegate {
@@ -68,7 +69,11 @@ extension MiniAppCollectionAdapter: UICollectionViewDataSource {
 
 extension MiniAppCollectionAdapter: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.showMessage()
+        if indexPath.row == 1 {
+            delegate?.openGenealogy()
+        } else {
+            delegate?.showMessage()
+        }
     }
 }
 
