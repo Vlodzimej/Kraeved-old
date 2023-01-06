@@ -15,13 +15,20 @@ protocol EntityDetailsViewProtocol: AnyObject {
 // MARK: - EntityDetailsViewController
 final class EntityDetailsViewController: BaseViewController, EntityDetailsViewProtocol {
 
+    // MARK: UIConstants
+    struct UIConstants {
+        static let titleLabelFontSize: CGFloat = 24
+        static let titleLabelTopOffset: CGFloat = 128
+        static let textLabelTopOffset: CGFloat = 64
+    }
+    
     // MARK: Properties
     private let presenter: EntityDetailsPresenterProtocol
 
     // MARK: UIProperties
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: UIConstants.titleLabelFontSize, weight: .semibold)
         label.numberOfLines = 2
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -75,14 +82,14 @@ final class EntityDetailsViewController: BaseViewController, EntityDetailsViewPr
 
         view.addSubview(titleLabel)
 
-        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 128).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: UIConstants.titleLabelTopOffset).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
 
         view.addSubview(textLabel)
 
-        textLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 64).isActive = true
-        textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-        textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        textLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: UIConstants.textLabelTopOffset).isActive = true
+        textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
+        textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
     }
 
     // MARK: Private methods

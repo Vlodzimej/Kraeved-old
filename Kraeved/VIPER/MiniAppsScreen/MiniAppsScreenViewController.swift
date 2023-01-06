@@ -13,10 +13,6 @@ protocol MiniAppsScreenViewProtocol: AnyObject, UICollectionViewDelegate, UIColl
 
 // MARK: - MiniAppsScreenViewController
 final class MiniAppsScreenViewController: BaseViewController, MiniAppsScreenViewProtocol {
-
-    // MARK: UIConstants
-    struct UIConstants {
-    }
     
     // MARK: Properties
     private let presenter: MiniAppsScreenPresenterProtocol

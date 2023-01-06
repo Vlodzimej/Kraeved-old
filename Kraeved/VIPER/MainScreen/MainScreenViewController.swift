@@ -7,11 +7,6 @@ protocol MainScreenViewProtocol: AnyObject {
 
 // MARK: - MainScreenViewController
 final class MainScreenViewController: BaseViewController, MainScreenViewProtocol {
-
-    // MARK: UIConstants
-    struct UIConstants {
-    }
-
     // MARK: Properties
     private let presenter: MainScreenPresenterProtocol
 

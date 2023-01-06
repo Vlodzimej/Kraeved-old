@@ -16,6 +16,12 @@ protocol CodeFormViewDelegate: AnyObject {
 // MARK: - CodeFormView
 final class CodeFormView: UIView {
     
+    // MARK: UIConstants
+    struct UIConstants {
+        static let codeFieldHeight: CGFloat = 64
+        static let fontSize: CGFloat = 20
+    }
+    
     weak var delegate: CodeFormViewDelegate?
     
     // MARK: UIProperties
@@ -30,7 +36,7 @@ final class CodeFormView: UIView {
     
     private lazy var codeField: KTextField = {
         let textField = KTextField()
-        textField.font = UIFont.systemFont(ofSize: 20)
+        textField.font = UIFont.systemFont(ofSize: UIConstants.fontSize)
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.addTarget(self, action: #selector(codeFieldDidChange), for: .editingChanged)
@@ -59,7 +65,7 @@ final class CodeFormView: UIView {
         addSubview(codeField)
         codeField.topAnchor.constraint(equalTo: codeLabel.bottomAnchor, constant: Constants.contentInset).isActive = true
         codeField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        codeField.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        codeField.widthAnchor.constraint(equalToConstant: UIConstants.codeFieldHeight).isActive = true
     }
     
     @objc private func codeFieldDidChange(textField: UITextField) {

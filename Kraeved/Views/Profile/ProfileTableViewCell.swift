@@ -14,12 +14,13 @@ final class ProfileTableViewCell: UITableViewCell {
     struct UIConstatns {
         static let cellHeight: CGFloat = 64
         static let contentInset: CGFloat = 16
+        static let labelFontSize: CGFloat = 16
     }
 
     // MARK: UIProperties
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: UIConstatns.labelFontSize, weight: .medium)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -27,7 +28,7 @@ final class ProfileTableViewCell: UITableViewCell {
 
     private let valueLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: UIConstatns.labelFontSize, weight: .regular)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -65,7 +66,7 @@ final class ProfileTableViewCell: UITableViewCell {
         contentView.addSubview(actionButton)
         actionButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: UIConstatns.contentInset).isActive = true
         actionButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        actionButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        actionButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
         actionButton.widthAnchor.constraint(equalToConstant: contentView.frame.width / 2).isActive = true
     }
     

@@ -12,6 +12,10 @@ final class MiniAppCollectionCell: UICollectionViewCell {
     // MARK: UIConstants
     struct UIConstants {
         static let titleInset: CGFloat = 8
+        static let titleFontSize: CGFloat = 14
+        static let titleTopOffset: CGFloat = 8
+        static let imageMargin: CGFloat = 24
+        static let containerViewBottomOffset: CGFloat = 64
     }
     
     // MARK: UIProperties
@@ -54,19 +58,19 @@ final class MiniAppCollectionCell: UICollectionViewCell {
         
         containerView.addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
-        imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 24).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -24).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24).isActive = true
+        imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: UIConstants.imageMargin).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -UIConstants.imageMargin).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -UIConstants.imageMargin).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: UIConstants.imageMargin).isActive = true
         
         addSubview(containerView)
         containerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -64).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -UIConstants.containerViewBottomOffset).isActive = true
         containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         
         addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor, constant: 8).isActive = true
+        titleLabel.topAnchor.constraint(greaterThanOrEqualTo: containerView.bottomAnchor, constant: UIConstants.titleTopOffset).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
@@ -91,7 +95,7 @@ final class MiniAppCollectionCell: UICollectionViewCell {
         paragraphStyle.alignment = .center
         
         let  titleAttributedString = NSMutableAttributedString(string: viewModel.title, attributes:
-                                                                [.font: UIFont.systemFont(ofSize: 14, weight: .regular), .foregroundColor: UIColor.black, .paragraphStyle: paragraphStyle])
+                                                                [.font: UIFont.systemFont(ofSize: UIConstants.titleFontSize, weight: .regular), .foregroundColor: UIColor.black, .paragraphStyle: paragraphStyle])
         titleLabel.attributedText = titleAttributedString
     }
 }

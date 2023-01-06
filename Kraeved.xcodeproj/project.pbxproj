@@ -645,29 +645,13 @@
 		66A8A5032926E161000BFC29 /* AnnotationScreen */ = {
 			isa = PBXGroup;
 			children = (
-				66A8A5052926E173000BFC29 /* BuildingAnnotation */,
-				66A8A5042926E173000BFC29 /* NaturalAnnotation */,
-			);
-			path = AnnotationScreen;
-			sourceTree = "<group>";
-		};
-		66A8A5042926E173000BFC29 /* NaturalAnnotation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NaturalAnnotation;
-			sourceTree = "<group>";
-		};
-		66A8A5052926E173000BFC29 /* BuildingAnnotation */ = {
-			isa = PBXGroup;
-			children = (
 				66A8A5062926E173000BFC29 /* AnnotationScreenViewController.swift */,
 				66A8A5072926E173000BFC29 /* AnnotationScreenModuleBuilder.swift */,
 				66A8A5082926E173000BFC29 /* AnnotationScreenPresenter.swift */,
 				66A8A5092926E173000BFC29 /* AnnotationScreenInteractor.swift */,
 				66A8A50A2926E173000BFC29 /* AnnotationScreenRouter.swift */,
 			);
-			path = BuildingAnnotation;
+			path = AnnotationScreen;
 			sourceTree = "<group>";
 		};
 		66A8A5102926E1D9000BFC29 /* SearchScreen */ = {

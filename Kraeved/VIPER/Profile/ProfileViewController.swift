@@ -36,7 +36,7 @@ final class ProfileViewController: BaseViewController, ProfileViewProtocol {
         let button = UIButton()
         button.setTitle("Выполните вход", for: .normal)
         button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = Constants.buttonRadius
         button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
@@ -74,7 +74,7 @@ final class ProfileViewController: BaseViewController, ProfileViewProtocol {
         loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         loginButton.widthAnchor.constraint(equalToConstant: view.frame.width / 2).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
     }
     
     @objc private func loginButtonTapped() {

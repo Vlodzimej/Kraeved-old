@@ -19,6 +19,12 @@ protocol EntityCellViewProtocol {
 
 // MARK: - EntityCellView
 final class EntityCellView: UIView, EntityCellViewProtocol {
+    
+    // MARK: UIConstants
+    struct UIConstants {
+        static let itemsSpacing: CGFloat = 16
+        static let collectionViewContentOffset: CGFloat = 200
+    }
 
     // MARK: Properties
     weak var delegate: EntityCellDelegate?
@@ -41,8 +47,7 @@ final class EntityCellView: UIView, EntityCellViewProtocol {
 
     private let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        let itemsSpacing: CGFloat = 16
-        layout.minimumLineSpacing = itemsSpacing
+        layout.minimumLineSpacing = UIConstants.itemsSpacing
         layout.scrollDirection = .horizontal
         return layout
     }()
@@ -75,7 +80,7 @@ final class EntityCellView: UIView, EntityCellViewProtocol {
     override func layoutSubviews() {
         super.layoutSubviews()
         if type == .location {
-            collectionView.setContentOffset(CGPoint(x: 200, y: 0), animated: false)
+            collectionView.setContentOffset(CGPoint(x: UIConstants.collectionViewContentOffset, y: 0), animated: false)
         }
     }
 }

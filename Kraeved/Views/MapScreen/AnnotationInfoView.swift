@@ -18,13 +18,15 @@ final class AnnotationInfoView: UIView {
     struct UIConstants {
         static let titleHorizontalInset: CGFloat = 24
         static let imageSize: CGFloat = 96
+        static let infoButtonBottomOffset: CGFloat = 24
+        static let descriptionLabelFontSize: CGFloat = 24
     }
     
     // MARK: UIProperties
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: UIConstants.descriptionLabelFontSize, weight: .regular)
         label.contentMode = .topLeft
         label.numberOfLines = 0
         return label
@@ -44,7 +46,7 @@ final class AnnotationInfoView: UIView {
         button.setTitle("Подробнее", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .Common.blueButton
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = Constants.buttonRadius
         button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
@@ -82,8 +84,8 @@ final class AnnotationInfoView: UIView {
         descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -UIConstants.titleHorizontalInset).isActive = true
         
         addSubview(infoButton)
-        infoButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -24).isActive = true
-        infoButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        infoButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -UIConstants.infoButtonBottomOffset).isActive = true
+        infoButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
         infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.contentInset).isActive = true
         infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.contentInset).isActive = true
     }

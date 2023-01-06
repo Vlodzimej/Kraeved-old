@@ -30,6 +30,11 @@ protocol MiniAppCollectionAdapterProtocol: AnyObject, UICollectionViewDelegate {
 // MARK: - MiniAppCollectionAdapter
 final class MiniAppCollectionAdapter: NSObject, MiniAppCollectionAdapterProtocol {
     
+    // MARK: UIConstants
+    struct UIConstants {
+        static let extraHeight: CGFloat = 64
+    }
+    
     // MARK: Properties
     private var collectionView: UICollectionView?
     weak var delegate: MiniaAppCollectionAdapterDelegate?
@@ -93,6 +98,6 @@ extension MiniAppCollectionAdapter: UICollectionViewDelegateFlowLayout {
         let width = collectionView.bounds.width
         let numberOfItemsPerRow = 4.0
         let itemDimension = floor(width / numberOfItemsPerRow)
-        return CGSize(width: itemDimension, height: itemDimension + 64)
+        return CGSize(width: itemDimension, height: itemDimension + UIConstants.extraHeight)
     }
 }

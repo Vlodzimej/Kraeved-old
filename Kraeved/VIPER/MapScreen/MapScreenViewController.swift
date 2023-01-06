@@ -19,7 +19,6 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
     private struct UIConstants {
         static let addButtonSize: CGFloat = 64
         static let addButtonInset: CGFloat = 32
-        static let locationMarkSize: CGFloat = 16
     }
 
     // MARK: Properties

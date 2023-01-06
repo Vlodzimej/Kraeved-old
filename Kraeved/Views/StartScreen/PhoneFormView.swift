@@ -15,6 +15,12 @@ protocol PhoneFormViewDelegate: AnyObject {
 
 // MARK: - PhoneFormView
 final class PhoneFormView: UIView {
+    
+    // MARK: UIConstants
+    struct UIConstants {
+        static let fontSize: CGFloat = 20
+    }
+    
     weak var delegate: PhoneFormViewDelegate?
     
     // MARK: UIProperties
@@ -40,7 +46,7 @@ final class PhoneFormView: UIView {
     private lazy var phoneField: KTextField = {
         let textField = KTextField()
         textField.placeholder = Constants.phoneMask
-        textField.font = UIFont.systemFont(ofSize: 20)
+        textField.font = UIFont.systemFont(ofSize: UIConstants.fontSize)
         textField.textAlignment = .center
         textField.delegate = self
         return textField

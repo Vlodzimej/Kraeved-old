@@ -13,11 +13,6 @@ private struct SearchTypes {
 // MARK: - SearchScreenViewController
 final class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
 
-    // MARK: UIConstants
-    struct UIConstants {
-        static let segmentedControlHeight: CGFloat = 32
-    }
-
     // MARK: Properties
     private let presenter: SearchScreenPresenterProtocol
 
@@ -38,19 +33,6 @@ final class SearchScreenViewController: BaseViewController, SearchScreenViewProt
         }
         return searchBar
     }()
-
-//    private lazy var segmentedControl: UISegmentedControl = {
-//        let segmentedControl = UISegmentedControl(items: searchTypes.map { $0.title })
-//        segmentedControl.selectedSegmentIndex = 0
-//        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-//        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
-//        segmentedControl.backgroundColor = .lightGray
-//        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-//        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
-//        segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
-//        segmentedControl.accessibilityNavigationStyle = .combined
-//        return segmentedControl
-//    }()
 
     var tableView: UITableView = {
         let tableView = UITableView()
@@ -89,11 +71,6 @@ final class SearchScreenViewController: BaseViewController, SearchScreenViewProt
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
-
-    // MARK: Private methods
-
-    // MARK: Public methods
-
 }
 
 extension SearchScreenViewController: UISearchBarDelegate {

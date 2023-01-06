@@ -13,6 +13,7 @@ final class EntityCollectionCell: CollectionCellWithShimmer {
     // MARK: UIConstants
     struct UIConstants {
         static let titleInset: CGFloat = 8
+        static let titleLabelFontSize: CGFloat = 14
     }
     
     // MARK: UIProperties
@@ -101,7 +102,7 @@ final class EntityCollectionCell: CollectionCellWithShimmer {
             paragraphStyle.lineHeightMultiple = 0.8
             
             let  titleAttributedString = NSMutableAttributedString(string: title, attributes:
-                                                                    [.font: UIFont.systemFont(ofSize: 14, weight: .regular), .foregroundColor: UIColor.white, .paragraphStyle: paragraphStyle])
+                                                                    [.font: UIFont.systemFont(ofSize: UIConstants.titleLabelFontSize, weight: .regular), .foregroundColor: UIColor.white, .paragraphStyle: paragraphStyle])
             titleLabel.attributedText = titleAttributedString
             titleLabel.isHidden = false
         } else {

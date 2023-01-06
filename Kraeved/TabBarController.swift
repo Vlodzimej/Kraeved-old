@@ -10,6 +10,12 @@ import UIKit
 // MARK: - TabBarController
 final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
+    // MARK: UIConstants
+    struct UIConstants {
+        static let mapButtonViewTopInset: CGFloat = 16
+        static let mapButtonViewInsets: CGFloat = 8
+    }
+    
     // MARK: Properties
     private let activityIndicatorView = ActivityIndicatorView()
 
@@ -59,7 +65,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         guard let mapTabItemView = tabBar.subviews[safeIndex: itemIndex] else { return }
 
         let image = isActive ? UIImage.TabBar.mapActive : UIImage.TabBar.mapInactive
-        let buttonView = UIImageView(image: image.withAlignmentRectInsets(UIEdgeInsets(top: 16, left: 8, bottom: 8, right: 8)))
+        let buttonView = UIImageView(image: image.withAlignmentRectInsets(UIEdgeInsets(top: UIConstants.mapButtonViewTopInset, left: UIConstants.mapButtonViewInsets, bottom: UIConstants.mapButtonViewInsets, right: UIConstants.mapButtonViewInsets)))
         buttonView.backgroundColor = .clear
         buttonView.contentMode = .scaleAspectFit
 

@@ -14,6 +14,13 @@ protocol MessageScreenViewProtocol: AnyObject {
 // MARK: - MessageScreenViewController
 final class MessageScreenViewController: BaseViewController, MessageScreenViewProtocol {
 
+    // MARK: UIConstants
+    struct UIConstants {
+        static let logoWidth: CGFloat = 128
+        static let logoHeight: CGFloat = 160
+        static let logoVerticalOffset: CGFloat = 64
+    }
+    
     // MARK: Properties
     private let presenter: MessageScreenPresenterProtocol
     
@@ -68,9 +75,9 @@ final class MessageScreenViewController: BaseViewController, MessageScreenViewPr
         
         view.addSubview(logoImageView)
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -64).isActive = true
-        logoImageView.widthAnchor.constraint(equalToConstant: 128).isActive = true
-        logoImageView.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -UIConstants.logoVerticalOffset).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: UIConstants.logoWidth).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: UIConstants.logoHeight).isActive = true
         
         view.addSubview(messageLabel)
         messageLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: Constants.contentInset).isActive = true
@@ -81,7 +88,7 @@ final class MessageScreenViewController: BaseViewController, MessageScreenViewPr
         closeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.contentInset).isActive = true
         closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
         closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
-        closeButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
     }
 
     // MARK: Private methods

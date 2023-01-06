@@ -15,12 +15,13 @@ final class SearchTableViewCell: UITableViewCell {
         static let cellHeight: CGFloat = 64
         static let iconViewMargin: CGFloat = 8
         static let iconViewSize: CGFloat = 32
+        static let titleLabelFontSize: CGFloat = 16
     }
 
     // MARK: UIProperties
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: UIConstatns.titleLabelFontSize, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byTruncatingTail
         label.textColor = .black
