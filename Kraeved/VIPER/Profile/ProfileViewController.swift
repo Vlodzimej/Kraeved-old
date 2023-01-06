@@ -76,12 +76,12 @@ class ProfileViewController: BaseViewController, ProfileViewProtocol {
         loginButton.widthAnchor.constraint(equalToConstant: view.frame.width / 2).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     }
-
-    // MARK: Public methods
-    @objc func loginButtonTapped() {
+    
+    @objc private func loginButtonTapped() {
         presenter.openStartScreen()
     }
-    
+
+    // MARK: Public methods
     func showUserData() {
         tableView.isHidden = false
         loginButton.isHidden = true

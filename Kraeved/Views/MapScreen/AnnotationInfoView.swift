@@ -10,10 +10,12 @@ import UIKit
 // MARK: - MapScreenAnnotationInfoView
 final class MapScreenAnnotationInfoView: UIView {
     
+    // MARK: UIConstants
     struct UIConstants {
         static let titleHorizontalInset: CGFloat = 24
     }
     
+    // MARK: UIProperties
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,6 +32,7 @@ final class MapScreenAnnotationInfoView: UIView {
         return imageView
     }()
 
+    // MARK: Init
     init() {
         super.init(frame: .zero)
         initialize()
@@ -40,6 +43,7 @@ final class MapScreenAnnotationInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Private Methods
     private func initialize() {
         addSubview(imageView)
         imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
@@ -53,6 +57,7 @@ final class MapScreenAnnotationInfoView: UIView {
         descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -UIConstants.titleHorizontalInset).isActive = true
     }
 
+    // MARK: Public Methods
     func configurate(entity: MetaObject<Entity>) {
         descriptionLabel.text = entity.data?.text
         imageView.image = entity.image

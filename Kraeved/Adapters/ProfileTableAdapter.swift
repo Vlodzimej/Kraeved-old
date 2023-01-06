@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - ProfileCellType
 enum ProfileCellType {
     case textField
     case button

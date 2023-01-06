@@ -10,12 +10,12 @@ import UIKit
 // MARK: - EntitytCollectionCell
 class EntityCollectionCell: CollectionCellWithShimmer {
     
-    // MARK: - UIConstants
+    // MARK: UIConstants
     struct UIConstants {
         static let titleInset: CGFloat = 8
     }
     
-    // MARK: - UIProperties
+    // MARK: UIProperties
     private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +58,7 @@ class EntityCollectionCell: CollectionCellWithShimmer {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Private Methods
     private func initialize() {
         containerView.backgroundColor = generateRandomPastelColor(withMixedColor: UIColor.black)
         
@@ -81,7 +82,7 @@ class EntityCollectionCell: CollectionCellWithShimmer {
         containerView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
     }
     
-    // MARK: - Public Methods
+    // MARK: Public Methods
     func configurate(title: String?, image: UIImage?, hasOverlay: Bool = false) {
         
         if let image = image {

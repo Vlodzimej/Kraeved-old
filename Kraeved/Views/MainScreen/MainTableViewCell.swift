@@ -63,6 +63,7 @@ class MainTableViewCell: UITableViewCell {
     }
 }
 
+// MARK: - MainTableViewCell
 extension MainTableViewCell: EntityCellDelegate {
     func showDetails(id: UUID) {
         delegate?.showEntityDetails(id: id)

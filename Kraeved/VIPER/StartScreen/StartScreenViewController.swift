@@ -101,11 +101,12 @@ class StartScreenViewController: BaseViewController, StartScreenViewProtocol {
     }
 
     // MARK: Private methods
-
-    // MARK: Public methods
-    @objc func closeButtonTapped() {
+    @objc private func closeButtonTapped() {
         presenter.dismiss()
     }
+    
+    // MARK: Public methods
+
     
     func showCodeForm() {
         codeFormView.viewDidAppear()

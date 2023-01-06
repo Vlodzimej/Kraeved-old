@@ -9,9 +9,6 @@ import UIKit
 
 // MARK: - ProfileTableViewCell
 class ProfileTableViewCell: UITableViewCell {
-
-    // MARK: Properties
-    private var action: (() -> Void)?
     
     // MARK: UIConstants
     struct UIConstatns {
@@ -42,6 +39,10 @@ class ProfileTableViewCell: UITableViewCell {
         return button
     }()
     
+    // MARK: Properties
+    private var action: (() -> Void)?
+    
+    // MARK: Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initialize()
@@ -67,7 +68,11 @@ class ProfileTableViewCell: UITableViewCell {
         actionButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         actionButton.widthAnchor.constraint(equalToConstant: contentView.frame.width / 2).isActive = true
     }
-
+    
+    @objc private func actionButtonTapped() {
+        action?()
+    }
+    
     // MARK: Public Methods
     func configurate(viewModel: ProfileCellViewModel) {
         backgroundColor = .clear
@@ -89,9 +94,4 @@ class ProfileTableViewCell: UITableViewCell {
             actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
         }
     }
-    
-    @objc func actionButtonTapped() {
-        action?()
-    }
-    
 }

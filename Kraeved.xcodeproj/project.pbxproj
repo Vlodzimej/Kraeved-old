@@ -91,6 +91,7 @@
 		669DC6942967E5DF0090D50C /* GenealogyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC68F2967E5DF0090D50C /* GenealogyRouter.swift */; };
 		669DC6952967E5DF0090D50C /* GenealogyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC6902967E5DF0090D50C /* GenealogyViewController.swift */; };
 		669DC6962967E5DF0090D50C /* GenealogyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC6912967E5DF0090D50C /* GenealogyInteractor.swift */; };
+		669DC698296812010090D50C /* String+toDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC697296812010090D50C /* String+toDouble.swift */; };
 		66A8A5012926E0DB000BFC29 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */; };
 		66A8A5022926E0DB000BFC29 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FE2926E0DB000BFC29 /* BaseViewController.swift */; };
 		66A8A50B2926E173000BFC29 /* AnnotationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A5062926E173000BFC29 /* AnnotationScreenViewController.swift */; };
@@ -225,6 +226,7 @@
 		669DC68F2967E5DF0090D50C /* GenealogyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenealogyRouter.swift; sourceTree = "<group>"; };
 		669DC6902967E5DF0090D50C /* GenealogyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenealogyViewController.swift; sourceTree = "<group>"; };
 		669DC6912967E5DF0090D50C /* GenealogyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenealogyInteractor.swift; sourceTree = "<group>"; };
+		669DC697296812010090D50C /* String+toDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toDouble.swift"; sourceTree = "<group>"; };
 		66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		66A8A4FE2926E0DB000BFC29 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		66A8A5062926E173000BFC29 /* AnnotationScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationScreenViewController.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				66183E06292C2B1D008412B0 /* UIColor+mix.swift */,
 				66C1CDD6293025F600249231 /* Array+safeIndex.swift */,
 				668E612A294FA48D00478BE3 /* Notifications.swift */,
+				669DC697296812010090D50C /* String+toDouble.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -937,6 +940,7 @@
 				66FB06A3293FD26000DFEFA3 /* ImageCoreModel+CoreDataProperties.swift in Sources */,
 				66D7D9042935235A003D0471 /* CoreDataManager.swift in Sources */,
 				66183DEE292ABBEB008412B0 /* EntityCollectionCell.swift in Sources */,
+				669DC698296812010090D50C /* String+toDouble.swift in Sources */,
 				66183E24292D7C8A008412B0 /* EntityDetailsPresenter.swift in Sources */,
 				66A8A5192926E1D9000BFC29 /* SearchScreenPresenter.swift in Sources */,
 				66088A262926DCD700CB5E23 /* MainScreenPresenter.swift in Sources */,

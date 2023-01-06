@@ -209,9 +209,8 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         alertViewController.addAction(cancelAction)
         navigationController?.present(alertViewController, animated: true)
     }
-
-    // MARK: Public Methods
-    @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
+    
+    @objc private func handleTap(gestureRecognizer: UITapGestureRecognizer) {
         switch presenter.mode {
             case .addingAnnotation:
                 let location = gestureRecognizer.location(in: mapView)
@@ -220,7 +219,7 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         }
     }
     
-    @objc func keyboardWillChangesVisibility(notification: NSNotification) {
+    @objc private func keyboardWillChangesVisibility(notification: NSNotification) {
         guard !isBottomPanelHidden else { return }
         var keyboardSize: CGSize?
         
@@ -247,7 +246,8 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
             }
         }
     }
-    
+
+    // MARK: Public Methods
     func showAnnotationInfo(entity: MetaObject<Entity>) {
         annotationInfoView.isHidden = false
         annotationAddingView.isHidden = true

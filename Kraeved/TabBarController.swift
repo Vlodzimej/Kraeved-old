@@ -7,10 +7,13 @@
 
 import UIKit
 
+// MARK: - TabBarController
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
+    // MARK: Properties
     private let activityIndicatorView = ActivityIndicatorView()
 
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -25,6 +28,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(showOnboarding), name: .showOnboarding, object: nil)
     }
 
+    // MARK: Private Methods
     private func initialize() {
         let mainScreenViewController = MainScreenModuleBuilder.build()
         let searchScreenViewController = SearchScreenModuleBuilder.build()
@@ -69,7 +73,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         buttonView.rightAnchor.constraint(equalTo: mapTabItemView.rightAnchor).isActive = true
     }
 
-    @objc func changeActivityIndicatorVisibility(_ notification: NSNotification) {
+    @objc private func changeActivityIndicatorVisibility(_ notification: NSNotification) {
         let isVisible = notification.userInfo?["isVisible"] as? Bool ?? false
 
         if isVisible {
@@ -83,7 +87,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
 
-    @objc func showOnboarding() {
+    @objc private func showOnboarding() {
 //        let onboardingView = OnboardingView()
 //        view.addSubview(onboardingView)
 //

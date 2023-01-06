@@ -7,6 +7,7 @@
 
 import MapKit
 
+// MARK: - Result
 enum Result<Success, Error: Swift.Error> {
     case success(Success)
     case failure(Error)
@@ -23,6 +24,7 @@ extension Result {
     }
 }
 
+// MARK: - APIManagerProtocol
 protocol APIManagerProtocol {
     var sessionConfiguration: URLSessionConfiguration { get }
     var session: URLSession { get }
@@ -31,11 +33,13 @@ protocol APIManagerProtocol {
     func get<T: Decodable>(with request: URLRequest, completion: @escaping (Result<T, Error>) -> Void)
 }
 
+// MARK: - APIError
 enum APIError: Error {
     case badRequest
     case jsonDecode
 }
 
+// MARK: - APIManager
 class APIManager: APIManagerProtocol {
     static let shared = APIManager()
 

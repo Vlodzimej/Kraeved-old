@@ -8,12 +8,12 @@
 import UIKit
 import KraevedKit
 
-// MARK: PhoneFormViewDelegate
+// MARK: - PhoneFormViewDelegate
 protocol PhoneFormViewDelegate: AnyObject {
     func sendPhone(_ phone: String)
 }
 
-// MARK: PhoneFormView
+// MARK: - PhoneFormView
 class PhoneFormView: UIView {
     weak var delegate: PhoneFormViewDelegate?
     
@@ -77,19 +77,19 @@ class PhoneFormView: UIView {
         formStack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
-    // MARK: Public Methods
-    @objc func doneButtonTapped() {
+    @objc private func doneButtonTapped() {
         guard let text = phoneField.text else { return }
         let phone = text.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         delegate?.sendPhone(phone)
     }
     
+    // MARK: Public Methods
     func viewDidAppear() {
         phoneField.becomeFirstResponder()
     }
 }
 
-// MARK: UITextFieldDelegate
+// MARK: - UITextFieldDelegate
 extension PhoneFormView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }

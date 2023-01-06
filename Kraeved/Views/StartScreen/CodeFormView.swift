@@ -8,12 +8,12 @@
 import UIKit
 import KraevedKit
 
-// MARK: CodeFormViewDelegate
+// MARK: - CodeFormViewDelegate
 protocol CodeFormViewDelegate: AnyObject {
     func sendCode(_ code: String)
 }
 
-// MARK: CodeFormView
+// MARK: - CodeFormView
 class CodeFormView: UIView {
     
     weak var delegate: CodeFormViewDelegate?
@@ -62,14 +62,14 @@ class CodeFormView: UIView {
         codeField.widthAnchor.constraint(equalToConstant: 64).isActive = true
     }
     
-    // MARK: Public Methods
-    @objc func codeFieldDidChange(textField: UITextField) {
+    @objc private func codeFieldDidChange(textField: UITextField) {
         guard let text = textField.text else { return }
         if text.count == 4 {
             delegate?.sendCode(text)
         }
     }
     
+    // MARK: Public Methods
     func viewDidAppear() {
         codeField.becomeFirstResponder()
     }

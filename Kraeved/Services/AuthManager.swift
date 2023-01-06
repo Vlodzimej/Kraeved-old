@@ -7,15 +7,18 @@
 
 import Foundation
 
+// MARK: - AuthManagerProtocol
 protocol AuthManagerProtocol: AnyObject {
     func login(phone: String, code: String) -> Bool
     func logout()
     func getUserData() -> String?
 }
 
+// MARK: - AuthManager
 class AuthManager: AuthManagerProtocol {
     static let shared = AuthManager()
     
+    // MARK: Public Methods
     @discardableResult
     func login(phone: String, code: String) -> Bool {
         let keychainItemQuery = [

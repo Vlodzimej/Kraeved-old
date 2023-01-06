@@ -7,10 +7,12 @@
 
 import UIKit
 
+// MARK: - EntityCellDelegate
 protocol EntityCellDelegate: AnyObject {
     func showDetails(id: UUID)
 }
 
+// MARK: - EntityCellViewProtocol
 protocol EntityCellViewProtocol {
     var delegate: EntityCellDelegate? { get set }
 }
@@ -18,13 +20,13 @@ protocol EntityCellViewProtocol {
 // MARK: - EntityCellView
 class EntityCellView: UIView, EntityCellViewProtocol {
 
-    // MARK: - Properties
+    // MARK: Properties
     weak var delegate: EntityCellDelegate?
 
     private let items: [MainTableCellItem]
     private let type: EntityType
 
-    // MARK: - UIProperties
+    // MARK: UIProperties
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsHorizontalScrollIndicator = true
@@ -45,7 +47,7 @@ class EntityCellView: UIView, EntityCellViewProtocol {
         return layout
     }()
 
-    // MARK: - Init
+    // MARK: Init
     init(items: [MainTableCellItem], type: EntityType) {
         self.items = items
         self.type = type
@@ -57,7 +59,7 @@ class EntityCellView: UIView, EntityCellViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Private Methods
+    // MARK: Private Methods
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -81,7 +83,6 @@ class EntityCellView: UIView, EntityCellViewProtocol {
 // MARK: - UICollectionViewDataSource
 extension EntityCellView: UICollectionViewDataSource {
 
-    // MARK: - UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }

@@ -16,6 +16,7 @@ enum AnnotationAddingMode {
     case description
 }
 
+// MARK: - AnnotationAddingViewDelegate
 protocol AnnotationAddingViewDelegate: AnyObject {
     func addAnnotation(title: String, description: String)
 }
@@ -168,8 +169,7 @@ class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         update(mode: .location)
     }
     
-    // MARK: Public Methods
-    @objc func nextButtonTapped(_ sender: UIButton) {
+    @objc private func nextButtonTapped(_ sender: UIButton) {
         guard let mode else { return }
         switch mode {
             case .location:
@@ -181,11 +181,12 @@ class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         }
     }
     
-    @objc func nameTextFieldDidChange(_ textField: UITextField) {
+    @objc private func nameTextFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
         nextButton.isEnabled = text.count > 2
     }
-
+    
+    // MARK: Public Methods
     func update(mode: AnnotationAddingMode) {
         // TODO: Необходимо провести рефакторинг
         self.mode = mode

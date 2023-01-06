@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 import CoreData
 
+// MARK: - CoreDataManagerProtocol
 protocol CoreDataManagerProtocol {
     var managedObjectContext: NSManagedObjectContext { get set }
 
@@ -16,11 +17,12 @@ protocol CoreDataManagerProtocol {
     func find(entityName: String, predicates: [NSPredicate]) -> [NSFetchRequestResult]
 }
 
+// MARK: - CoreDataManager
 final class CoreDataManager: CoreDataManagerProtocol {
 
     static let shared = CoreDataManager()
 
-    // MARK: - Properties
+    // MARK: Properties
     lazy var applicationDocumentsDirectory: URL = {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count-1]
@@ -58,9 +60,7 @@ final class CoreDataManager: CoreDataManagerProtocol {
         return managedObjectContext
     }()
 
-    private init() {}
-
-    // MARK: - Public Methods
+    // MARK: Public Methods
     func entityForName(entityName: String) -> NSEntityDescription {
         NSEntityDescription.entity(forEntityName: entityName, in: self.managedObjectContext)!
     }

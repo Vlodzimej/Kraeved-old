@@ -85,10 +85,10 @@ class MessageScreenViewController: BaseViewController, MessageScreenViewProtocol
     }
 
     // MARK: Private methods
-
-    // MARK: Public methods
-    @objc func closeButtonTapped() {
+    @objc private func closeButtonTapped() {
         presenter.dismiss()
     }
+
+    // MARK: Public methods
 
 }

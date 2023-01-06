@@ -23,14 +23,17 @@ class BusinessObjectManager: BusinessObjectManagerProtocol {
 
     static let shared = BusinessObjectManager()
 
+    // MARK: Properties
     private let apiManager: APIManager
     private let coreDataManager: CoreDataManagerProtocol
 
+    // MARK: Init
     private init(apiManager: APIManager = APIManager.shared, coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared) {
         self.apiManager = apiManager
         self.coreDataManager = coreDataManager
     }
 
+    // MARK: Public Methods
     /**
      Получение и кэширование бизнес-объектов
     */

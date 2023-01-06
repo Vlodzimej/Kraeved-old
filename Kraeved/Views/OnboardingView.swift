@@ -7,8 +7,10 @@
 
 import UIKit
 
+// MARK: - OnboardingView
 final class OnboardingView: UIView {
 
+    // MARK: UIProperties
     private let eventsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -33,6 +35,7 @@ final class OnboardingView: UIView {
         return label
     }()
 
+    // MARK: Init
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +46,7 @@ final class OnboardingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Private Methods
     private func initialize() {
         backgroundColor = UIColor(white: 0, alpha: 0.5)
 
@@ -70,7 +74,7 @@ final class OnboardingView: UIView {
         }, completion: nil)
     }
 
-    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+    @objc private func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         removeFromSuperview()
     }
 }
