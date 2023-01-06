@@ -71,8 +71,9 @@ final class EntityManager: EntityManagerProtocol {
                     let resultEntity = MetaObject<Entity>(id: entity.id, title: entity.title, image: image, data: entity.data)
                     completion(resultEntity)
                 }
+            } else {
+                completion(entity)
             }
-            completion(entity)
         }
     }
     

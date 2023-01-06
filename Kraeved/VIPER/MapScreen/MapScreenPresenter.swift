@@ -11,7 +11,6 @@ protocol MapScreenPresenterProtocol: AnyObject, MKMapViewDelegate, AnnotationInf
     var hasAuthorization: Bool { get }
 
     func viewDidLoad()
-    func openAnnotation(annotation: Annotation)
     func addAnnotations(annotations: [Annotation])
     func createAnnotation(by location: CGPoint)
     func removeNewAnnotation()
@@ -74,7 +73,7 @@ final class MapScreenPresenter: NSObject, MapScreenPresenterProtocol {
         view?.mapView.addAnnotations(annotations)
     }
 
-    func openAnnotation(annotation: Annotation) {
+    private func openAnnotation(annotation: Annotation) {
         interactor.getEntity(id: annotation.id) { [weak self] entity in
             guard let self = self else { return }
             DispatchQueue.main.async {
