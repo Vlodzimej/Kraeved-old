@@ -12,6 +12,7 @@ import MapKit
 // MARK: - AnnotationAddingMode
 enum AnnotationAddingMode {
     case location
+    case type
     case name
     case description
 }
@@ -37,6 +38,8 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
     // MARK: Properties
     private var mode: AnnotationAddingMode?
     weak var delegate: AnnotationAddingViewDelegate?
+    
+    private let typePickerAdapter = AnnotationTypePickerAdapter()
 
     // MARK: UIProperties
     private lazy var locationLabel: UILabel = {
@@ -116,6 +119,13 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         return button
     }()
     
+    private lazy var typePickerView: UIPickerView = {
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.isHidden = true
+        return picker
+    }()
+    
     // MARK: Init
     init() {
         super.init(frame: .zero)
@@ -130,15 +140,13 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
+        
+        typePickerAdapter.configurate(pickerView: typePickerView)
+        
         // TODO: Необходимо провести рефакторинг
-
-        addSubview(nextButton)
-        nextButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.contentInset).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
         addSubview(locationLabel)
-        locationLabel.topAnchor.constraint(equalTo: nextButton.bottomAnchor, constant: Constants.contentInset).isActive = true
+        locationLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.contentInset + 48).isActive = true
         locationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         locationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
@@ -146,9 +154,14 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         coordsTextField.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: Constants.contentInset).isActive = true
         coordsTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.contentInset).isActive = true
         coordsTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.contentInset).isActive = true
+        
+        addSubview(typePickerView)
+        typePickerView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        typePickerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.contentInset).isActive = true
+        typePickerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.contentInset).isActive = true
 
         addSubview(nameTextField)
-        nameTextField.topAnchor.constraint(equalTo: nextButton.bottomAnchor).isActive = true
+        nameTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 48).isActive = true
         nameTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.contentInset).isActive = true
         nameTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.contentInset).isActive = true
         nameTextField.heightAnchor.constraint(equalToConstant: 48).isActive = true
@@ -158,7 +171,7 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         nameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
 
         addSubview(descriptionTextView)
-        descriptionTextView.topAnchor.constraint(equalTo: nextButton.bottomAnchor).isActive = true
+        descriptionTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: 48).isActive = true
         descriptionTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.contentInset).isActive = true
         descriptionTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.contentInset).isActive = true
         descriptionTextView.heightAnchor.constraint(equalToConstant: 128).isActive = true
@@ -167,6 +180,11 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         descriptionLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 8).isActive = true
         descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
+        addSubview(nextButton)
+        nextButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        nextButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.contentInset).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        
         update(mode: .location)
     }
     
@@ -174,6 +192,8 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         guard let mode else { return }
         switch mode {
             case .location:
+                update(mode: .type)
+            case .type:
                 update(mode: .name)
             case .name:
                 update(mode: .description)
@@ -202,12 +222,15 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
                 descriptionLabel.isHidden = true
                 coordsTextField.isHidden = false
                 coordsTextField.text = ""
-            case .name:
+            case .type:
                 locationLabel.isHidden = true
+                typePickerView.isHidden = false
+                coordsTextField.isHidden = true
+            case .name:
+                typePickerView.isHidden = true
                 nameTextField.isHidden = false
                 nameLabel.isHidden = false
                 nextButton.isEnabled = false
-                coordsTextField.isHidden = true
             case .description:
                 nameTextField.isHidden = true
                 nameLabel.isHidden = true

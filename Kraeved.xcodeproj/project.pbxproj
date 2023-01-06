@@ -92,6 +92,7 @@
 		669DC6952967E5DF0090D50C /* GenealogyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC6902967E5DF0090D50C /* GenealogyViewController.swift */; };
 		669DC6962967E5DF0090D50C /* GenealogyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC6912967E5DF0090D50C /* GenealogyInteractor.swift */; };
 		669DC698296812010090D50C /* String+toDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC697296812010090D50C /* String+toDouble.swift */; };
+		669DC69A2968267A0090D50C /* AnnotationTypePickerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC6992968267A0090D50C /* AnnotationTypePickerAdapter.swift */; };
 		66A8A5012926E0DB000BFC29 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */; };
 		66A8A5022926E0DB000BFC29 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A4FE2926E0DB000BFC29 /* BaseViewController.swift */; };
 		66A8A50B2926E173000BFC29 /* AnnotationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8A5062926E173000BFC29 /* AnnotationScreenViewController.swift */; };
@@ -227,6 +228,7 @@
 		669DC6902967E5DF0090D50C /* GenealogyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenealogyViewController.swift; sourceTree = "<group>"; };
 		669DC6912967E5DF0090D50C /* GenealogyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenealogyInteractor.swift; sourceTree = "<group>"; };
 		669DC697296812010090D50C /* String+toDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toDouble.swift"; sourceTree = "<group>"; };
+		669DC6992968267A0090D50C /* AnnotationTypePickerAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationTypePickerAdapter.swift; sourceTree = "<group>"; };
 		66A8A4FD2926E0DB000BFC29 /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		66A8A4FE2926E0DB000BFC29 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		66A8A5062926E173000BFC29 /* AnnotationScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationScreenViewController.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				66956E61293259F600FC161C /* SearchTableAdapter.swift */,
 				66D41EAE2932CD7300FD66CA /* ProfileTableAdapter.swift */,
 				669DC67C296724540090D50C /* MiniAppCollectionAdapter.swift */,
+				669DC6992968267A0090D50C /* AnnotationTypePickerAdapter.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -996,6 +999,7 @@
 				66956E372931046C00FC161C /* UserDefaultsKeys.swift in Sources */,
 				66183DF2292BA69B008412B0 /* User.swift in Sources */,
 				669DC67B2966CA1F0090D50C /* AuthManager.swift in Sources */,
+				669DC69A2968267A0090D50C /* AnnotationTypePickerAdapter.swift in Sources */,
 				66183DEB292AB5D4008412B0 /* generateRandomPastelColor.swift in Sources */,
 				66183DE6292AA797008412B0 /* MainTableViewCell.swift in Sources */,
 				660889FE2926DC0300CB5E23 /* SceneDelegate.swift in Sources */,
