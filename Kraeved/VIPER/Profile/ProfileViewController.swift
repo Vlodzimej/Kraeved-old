@@ -35,7 +35,7 @@ final class ProfileViewController: BaseViewController, ProfileViewProtocol {
     private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle(NSLocalizedString("profile.signIn", comment: ""), for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .Common.blueButton
         button.layer.cornerRadius = Constants.buttonRadius
         button.layer.masksToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -71,9 +71,9 @@ final class ProfileViewController: BaseViewController, ProfileViewProtocol {
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         view.addSubview(loginButton)
+        loginButton.widthAnchor.constraint(equalToConstant: 128).isActive = true
         loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        loginButton.widthAnchor.constraint(equalToConstant: view.frame.width / 2).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
     }
     

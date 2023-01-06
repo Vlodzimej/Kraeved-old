@@ -44,7 +44,7 @@
 "profile.phone"                         = "Phone";
 "profile.score"                         = "Score";
 "profile.logout"                        = "Logout";
-"profile.signIn"                        = "Please, sign in";
+"profile.signIn"                        = "Sign in";
 "profile.enterPhone"                    = "Enter your phone number";
 
 "miniapps.notes"                       = "Notes";

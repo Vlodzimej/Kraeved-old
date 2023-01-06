@@ -43,7 +43,7 @@ final class MessageScreenViewController: BaseViewController, MessageScreenViewPr
         let button = UIButton()
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .Common.blueButton
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         button.setTitle("Продолжить", for: .normal)

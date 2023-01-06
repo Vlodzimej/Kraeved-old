@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - AnnotationInfoDelegate
 protocol AnnotationInfoDelegate: AnyObject {
     func openEntityDetails(id: UUID)
 }
@@ -19,7 +20,7 @@ final class AnnotationInfoView: UIView {
         static let titleHorizontalInset: CGFloat = 24
         static let imageSize: CGFloat = 96
         static let infoButtonBottomOffset: CGFloat = 24
-        static let descriptionLabelFontSize: CGFloat = 24
+        static let descriptionLabelFontSize: CGFloat = 14
     }
     
     // MARK: UIProperties

@@ -8,7 +8,7 @@
 "common.noTitle"                        = "Название отсутствует";
 "common.next"                           = "Далее";
 "common.close"                          = "Закрыть";
-"common.signin"                         = "Войти";
+"common.signIn"                         = "Войти";
 "common.cancel"                         = "Отмена";
 "common.more"                           = "Подробнее";
 
@@ -44,7 +44,7 @@
 "profile.phone"                         = "Телефон";
 "profile.score"                         = "Баллы";
 "profile.logout"                        = "Выйти";
-"profile.signIn"                        = "Пожалуйста, выполните вход";
+"profile.signIn"                        = "Войти";
 "profile.enterPhone"                    = "Пожалуйста, введите номер телефона";
 
 "miniapps.notes"                       = "Мои записи";
