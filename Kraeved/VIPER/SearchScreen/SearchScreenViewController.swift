@@ -11,7 +11,7 @@ private struct SearchTypes {
 }
 
 // MARK: - SearchScreenViewController
-class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
+final class SearchScreenViewController: BaseViewController, SearchScreenViewProtocol {
 
     // MARK: UIConstants
     struct UIConstants {

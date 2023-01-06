@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GenealogyModuleBuilder {
+final class GenealogyModuleBuilder {
 	static func build() -> GenealogyViewController {
 		let interactor = GenealogyInteractor()
 		let router = GenealogyRouter()

@@ -6,7 +6,7 @@ protocol MainScreenViewProtocol: AnyObject {
 }
 
 // MARK: - MainScreenViewController
-class MainScreenViewController: BaseViewController, MainScreenViewProtocol {
+final class MainScreenViewController: BaseViewController, MainScreenViewProtocol {
 
     // MARK: UIConstants
     struct UIConstants {

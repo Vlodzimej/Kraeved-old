@@ -16,7 +16,7 @@ protocol ProfileViewProtocol: AnyObject {
 }
 
 // MARK: - ProfileViewController
-class ProfileViewController: BaseViewController, ProfileViewProtocol {
+final class ProfileViewController: BaseViewController, ProfileViewProtocol {
 
     // MARK: Properties
     private let presenter: ProfilePresenterProtocol

@@ -13,7 +13,7 @@ protocol EntityDetailsViewProtocol: AnyObject {
 }
 
 // MARK: - EntityDetailsViewController
-class EntityDetailsViewController: BaseViewController, EntityDetailsViewProtocol {
+final class EntityDetailsViewController: BaseViewController, EntityDetailsViewProtocol {
 
     // MARK: Properties
     private let presenter: EntityDetailsPresenterProtocol

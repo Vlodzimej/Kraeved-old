@@ -13,7 +13,7 @@ protocol SearchTableAdapterDelegate: AnyObject {
 }
 
 // MARK: - SearchTableAdapter
-class SearchTableAdapter: NSObject {
+final class SearchTableAdapter: NSObject {
 
     // MARK: Properties
     private var items: [SearchItem] = []

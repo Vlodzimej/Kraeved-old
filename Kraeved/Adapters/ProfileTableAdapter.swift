@@ -27,7 +27,7 @@ protocol ProfileTableAdapterDelegate: AnyObject {
 }
 
 // MARK: - ProfileTableAdapter
-class ProfileTableAdapter: NSObject {
+final class ProfileTableAdapter: NSObject {
 
     // MARK: Properties
     private var tableView: UITableView?

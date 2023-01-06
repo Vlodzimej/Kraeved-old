@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MiniAppCollectionCell: UICollectionViewCell {
+final class MiniAppCollectionCell: UICollectionViewCell {
     
     // MARK: UIConstants
     struct UIConstants {

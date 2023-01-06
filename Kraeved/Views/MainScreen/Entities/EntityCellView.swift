@@ -18,7 +18,7 @@ protocol EntityCellViewProtocol {
 }
 
 // MARK: - EntityCellView
-class EntityCellView: UIView, EntityCellViewProtocol {
+final class EntityCellView: UIView, EntityCellViewProtocol {
 
     // MARK: Properties
     weak var delegate: EntityCellDelegate?

@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - ProfileTableViewCell
-class ProfileTableViewCell: UITableViewCell {
+final class ProfileTableViewCell: UITableViewCell {
     
     // MARK: UIConstants
     struct UIConstatns {

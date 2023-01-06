@@ -6,7 +6,7 @@ protocol MainScreenInteractorProtocol: AnyObject {
 }
 
 // MARK: - MainScreenInteractor
-class MainScreenInteractor: MainScreenInteractorProtocol {
+final class MainScreenInteractor: MainScreenInteractorProtocol {
 
     // MARK: Properties
     weak var presenter: MainScreenPresenterProtocol?

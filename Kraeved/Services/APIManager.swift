@@ -40,7 +40,7 @@ enum APIError: Error {
 }
 
 // MARK: - APIManager
-class APIManager: APIManagerProtocol {
+final class APIManager: APIManagerProtocol {
     static let shared = APIManager()
 
     var sessionConfiguration: URLSessionConfiguration

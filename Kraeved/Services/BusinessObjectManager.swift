@@ -16,7 +16,7 @@ protocol BusinessObjectManagerProtocol: AnyObject {
 }
 
 // MARK: - BusinessObjectManager
-class BusinessObjectManager: BusinessObjectManagerProtocol {
+final class BusinessObjectManager: BusinessObjectManagerProtocol {
     struct Constants {
         static let entityName: String = "BusinessObjectCoreModel"
     }

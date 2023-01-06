@@ -12,7 +12,7 @@ protocol MiniAppsScreenPresenterProtocol: AnyObject, MiniaAppCollectionAdapterDe
 }
 
 // MARK: - MiniAppsScreenPresenter
-class MiniAppsScreenPresenter: MiniAppsScreenPresenterProtocol {
+final class MiniAppsScreenPresenter: MiniAppsScreenPresenterProtocol {
 
     // MARK: Properties
     weak var view: MiniAppsScreenViewProtocol?

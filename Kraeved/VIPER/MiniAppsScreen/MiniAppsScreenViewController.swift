@@ -12,7 +12,7 @@ protocol MiniAppsScreenViewProtocol: AnyObject, UICollectionViewDelegate, UIColl
 }
 
 // MARK: - MiniAppsScreenViewController
-class MiniAppsScreenViewController: BaseViewController, MiniAppsScreenViewProtocol {
+final class MiniAppsScreenViewController: BaseViewController, MiniAppsScreenViewProtocol {
 
     // MARK: UIConstants
     struct UIConstants {

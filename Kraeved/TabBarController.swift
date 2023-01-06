@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - TabBarController
-class TabBarController: UITabBarController, UITabBarControllerDelegate {
+final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     // MARK: Properties
     private let activityIndicatorView = ActivityIndicatorView()

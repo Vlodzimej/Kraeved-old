@@ -12,7 +12,7 @@ protocol MessageScreenViewProtocol: AnyObject {
 }
 
 // MARK: - MessageScreenViewController
-class MessageScreenViewController: BaseViewController, MessageScreenViewProtocol {
+final class MessageScreenViewController: BaseViewController, MessageScreenViewProtocol {
 
     // MARK: Properties
     private let presenter: MessageScreenPresenterProtocol

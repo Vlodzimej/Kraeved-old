@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - EntitytCollectionCell
-class EntityCollectionCell: CollectionCellWithShimmer {
+final class EntityCollectionCell: CollectionCellWithShimmer {
     
     // MARK: UIConstants
     struct UIConstants {

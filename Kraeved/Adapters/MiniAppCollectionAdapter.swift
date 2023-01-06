@@ -28,7 +28,7 @@ protocol MiniAppCollectionAdapterProtocol: AnyObject, UICollectionViewDelegate {
 }
 
 // MARK: - MiniAppCollectionAdapter
-class MiniAppCollectionAdapter: NSObject, MiniAppCollectionAdapterProtocol {
+final class MiniAppCollectionAdapter: NSObject, MiniAppCollectionAdapterProtocol {
     
     // MARK: Properties
     private var collectionView: UICollectionView?

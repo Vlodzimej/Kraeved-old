@@ -13,7 +13,7 @@ protocol ImageManagerProtocol: AnyObject {
 }
 
 // MARK: - ImageManager
-class ImageManager: ImageManagerProtocol {
+final class ImageManager: ImageManagerProtocol {
 
     static let shared = ImageManager()
 

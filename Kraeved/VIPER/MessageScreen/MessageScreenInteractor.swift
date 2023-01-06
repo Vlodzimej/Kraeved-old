@@ -12,7 +12,7 @@ protocol MessageScreenInteractorProtocol: AnyObject {
 }
 
 // MARK: - MessageScreenInteractor
-class MessageScreenInteractor: MessageScreenInteractorProtocol {
+final class MessageScreenInteractor: MessageScreenInteractorProtocol {
 
     // MARK: Properties
     weak var presenter: MessageScreenPresenterProtocol?

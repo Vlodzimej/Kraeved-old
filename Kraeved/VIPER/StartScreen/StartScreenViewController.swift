@@ -14,7 +14,7 @@ protocol StartScreenViewProtocol: AnyObject {
 }
 
 // MARK: - StartScreenViewController
-class StartScreenViewController: BaseViewController, StartScreenViewProtocol {
+final class StartScreenViewController: BaseViewController, StartScreenViewProtocol {
 
     // MARK: UIConstants
     struct UIConstants {

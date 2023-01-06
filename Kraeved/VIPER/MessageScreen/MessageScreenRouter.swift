@@ -11,6 +11,6 @@ protocol MessageScreenRouterProtocol: BaseRouterProtocol {
 
 }
 
-class MessageScreenRouter: BaseRouter<MessageScreenViewController>, MessageScreenRouterProtocol {
+final class MessageScreenRouter: BaseRouter<MessageScreenViewController>, MessageScreenRouterProtocol {
 
 }

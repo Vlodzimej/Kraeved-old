@@ -1,5 +1,5 @@
 //
-//  MapScreenAnnotationInfoView.swift
+//  AnnotationInfoView.swift
 //  Kraeved
 //
 //  Created by Владимир Амелькин on 11.12.2022.
@@ -7,12 +7,17 @@
 
 import UIKit
 
-// MARK: - MapScreenAnnotationInfoView
-final class MapScreenAnnotationInfoView: UIView {
+protocol AnnotationInfoDelegate: AnyObject {
+    func openEntityDetails(id: UUID)
+}
+
+// MARK: - AnnotationInfoView
+final class AnnotationInfoView: UIView {
     
     // MARK: UIConstants
     struct UIConstants {
         static let titleHorizontalInset: CGFloat = 24
+        static let imageSize: CGFloat = 96
     }
     
     // MARK: UIProperties
@@ -28,15 +33,32 @@ final class MapScreenAnnotationInfoView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = .gray
+        imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+    
+    private lazy var infoButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Подробнее", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .Common.blueButton
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    // MARK: Properties
+    weak var delegate: AnnotationInfoDelegate?
+    private var entityId: UUID?
 
     // MARK: Init
     init() {
         super.init(frame: .zero)
         initialize()
-        backgroundColor = .clear
     }
 
     required init?(coder: NSCoder) {
@@ -45,22 +67,42 @@ final class MapScreenAnnotationInfoView: UIView {
 
     // MARK: Private Methods
     private func initialize() {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .clear
+        
         addSubview(imageView)
-        imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.contentInset).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.contentInset).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: UIConstants.imageSize).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: UIConstants.imageSize).isActive = true
         
         addSubview(descriptionLabel)
         descriptionLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.contentInset).isActive = true
-        descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: UIConstants.titleHorizontalInset).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Constants.contentInset).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -UIConstants.titleHorizontalInset).isActive = true
+        
+        addSubview(infoButton)
+        infoButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -24).isActive = true
+        infoButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        infoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.contentInset).isActive = true
+        infoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.contentInset).isActive = true
+    }
+    
+    @objc private func infoButtonTapped() {
+        guard let entityId else { return }
+        delegate?.openEntityDetails(id: entityId)
     }
 
     // MARK: Public Methods
     func configurate(entity: MetaObject<Entity>) {
+        entityId = entity.id
         descriptionLabel.text = entity.data?.text
-        imageView.image = entity.image
+        if let image = entity.image {
+            imageView.image = image
+            imageView.setNeedsDisplay()
+        } else {
+            imageView.image = UIImage.Common.locationPlaceholder
+        }
     }
 
 }

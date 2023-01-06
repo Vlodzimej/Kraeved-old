@@ -4,6 +4,6 @@ protocol AnnotationScreenRouterProtocol: BaseRouterProtocol {
 
 }
 
-class AnnotationScreenRouter: BaseRouter<AnnotationScreenViewController>, AnnotationScreenRouterProtocol {
+final class AnnotationScreenRouter: BaseRouter<AnnotationScreenViewController>, AnnotationScreenRouterProtocol {
 
 }

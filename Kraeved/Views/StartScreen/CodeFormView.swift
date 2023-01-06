@@ -14,7 +14,7 @@ protocol CodeFormViewDelegate: AnyObject {
 }
 
 // MARK: - CodeFormView
-class CodeFormView: UIView {
+final class CodeFormView: UIView {
     
     weak var delegate: CodeFormViewDelegate?
     

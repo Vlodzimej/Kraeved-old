@@ -13,7 +13,7 @@ protocol MessageScreenPresenterProtocol: AnyObject {
 }
 
 // MARK: - MessageScreenPresenter
-class MessageScreenPresenter: MessageScreenPresenterProtocol {
+final class MessageScreenPresenter: MessageScreenPresenterProtocol {
 
     // MARK: Properties
     weak var view: MessageScreenViewProtocol?

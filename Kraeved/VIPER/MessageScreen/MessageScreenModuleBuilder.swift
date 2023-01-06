@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MessageScreenModuleBuilder {
+final class MessageScreenModuleBuilder {
     static func build(messageText: String) -> MessageScreenViewController {
 		let interactor = MessageScreenInteractor()
 		let router = MessageScreenRouter()

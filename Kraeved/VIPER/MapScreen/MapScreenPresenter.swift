@@ -6,7 +6,7 @@ protocol MapScreenModuleOutput: AnyObject {
 }
 
 // MARK: - MapScreenPresenterProtocol
-protocol MapScreenPresenterProtocol: AnyObject, MKMapViewDelegate, AnnotationAddingViewDelegate, StartScreenModuleOutput {
+protocol MapScreenPresenterProtocol: AnyObject, MKMapViewDelegate, AnnotationInfoDelegate, AnnotationAddingViewDelegate, StartScreenModuleOutput {
     var mode: MapScreenMode { get set }
     var hasAuthorization: Bool { get }
 
@@ -26,7 +26,7 @@ enum MapScreenMode {
 }
 
 // MARK: - MapScreenPresenter
-class MapScreenPresenter: NSObject, MapScreenPresenterProtocol {
+final class MapScreenPresenter: NSObject, MapScreenPresenterProtocol {
 
     // MARK: Constants
     private struct Constants {
@@ -57,7 +57,6 @@ class MapScreenPresenter: NSObject, MapScreenPresenterProtocol {
     func viewDidLoad() {
         guard let view = view else { return }
 
-        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -155,10 +154,7 @@ extension MapScreenPresenter: MKMapViewDelegate {
     }
 }
 
-extension MapScreenPresenter: CLLocationManagerDelegate {
-
-}
-
+// MARK: - AnnotationAddingViewDelegate
 extension MapScreenPresenter: AnnotationAddingViewDelegate {
     func addAnnotation(title: String, description: String) {
         guard let coordinate = selectedAnnotation?.coordinate else { return }
@@ -178,7 +174,14 @@ extension MapScreenPresenter: AnnotationAddingViewDelegate {
         }
     }
 }
+// MARK: - AnnotationInfoDelegate
+extension MapScreenPresenter: AnnotationInfoDelegate {
+    func openEntityDetails(id: UUID) {
+        router.openEntityDetails(id: id)
+    }
+}
 
+// MARK: - StartScreenModuleOutput
 extension MapScreenPresenter: StartScreenModuleOutput {
     func logged() {
         view?.showBottomPanel()

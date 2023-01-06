@@ -61,17 +61,8 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         return view
     }()
 
-    private let annotationInfoView: MapScreenAnnotationInfoView = {
-        let view = MapScreenAnnotationInfoView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    var annotationAddingView: AnnotationAddingView = {
-        let view = AnnotationAddingView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let annotationInfoView = AnnotationInfoView()
+    var annotationAddingView = AnnotationAddingView()
 
     // MARK: Init
     init(presenter: MapScreenPresenterProtocol) {
@@ -88,14 +79,14 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         super.viewDidLoad()
 
         initialize()
-
         presenter.viewDidLoad()
+        
         mapView.delegate = presenter
-
+        annotationInfoView.delegate = presenter
+        annotationAddingView.delegate = presenter
+        
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
             mapView.addGestureRecognizer(gestureRecognizer)
-        
-        annotationAddingView.delegate = presenter
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -10,7 +10,7 @@ protocol MapScreenInteractorProtocol: AnyObject {
 }
 
 // MARK: - MapScreenInteractor
-class MapScreenInteractor: MapScreenInteractorProtocol {
+final class MapScreenInteractor: MapScreenInteractorProtocol {
 
     private let annotationManager: AnnotationManagerProtocol
     private let entityManager: EntityManagerProtocol

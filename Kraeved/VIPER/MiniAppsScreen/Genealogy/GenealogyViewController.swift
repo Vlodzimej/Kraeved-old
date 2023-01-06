@@ -13,7 +13,7 @@ protocol GenealogyViewProtocol: AnyObject {
 }
 
 // MARK: - GenealogyViewController
-class GenealogyViewController: BaseViewController, GenealogyViewProtocol {
+final class GenealogyViewController: BaseViewController, GenealogyViewProtocol {
 
     // MARK: Properties
     private let presenter: GenealogyPresenterProtocol

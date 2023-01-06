@@ -14,7 +14,7 @@ protocol PhoneFormViewDelegate: AnyObject {
 }
 
 // MARK: - PhoneFormView
-class PhoneFormView: UIView {
+final class PhoneFormView: UIView {
     weak var delegate: PhoneFormViewDelegate?
     
     // MARK: UIProperties

@@ -14,7 +14,7 @@ protocol AnnotationManagerProtocol {
 }
 
 // MARK: - AnnotationManager
-class AnnotationManager: AnnotationManagerProtocol {
+final class AnnotationManager: AnnotationManagerProtocol {
 
     // MARK: Properties
     static let shared = AnnotationManager()

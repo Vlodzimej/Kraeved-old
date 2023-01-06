@@ -5,7 +5,7 @@ protocol AnnotationScreenViewProtocol: AnyObject {
 }
 
 // MARK: - AnnotationScreenViewController
-class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewProtocol {
+final class AnnotationScreenViewController: BaseViewController, AnnotationScreenViewProtocol {
 
     // MARK: Properties
     private let presenter: AnnotationScreenPresenterProtocol

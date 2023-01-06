@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - SearchTableViewCell
-class SearchTableViewCell: UITableViewCell {
+final class SearchTableViewCell: UITableViewCell {
 
     // MARK: UIConstants
     struct UIConstatns {

@@ -33,7 +33,7 @@ protocol MainTableAdapterDelegate: AnyObject {
     func showEntityDetails(id: UUID)
 }
 
-class MainTableAdapter: NSObject {
+final class MainTableAdapter: NSObject {
 
     var sections: [MainTableSectionItem] = [
         MainTableSectionItem(title: NSLocalizedString("mainScreen.historicalEvents", comment: ""), type: EntityType.historicalEvent, hasOverlay: true),

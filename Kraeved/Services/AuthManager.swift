@@ -15,7 +15,7 @@ protocol AuthManagerProtocol: AnyObject {
 }
 
 // MARK: - AuthManager
-class AuthManager: AuthManagerProtocol {
+final class AuthManager: AuthManagerProtocol {
     static let shared = AuthManager()
     
     // MARK: Public Methods

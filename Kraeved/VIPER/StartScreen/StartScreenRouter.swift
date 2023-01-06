@@ -10,6 +10,6 @@ import Foundation
 protocol StartScreenRouterProtocol: BaseRouterProtocol {
 }
 
-class StartScreenRouter: BaseRouter<StartScreenViewController>, StartScreenRouterProtocol {
+final class StartScreenRouter: BaseRouter<StartScreenViewController>, StartScreenRouterProtocol {
 
 }

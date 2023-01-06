@@ -27,7 +27,7 @@ protocol AnnotationAddingViewProtocol: AnyObject {
 }
 
 // MARK: - AnnotationAddingView
-class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
+final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
 
     // MARK: UIConstants
     struct UIConstants {
@@ -38,7 +38,7 @@ class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
     private var mode: AnnotationAddingMode?
     weak var delegate: AnnotationAddingViewDelegate?
 
-    // MARK: UI Properties
+    // MARK: UIProperties
     private lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("mapScreen.selectCoords", comment: "")
@@ -120,7 +120,6 @@ class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
     init() {
         super.init(frame: .zero)
         initialize()
-        backgroundColor = .clear
     }
 
     required init?(coder: NSCoder) {
@@ -129,6 +128,8 @@ class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
 
     // MARK: Private Methods
     private func initialize() {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .clear
         // TODO: Необходимо провести рефакторинг
 
         addSubview(nextButton)

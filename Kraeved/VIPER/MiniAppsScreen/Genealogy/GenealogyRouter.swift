@@ -11,6 +11,6 @@ protocol GenealogyRouterProtocol: BaseRouterProtocol {
 
 }
 
-class GenealogyRouter: BaseRouter<GenealogyViewController>, GenealogyRouterProtocol {
+final class GenealogyRouter: BaseRouter<GenealogyViewController>, GenealogyRouterProtocol {
 
 }
