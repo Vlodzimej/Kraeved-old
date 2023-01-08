@@ -12,7 +12,7 @@ protocol GenealogyInteractorProtocol: AnyObject {
 }
 
 // MARK: - GenealogyInteractor
-class GenealogyInteractor: GenealogyInteractorProtocol {
+final class GenealogyInteractor: GenealogyInteractorProtocol {
 
     // MARK: Properties
     weak var presenter: GenealogyPresenterProtocol?

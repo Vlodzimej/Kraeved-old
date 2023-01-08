@@ -12,8 +12,15 @@ protocol MessageScreenViewProtocol: AnyObject {
 }
 
 // MARK: - MessageScreenViewController
-class MessageScreenViewController: BaseViewController, MessageScreenViewProtocol {
+final class MessageScreenViewController: BaseViewController, MessageScreenViewProtocol {
 
+    // MARK: UIConstants
+    struct UIConstants {
+        static let logoWidth: CGFloat = 128
+        static let logoHeight: CGFloat = 160
+        static let logoVerticalOffset: CGFloat = 64
+    }
+    
     // MARK: Properties
     private let presenter: MessageScreenPresenterProtocol
     
@@ -36,7 +43,7 @@ class MessageScreenViewController: BaseViewController, MessageScreenViewProtocol
         let button = UIButton()
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .Common.blueButton
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         button.setTitle("Продолжить", for: .normal)
@@ -68,9 +75,9 @@ class MessageScreenViewController: BaseViewController, MessageScreenViewProtocol
         
         view.addSubview(logoImageView)
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -64).isActive = true
-        logoImageView.widthAnchor.constraint(equalToConstant: 128).isActive = true
-        logoImageView.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -UIConstants.logoVerticalOffset).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: UIConstants.logoWidth).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: UIConstants.logoHeight).isActive = true
         
         view.addSubview(messageLabel)
         messageLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: Constants.contentInset).isActive = true
@@ -81,14 +88,14 @@ class MessageScreenViewController: BaseViewController, MessageScreenViewProtocol
         closeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.contentInset).isActive = true
         closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
         closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
-        closeButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
     }
 
     // MARK: Private methods
-
-    // MARK: Public methods
-    @objc func closeButtonTapped() {
+    @objc private func closeButtonTapped() {
         presenter.dismiss()
     }
+
+    // MARK: Public methods
 
 }

@@ -11,7 +11,7 @@ protocol MiniAppsScreenRouterProtocol: BaseRouterProtocol {
     func openGenealogy() 
 }
 
-class MiniAppsScreenRouter: BaseRouter<MiniAppsScreenViewController>, MiniAppsScreenRouterProtocol {
+final class MiniAppsScreenRouter: BaseRouter<MiniAppsScreenViewController>, MiniAppsScreenRouterProtocol {
     func openGenealogy() {
         let genealogyViewController = GenealogyModuleBuilder.build()
         viewController?.navigationController?.pushViewController(genealogyViewController, animated: true)

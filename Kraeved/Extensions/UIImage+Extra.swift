@@ -19,6 +19,7 @@ extension UIImage {
         static var location: UIImage { UIImage(named: "globe.europe.africa.fill")! }
         static var next: UIImage { UIImage(named: "arrow.right.circle")! }
         static var logoSmall: UIImage { UIImage(named: "logo_small")! }
+        static var locationPlaceholder: UIImage { UIImage(named: "location_placeholder")! }
     }
 
     struct TabBar {

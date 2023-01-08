@@ -7,10 +7,19 @@
 
 import UIKit
 
-class TabBarController: UITabBarController, UITabBarControllerDelegate {
+// MARK: - TabBarController
+final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
+    // MARK: UIConstants
+    struct UIConstants {
+        static let mapButtonViewTopInset: CGFloat = 16
+        static let mapButtonViewInsets: CGFloat = 8
+    }
+    
+    // MARK: Properties
     private let activityIndicatorView = ActivityIndicatorView()
 
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -25,6 +34,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(showOnboarding), name: .showOnboarding, object: nil)
     }
 
+    // MARK: Private Methods
     private func initialize() {
         let mainScreenViewController = MainScreenModuleBuilder.build()
         let searchScreenViewController = SearchScreenModuleBuilder.build()
@@ -55,7 +65,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         guard let mapTabItemView = tabBar.subviews[safeIndex: itemIndex] else { return }
 
         let image = isActive ? UIImage.TabBar.mapActive : UIImage.TabBar.mapInactive
-        let buttonView = UIImageView(image: image.withAlignmentRectInsets(UIEdgeInsets(top: 16, left: 8, bottom: 8, right: 8)))
+        let buttonView = UIImageView(image: image.withAlignmentRectInsets(UIEdgeInsets(top: UIConstants.mapButtonViewTopInset, left: UIConstants.mapButtonViewInsets, bottom: UIConstants.mapButtonViewInsets, right: UIConstants.mapButtonViewInsets)))
         buttonView.backgroundColor = .clear
         buttonView.contentMode = .scaleAspectFit
 
@@ -69,7 +79,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         buttonView.rightAnchor.constraint(equalTo: mapTabItemView.rightAnchor).isActive = true
     }
 
-    @objc func changeActivityIndicatorVisibility(_ notification: NSNotification) {
+    @objc private func changeActivityIndicatorVisibility(_ notification: NSNotification) {
         let isVisible = notification.userInfo?["isVisible"] as? Bool ?? false
 
         if isVisible {
@@ -83,14 +93,17 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
 
-    @objc func showOnboarding() {
-//        let onboardingView = OnboardingView()
-//        view.addSubview(onboardingView)
-//
-//        onboardingView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//        onboardingView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//        onboardingView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//        onboardingView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    @objc private func showOnboarding() {
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [weak self] _ in
+            guard let self else { return }
+            let onboardingView = OnboardingView()
+            self.view.addSubview(onboardingView)
+            
+            onboardingView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+            onboardingView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            onboardingView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            onboardingView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        }
     }
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

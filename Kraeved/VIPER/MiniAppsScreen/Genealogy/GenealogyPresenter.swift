@@ -12,7 +12,7 @@ protocol GenealogyPresenterProtocol: AnyObject {
 }
 
 // MARK: - GenealogyPresenter
-class GenealogyPresenter: GenealogyPresenterProtocol {
+final class GenealogyPresenter: GenealogyPresenterProtocol {
 
     // MARK: Properties
     weak var view: GenealogyViewProtocol?

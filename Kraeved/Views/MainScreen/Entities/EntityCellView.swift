@@ -7,24 +7,32 @@
 
 import UIKit
 
+// MARK: - EntityCellDelegate
 protocol EntityCellDelegate: AnyObject {
     func showDetails(id: UUID)
 }
 
+// MARK: - EntityCellViewProtocol
 protocol EntityCellViewProtocol {
     var delegate: EntityCellDelegate? { get set }
 }
 
 // MARK: - EntityCellView
-class EntityCellView: UIView, EntityCellViewProtocol {
+final class EntityCellView: UIView, EntityCellViewProtocol {
+    
+    // MARK: UIConstants
+    struct UIConstants {
+        static let itemsSpacing: CGFloat = 16
+        static let collectionViewContentOffset: CGFloat = 200
+    }
 
-    // MARK: - Properties
+    // MARK: Properties
     weak var delegate: EntityCellDelegate?
 
     private let items: [MainTableCellItem]
     private let type: EntityType
 
-    // MARK: - UIProperties
+    // MARK: UIProperties
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsHorizontalScrollIndicator = true
@@ -39,13 +47,12 @@ class EntityCellView: UIView, EntityCellViewProtocol {
 
     private let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        let itemsSpacing: CGFloat = 16
-        layout.minimumLineSpacing = itemsSpacing
+        layout.minimumLineSpacing = UIConstants.itemsSpacing
         layout.scrollDirection = .horizontal
         return layout
     }()
 
-    // MARK: - Init
+    // MARK: Init
     init(items: [MainTableCellItem], type: EntityType) {
         self.items = items
         self.type = type
@@ -57,7 +64,7 @@ class EntityCellView: UIView, EntityCellViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Private Methods
+    // MARK: Private Methods
     private func initialize() {
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -73,7 +80,7 @@ class EntityCellView: UIView, EntityCellViewProtocol {
     override func layoutSubviews() {
         super.layoutSubviews()
         if type == .location {
-            collectionView.setContentOffset(CGPoint(x: 200, y: 0), animated: false)
+            collectionView.setContentOffset(CGPoint(x: UIConstants.collectionViewContentOffset, y: 0), animated: false)
         }
     }
 }
@@ -81,7 +88,6 @@ class EntityCellView: UIView, EntityCellViewProtocol {
 // MARK: - UICollectionViewDataSource
 extension EntityCellView: UICollectionViewDataSource {
 
-    // MARK: - UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }

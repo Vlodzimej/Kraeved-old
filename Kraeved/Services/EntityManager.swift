@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+// MARK: - EntityManagerProtocol
 protocol EntityManagerProtocol: AnyObject {
     func get(completion: @escaping ([MetaObject<Entity>]) -> Void)
     func find(arguments: [String: String], completion: @escaping ([MetaObject<Entity>]) -> Void)
@@ -17,6 +18,7 @@ protocol EntityManagerProtocol: AnyObject {
     func add(entity: MetaObject<Entity>, completion: @escaping (MetaObject<Entity>) -> Void)
 }
 
+// MARK: - EntityManager
 final class EntityManager: EntityManagerProtocol {
 
     static let shared = EntityManager()
@@ -69,8 +71,9 @@ final class EntityManager: EntityManagerProtocol {
                     let resultEntity = MetaObject<Entity>(id: entity.id, title: entity.title, image: image, data: entity.data)
                     completion(resultEntity)
                 }
+            } else {
+                completion(entity)
             }
-            completion(entity)
         }
     }
     

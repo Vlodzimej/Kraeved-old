@@ -7,34 +7,46 @@
 
 import UIKit
 
+// MARK: - MiniAppViewModel
 struct MiniAppViewModel {
     let title: String
     let image: UIImage?
+    let backgroundColor: UIColor?
 }
 
+// MARK: - MiniaAppCollectionAdapterDelegate
 protocol MiniaAppCollectionAdapterDelegate: AnyObject {
     func showMessage()
     func openGenealogy()
 }
 
+// MARK: - MiniAppCollectionAdapterProtocol
 protocol MiniAppCollectionAdapterProtocol: AnyObject, UICollectionViewDelegate {
     var delegate: MiniaAppCollectionAdapterDelegate? { get set }
     
     func setup(collectionView: UICollectionView)
 }
 
-class MiniAppCollectionAdapter: NSObject, MiniAppCollectionAdapterProtocol {
+// MARK: - MiniAppCollectionAdapter
+final class MiniAppCollectionAdapter: NSObject, MiniAppCollectionAdapterProtocol {
     
+    // MARK: UIConstants
+    struct UIConstants {
+        static let extraHeight: CGFloat = 64
+    }
+    
+    // MARK: Properties
     private var collectionView: UICollectionView?
     weak var delegate: MiniaAppCollectionAdapterDelegate?
     
     private let items: [MiniAppViewModel] = [
-        .init(title: "Мои записи", image: UIImage.MiniApps.notes),
-        .init(title: "Генеалогия", image: UIImage.MiniApps.genealogy),
-        .init(title: "Приюты для животных", image: UIImage.MiniApps.shelter),
-        .init(title: "Развитие", image: UIImage.MiniApps.education)
+        .init(title: NSLocalizedString("miniapps.notes", comment: ""), image: UIImage.MiniApps.notes, backgroundColor: UIColor.MiniApps.notes),
+        .init(title: NSLocalizedString("miniapps.genealogy", comment: ""), image: UIImage.MiniApps.genealogy, backgroundColor: UIColor.MiniApps.genealogy),
+        .init(title: NSLocalizedString("miniapps.shelter", comment: ""), image: UIImage.MiniApps.shelter, backgroundColor: UIColor.MiniApps.shelter),
+        .init(title: NSLocalizedString("miniapps.education", comment: ""), image: UIImage.MiniApps.education, backgroundColor: UIColor.MiniApps.education)
     ]
     
+    // MARK: Public Methods
     func setup(collectionView: UICollectionView) {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -43,6 +55,7 @@ class MiniAppCollectionAdapter: NSObject, MiniAppCollectionAdapterProtocol {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension MiniAppCollectionAdapter: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         items.count
@@ -57,7 +70,7 @@ extension MiniAppCollectionAdapter: UICollectionViewDataSource {
             return cell
         }
         
-        cell.configurate(title: item.title, image: item.image)
+        cell.configurate(viewModel: item)
 
         return cell
     }
@@ -67,6 +80,7 @@ extension MiniAppCollectionAdapter: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension MiniAppCollectionAdapter: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 1 {
@@ -84,6 +98,6 @@ extension MiniAppCollectionAdapter: UICollectionViewDelegateFlowLayout {
         let width = collectionView.bounds.width
         let numberOfItemsPerRow = 4.0
         let itemDimension = floor(width / numberOfItemsPerRow)
-        return CGSize(width: itemDimension, height: itemDimension + 64)
+        return CGSize(width: itemDimension, height: itemDimension + UIConstants.extraHeight)
     }
 }
