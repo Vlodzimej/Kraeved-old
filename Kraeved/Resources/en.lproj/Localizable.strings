@@ -37,7 +37,7 @@
 "mapScreen.enterNewLocationName"        = "The name of the new location must match the object that\nis in flight on the coordinate map.\nThe name must be at least 3 characters long.";
 "mapScreen.enterNewLocationDescription" = "Enter a description for the location (optional).";
 "mapScreen.locationAdded"               = "Location \"%@\" successfully added!";
-"mapScreen.needSignIn" = "To add new locations, you must log in or register!";
+"mapScreen.needSignIn"                  = "To add new locations, you must log in or register!";
 
 "profile.name"                          = "Name";
 "profile.email"                         = "Email";

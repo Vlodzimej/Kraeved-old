@@ -29,7 +29,8 @@ final class AnnotationInfoView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: UIConstants.descriptionLabelFontSize, weight: .regular)
         label.contentMode = .topLeft
-        label.numberOfLines = 0
+        label.numberOfLines = 6
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
 
