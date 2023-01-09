@@ -62,7 +62,7 @@ extension AnnotationTypePickerAdapter: UIPickerViewDataSource {
         items.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        items[row].title
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        NSAttributedString(string: items[row].title, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
     }
 }

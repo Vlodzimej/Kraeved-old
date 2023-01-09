@@ -49,6 +49,8 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     // MARK: Private methods

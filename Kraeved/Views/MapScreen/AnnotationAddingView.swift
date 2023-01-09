@@ -60,6 +60,7 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         label.text = NSLocalizedString("mapScreen.selectCoords", comment: "")
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: UIConstants.fontSize, weight: .regular)
+        label.textColor = .black
         label.textAlignment = .center
         return label
     }()
@@ -69,7 +70,7 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         textField.placeholder = NSLocalizedString("mapScreen.coordinates", comment: "")
         textField.font = UIFont.systemFont(ofSize: UIConstants.coordsTextField)
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.textColor = .gray
+        textField.textColor = .black
         textField.textAlignment = .center
         return textField
     }()
@@ -79,7 +80,7 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         textField.placeholder = NSLocalizedString("mapScreen.newLocation", comment: "")
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont.systemFont(ofSize: UIConstants.fontSize, weight: .regular)
-        textField.textColor = .gray
+        textField.textColor = .black
         textField.delegate = self
         textField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
         return textField
@@ -90,7 +91,7 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont.systemFont(ofSize: UIConstants.fontSize, weight: .regular)
         textView.layer.cornerRadius = UIConstants.desctiptionTextRadius
-        textView.textColor = .gray
+        textView.textColor = .black
         textView.textContainerInset = UIEdgeInsets(top: UIConstants.descriptionTextInset, left: UIConstants.descriptionTextInset, bottom: 0, right: 0)
         textView.isHidden = true
         return textView
@@ -101,8 +102,9 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         label.text = NSLocalizedString("mapScreen.enterNewLocationName", comment: "")
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: UIConstants.nameLabelFontSize, weight: .regular)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
         label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -111,8 +113,9 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         label.text = NSLocalizedString("mapScreen.enterNewLocationDescription", comment: "")
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: UIConstants.descriptionLabelFontSize, weight: .regular)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
         label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     

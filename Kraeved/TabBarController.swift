@@ -59,6 +59,8 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
+        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navController.navigationBar.barStyle = .black
         rootViewController.navigationItem.title = title
         return navController
     }

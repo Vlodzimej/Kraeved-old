@@ -183,6 +183,7 @@ extension MapScreenPresenter: AnnotationInfoDelegate {
 // MARK: - StartScreenModuleOutput
 extension MapScreenPresenter: StartScreenModuleOutput {
     func logged() {
+        view?.showAnnotationAdding()
         view?.showBottomPanel()
     }
 }

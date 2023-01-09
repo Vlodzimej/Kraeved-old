@@ -30,6 +30,7 @@ final class CodeFormView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = "Введите код из СМС"
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -39,6 +40,7 @@ final class CodeFormView: UIView {
         textField.font = UIFont.systemFont(ofSize: UIConstants.fontSize)
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.textColor = .black
         textField.addTarget(self, action: #selector(codeFieldDidChange), for: .editingChanged)
         return textField
     }()

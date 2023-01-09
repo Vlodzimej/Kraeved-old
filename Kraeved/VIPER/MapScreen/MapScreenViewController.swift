@@ -183,10 +183,10 @@ final class MapScreenViewController: BaseViewController, MapScreenViewProtocol {
         
         if presenter.mode == .addingAnnotation {
             presenter.removeNewAnnotation()
-            mapView.selectedAnnotations = []
         }
         
         view.endEditing(true)
+        mapView.selectedAnnotations = []
     }
     
     func showLoginAlert() {
