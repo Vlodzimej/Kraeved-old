@@ -8,13 +8,24 @@
 import UIKit
 import KraevedKit
 
-// MARK: CodeFormViewDelegate
+// MARK: - CodeFormViewDelegate
 protocol CodeFormViewDelegate: AnyObject {
     func sendCode(_ code: String)
 }
 
-// MARK: CodeFormView
-class CodeFormView: UIView {
+// MARK: - CodeFormViewProtocol
+protocol CodeFormViewProtocol: AnyObject {
+    var delegate: CodeFormViewDelegate? { get set }
+}
+
+// MARK: - CodeFormView
+final class CodeFormView: UIView {
+    
+    // MARK: UIConstants
+    struct UIConstants {
+        static let codeFieldHeight: CGFloat = 64
+        static let fontSize: CGFloat = 20
+    }
     
     weak var delegate: CodeFormViewDelegate?
     
@@ -24,15 +35,17 @@ class CodeFormView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = "Введите код из СМС"
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var codeField: KTextField = {
         let textField = KTextField()
-        textField.font = UIFont.systemFont(ofSize: 20)
+        textField.font = UIFont.systemFont(ofSize: UIConstants.fontSize)
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.textColor = .black
         textField.addTarget(self, action: #selector(codeFieldDidChange), for: .editingChanged)
         return textField
     }()
@@ -59,17 +72,17 @@ class CodeFormView: UIView {
         addSubview(codeField)
         codeField.topAnchor.constraint(equalTo: codeLabel.bottomAnchor, constant: Constants.contentInset).isActive = true
         codeField.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        codeField.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        codeField.widthAnchor.constraint(equalToConstant: UIConstants.codeFieldHeight).isActive = true
     }
     
-    // MARK: Public Methods
-    @objc func codeFieldDidChange(textField: UITextField) {
+    @objc private func codeFieldDidChange(textField: UITextField) {
         guard let text = textField.text else { return }
         if text.count == 4 {
             delegate?.sendCode(text)
         }
     }
     
+    // MARK: Public Methods
     func viewDidAppear() {
         codeField.becomeFirstResponder()
     }

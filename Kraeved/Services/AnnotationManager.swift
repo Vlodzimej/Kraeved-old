@@ -7,24 +7,29 @@
 
 import MapKit
 
+// MARK: - AnnotationManagerProtocol
 protocol AnnotationManagerProtocol {
     func getAnnotations(completion: @escaping ([Annotation]) -> Void)
     func addAnnotation(_ annotation: Annotation, completion: @escaping (Annotation) -> Void)
 }
 
-class AnnotationManager: AnnotationManagerProtocol {
+// MARK: - AnnotationManager
+final class AnnotationManager: AnnotationManagerProtocol {
 
+    // MARK: Properties
     static let shared = AnnotationManager()
 
     private let entityManager: EntityManagerProtocol
 
-    private init(entityManager: EntityManagerProtocol = EntityManager.shared) {
+    // MARK: Init
+    init(entityManager: EntityManagerProtocol = EntityManager.shared) {
         self.entityManager = entityManager
     }
 
+    // MARK: Public Methods
     func getAnnotations(completion: @escaping ([Annotation]) -> Void) {
-        entityManager.find(customProperties: ["typeId": EntityType.location.rawValue]) { locations in
-            let annotations: [Annotation] = locations.compactMap { Annotation($0) }
+        entityManager.find(customProperties: ["typeId": EntityType.annotation.rawValue]) { entities in
+            let annotations: [Annotation] = entities.compactMap { Annotation($0) }
             completion(annotations)
         }
     }
@@ -34,15 +39,5 @@ class AnnotationManager: AnnotationManagerProtocol {
         entityManager.add(entity: entity) { result in
             completion(Annotation(result))
         }
-    }
-}
-
-extension String {
-    public func toDouble() -> Double? {
-        if let num = NumberFormatter().number(from: self) {
-                return num.doubleValue
-            } else {
-                return nil
-            }
     }
 }

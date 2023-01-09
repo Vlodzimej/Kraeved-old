@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - MainTableCellViewFactory
-class MainTableCellViewFactory {
+final class MainTableCellViewFactory {
 
     func makeHistoricalEventCellView(items: [MainTableCellItem], delegate: EntityCellDelegate?) -> UIView {
         let cellView = EntityCellView(items: items, type: EntityType.historicalEvent)
@@ -17,7 +17,7 @@ class MainTableCellViewFactory {
     }
 
     func makeLocationsCellView(items: [MainTableCellItem], delegate: EntityCellDelegate?) -> UIView {
-        let cellView = EntityCellView(items: items, type: EntityType.location)
+        let cellView = EntityCellView(items: items, type: EntityType.annotation)
         cellView.delegate = delegate
         return cellView
     }

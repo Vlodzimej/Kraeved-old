@@ -8,7 +8,7 @@
 import XCTest
 @testable import Kraeved
 
-final class MainScreenTests: XCTestCase {
+final class MainScreenTest: XCTestCase {
 
     var presenter: MainScreenPresenter!
     var view: MainScreenViewControllerMock?
@@ -33,7 +33,7 @@ final class MainScreenTests: XCTestCase {
         guard let router = router else { return }
         presenter.showEntityDetails(id: UUID())
 
-        if !router.isOpenedEntityDetails {
+        if !router.isEntityDetailsOpened {
             XCTFail("openEntityDetails func not called")
         }
     }
@@ -48,11 +48,11 @@ final class MainScreenTests: XCTestCase {
     }
 }
 
-class MainScreenViewControllerMock: MainScreenViewProtocol {
+final class MainScreenViewControllerMock: MainScreenViewProtocol {
     var tableView: UITableView = UITableView()
 }
 
-class MainScreenInteractorMock: MainScreenInteractorProtocol {
+final class MainScreenInteractorMock: MainScreenInteractorProtocol {
     var entities: [Kraeved.MetaObject<Kraeved.Entity>]?
 
     func fetchEntities(completion: @escaping ([Kraeved.MetaObject<Kraeved.Entity>]) -> Void) {
@@ -65,5 +65,5 @@ class MainScreenInteractorMock: MainScreenInteractorProtocol {
     }
 }
 
-class MainScreenRouterMock: BaseRouterMock {
+final class MainScreenRouterMock: BaseRouterMock {
 }

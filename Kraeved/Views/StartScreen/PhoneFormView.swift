@@ -8,13 +8,23 @@
 import UIKit
 import KraevedKit
 
-// MARK: PhoneFormViewDelegate
+// MARK: - PhoneFormViewDelegate
 protocol PhoneFormViewDelegate: AnyObject {
     func sendPhone(_ phone: String)
 }
 
-// MARK: PhoneFormView
-class PhoneFormView: UIView {
+protocol PhoneFormViewProtocol: AnyObject {
+    var delegate: PhoneFormViewDelegate? { get set }
+}
+
+// MARK: - PhoneFormView
+final class PhoneFormView: UIView, PhoneFormViewProtocol {
+    
+    // MARK: UIConstants
+    struct UIConstants {
+        static let fontSize: CGFloat = 20
+    }
+    
     weak var delegate: PhoneFormViewDelegate?
     
     // MARK: UIProperties
@@ -33,14 +43,16 @@ class PhoneFormView: UIView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.text = "Укажите номер телефона"
+        label.text = NSLocalizedString("profile.enterPhone", comment: "")
+        label.textColor = .black
         return label
     }()
     
     private lazy var phoneField: KTextField = {
         let textField = KTextField()
         textField.placeholder = Constants.phoneMask
-        textField.font = UIFont.systemFont(ofSize: 20)
+        textField.font = UIFont.systemFont(ofSize: UIConstants.fontSize)
+        textField.textColor = .black
         textField.textAlignment = .center
         textField.delegate = self
         return textField
@@ -48,7 +60,7 @@ class PhoneFormView: UIView {
     
     private lazy var doneButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Вход", for: .normal)
+        button.setTitle(NSLocalizedString("common.signIn", comment: ""), for: .normal)
         button.setTitleColor(.Common.greenMain, for: .normal)
         button.setTitleColor(.gray, for: .disabled)
         button.isEnabled = false
@@ -77,19 +89,23 @@ class PhoneFormView: UIView {
         formStack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
-    // MARK: Public Methods
-    @objc func doneButtonTapped() {
+    @objc private func doneButtonTapped() {
+        sendPhone()
+    }
+    
+    private func sendPhone() {
         guard let text = phoneField.text else { return }
         let phone = text.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         delegate?.sendPhone(phone)
     }
     
+    // MARK: Public Methods
     func viewDidAppear() {
         phoneField.becomeFirstResponder()
     }
 }
 
-// MARK: UITextFieldDelegate
+// MARK: - UITextFieldDelegate
 extension PhoneFormView: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return false }
@@ -103,5 +119,12 @@ extension PhoneFormView: UITextFieldDelegate {
         }
         
         return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let textLength = textField.text?.count, textLength == 15 {
+            sendPhone()
+        }
+        return true
     }
 }

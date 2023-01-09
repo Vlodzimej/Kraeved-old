@@ -12,7 +12,7 @@ protocol MiniAppsScreenInteractorProtocol: AnyObject {
 }
 
 // MARK: - MiniAppsScreenInteractor
-class MiniAppsScreenInteractor: MiniAppsScreenInteractorProtocol {
+final class MiniAppsScreenInteractor: MiniAppsScreenInteractorProtocol {
 
     // MARK: Properties
     weak var presenter: MiniAppsScreenPresenterProtocol?
@@ -20,8 +20,4 @@ class MiniAppsScreenInteractor: MiniAppsScreenInteractorProtocol {
     // MARK: Init
     init() {
     }
-
-    // MARK: Private Methods
-
-    // MARK: Public Methods
 }

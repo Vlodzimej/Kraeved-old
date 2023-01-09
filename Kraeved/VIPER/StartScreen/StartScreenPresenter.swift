@@ -18,18 +18,18 @@ protocol StartScreenPresenterProtocol: AnyObject, PhoneFormViewDelegate, CodeFor
 }
 
 // MARK: - StartScreenPresenter
-class StartScreenPresenter: StartScreenPresenterProtocol {
+final class StartScreenPresenter: StartScreenPresenterProtocol {
 
     // MARK: Properties
     weak var view: StartScreenViewProtocol?
     private let interactor: StartScreenInteractorProtocol
-    private let router: StartScreenRouterProtocol
+    private let router: BaseRouterProtocol
     private let output: StartScreenModuleOutput?
     
     private var phone: String?
 
     // MARK: Init
-    init(interactor: StartScreenInteractorProtocol, router: StartScreenRouterProtocol, output: StartScreenModuleOutput?) {
+    init(interactor: StartScreenInteractorProtocol, router: BaseRouterProtocol, output: StartScreenModuleOutput?) {
         self.router = router
         self.interactor = interactor
         self.output = output

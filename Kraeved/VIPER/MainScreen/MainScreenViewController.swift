@@ -6,12 +6,7 @@ protocol MainScreenViewProtocol: AnyObject {
 }
 
 // MARK: - MainScreenViewController
-class MainScreenViewController: BaseViewController, MainScreenViewProtocol {
-
-    // MARK: UIConstants
-    struct UIConstants {
-    }
-
+final class MainScreenViewController: BaseViewController, MainScreenViewProtocol {
     // MARK: Properties
     private let presenter: MainScreenPresenterProtocol
 
@@ -54,6 +49,8 @@ class MainScreenViewController: BaseViewController, MainScreenViewProtocol {
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     // MARK: Private methods

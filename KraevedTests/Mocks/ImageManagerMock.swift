@@ -8,7 +8,7 @@
 import UIKit
 @testable import Kraeved
 
-class ImageManagerMock: ImageManagerProtocol {
+final class ImageManagerMock: ImageManagerProtocol {
     func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
         completion(UIImage())
     }

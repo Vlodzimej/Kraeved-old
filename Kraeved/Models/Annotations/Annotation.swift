@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-class Annotation: NSObject, MKAnnotation {
+final class Annotation: NSObject, MKAnnotation {
 
     var id: UUID
 
@@ -39,7 +39,7 @@ class Annotation: NSObject, MKAnnotation {
     
     func convertToEntity() -> MetaObject<Entity>? {
         var entity = MetaObject<Entity>(id: id, title: title, image: nil)
-        entity.data = Entity(imageUrl: nil, text: text, typeId: EntityType.location.id, longitude: coordinate.longitude, latitude: coordinate.latitude)
+        entity.data = Entity(imageUrl: nil, text: text, typeId: EntityType.annotation.id, longitude: coordinate.longitude, latitude: coordinate.latitude)
         return entity
     }
 }
