@@ -113,5 +113,4 @@ final class EntityDetailsViewController: BaseViewController, EntityDetailsViewPr
             addImage(image: image)
         }
     }
-
 }

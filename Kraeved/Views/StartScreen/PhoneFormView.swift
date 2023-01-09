@@ -13,8 +13,12 @@ protocol PhoneFormViewDelegate: AnyObject {
     func sendPhone(_ phone: String)
 }
 
+protocol PhoneFormViewProtocol: AnyObject {
+    var delegate: PhoneFormViewDelegate? { get set }
+}
+
 // MARK: - PhoneFormView
-final class PhoneFormView: UIView {
+final class PhoneFormView: UIView, PhoneFormViewProtocol {
     
     // MARK: UIConstants
     struct UIConstants {

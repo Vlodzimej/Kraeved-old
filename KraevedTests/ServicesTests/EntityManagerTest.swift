@@ -46,10 +46,10 @@ final class EntityManagerTest: XCTestCase {
     func testAddEntity() throws {
         let longitude: CLongDouble = 54.534749
         let latitude: CLongDouble = 36.285591
-        let data = Entity(imageUrl: "http://test.ru/test.png", text: "Тестовое имя", typeId: EntityType.location.id, longitude: longitude, latitude: latitude)
+        let data = Entity(imageUrl: "http://test.ru/test.png", text: "Тестовое имя", typeId: EntityType.annotation.id, longitude: longitude, latitude: latitude)
         let entity: MetaObject<Entity> = MetaObject<Entity>(id: UUID(), title: "Тестовая запись", image: nil, data: data)
         entityManager.add(entity: entity) { entity in
-            let comparedData = Entity(imageUrl: "http://test.ru/test.png", text: "Тестовое имя", typeId: EntityType.location.id, longitude: longitude, latitude: latitude)
+            let comparedData = Entity(imageUrl: "http://test.ru/test.png", text: "Тестовое имя", typeId: EntityType.annotation.id, longitude: longitude, latitude: latitude)
             XCTAssertEqual(entity.data, comparedData, "added and returned entity data must equals comparedData")
         }
     }

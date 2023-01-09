@@ -8,7 +8,7 @@
 import Foundation
 @testable import Kraeved
 
-class BusinessObjectManagerMock: BusinessObjectManagerProtocol {
+final class BusinessObjectManagerMock: BusinessObjectManagerProtocol {
     let uuids: [UUID] = [
         UUID(uuidString: "21af1cad-7a20-427a-a9c7-c4bafcfffc79") ?? UUID(),
         UUID(uuidString: "b54abb07-910d-4ab6-afb4-968408e32208") ?? UUID(),

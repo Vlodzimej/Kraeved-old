@@ -46,7 +46,7 @@ final class SearchTableViewCell: UITableViewCell {
         switch type {
             case .historicalEvent:
                 iconView.image = UIImage(named: "sparkles")!
-            case .location:
+            case .annotation:
                 iconView.image = UIImage(named: "globe.europe.africa.fill")!
             case .photo:
                 iconView.image = UIImage(named: "photo")!

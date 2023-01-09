@@ -17,7 +17,7 @@ final class MainTableCellViewFactory {
     }
 
     func makeLocationsCellView(items: [MainTableCellItem], delegate: EntityCellDelegate?) -> UIView {
-        let cellView = EntityCellView(items: items, type: EntityType.location)
+        let cellView = EntityCellView(items: items, type: EntityType.annotation)
         cellView.delegate = delegate
         return cellView
     }

@@ -20,8 +20,4 @@ final class MiniAppsScreenInteractor: MiniAppsScreenInteractorProtocol {
     // MARK: Init
     init() {
     }
-
-    // MARK: Private Methods
-
-    // MARK: Public Methods
 }

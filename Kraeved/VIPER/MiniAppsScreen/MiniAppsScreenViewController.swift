@@ -64,9 +64,4 @@ final class MiniAppsScreenViewController: BaseViewController, MiniAppsScreenView
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
-
-    // MARK: Private methods
-
-    // MARK: Public methods
-
 }
