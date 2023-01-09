@@ -18,6 +18,8 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     // MARK: Properties
     private let activityIndicatorView = ActivityIndicatorView()
+    
+    private var onboardingTimer: Timer?
 
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -94,7 +96,13 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     @objc private func showOnboarding() {
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [weak self] _ in
+        if UserDefaults.standard.bool(forKey: UserDefaultConstants.isOnboardingShown.rawValue) {
+            return
+        }
+
+        UserDefaults.standard.set(true, forKey: UserDefaultConstants.isOnboardingShown.rawValue)
+        
+        onboardingTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { [weak self] _ in
             guard let self else { return }
             let onboardingView = OnboardingView()
             self.view.addSubview(onboardingView)
@@ -107,6 +115,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        onboardingTimer?.invalidate()
         guard let itemIndex = tabBar.items?.firstIndex(of: item) else { return }
         setMapTabBarItemView(itemIndex: 3, isActive: itemIndex == 2)
     }
