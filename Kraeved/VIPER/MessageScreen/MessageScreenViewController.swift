@@ -24,6 +24,7 @@ final class MessageScreenViewController: BaseViewController, MessageScreenViewPr
     // MARK: Properties
     private let presenter: MessageScreenPresenterProtocol
     
+    // MARK: UIProperties
     private let logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage.Common.logoSmall
@@ -51,8 +52,6 @@ final class MessageScreenViewController: BaseViewController, MessageScreenViewPr
         button.setTitleColor(UIColor.white, for: .normal)
         return button
     }()
-
-    // MARK: UIProperties
     
     // MARK: Init
     init(presenter: MessageScreenPresenterProtocol, messageText: String) {
@@ -96,7 +95,4 @@ final class MessageScreenViewController: BaseViewController, MessageScreenViewPr
     @objc private func closeButtonTapped() {
         presenter.dismiss()
     }
-
-    // MARK: Public methods
-
 }

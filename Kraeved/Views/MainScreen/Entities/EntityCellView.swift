@@ -79,7 +79,7 @@ final class EntityCellView: UIView, EntityCellViewProtocol {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        if type == .location {
+        if type == .annotation {
             collectionView.setContentOffset(CGPoint(x: UIConstants.collectionViewContentOffset, y: 0), animated: false)
         }
     }
@@ -139,7 +139,7 @@ extension EntityCellView: UICollectionViewDelegateFlowLayout {
         switch type {
             case .historicalEvent:
                 return 2.5
-            case .location:
+            case .annotation:
                 return 2.5
             case .photo:
                 return 1.4

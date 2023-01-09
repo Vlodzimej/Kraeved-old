@@ -22,14 +22,14 @@ final class AnnotationManager: AnnotationManagerProtocol {
     private let entityManager: EntityManagerProtocol
 
     // MARK: Init
-    private init(entityManager: EntityManagerProtocol = EntityManager.shared) {
+    init(entityManager: EntityManagerProtocol = EntityManager.shared) {
         self.entityManager = entityManager
     }
 
     // MARK: Public Methods
     func getAnnotations(completion: @escaping ([Annotation]) -> Void) {
-        entityManager.find(customProperties: ["typeId": EntityType.location.rawValue]) { locations in
-            let annotations: [Annotation] = locations.compactMap { Annotation($0) }
+        entityManager.find(customProperties: ["typeId": EntityType.annotation.rawValue]) { entities in
+            let annotations: [Annotation] = entities.compactMap { Annotation($0) }
             completion(annotations)
         }
     }

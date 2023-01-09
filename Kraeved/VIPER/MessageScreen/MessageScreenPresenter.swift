@@ -17,13 +17,11 @@ final class MessageScreenPresenter: MessageScreenPresenterProtocol {
 
     // MARK: Properties
     weak var view: MessageScreenViewProtocol?
-    private let interactor: MessageScreenInteractorProtocol
-    private let router: MessageScreenRouterProtocol
+    private let router: BaseRouterProtocol
 
     // MARK: Init
-    init(interactor: MessageScreenInteractorProtocol, router: MessageScreenRouterProtocol) {
+    init(router: BaseRouterProtocol) {
         self.router = router
-        self.interactor = interactor
     }
     
     func dismiss() {

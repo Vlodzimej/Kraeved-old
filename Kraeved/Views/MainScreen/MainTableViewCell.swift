@@ -38,7 +38,7 @@ final class MainTableViewCell: UITableViewCell {
         switch section.type {
             case .historicalEvent:
                 cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
-            case .location:
+            case .annotation:
                 cellView = cellViewFactory.makeLocationsCellView(items: section.items, delegate: self)
             case .photo:
                 cellView = cellViewFactory.makeGalleryCellView(items: section.items, delegate: self)

@@ -13,6 +13,11 @@ protocol CodeFormViewDelegate: AnyObject {
     func sendCode(_ code: String)
 }
 
+// MARK: - CodeFormViewProtocol
+protocol CodeFormViewProtocol: AnyObject {
+    var delegate: CodeFormViewDelegate? { get set }
+}
+
 // MARK: - CodeFormView
 final class CodeFormView: UIView {
     
