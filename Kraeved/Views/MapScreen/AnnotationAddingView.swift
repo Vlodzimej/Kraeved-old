@@ -42,7 +42,8 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         static let nextButtonFontSize: CGFloat = 18
         static let nameTextFieldTopOffset: CGFloat = 48
         static let descriptionTextTopOffset: CGFloat = 48
-        static let descriptionTextHeight: CGFloat = 128
+        static let descriptionTextHeight: CGFloat = 112
+        static let desctiptionTextRadius: CGFloat = 8
         static let nameLabelTopOffset: CGFloat = 8
         static let descriptionLabelTopOffset: CGFloat = 8
     }
@@ -88,6 +89,7 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont.systemFont(ofSize: UIConstants.fontSize, weight: .regular)
+        textView.layer.cornerRadius = UIConstants.desctiptionTextRadius
         textView.textColor = .gray
         textView.textContainerInset = UIEdgeInsets(top: UIConstants.descriptionTextInset, left: UIConstants.descriptionTextInset, bottom: 0, right: 0)
         textView.isHidden = true
@@ -189,7 +191,7 @@ final class AnnotationAddingView: UIView, AnnotationAddingViewProtocol {
         descriptionTextView.heightAnchor.constraint(equalToConstant: UIConstants.descriptionTextHeight).isActive = true
         
         addSubview(descriptionLabel)
-        descriptionLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: UIConstants.descriptionTextTopOffset).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: UIConstants.descriptionLabelTopOffset).isActive = true
         descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         addSubview(nextButton)
