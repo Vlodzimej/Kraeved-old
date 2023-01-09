@@ -13,6 +13,7 @@ final class MessageScreenModuleBuilder {
 		let presenter = MessageScreenPresenter(router: router)
 		let viewController = MessageScreenViewController(presenter: presenter, messageText: messageText)
 		presenter.view = viewController
+        router.viewController = viewController
 		return viewController
 	}
 }
