@@ -36,6 +36,7 @@ final class MessageScreenViewController: BaseViewController, MessageScreenViewPr
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .black
         return label
     }()
     

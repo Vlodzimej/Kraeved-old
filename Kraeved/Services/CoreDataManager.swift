@@ -50,7 +50,7 @@ final class CoreDataManager: CoreDataManagerProtocol {
         description.url = url
         description.type = NSSQLiteStoreType
         description.shouldAddStoreAsynchronously = false
-        coordinator.addPersistentStore(with: description) { description, error in
+        coordinator.addPersistentStore(with: description) { _, error in
             if let error = error {
                 assertionFailure("Failed to add persistent store: \(error)")
             }

@@ -40,6 +40,7 @@ final class PhoneFormView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.text = NSLocalizedString("profile.enterPhone", comment: "")
+        label.textColor = .black
         return label
     }()
     
@@ -47,6 +48,7 @@ final class PhoneFormView: UIView {
         let textField = KTextField()
         textField.placeholder = Constants.phoneMask
         textField.font = UIFont.systemFont(ofSize: UIConstants.fontSize)
+        textField.textColor = .black
         textField.textAlignment = .center
         textField.delegate = self
         return textField
@@ -84,6 +86,10 @@ final class PhoneFormView: UIView {
     }
     
     @objc private func doneButtonTapped() {
+        sendPhone()
+    }
+    
+    private func sendPhone() {
         guard let text = phoneField.text else { return }
         let phone = text.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         delegate?.sendPhone(phone)
@@ -109,5 +115,12 @@ extension PhoneFormView: UITextFieldDelegate {
         }
         
         return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let textLength = textField.text?.count, textLength == 15 {
+            sendPhone()
+        }
+        return true
     }
 }
