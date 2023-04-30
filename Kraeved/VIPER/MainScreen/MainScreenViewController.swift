@@ -36,7 +36,7 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
     }
 
     private func initialize() {
-        view.backgroundColor = UIColor.MainScreen.background
+        view.backgroundColor = .HEX.hFAFAF4
         navigationController?.setNavigationBarHidden(true, animated: false)
 
         tableView.backgroundColor = .clear

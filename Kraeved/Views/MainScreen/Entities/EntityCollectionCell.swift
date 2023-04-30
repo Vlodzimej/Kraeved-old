@@ -6,31 +6,51 @@
 //
 
 import UIKit
+import SnapKit
 
 // MARK: - EntitytCollectionCell
 final class EntityCollectionCell: CollectionCellWithShimmer {
     
     // MARK: UIConstants
     struct UIConstants {
-        static let titleInset: CGFloat = 8
-        static let titleLabelFontSize: CGFloat = 14
+        static let titleHorizintalInsets: CGFloat = 8
+        static let titleBottomInset: CGFloat = 8
+        static let titleLabelFontSize: CGFloat = 11
     }
     
     // MARK: UIProperties
     private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.masksToBounds = true
+        view.layer.masksToBounds = false
         view.layer.cornerRadius = Constants.mainTableElementRadius
+        view.layer.borderColor = UIColor.HEX.hDDE3E3.cgColor
+        view.layer.borderWidth = 2
+        
+        view.layer.shadowColor = UIColor.HEX.h00000040.cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowRadius = 4
+        
         return view
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingTail
         return label
+    }()
+    
+    private let titleContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .HEX.hECEADD
+        view.clipsToBounds = true
+        view.layer.cornerRadius = Constants.mainTableElementRadius
+        view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        view.layer.opacity = 0.95
+        return view
     }()
     
     private let imageView: UIImageView = {
@@ -65,16 +85,22 @@ final class EntityCollectionCell: CollectionCellWithShimmer {
         
         containerView.addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
-        imageView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        imageView.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        imageView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        imageView.snp.makeConstraints { maker in
+            maker.top.bottom.leading.trailing.equalToSuperview()
+        }
         
-        containerView.addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(greaterThanOrEqualTo: containerView.topAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -UIConstants.titleInset).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: UIConstants.titleInset).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -UIConstants.titleInset).isActive = true
+        containerView.addSubview(titleContainerView)
+        titleContainerView.snp.makeConstraints { maker in
+            maker.top.equalTo(containerView.snp.bottom).inset(42)
+            maker.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        titleContainerView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { maker in
+            maker.bottom.equalToSuperview().inset(UIConstants.titleBottomInset)
+            maker.top.equalToSuperview()
+            maker.trailing.leading.equalToSuperview().inset(UIConstants.titleHorizintalInsets)
+        }
         
         addSubview(containerView)
         containerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
@@ -89,22 +115,26 @@ final class EntityCollectionCell: CollectionCellWithShimmer {
         if let image = image {
             imageView.image = image
             imageView.isHidden = false
-            imageView.layer.mask = hasOverlay ? gradientMaskLayer : nil
+            //imageView.layer.mask = hasOverlay ? gradientMaskLayer : nil
             
-            let averageColor = image.averageColor()
-            containerView.backgroundColor = averageColor.mix(with: UIColor.black, amount: 0.65)
+            //let averageColor = image.averageColor()
+            //containerView.backgroundColor = averageColor.mix(with: UIColor.black, amount: 0.65)
         } else {
             imageView.isHidden = true
         }
         
         if let title = title {
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineHeightMultiple = 0.8
-            
+            paragraphStyle.lineHeightMultiple = 1.0
             let  titleAttributedString = NSMutableAttributedString(string: title, attributes:
-                                                                    [.font: UIFont.systemFont(ofSize: UIConstants.titleLabelFontSize, weight: .regular), .foregroundColor: UIColor.white, .paragraphStyle: paragraphStyle])
+                                                                    [.font: UIFont.BeVietnamPro.Normal(withSize: UIConstants.titleLabelFontSize), .foregroundColor: UIColor.HEX.h242424D9, .paragraphStyle: paragraphStyle])
             titleLabel.attributedText = titleAttributedString
             titleLabel.isHidden = false
+            
+            for family in UIFont.familyNames.sorted() {
+                let names = UIFont.fontNames(forFamilyName: family)
+                print("Family: \(family) Font names: \(names)")
+            }
         } else {
             titleLabel.isHidden = true
         }

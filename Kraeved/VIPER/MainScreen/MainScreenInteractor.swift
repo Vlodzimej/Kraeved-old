@@ -28,7 +28,7 @@ final class MainScreenInteractor: MainScreenInteractorProtocol {
         let lock = NSLock()
 
         DispatchQueue.global(qos: .background).async { [weak self] in
-            self?.entityManager.getAll { responseEntities in
+            self?.entityManager.fetchAll { responseEntities in
                 responseEntities.enumerated().forEach({ [weak self] (_, entity) in
                     group.enter()
                     queue.async {

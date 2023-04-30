@@ -62,7 +62,7 @@ extension UIColor {
 }
 
 extension UIColor {
-    fileprivate struct HEX {
+    struct HEX {
         static let hFF3B30 = UIColor(hex: 0xAFD5F0)
         static let h4B6285 = UIColor(hex: 0x4B6285)
         static let h2C3F66 = UIColor(hex: 0x2C3F66)
@@ -78,7 +78,12 @@ extension UIColor {
         static let h95DCD0 = UIColor(hex: 0x95DCD0)
         static let hDBC9A8 = UIColor(hex: 0xDBC9A8)
         static let h537BC3 = UIColor(hex: 0x537BC3)
+        static let hDDE3E3 = UIColor(hex: 0xDDE3E3)
+        static let hFAFAF4 = UIColor(hex: 0xFAFAF4)
+        static let hECEADD = UIColor(hex: 0xECEADD)
 
         static let hE8F4EADD = UIColor(hexWithAlpha: 0xE8F4EADD)
+        static let h00000040 = UIColor(hexWithAlpha: 0x00000040)
+        static let h242424D9 = UIColor(hexWithAlpha: 0x242424D9)
     }
 }

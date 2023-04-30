@@ -43,7 +43,7 @@ final class MapScreenInteractor: MapScreenInteractorProtocol {
     }
 
     func getEntity(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void) {
-        self.entityManager.get(id: id) { entities in
+        self.entityManager.fetch(id: id) { entities in
             completion(entities)
         }
     }

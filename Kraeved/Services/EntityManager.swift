@@ -10,12 +10,18 @@ import CoreData
 
 // MARK: - EntityManagerProtocol
 protocol EntityManagerProtocol: AnyObject {
-    func getAll(completion: @escaping ([MetaObject<Entity>]) -> Void)
-    func get(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void)
+    func fetchAll(completion: @escaping ([MetaObject<Entity>]) -> Void)
+    func fetch(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void)
     func find(customProperties: [String: String], completion: @escaping ([MetaObject<Entity>]) -> Void)
     func find(title: String, completion: @escaping ([MetaObject<Entity>]) -> Void)
     func add(entity: MetaObject<Entity>, completion: @escaping (MetaObject<Entity>) -> Void)
 }
+
+let entitesData: [MetaObject<Entity>] = [
+    .init(id: UUID(), title: "Здесь должен быть текст.", image: nil, data: Entity(imageUrl: "https://cdn2.tu-tu.ru/image/pagetree_node_data/1/0c31af95d0e82b795d38537b3f71235e/", text: "Тестовый текст", typeId: UUID.init(uuidString: EntityType.historicalEvent.rawValue))),
+    .init(id: UUID(), title: "Второе тестовое событие", image: nil, data: Entity(imageUrl: "https://ugs.gazprom.ru/d/story/04/260/kaluga-03_novyj_razmer.jpg", text: "Тестовый текст", typeId: UUID.init(uuidString: EntityType.historicalEvent.rawValue))),
+    .init(id: UUID(), title: "Третье тестовое событие", image: nil, data: Entity(imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/d1/f8/87/caption.jpg?w=700&h=500&s=1", text: "Тестовый текст", typeId: UUID.init(uuidString: EntityType.historicalEvent.rawValue)))
+]
 
 // MARK: - EntityManager
 final class EntityManager: EntityManagerProtocol {
@@ -30,14 +36,15 @@ final class EntityManager: EntityManagerProtocol {
         self.imageManager = imageManager
     }
 
-    func getAll(completion: @escaping ([MetaObject<Entity>]) -> Void) {
-        businessObjectManager.get(metaTypeId: MetaType.entity.id) { (businessObjects: [BusinessObject]) in
-            let entities: [MetaObject<Entity>] = businessObjects.compactMap { $0.convertToMetaObject() }
-            completion(entities)
-        }
+    func fetchAll(completion: @escaping ([MetaObject<Entity>]) -> Void) {
+        completion(entitesData)
+//        businessObjectManager.get(metaTypeId: MetaType.entity.id) { (businessObjects: [BusinessObject]) in
+//            let entities: [MetaObject<Entity>] = businessObjects.compactMap { $0.convertToMetaObject() }
+//            completion(entities)
+//        }
     }
     
-    func get(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void) {
+    func fetch(id: UUID, completion: @escaping (MetaObject<Entity>) -> Void) {
         businessObjectManager.find(metaTypeId: MetaType.entity.id, predicates: [NSPredicate(format: "%K = %@", "id", id.uuidString)]) { [weak self] businessObjects in
             guard let self = self, let businessObject = businessObjects.first,
                   let entity: MetaObject<Entity> = businessObject.convertToMetaObject() else { return }

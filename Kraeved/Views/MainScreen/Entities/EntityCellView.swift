@@ -22,7 +22,7 @@ final class EntityCellView: UIView, EntityCellViewProtocol {
     
     // MARK: UIConstants
     struct UIConstants {
-        static let itemsSpacing: CGFloat = 16
+        static let itemsSpacing: CGFloat = 10
         static let collectionViewContentOffset: CGFloat = 200
     }
 
@@ -127,12 +127,13 @@ extension EntityCellView: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width
-        let numberOfItemsPerRow: CGFloat = getNumberOfItemsPerRow()
-        let spacing: CGFloat = flowLayout.minimumInteritemSpacing
-        let availableWidth = width - spacing * (numberOfItemsPerRow + 1)
-        let itemDimension = floor(availableWidth / numberOfItemsPerRow)
-        return CGSize(width: itemDimension, height: itemDimension)
+//        let width = collectionView.bounds.width
+//        let numberOfItemsPerRow: CGFloat = getNumberOfItemsPerRow()
+//        let spacing: CGFloat = flowLayout.minimumInteritemSpacing
+//        let availableWidth = width - spacing * (numberOfItemsPerRow + 1)
+//        let itemDimension = floor(availableWidth / numberOfItemsPerRow)
+//        return CGSize(width: itemDimension, height: itemDimension)
+        return CGSize(width: 128, height: 128)
     }
 
     private func getNumberOfItemsPerRow() -> CGFloat {
