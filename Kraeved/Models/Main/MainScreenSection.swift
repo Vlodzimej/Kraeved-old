@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum ListSection {
-    case stories([ListItem])
+enum MainScreenSection {
+    case stories([MainScreenSectionItem])
     
-    var items: [ListItem] {
+    var items: [MainScreenSectionItem] {
         switch self {
         case .stories(let items):
             return items

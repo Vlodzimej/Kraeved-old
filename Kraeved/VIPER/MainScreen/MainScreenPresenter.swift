@@ -2,7 +2,7 @@ import UIKit
 
 // MARK: - MainScreenPresenterProtocol
 protocol MainScreenPresenterProtocol: AnyObject, UICollectionViewDelegate, UICollectionViewDataSource {
-    var sections: [ListSection] { get }
+    var sections: [MainScreenSection] { get }
     
     func viewDidLoad()
 }
@@ -15,7 +15,7 @@ final class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
     private let interactor: MainScreenInteractorProtocol
     private let router: MainScreenRouterProtocol
     
-    internal var sections: [ListSection] = MockData.shared.pageData
+    var sections: [MainScreenSection] = []
     
     var baseView: BaseViewProtocol? {
         view as? BaseViewProtocol
@@ -32,18 +32,39 @@ final class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
         baseView?.isActivityIndicatorHidden = false
         interactor.fetchEntities { [weak self] result in
             guard let self = self else { return }
+            var stories: [MainScreenSectionItem] = []
+            result.forEach { item in
+                guard let data = item.data, let typeId = data.typeId?.uuidString else { return }
+                switch typeId {
+                case EntityType.annotation.rawValue:
+                    break
+                case EntityType.photo.rawValue:
+                    break
+                case EntityType.historicalEvent.rawValue:
+                    stories.append(MainScreenSectionItem(title: item.title, image: item.image))
+                default:
+                    break
+                }
+            }
+            
+            self.sections.append(.stories(stories))
+
             DispatchQueue.main.async {
                 self.baseView?.isActivityIndicatorHidden = true
-                //self.adapter.configurate(entities: result)
+                self.view?.refresh()
             }
         }
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension MainScreenPresenter: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }
 
+// MARK: - UICollectionViewDataSource
 extension MainScreenPresenter: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

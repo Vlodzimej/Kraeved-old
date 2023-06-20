@@ -20,7 +20,11 @@ protocol EntityManagerProtocol: AnyObject {
 let entitesData: [MetaObject<Entity>] = [
     .init(id: UUID(), title: "Здесь должен быть текст.", image: nil, data: Entity(imageUrl: "https://cdn2.tu-tu.ru/image/pagetree_node_data/1/0c31af95d0e82b795d38537b3f71235e/", text: "Тестовый текст", typeId: UUID.init(uuidString: EntityType.historicalEvent.rawValue))),
     .init(id: UUID(), title: "Второе тестовое событие", image: nil, data: Entity(imageUrl: "https://ugs.gazprom.ru/d/story/04/260/kaluga-03_novyj_razmer.jpg", text: "Тестовый текст", typeId: UUID.init(uuidString: EntityType.historicalEvent.rawValue))),
-    .init(id: UUID(), title: "Третье тестовое событие", image: nil, data: Entity(imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/d1/f8/87/caption.jpg?w=700&h=500&s=1", text: "Тестовый текст", typeId: UUID.init(uuidString: EntityType.historicalEvent.rawValue)))
+    .init(id: UUID(), title: "Третье тестовое событие", image: nil, data: Entity(imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/d1/f8/87/caption.jpg?w=700&h=500&s=1", text: "Тестовый текст", typeId: UUID.init(uuidString: EntityType.historicalEvent.rawValue))),
+    .init(id: UUID(), title: "Здесь должен быть текст.", image: nil, data: Entity(imageUrl: "https://cdn2.tu-tu.ru/image/pagetree_node_data/1/0c31af95d0e82b795d38537b3f71235e/", text: "Тестовый текст", typeId: UUID.init(uuidString: EntityType.historicalEvent.rawValue))),
+    .init(id: UUID(), title: "Второе тестовое событие", image: nil, data: Entity(imageUrl: "https://ugs.gazprom.ru/d/story/04/260/kaluga-03_novyj_razmer.jpg", text: "Тестовый текст", typeId: UUID.init(uuidString: EntityType.historicalEvent.rawValue))),
+    .init(id: UUID(), title: "Третье тестовое событие", image: nil, data: Entity(imageUrl: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/d1/f8/87/caption.jpg?w=700&h=500&s=1", text: "Тестовый текст", typeId: UUID.init(uuidString: EntityType.historicalEvent.rawValue))),
+
 ]
 
 // MARK: - EntityManager

@@ -2,7 +2,7 @@ import UIKit
 
 // MARK: - MainScreenViewProtocol
 protocol MainScreenViewProtocol: AnyObject {
-
+    func refresh()
 }
 
 // MARK: - MainScreenViewController
@@ -113,6 +113,9 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
     }
 
     // MARK: Public methods
+    func refresh() {
+        collectionView.reloadData()
+    }
 
 }
 

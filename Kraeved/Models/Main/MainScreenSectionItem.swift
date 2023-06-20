@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ListItem {
-    let title: String
-    let image: UIImage
+struct MainScreenSectionItem {
+    let title: String?
+    let image: UIImage?
 }
