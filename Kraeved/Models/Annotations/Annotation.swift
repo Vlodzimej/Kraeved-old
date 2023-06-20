@@ -30,7 +30,7 @@ final class Annotation: NSObject, MKAnnotation {
     
     init(_ entity: MetaObject<Entity>) {
         self.id = entity.id
-        self.coordinate = CLLocationCoordinate2D(latitude: entity.data?.latitude ?? 0, longitude: entity.data?.longitude ?? 0)
+        self.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(entity.data?.latitude ?? 0), longitude: CLLocationDegrees(entity.data?.longitude ?? 0))
         self.title = entity.title
         self.subtitle = ""
         self.startDate = nil

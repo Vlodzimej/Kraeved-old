@@ -19,12 +19,16 @@ extension UIFont {
             return UIFont(name: "\(String(describing: fontFamily))-Light", size: size) ?? UIFont.systemFont(ofSize: size)
         }
 
-        func Normal(withSize size: CGFloat = CustomFont.defaultFontSize) -> UIFont {
+        func Regular(withSize size: CGFloat = CustomFont.defaultFontSize) -> UIFont {
             return UIFont(name: "\(String(describing: fontFamily))-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
         }
 
         func Bold(withSize size: CGFloat = CustomFont.defaultFontSize) -> UIFont {
             return UIFont(name: "\(String(describing: fontFamily))-Bold", size: size) ?? UIFont.systemFont(ofSize: size)
+        }
+        
+        func SemiBold(withSize size: CGFloat = CustomFont.defaultFontSize) -> UIFont {
+            return UIFont(name: "\(String(describing: fontFamily))-SemiBold", size: size) ?? UIFont.systemFont(ofSize: size)
         }
     }
 

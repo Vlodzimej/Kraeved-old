@@ -1,15 +1,15 @@
 //
-//  EntitytCollectionCell.swift
+//  StoryCollectionViewCell.swift
 //  Kraeved
 //
-//  Created by Владимир Амелькин on 20.11.2022.
+//  Created by Владимир Амелькин on 20.06.2023.
 //
 
 import UIKit
 import SnapKit
 
-// MARK: - EntitytCollectionCell
-final class EntityCollectionCell: CollectionCellWithShimmer {
+// MARK: - StoryCollectionViewCell
+final class StoryCollectionViewCell: CollectionCellWithShimmer {
     
     // MARK: UIConstants
     struct UIConstants {
@@ -24,14 +24,6 @@ final class EntityCollectionCell: CollectionCellWithShimmer {
         view.layer.masksToBounds = false
         view.clipsToBounds = true
         view.layer.cornerRadius = Constants.mainTableElementRadius
-//        view.layer.borderColor = UIColor.HEX.hDDE3E3.cgColor
-//        view.layer.borderWidth = 1
-        
-//        view.layer.shadowColor = UIColor.black.cgColor
-//        view.layer.shadowOpacity = 0.4
-//        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-//        view.layer.shadowRadius = 2
-        
         return view
     }()
     
@@ -79,8 +71,6 @@ final class EntityCollectionCell: CollectionCellWithShimmer {
     
     // MARK: Private Methods
     private func initialize() {
-        //containerView.backgroundColor = generateRandomPastelColor(withMixedColor: UIColor.black)
-        
         containerView.addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
         imageView.snp.makeConstraints { maker in
@@ -109,15 +99,11 @@ final class EntityCollectionCell: CollectionCellWithShimmer {
     }
     
     // MARK: Public Methods
-    func configurate(title: String?, image: UIImage?, hasOverlay: Bool = false) {
+    func configure(title: String?, image: UIImage?, hasOverlay: Bool = false) {
         
         if let image = image {
             imageView.image = image
             imageView.isHidden = false
-            //imageView.layer.mask = hasOverlay ? gradientMaskLayer : nil
-            
-            //let averageColor = image.averageColor()
-            //containerView.backgroundColor = averageColor.mix(with: UIColor.black, amount: 0.65)
         } else {
             imageView.isHidden = true
         }

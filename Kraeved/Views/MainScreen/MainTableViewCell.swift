@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 // MARK: - MainTableCellDelegate
 protocol MainTableCellDelegate: AnyObject {
@@ -19,22 +20,60 @@ final class MainTableViewCell: UITableViewCell {
     struct UIConstants {
         static let headerTitleHeight: CGFloat = 32
         static let cellHeight: CGFloat = 200
-        static let titleLabelFontSize: CGFloat = 20
+        static let titleLabelFontSize: CGFloat = 14
     }
 
     // MARK: - Properties
     weak var delegate: MainTableCellDelegate?
 
-    private var hasHeader = false
     private let titleLabel = UILabel()
+    
+    private let separatorView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage.MainScreen.entityCollectionSeparator
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private var cellView = UIView()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        initialize()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func initialize() {
+        cellView.backgroundColor = .red
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { maker in
+            maker.top.width.equalToSuperview()
+            maker.leading.equalToSuperview().inset(Constants.contentInset + 16)
+        }
+        
+        contentView.addSubview(separatorView)
+        separatorView.snp.makeConstraints { maker in
+            maker.top.equalTo(titleLabel.snp.bottom).offset(-8)
+            maker.height.equalTo(24)
+            maker.leading.equalToSuperview().offset(Constants.contentInset)
+            maker.width.equalTo(140)
+        }
+        
+        contentView.addSubview(cellView)
+        cellView.snp.makeConstraints { maker in
+            maker.top.equalTo(separatorView.snp.bottom)
+            maker.bottom.leading.trailing.equalToSuperview()
+        }
+    }
 
     // MARK: - Public Methods
     func configurate(section: MainTableSectionItem, titleText: String?, hasOverlay: Bool = false) {
         backgroundColor = .clear
 
         let cellViewFactory = MainTableCellViewFactory()
-        let cellView: UIView
-
         switch section.type {
             case .historicalEvent:
                 cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
@@ -43,24 +82,18 @@ final class MainTableViewCell: UITableViewCell {
             case .photo:
                 cellView = cellViewFactory.makeGalleryCellView(items: section.items, delegate: self)
         }
-        for view in contentView.subviews {
-            view.removeFromSuperview()
+        
+        if let titleText {
+            titleLabel.attributedText = NSAttributedString(string: titleText, attributes: [.font: UIFont.BeVietnamPro.Regular(withSize: UIConstants.titleLabelFontSize), .foregroundColor: UIColor.HEX.h1A8F8F])
         }
+        
+        cellView.setNeedsDisplay()
 
-        if let titleText = titleText {
-            titleLabel.attributedText = NSAttributedString(string: titleText, attributes: [.font: UIFont.systemFont(ofSize: UIConstants.titleLabelFontSize, weight: .semibold), .foregroundColor: UIColor.black])
-            titleLabel.frame = CGRect(x: Constants.contentInset, y: 0, width: self.bounds.width, height: UIConstants.headerTitleHeight)
-            contentView.addSubview(titleLabel)
-            hasHeader = true
-        }
-
-        contentView.addSubview(cellView)
-
-        cellView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: hasHeader ? UIConstants.headerTitleHeight : 0).isActive = true
-        cellView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
-        cellView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        cellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-
+        
+//        cellView.snp.remakeConstraints { maker in
+//            maker.top.equalTo(separatorView.snp.bottom)
+//            maker.bottom.leading.trailing.equalToSuperview()
+//        }
     }
 }
 

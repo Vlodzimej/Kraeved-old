@@ -86,13 +86,14 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let isVisible = notification.userInfo?["isVisible"] as? Bool ?? false
 
         if isVisible {
-            view.addSubview(activityIndicatorView)
-
-            activityIndicatorView.frame = CGRect(x: view.frame.width / 2 - ActivityIndicatorView.UIConstants.size / 2,
-                                                 y: view.frame.height / 2 - ActivityIndicatorView.UIConstants.size / 2,
-                                                 width: ActivityIndicatorView.UIConstants.size, height: ActivityIndicatorView.UIConstants.size)
+            addChild(activityIndicatorView)
+            activityIndicatorView.view.frame = view.frame
+            view.addSubview(activityIndicatorView.view)
+            activityIndicatorView.didMove(toParent: self)
         } else {
-            activityIndicatorView.removeFromSuperview()
+            activityIndicatorView.willMove(toParent: nil)
+            activityIndicatorView.view.removeFromSuperview()
+            activityIndicatorView.removeFromParent()
         }
     }
 

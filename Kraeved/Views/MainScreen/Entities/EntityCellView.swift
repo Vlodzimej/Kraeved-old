@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 // MARK: - EntityCellDelegate
 protocol EntityCellDelegate: AnyObject {
@@ -39,8 +40,7 @@ final class EntityCellView: UIView, EntityCellViewProtocol {
         collectionView.isScrollEnabled = true
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .clear
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .green
         collectionView.register(EntityCollectionCell.self, forCellWithReuseIdentifier: "EntityCollectionCell")
         return collectionView
     }()
@@ -66,15 +66,12 @@ final class EntityCellView: UIView, EntityCellViewProtocol {
 
     // MARK: Private Methods
     private func initialize() {
-        translatesAutoresizingMaskIntoConstraints = false
-
-        backgroundColor = .clear
-
+        backgroundColor = .blue
+        
         addSubview(collectionView)
-        collectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        collectionView.snp.makeConstraints { maker in
+            maker.edges.equalToSuperview()
+        }
     }
 
     override func layoutSubviews() {

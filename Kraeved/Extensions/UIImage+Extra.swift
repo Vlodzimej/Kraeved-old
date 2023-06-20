@@ -38,4 +38,8 @@ extension UIImage {
         static var shelter: UIImage { UIImage(named: "dog")! }
         static var education: UIImage { UIImage(named: "education")! }
     }
+    
+    struct MainScreen {
+        static var entityCollectionSeparator: UIImage { UIImage(named: "entityCollectionSeparator")! }
+    }
 }

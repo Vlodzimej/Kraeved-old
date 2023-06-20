@@ -50,6 +50,7 @@ final class MainTableAdapter: NSObject {
         tableView.dataSource = self
         tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude)
         tableView.register(MainTableViewCell.self, forCellReuseIdentifier: "MainTableViewCell")
+        tableView.allowsSelection = false
         self.tableView = tableView
     }
 
