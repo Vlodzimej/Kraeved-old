@@ -33,22 +33,24 @@ final class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
         interactor.fetchEntities { [weak self] result in
             guard let self = self else { return }
             var stories: [MainScreenSectionItem] = []
+            var annotations: [MainScreenSectionItem] = []
             result.forEach { item in
                 guard let data = item.data, let typeId = data.typeId?.uuidString else { return }
                 switch typeId {
+                case EntityType.story.rawValue:
+                    stories.append(MainScreenSectionItem(title: item.title, image: item.image))
                 case EntityType.annotation.rawValue:
-                    break
+                    annotations.append(MainScreenSectionItem(title: item.title, image: item.image))
                 case EntityType.photo.rawValue:
                     break
-                case EntityType.historicalEvent.rawValue:
-                    stories.append(MainScreenSectionItem(title: item.title, image: item.image))
                 default:
                     break
                 }
             }
             
             self.sections.append(.stories(stories))
-
+            self.sections.append(.annotations(annotations))
+            
             DispatchQueue.main.async {
                 self.baseView?.isActivityIndicatorHidden = true
                 self.view?.refresh()
@@ -76,11 +78,17 @@ extension MainScreenPresenter: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let row = indexPath.row
         switch sections[indexPath.section] {
-        case .stories(let story):
+        case .stories(let stories):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCollectionViewCell", for: indexPath) as? StoryCollectionViewCell
             else { return UICollectionViewCell() }
-            cell.configure(title: story[indexPath.row].title, image: story[indexPath.row].image)
+            cell.configure(title: stories[row].title, image: stories[row].image)
+            return cell
+        case .annotations(let annotations):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnnotationCollectionViewCell", for: indexPath) as? AnnotationCollectionViewCell
+            else { return UICollectionViewCell() }
+            cell.configure(title: annotations[row].title, image: annotations[row].image)
             return cell
         }
     }

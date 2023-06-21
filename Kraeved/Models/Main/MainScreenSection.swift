@@ -9,10 +9,13 @@ import Foundation
 
 enum MainScreenSection {
     case stories([MainScreenSectionItem])
+    case annotations([MainScreenSectionItem])
     
     var items: [MainScreenSectionItem] {
         switch self {
         case .stories(let items):
+            return items
+        case .annotations(let items):
             return items
         }
     }
@@ -25,6 +28,8 @@ enum MainScreenSection {
         switch self {
         case .stories(_):
             return ""
+        case .annotations(_):
+            return "Места"
         }
     }
 }

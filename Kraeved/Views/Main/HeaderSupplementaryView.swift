@@ -22,7 +22,7 @@ class HeaderSupplementaryView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .white
+        backgroundColor = .none
         addSubview(headerLabel)
         
         headerLabel.snp.makeConstraints { maker in

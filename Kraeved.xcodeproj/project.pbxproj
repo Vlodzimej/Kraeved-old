@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		660796712A41BE01008CB567 /* MainScreenSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660796702A41BE01008CB567 /* MainScreenSectionItem.swift */; };
 		660796732A41BE1E008CB567 /* MainScreenSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660796722A41BE1E008CB567 /* MainScreenSection.swift */; };
-		660796762A41BF46008CB567 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660796752A41BF46008CB567 /* MockData.swift */; };
 		660796782A41C422008CB567 /* SaleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660796772A41C422008CB567 /* SaleCollectionViewCell.swift */; };
 		6607967A2A41C513008CB567 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660796792A41C513008CB567 /* CategoryCollectionViewCell.swift */; };
 		6607967C2A41C622008CB567 /* ExampleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6607967B2A41C622008CB567 /* ExampleCollectionViewCell.swift */; };
@@ -66,6 +65,7 @@
 		66183E26292D7C8A008412B0 /* EntityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E21292D7C8A008412B0 /* EntityDetailsViewController.swift */; };
 		66183E27292D7C8A008412B0 /* EntityDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E22292D7C8A008412B0 /* EntityDetailsInteractor.swift */; };
 		66183E29292D8293008412B0 /* MainTableCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66183E28292D8293008412B0 /* MainTableCellFactory.swift */; };
+		6654DA7F2A42D217003A28D7 /* AnnotationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6654DA7E2A42D217003A28D7 /* AnnotationCollectionViewCell.swift */; };
 		6669701729FED81F00E2CC16 /* UILabel+setLineSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6669701629FED81F00E2CC16 /* UILabel+setLineSpacing.swift */; };
 		6669707C29FEE28500E2CC16 /* BeVietnamPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6669706A29FEE28500E2CC16 /* BeVietnamPro-SemiBold.ttf */; };
 		6669707D29FEE28500E2CC16 /* BeVietnamPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6669706B29FEE28500E2CC16 /* BeVietnamPro-Light.ttf */; };
@@ -169,7 +169,6 @@
 		569D5473541F4F83A3CCDE7D /* Pods-Kraeved.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kraeved.debug.xcconfig"; path = "Target Support Files/Pods-Kraeved/Pods-Kraeved.debug.xcconfig"; sourceTree = "<group>"; };
 		660796702A41BE01008CB567 /* MainScreenSectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenSectionItem.swift; sourceTree = "<group>"; };
 		660796722A41BE1E008CB567 /* MainScreenSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenSection.swift; sourceTree = "<group>"; };
-		660796752A41BF46008CB567 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		660796772A41C422008CB567 /* SaleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleCollectionViewCell.swift; sourceTree = "<group>"; };
 		660796792A41C513008CB567 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		6607967B2A41C622008CB567 /* ExampleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -230,6 +229,7 @@
 		66183E21292D7C8A008412B0 /* EntityDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDetailsViewController.swift; sourceTree = "<group>"; };
 		66183E22292D7C8A008412B0 /* EntityDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDetailsInteractor.swift; sourceTree = "<group>"; };
 		66183E28292D8293008412B0 /* MainTableCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableCellFactory.swift; sourceTree = "<group>"; };
+		6654DA7E2A42D217003A28D7 /* AnnotationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationCollectionViewCell.swift; sourceTree = "<group>"; };
 		6669701629FED81F00E2CC16 /* UILabel+setLineSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+setLineSpacing.swift"; sourceTree = "<group>"; };
 		6669706A29FEE28500E2CC16 /* BeVietnamPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-SemiBold.ttf"; sourceTree = "<group>"; };
 		6669706B29FEE28500E2CC16 /* BeVietnamPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BeVietnamPro-Light.ttf"; sourceTree = "<group>"; };
@@ -360,6 +360,7 @@
 				6607967B2A41C622008CB567 /* ExampleCollectionViewCell.swift */,
 				6607967D2A41C983008CB567 /* HeaderSupplementaryView.swift */,
 				6607967F2A41D719008CB567 /* StoryCollectionViewCell.swift */,
+				6654DA7E2A42D217003A28D7 /* AnnotationCollectionViewCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -369,7 +370,6 @@
 			children = (
 				660796702A41BE01008CB567 /* MainScreenSectionItem.swift */,
 				660796722A41BE1E008CB567 /* MainScreenSection.swift */,
-				660796752A41BF46008CB567 /* MockData.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1060,7 +1060,6 @@
 				66183E07292C2B1D008412B0 /* UIColor+mix.swift in Sources */,
 				66088A252926DCD700CB5E23 /* MainScreenModuleBuilder.swift in Sources */,
 				66A8A5022926E0DB000BFC29 /* BaseViewController.swift in Sources */,
-				660796762A41BF46008CB567 /* MockData.swift in Sources */,
 				66088A3B2926DD8900CB5E23 /* AnnotationManager.swift in Sources */,
 				66D41EB22932D1B700FD66CA /* ProfileTableViewCell.swift in Sources */,
 				66183E29292D8293008412B0 /* MainTableCellFactory.swift in Sources */,
@@ -1139,6 +1138,7 @@
 				660796802A41D719008CB567 /* StoryCollectionViewCell.swift in Sources */,
 				66088A332926DD2D00CB5E23 /* MapScreenPresenter.swift in Sources */,
 				66183DF9292BF2BC008412B0 /* Entity.swift in Sources */,
+				6654DA7F2A42D217003A28D7 /* AnnotationCollectionViewCell.swift in Sources */,
 				66088A352926DD2D00CB5E23 /* MapScreenViewController.swift in Sources */,
 				66C55D202945D35D00EFB899 /* AnnotationInfoView.swift in Sources */,
 				6669708F29FEE6B600E2CC16 /* UIFont.swift in Sources */,

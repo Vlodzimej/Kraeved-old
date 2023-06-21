@@ -130,10 +130,10 @@ final class EntityCollectionCell: CollectionCellWithShimmer {
             titleLabel.attributedText = titleAttributedString
             titleLabel.isHidden = false
             
-            for family in UIFont.familyNames.sorted() {
-                let names = UIFont.fontNames(forFamilyName: family)
-                print("Family: \(family) Font names: \(names)")
-            }
+//            for family in UIFont.familyNames.sorted() {
+//                let names = UIFont.fontNames(forFamilyName: family)
+//                print("Family: \(family) Font names: \(names)")
+//            }
         } else {
             titleLabel.isHidden = true
         }

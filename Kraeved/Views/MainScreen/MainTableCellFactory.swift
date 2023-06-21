@@ -11,7 +11,7 @@ import UIKit
 final class MainTableCellViewFactory {
 
     func makeHistoricalEventCellView(items: [MainTableCellItem], delegate: EntityCellDelegate?) -> UIView {
-        let cellView = EntityCellView(items: items, type: EntityType.historicalEvent)
+        let cellView = EntityCellView(items: items, type: EntityType.story)
         cellView.delegate = delegate
         return cellView
     }

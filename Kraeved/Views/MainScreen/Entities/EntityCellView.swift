@@ -135,7 +135,7 @@ extension EntityCellView: UICollectionViewDelegateFlowLayout {
 
     private func getNumberOfItemsPerRow() -> CGFloat {
         switch type {
-            case .historicalEvent:
+            case .story:
                 return 2.5
             case .annotation:
                 return 2.5

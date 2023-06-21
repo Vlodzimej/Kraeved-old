@@ -75,7 +75,7 @@ final class MainTableViewCell: UITableViewCell {
 
         let cellViewFactory = MainTableCellViewFactory()
         switch section.type {
-            case .historicalEvent:
+            case .story:
                 cellView = cellViewFactory.makeHistoricalEventCellView(items: section.items, delegate: self)
             case .annotation:
                 cellView = cellViewFactory.makeLocationsCellView(items: section.items, delegate: self)

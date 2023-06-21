@@ -40,7 +40,8 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
     // MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        collectionView.delegate = presenter
+        collectionView.dataSource = presenter
         presenter.viewDidLoad()
         initialize()
     }
@@ -64,20 +65,15 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
         }
         
         collectionView.register(StoryCollectionViewCell.self, forCellWithReuseIdentifier: "StoryCollectionViewCell")
+        collectionView.register(AnnotationCollectionViewCell.self, forCellWithReuseIdentifier: "AnnotationCollectionViewCell")
         collectionView.register(HeaderSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderSupplementaryView")
         
         collectionView.collectionViewLayout = createLayout()
     
         setNeedsStatusBarAppearanceUpdate()
-        setDelegates()
     }
 
     // MARK: Private methods
-    private func setDelegates() {
-        collectionView.delegate = presenter
-        collectionView.dataSource = presenter
-    }
-    
     private func createLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
             guard let self else { return nil }
@@ -85,6 +81,8 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
             switch section {
             case .stories(_):
                 return self.createStorySection()
+            case .annotations(_):
+                return self.createAnnotationSection()
             }
         }
     }
@@ -101,9 +99,18 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
     
     private func createStorySection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(1)))
-        item.contentInsets = .init(top: 0, leading: 4, bottom: 0, trailing: 4)
+        item.contentInsets = .init(top: 0, leading: 4, bottom: 8, trailing: 4)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.2)), subitems: [item])
         let section = createLayoutSection(group: group, behaivor: .continuous, interGroupSpacing: -38, supplementaryItems: [], contentInsets: true)
+        section.contentInsets = .init(top: 0, leading: Constants.contentInset, bottom: 0, trailing: Constants.contentInset)
+        return section
+    }
+    
+    private func createAnnotationSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.15)))
+        item.contentInsets = .init(top: 0, leading: 4, bottom: 0, trailing: 4)
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [item])
+        let section = createLayoutSection(group: group, behaivor: .none, interGroupSpacing: 0, supplementaryItems: [supplementaryHeaderItem()], contentInsets: true)
         section.contentInsets = .init(top: 0, leading: Constants.contentInset, bottom: 0, trailing: Constants.contentInset)
         return section
     }

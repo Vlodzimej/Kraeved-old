@@ -36,7 +36,7 @@ protocol MainTableAdapterDelegate: AnyObject {
 final class MainTableAdapter: NSObject {
 
     var sections: [MainTableSectionItem] = [
-        MainTableSectionItem(title: NSLocalizedString("mainScreen.historicalEvents", comment: ""), type: EntityType.historicalEvent, hasOverlay: true),
+        MainTableSectionItem(title: NSLocalizedString("mainScreen.historicalEvents", comment: ""), type: EntityType.story, hasOverlay: true),
         MainTableSectionItem(title: NSLocalizedString("mainScreen.locations", comment: ""), type: EntityType.annotation, hasOverlay: true),
         MainTableSectionItem(title: NSLocalizedString("mainScreen.gallery", comment: ""), type: EntityType.photo, hasOverlay: false)
     ]
