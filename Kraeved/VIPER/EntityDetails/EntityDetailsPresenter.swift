@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - EntityDetailsPresenterProtocol
 protocol EntityDetailsPresenterProtocol: AnyObject {
-    func viewDidLoad()
+    var entity: MetaObject<Entity> { get }
 }
 
 // MARK: - EntityDetailsPresenter
@@ -20,21 +20,12 @@ final class EntityDetailsPresenter: EntityDetailsPresenterProtocol {
     private let interactor: EntityDetailsInteractorProtocol
     private let router: EntityDetailsRouterProtocol
 
-    private let id: UUID
+    private(set) var entity: MetaObject<Entity>
 
     // MARK: Init
-    init(interactor: EntityDetailsInteractorProtocol, router: EntityDetailsRouterProtocol, id: UUID) {
+    init(interactor: EntityDetailsInteractorProtocol, router: EntityDetailsRouterProtocol, entity: MetaObject<Entity>) {
         self.router = router
         self.interactor = interactor
-        self.id = id
-    }
-
-    func viewDidLoad() {
-        interactor.getEntity(id: id) { [weak self] entity in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.view?.update(entity: entity)
-            }
-        }
+        self.entity = entity
     }
 }

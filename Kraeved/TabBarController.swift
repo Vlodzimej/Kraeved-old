@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 // MARK: - TabBarController
 final class TabBarController: UITabBarController, UITabBarControllerDelegate {
@@ -74,12 +75,11 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
         mapTabItemView.subviews.forEach { $0.removeFromSuperview() }
         mapTabItemView.addSubview(buttonView)
-
-        buttonView.translatesAutoresizingMaskIntoConstraints = false
-        buttonView.topAnchor.constraint(equalTo: mapTabItemView.topAnchor).isActive = true
-        buttonView.leftAnchor.constraint(equalTo: mapTabItemView.leftAnchor).isActive = true
-        buttonView.bottomAnchor.constraint(equalTo: mapTabItemView.bottomAnchor).isActive = true
-        buttonView.rightAnchor.constraint(equalTo: mapTabItemView.rightAnchor).isActive = true
+        buttonView.snp.makeConstraints { maker in
+            maker.centerX.equalToSuperview()
+            maker.top.equalToSuperview()
+            maker.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 
     @objc private func changeActivityIndicatorVisibility(_ notification: NSNotification) {

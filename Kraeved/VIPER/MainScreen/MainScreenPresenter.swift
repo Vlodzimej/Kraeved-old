@@ -16,6 +16,7 @@ final class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
     private let router: MainScreenRouterProtocol
     
     var sections: [MainScreenSection] = []
+    var entities: [MetaObject<Entity>] = []
     
     var baseView: BaseViewProtocol? {
         view as? BaseViewProtocol
@@ -32,15 +33,16 @@ final class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
         baseView?.isActivityIndicatorHidden = false
         interactor.fetchEntities { [weak self] result in
             guard let self = self else { return }
+            self.entities = result
             var stories: [MainScreenSectionItem] = []
             var annotations: [MainScreenSectionItem] = []
             result.forEach { item in
                 guard let data = item.data, let typeId = data.typeId?.uuidString else { return }
                 switch typeId {
                 case EntityType.story.rawValue:
-                    stories.append(MainScreenSectionItem(title: item.title, image: item.image))
+                    stories.append(MainScreenSectionItem(id: item.id, title: item.title, image: item.image))
                 case EntityType.annotation.rawValue:
-                    annotations.append(MainScreenSectionItem(title: item.title, image: item.image))
+                    annotations.append(MainScreenSectionItem(id: item.id, title: item.title, image: item.image))
                 case EntityType.photo.rawValue:
                     break
                 default:
@@ -62,7 +64,11 @@ final class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
 // MARK: - UICollectionViewDelegate
 extension MainScreenPresenter: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let section = sections[indexPath.section]
+        let item = section.items[indexPath.row]
+        let test = entities
+        guard let entity = entities.first(where: { $0.id == item.id }) else { return }
+        router.openEntityDetails(entity: entity)
     }
 }
 

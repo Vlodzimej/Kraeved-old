@@ -176,7 +176,7 @@ extension MapScreenPresenter: AnnotationAddingViewDelegate {
 // MARK: - AnnotationInfoDelegate
 extension MapScreenPresenter: AnnotationInfoDelegate {
     func openEntityDetails(id: UUID) {
-        router.openEntityDetails(id: id)
+        //router.openEntityDetails(id: id)
     }
 }
 

@@ -8,6 +8,7 @@
 import UIKit
 
 struct MainScreenSectionItem {
+    let id: UUID
     let title: String?
     let image: UIImage?
 }

@@ -16,6 +16,13 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.backgroundColor = .clear
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.backgroundColor = UIColor.MainScreen.searchBarTextField
+            textfield.clipsToBounds = true
+            textfield.layer.borderColor = UIColor.lightGray.cgColor
+            textfield.layer.borderWidth = 1
+            textfield.layer.cornerRadius = 12
+        }
         return searchBar
     }()
     
@@ -47,14 +54,6 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
     }
 
     private func initialize() {
-        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-            textfield.backgroundColor = UIColor.MainScreen.searchBarTextField
-            textfield.clipsToBounds = true
-            textfield.layer.borderColor = UIColor.lightGray.cgColor
-            textfield.layer.borderWidth = 1
-            textfield.layer.cornerRadius = 12
-        }
-        
         view.backgroundColor = .HEX.hFAFAF4
         navigationItem.titleView = searchBar
         

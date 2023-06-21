@@ -9,7 +9,6 @@ import UIKit
 
 // MARK: - EntityDetailsViewProtocol
 protocol EntityDetailsViewProtocol: AnyObject {
-    func update(entity: MetaObject<Entity>)
 }
 
 // MARK: - EntityDetailsViewController
@@ -67,16 +66,15 @@ final class EntityDetailsViewController: BaseViewController, EntityDetailsViewPr
     // MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.viewDidLoad()
         initialize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        //navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        //navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     private func initialize() {
@@ -92,6 +90,12 @@ final class EntityDetailsViewController: BaseViewController, EntityDetailsViewPr
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: UIConstants.textLabelTopOffset).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
+        
+        titleLabel.text = presenter.entity.title
+        descriptionLabel.text = presenter.entity.data?.text
+        if let image = presenter.entity.image {
+            addImage(image: image)
+        }
     }
 
     // MARK: Private methods
@@ -106,11 +110,4 @@ final class EntityDetailsViewController: BaseViewController, EntityDetailsViewPr
     }
 
     // MARK: Public methods
-    func update(entity: MetaObject<Entity>) {
-        titleLabel.text = entity.title
-        descriptionLabel.text = entity.data?.text
-        if let image = entity.image {
-            addImage(image: image)
-        }
-    }
 }

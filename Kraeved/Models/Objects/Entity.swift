@@ -18,6 +18,14 @@ enum EntityType: String, CaseIterable {
         }
         return uuid
     }
+    
+    var index: Int {
+        switch self {
+        case .story: return 0
+        case .annotation: return 1
+        case .photo: return 2
+        }
+    }
 }
 
 struct Entity: Codable, Equatable {

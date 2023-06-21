@@ -8,10 +8,10 @@
 import Foundation
 
 final class EntityDetailsModuleBuilder {
-    static func build(id: UUID) -> EntityDetailsViewController {
+    static func build(entity: MetaObject<Entity>) -> EntityDetailsViewController {
 		let interactor = EntityDetailsInteractor()
 		let router = EntityDetailsRouter()
-		let presenter = EntityDetailsPresenter(interactor: interactor, router: router, id: id)
+		let presenter = EntityDetailsPresenter(interactor: interactor, router: router, entity: entity)
 		let viewController = EntityDetailsViewController(presenter: presenter)
 		router.viewController = viewController
 		presenter.view = viewController
