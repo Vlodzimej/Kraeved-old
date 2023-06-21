@@ -10,7 +10,8 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
     
     // MARK: Properties
     private let presenter: MainScreenPresenterProtocol
-
+    private let refreshControl = UIRefreshControl()
+    
     // MARK: UIProperties
 
     let searchBar: UISearchBar = {
@@ -19,7 +20,7 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
             textfield.backgroundColor = UIColor.MainScreen.searchBarTextField
             textfield.clipsToBounds = true
-            textfield.layer.borderColor = UIColor.lightGray.cgColor
+            textfield.layer.borderColor = UIColor.MainScreen.cellBorder.cgColor
             textfield.layer.borderWidth = 1
             textfield.layer.cornerRadius = 12
         }
@@ -49,8 +50,12 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
         super.viewDidLoad()
         collectionView.delegate = presenter
         collectionView.dataSource = presenter
-        presenter.viewDidLoad()
+        
         initialize()
+        
+        presenter.refresh(needToShowActivityIndicator: true) { [weak self] in
+            self?.refresh()
+        }
     }
 
     private func initialize() {
@@ -69,6 +74,11 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
         
         collectionView.collectionViewLayout = createLayout()
     
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        collectionView.bounces = true
+        collectionView.alwaysBounceVertical = true
+        collectionView.refreshControl = refreshControl
+            
         setNeedsStatusBarAppearanceUpdate()
     }
 
@@ -116,6 +126,13 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
     
     private func supplementaryHeaderItem() -> NSCollectionLayoutBoundarySupplementaryItem {
         .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+    }
+    
+    @objc
+    private func didPullToRefresh(_ sender: Any) {
+        presenter.refresh(needToShowActivityIndicator: false) { [weak self] in
+            self?.refreshControl.endRefreshing()
+        }
     }
 
     // MARK: Public methods

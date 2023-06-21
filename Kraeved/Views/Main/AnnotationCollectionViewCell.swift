@@ -20,7 +20,7 @@ final class AnnotationCollectionViewCell: UICollectionViewCell {
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .HEX.hECEADD
-        view.layer.cornerRadius = 16
+        view.layer.cornerRadius = 24
         view.layer.masksToBounds = true
         return view
     }()

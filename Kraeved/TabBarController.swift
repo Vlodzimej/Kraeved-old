@@ -70,7 +70,6 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         navController.navigationBar.compactAppearance = navBarAppearance
         navController.navigationBar.scrollEdgeAppearance = navBarAppearance
         navController.navigationBar.isTranslucent = true
-        UIApplication.shared.sta
         return navController
     }
 

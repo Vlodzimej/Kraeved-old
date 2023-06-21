@@ -43,6 +43,7 @@ extension UIColor {
         static var shimmerColorFirst = UIColor(white: 0.85, alpha: 1.0)
         static var shimmerColorSecond = UIColor(white: 0.95, alpha: 1.0)
         static var searchBarTextField: UIColor { UIColor.HEX.hF4F2E5 }
+        static var cellBorder: UIColor { UIColor.HEX.hD9D9D0 }
     }
 
     struct MapScreen {
@@ -85,6 +86,7 @@ extension UIColor {
         static let hF4F2E5 = UIColor(hex: 0xF4F2E5)
         static let h65ADA5 = UIColor(hex: 0x65ADA5)
         static let h1A8F8F = UIColor(hex: 0x1A8F8F)
+        static let hD9D9D0 = UIColor(hex: 0xD9D9D0)
 
         static let hE8F4EADD = UIColor(hexWithAlpha: 0xE8F4EADD)
         static let h00000060 = UIColor(hexWithAlpha: 0x00000060)

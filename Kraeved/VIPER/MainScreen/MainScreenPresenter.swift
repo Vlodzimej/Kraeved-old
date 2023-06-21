@@ -4,7 +4,7 @@ import UIKit
 protocol MainScreenPresenterProtocol: AnyObject, UICollectionViewDelegate, UICollectionViewDataSource {
     var sections: [MainScreenSection] { get }
     
-    func viewDidLoad()
+    func refresh(needToShowActivityIndicator: Bool, completion: @escaping () -> Void)
 }
 
 // MARK: - MainScreenPresenter
@@ -29,13 +29,19 @@ final class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
         super.init()
     }
     
-    func viewDidLoad() {
-        baseView?.isActivityIndicatorHidden = false
+    func refresh(needToShowActivityIndicator: Bool, completion: @escaping () -> Void) {
+        if needToShowActivityIndicator {
+            baseView?.isActivityIndicatorHidden = false
+        }
         interactor.fetchEntities { [weak self] result in
             guard let self = self else { return }
+            
             self.entities = result
+            self.sections = []
+            
             var stories: [MainScreenSectionItem] = []
             var annotations: [MainScreenSectionItem] = []
+
             result.forEach { item in
                 guard let data = item.data, let typeId = data.typeId?.uuidString else { return }
                 switch typeId {
@@ -54,8 +60,9 @@ final class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
             self.sections.append(.annotations(annotations))
             
             DispatchQueue.main.async {
+                print("COMPLETION")
                 self.baseView?.isActivityIndicatorHidden = true
-                self.view?.refresh()
+                completion()
             }
         }
     }
