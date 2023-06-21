@@ -62,6 +62,15 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         navController.tabBarItem.image = image
         navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         rootViewController.navigationItem.title = title
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithTransparentBackground()
+        navBarAppearance.backgroundColor = .none
+        navController.navigationBar.standardAppearance = navBarAppearance
+        navController.navigationBar.compactAppearance = navBarAppearance
+        navController.navigationBar.scrollEdgeAppearance = navBarAppearance
+        navController.navigationBar.isTranslucent = true
+        UIApplication.shared.sta
         return navController
     }
 

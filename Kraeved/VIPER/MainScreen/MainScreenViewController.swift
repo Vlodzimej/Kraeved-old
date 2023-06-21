@@ -97,17 +97,17 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
     
     
     private func createStorySection() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(1)))
-        item.contentInsets = .init(top: 0, leading: 4, bottom: 8, trailing: 4)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.2)), subitems: [item])
-        let section = createLayoutSection(group: group, behaivor: .continuous, interGroupSpacing: -38, supplementaryItems: [], contentInsets: true)
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(128), heightDimension: .absolute(128)))
+        item.contentInsets = .init(top: 0, leading: 4, bottom: 0, trailing: 4)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(136)), subitems: [item])
+        let section = createLayoutSection(group: group, behaivor: .continuous, interGroupSpacing: -6, supplementaryItems: [], contentInsets: true)
         section.contentInsets = .init(top: 0, leading: Constants.contentInset, bottom: 0, trailing: Constants.contentInset)
         return section
     }
     
     private func createAnnotationSection() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.15)))
-        item.contentInsets = .init(top: 0, leading: 4, bottom: 0, trailing: 4)
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(104)))
+        item.contentInsets = .init(top: 8, leading: 0, bottom: 8, trailing: 0)
         let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)), subitems: [item])
         let section = createLayoutSection(group: group, behaivor: .none, interGroupSpacing: 0, supplementaryItems: [supplementaryHeaderItem()], contentInsets: true)
         section.contentInsets = .init(top: 0, leading: Constants.contentInset, bottom: 0, trailing: Constants.contentInset)

@@ -17,6 +17,14 @@ final class AnnotationCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: UIProperites
+    private let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .HEX.hECEADD
+        view.layer.cornerRadius = 16
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 3
@@ -41,9 +49,14 @@ final class AnnotationCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: Private methods
-    private func initialize() {
-        addSubview(imageView)
-        addSubview(titleLabel)
+    private func initialize() {        
+        addSubview(containerView)
+        containerView.snp.makeConstraints { maker in
+            maker.edges.equalToSuperview()
+        }
+        
+        containerView.addSubview(imageView)
+        containerView.addSubview(titleLabel)
         
         imageView.snp.makeConstraints { maker in
             maker.leading.top.bottom.equalToSuperview().inset(8)
