@@ -14,18 +14,7 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
     
     // MARK: UIProperties
 
-    let searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.backgroundColor = .clear
-        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-            textfield.backgroundColor = UIColor.MainScreen.searchBarTextField
-            textfield.clipsToBounds = true
-            textfield.layer.borderColor = UIColor.MainScreen.cellBorder.cgColor
-            textfield.layer.borderWidth = 1
-            textfield.layer.cornerRadius = 12
-        }
-        return searchBar
-    }()
+    let searchBar = KraevedSearchBar()
     
     private lazy var collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewLayout()
@@ -57,9 +46,12 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
             self?.refresh()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        searchBar.resignFirstResponder()
+    }
 
     private func initialize() {
-        view.backgroundColor = .HEX.hFAFAF4
         navigationItem.titleView = searchBar
         
         view.addSubview(collectionView)
@@ -80,6 +72,15 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
         collectionView.refreshControl = refreshControl
             
         setNeedsStatusBarAppearanceUpdate()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(searchBarTapped))
+        tapGestureRecognizer.delegate = self
+        searchBar.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc private func searchBarTapped() {
+        searchBar.resignFirstResponder()
+        presenter.openSearchScreen()
     }
 
     // MARK: Private methods
@@ -142,3 +143,8 @@ final class MainScreenViewController: BaseViewController, MainScreenViewProtocol
 
 }
 
+extension MainScreenViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith shouldRecognizeSimultaneouslyWithGestureRecognizer: UIGestureRecognizer) -> Bool {
+      return true
+    }
+}

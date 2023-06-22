@@ -7,6 +7,7 @@ protocol SearchScreenPresenterProtocol: AnyObject {
     func viewDidLoad()
     func search(metaType: MetaType, searchText: String)
     func update()
+    func dismiss()
 }
 
 // MARK: - SearchScreenPresenter
@@ -45,6 +46,10 @@ final class SearchScreenPresenter: NSObject, SearchScreenPresenterProtocol {
             guard let self = self else { return }
             self.adapter.configurate(items: self.interactor.items)
         }
+    }
+    
+    func dismiss() {
+        router.dismiss()
     }
 }
 

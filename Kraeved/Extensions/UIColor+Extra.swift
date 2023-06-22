@@ -30,6 +30,8 @@ extension UIColor {
         static var greenMain: UIColor { UIColor.HEX.h479F88 }
         static var blueMain: UIColor { UIColor.HEX.hA7C7E7 }
         static var blueButton: UIColor { UIColor.HEX.h537BC3 }
+        static var background: UIColor { UIColor.HEX.hFAFAF4 }
+        static var foreground: UIColor { UIColor.HEX.hB9B9B0 }
     }
     
     struct StartScreen {
@@ -37,7 +39,6 @@ extension UIColor {
     }
 
     struct MainScreen {
-        static var background: UIColor { UIColor.white }
         static var cellBackground: UIColor { UIColor.HEX.h4B6285 }
         static var cellDarkBackground: UIColor { UIColor.HEX.h2C3F66 }
         static var shimmerColorFirst = UIColor(white: 0.85, alpha: 1.0)
@@ -87,6 +88,7 @@ extension UIColor {
         static let h65ADA5 = UIColor(hex: 0x65ADA5)
         static let h1A8F8F = UIColor(hex: 0x1A8F8F)
         static let hD9D9D0 = UIColor(hex: 0xD9D9D0)
+        static let hB9B9B0 = UIColor(hex: 0xB9B9B0)
 
         static let hE8F4EADD = UIColor(hexWithAlpha: 0xE8F4EADD)
         static let h00000060 = UIColor(hexWithAlpha: 0x00000060)

@@ -40,14 +40,14 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     // MARK: Private Methods
     private func initialize() {
         let mainScreenViewController = MainScreenModuleBuilder.build()
-        let searchScreenViewController = SearchScreenModuleBuilder.build()
+        let favoriteScreenViewController = FavoriteScreenModuleBuilder.build()
         let mapScreenViewController = MapScreenModuleBuilder.build()
         let miniAppsScreenViewController = MiniAppsScreenModuleBuilder.build()
         let profileViewController = ProfileModuleBuilder.build()
 
         viewControllers = [
             createNavController(for: mainScreenViewController, title: NSLocalizedString("tabbar.mainScreen", comment: ""), image: UIImage.TabBar.main),
-            createNavController(for: searchScreenViewController, title: NSLocalizedString("tabbar.searchScreen", comment: ""), image: UIImage.TabBar.search),
+            createNavController(for: favoriteScreenViewController, title: NSLocalizedString("tabbar.favorites", comment: ""), image: UIImage.TabBar.favorites),
             createNavController(for: mapScreenViewController),
             createNavController(for: miniAppsScreenViewController, title: NSLocalizedString("tabbar.miniApps", comment: ""), image: UIImage.TabBar.miniapps),
             createNavController(for: profileViewController, title: NSLocalizedString("tabbar.profile", comment: ""), image: UIImage.TabBar.profile)
@@ -57,19 +57,22 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     private func createNavController(for rootViewController: UIViewController, title: String? = nil, image: UIImage = UIImage()) -> UIViewController {
-        let navController = UINavigationController(rootViewController: rootViewController)
-        navController.tabBarItem.title = title
-        navController.tabBarItem.image = image
-        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        let navController = NavController(rootViewController: rootViewController)
         rootViewController.navigationItem.title = title
         
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithTransparentBackground()
         navBarAppearance.backgroundColor = .none
+        
         navController.navigationBar.standardAppearance = navBarAppearance
         navController.navigationBar.compactAppearance = navBarAppearance
         navController.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
         navController.navigationBar.isTranslucent = true
+        navController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        
+        navController.tabBarItem.title = title
+        navController.tabBarItem.image = image
         return navController
     }
 

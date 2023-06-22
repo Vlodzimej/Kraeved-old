@@ -26,7 +26,9 @@ class BaseViewController: UIViewController, BaseViewProtocol {
         initialize()
     }
 
-    private func initialize() {}
+    private func initialize() {
+        view.backgroundColor = .Common.background
+    }
 
     private func showActivityIndicator() {
         NotificationCenter.default.post(name: .changeActivityIndicatorVisibility, object: nil, userInfo: ["isVisible": true])
@@ -39,4 +41,9 @@ class BaseViewController: UIViewController, BaseViewProtocol {
     func showOnboarding() {
         NotificationCenter.default.post(name: .showOnboarding, object: nil)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
 }
+

@@ -6,6 +6,7 @@ protocol BaseRouterProtocol {
     func openStartScreen(output: StartScreenModuleOutput?)
     func showAlertMessage(_ message: String)
     func showMessageScreen(_ message: String)
+    func openSearchScreen()
     func dismiss()
 }
 
@@ -38,6 +39,11 @@ class BaseRouter<T>: BaseRouterProtocol where T: UIViewController {
     func showMessageScreen(_ message: String) {
         let messageViewController = MessageScreenModuleBuilder.build(messageText: message)
         viewController?.present(messageViewController, animated: true)
+    }
+    
+    func openSearchScreen() {
+        let searchVC = SearchScreenModuleBuilder.build()
+        viewController?.navigationController?.pushViewController(searchVC, animated: false)
     }
     
     func dismiss() {

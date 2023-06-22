@@ -5,6 +5,7 @@ protocol MainScreenPresenterProtocol: AnyObject, UICollectionViewDelegate, UICol
     var sections: [MainScreenSection] { get }
     
     func refresh(needToShowActivityIndicator: Bool, completion: @escaping () -> Void)
+    func openSearchScreen()
 }
 
 // MARK: - MainScreenPresenter
@@ -65,6 +66,10 @@ final class MainScreenPresenter: NSObject, MainScreenPresenterProtocol {
                 completion()
             }
         }
+    }
+    
+    func openSearchScreen() {
+        router.openSearchScreen()
     }
 }
 

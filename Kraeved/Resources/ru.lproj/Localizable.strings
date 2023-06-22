@@ -16,9 +16,10 @@
 "tabbar.searchScreen"                   = "Поиск";
 "tabbar.mapScreen"                      = "Карта";
 "tabbar.miniApps"                       = "Сервисы";
-"tabbar.profile"                         = "Профиль";
+"tabbar.profile"                        = "Профиль";
 "tabbar.building"                       = "Здание";
 "tabbar.natural"                        = "Природа";
+"tabbar.favorites"                      = "Избранное";
 
 "mainScreen.historicalEvents"           = "События";
 "mainScreen.gallery"                    = "Галлерея";

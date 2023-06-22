@@ -20,16 +20,19 @@ extension UIImage {
         static var next: UIImage { UIImage(named: "arrow.right.circle")! }
         static var logoSmall: UIImage { UIImage(named: "logo_small")! }
         static var locationPlaceholder: UIImage { UIImage(named: "location_placeholder")! }
+        static var clear: UIImage { UIImage(systemName: "xmark.circle.fill")! }
+        static var search: UIImage { UIImage(systemName: "magnifyingglass")! }
     }
 
     struct TabBar {
-        static var main: UIImage { UIImage(named: "house")! }
-        static var search: UIImage { UIImage(named: "magnifyingglass")! }
-        static var map: UIImage { UIImage(named: "figure.walk")! }
-        static var miniapps: UIImage { UIImage(named: "miniapps")! }
-        static var profile: UIImage { UIImage(named: "person.crop.circle")! }
+        static var main: UIImage { UIImage(systemName: "house")! }
+        static var search: UIImage { UIImage(systemName: "magnifyingglass")! }
+        static var map: UIImage { UIImage(systemName: "figure.walk")! }
+        static var miniapps: UIImage { UIImage(systemName: "squareshape.split.2x2")! }
+        static var profile: UIImage { UIImage(systemName: "person.crop.circle")! }
         static var mapInactive: UIImage { UIImage(named: "map_button_inactive")! }
         static var mapActive: UIImage { UIImage(named: "map_button_active")! }
+        static var favorites: UIImage { UIImage(systemName: "heart")! }
     }
     
     struct MiniApps {

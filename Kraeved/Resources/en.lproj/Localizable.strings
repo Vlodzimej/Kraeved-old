@@ -16,9 +16,10 @@
 "tabbar.searchScreen"                   = "Search";
 "tabbar.mapScreen"                      = "Map";
 "tabbar.miniApps"                       = "Services";
-"tabbar.profile"                         = "Profile";
+"tabbar.profile"                        = "Profile";
 "tabbar.building"                       = "Building";
 "tabbar.natural"                        = "Natural";
+"tabbar.favorites"                      = "Favorites";
 
 "mainScreen.historicalEvents"           = "Events on this day";
 "mainScreen.gallery"                    = "Gallery";

@@ -65,7 +65,7 @@ final class AnnotationCollectionViewCell: UICollectionViewCell {
 
         titleLabel.snp.makeConstraints { maker in
             maker.leading.equalTo(imageView.snp.trailing).offset(8)
-            maker.top.equalToSuperview().inset(18)
+            maker.top.equalToSuperview().inset(12)
             maker.trailing.equalToSuperview().inset(24)
         }
     }
@@ -74,7 +74,7 @@ final class AnnotationCollectionViewCell: UICollectionViewCell {
     func configure(title: String?, image: UIImage?) {
         if let title {
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineHeightMultiple = 1.0
+            paragraphStyle.lineHeightMultiple = 1.15
             titleLabel.attributedText = NSMutableAttributedString(string: title,
                                                                   attributes: [
                                                                     .font: UIFont.BeVietnamPro.Regular(withSize: UIConstants.titleLabelFontSize),

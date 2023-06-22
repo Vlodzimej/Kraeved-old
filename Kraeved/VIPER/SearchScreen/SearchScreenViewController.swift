@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 // MARK: - SearchScreenViewProtocol
 protocol SearchScreenViewProtocol: AnyObject {
@@ -22,23 +23,13 @@ final class SearchScreenViewController: BaseViewController, SearchScreenViewProt
     ]
 
     // MARK: UIProperties
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.delegate = self
-        searchBar.backgroundColor = .white
-        if let textField = searchBar.value(forKey: "searchField") as? UITextField,
-            let iconView = textField.leftView as? UIImageView {
-            textField.textColor = .black
-            iconView.tintColor = .black
-        }
-        return searchBar
-    }()
+    private lazy var searchBar = KraevedSearchBar()
 
     var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .none
         return tableView
     }()
 
@@ -56,20 +47,25 @@ final class SearchScreenViewController: BaseViewController, SearchScreenViewProt
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        presenter.currentMetaType = searchTypes[0].metaType
+
         presenter.viewDidLoad()
     }
 
     private func initialize() {
-        view.backgroundColor = .white
         navigationItem.titleView = searchBar
+        navigationController?.navigationBar.topItem?.setHidesBackButton(true, animated: false)
 
         view.addSubview(tableView)
-
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.contentInset).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.contentInset).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.snp.makeConstraints { maker in
+            maker.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            maker.leading.trailing.equalToSuperview().inset(Constants.contentInset)
+        }
+        
+        presenter.currentMetaType = searchTypes[0].metaType
+        
+        searchBar.showsCancelButton = true
+        searchBar.becomeFirstResponder()
+        searchBar.delegate = self
     }
 }
 
@@ -77,4 +73,19 @@ extension SearchScreenViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter.search(metaType: MetaType.entity, searchText: searchText)
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if navigationController?.viewControllers.count == 1 {
+            searchBar.resignFirstResponder()
+            searchBar.showsCancelButton = false
+        } else {
+            presenter.dismiss()
+        }
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = true
+        return true
+    }
+    
 }
