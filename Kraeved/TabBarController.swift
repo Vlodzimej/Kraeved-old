@@ -5,6 +5,7 @@
 //  Created by Владимир Амелькин on 01.11.2022.
 //
 
+import Foundation
 import UIKit
 import SnapKit
 
@@ -35,6 +36,9 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
         NotificationCenter.default.addObserver(self, selector: #selector(changeActivityIndicatorVisibility(_:)), name: .changeActivityIndicatorVisibility, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showOnboarding), name: .showOnboarding, object: nil)
+        
+        let host = Settings.shared.hostURL
+        print("CHECK", host)
     }
 
     // MARK: Private Methods

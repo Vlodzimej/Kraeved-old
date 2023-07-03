@@ -8,12 +8,30 @@
 import Foundation
 import CoreData
 
+extension Endpoint {
+//    static var recommendations: Self {
+//        Endpoint(path: "recommendations")
+//    }
+//
+//    static func search(for query: String,
+//                       maxResultCount: Int = 100) -> Self {
+//        Endpoint(
+//            path: "search/\(query)",
+//            queryItems: [URLQueryItem(
+//                name: "count",
+//                value: String(maxResultCount)
+//            )]
+//        )
+//    }
+}
+
 // MARK: - BusinessObjectManagerProtocol
 protocol BusinessObjectManagerProtocol: AnyObject {
     func get(metaTypeId: UUID, completion: @escaping ([BusinessObject]) -> Void)
     func find(metaTypeId: UUID, predicates: [NSPredicate], completion: @escaping ([BusinessObject]) -> Void)
     func add(_ businessObject: BusinessObject, completion: @escaping (BusinessObject) -> Void)
 }
+
 
 // MARK: - BusinessObjectManager
 final class BusinessObjectManager: BusinessObjectManagerProtocol {
